@@ -1,0 +1,1337 @@
+@extends('frontend.layouts.frontend')
+
+{{-- @section('title', 'Home') --}}
+@section('meta_title', $data->meta_title ?? 'Meta IT Services')
+@section('meta_keywords', $data->meta_keywords ?? '')
+@section('meta_description', $data->meta_description ?? '')
+
+@push('frontend-styles')
+    <style>
+        .dm-services-section {
+            padding: 100px 0;
+            /* min-height: 800px; */
+            /* 👈 important */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+
+
+        /* LEFT */
+        .mc-badge {
+            font-size: 25px;
+            font-weight: 700;
+            line-height: 41px;
+            letter-spacing: 0;
+            color: #F96037;
+        }
+
+        .dm-title {
+            font-size: 50px;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 60px;
+            letter-spacing: 0;
+            margin-bottom: 15px;
+            max-width: 450px;
+            /* margin-top: 20px; */
+        }
+
+        .dm-subtitle {
+            font-size: 25px;
+            font-weight: 700;
+            line-height: 41px;
+            letter-spacing: 0;
+            color: #ffffff;
+            margin-bottom: 20px;
+            max-width: 478px;
+
+        }
+
+        .dm-desc {
+            font-size: 25px;
+            font-weight: 400;
+            line-height: 160%;
+            letter-spacing: 0;
+            color: #ffffff;
+            max-width: 500px;
+            margin-bottom: 30px;
+        }
+
+        /* BUTTON */
+        .dm-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #F96037;
+            color: #ffffff;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 25px;
+            letter-spacing: 0;
+            text-decoration: none;
+            transition: 0.3s ease;
+            width: 274px;
+            height: 67px;
+
+        }
+
+        .dm-btn:hover {
+            background: #e1542f;
+            color: #fff;
+        }
+
+        /* RIGHT IMAGE */
+        .mc-right-img {
+            width: 776px;
+            max-width: 100%;
+            height: 437px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* MOBILE */
+        @media (max-width: 991px) {
+
+            .dm-services-section {
+                padding: 70px 0;
+                text-align: center;
+            }
+
+            .dm-desc {
+                max-width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        /* =============================== healthcare-section ================================ */
+
+        .healthcare-section {
+            background: rgba(244, 139, 92, 0.25);
+            padding: 90px 0;
+            font-family: Inter;
+        }
+
+        /* TOP */
+        .top-tag {
+            color: #FF5B2E;
+            font-size: 20px;
+            font-weight: 600;
+            /* margin: 0 auto; */
+            text-align: center;
+            line-height: 160%;
+            letter-spacing: 0;
+        }
+
+
+        .health-heading {
+            font-size: 55px;
+            font-weight: 700;
+            line-height: 64px;
+            letter-spacing: 2%;
+            margin-top: 15px;
+            max-width: 592px;
+            margin: 0 auto;
+            color: #000000;
+            text-align: center;
+        }
+
+        .health-heading span {
+            border-bottom: 6px solid #F96037;
+        }
+
+        /* LEFT */
+        .left-heading {
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 60px;
+            letter-spacing: 0;
+            color: #000000;
+            max-width: 384px;
+        }
+
+        .left-desc {
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 160%;
+            letter-spacing: 0;
+            margin: 20px 0;
+            max-width: 384px;
+
+        }
+
+        .view-btn {
+            width: 220px;
+            height: 67px;
+            background: #404959;
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .slider-wrapper {
+            position: relative;
+        }
+
+        /* NAV BUTTONS */
+        .nav-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #fff;
+            color: #404959;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: -40px;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .prev-btn {
+            left: 10px;
+            top: 0px;
+        }
+
+        .next-btn {
+            left: 70px;
+            top: 0px;
+        }
+
+        .nav-btn:hover,
+        .nav-btn:active {
+            background: #404959;
+            color: #fff;
+        }
+
+        /* SLIDER */
+        .custom-slider {
+            overflow: hidden;
+            width: 100%;
+            padding-top: 20px;
+            margin-top: 50px;
+        }
+
+        .slider-track {
+            display: flex;
+            gap: 30px;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .health-card {
+            min-width: calc(33.333% - 20px);
+            /* default: 3 cards */
+            color: #fff;
+        }
+
+        .health-card img {
+            width: 100%;
+            height: 534px;
+            object-fit: cover;
+            border-radius: 23px;
+        }
+
+        .health-card h4 {
+            font-size: 30px;
+            font-weight: 700;
+            line-height: 25px;
+            letter-spacing: 0;
+            margin-top: 20px;
+            color: #000000;
+        }
+
+        .health-card p {
+            font-size: 25px;
+            line-height: 120%;
+            font-weight: 400;
+            letter-spacing: 0;
+            color: #000000;
+
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 991px) {
+            .view-btn {
+                display: block;
+                margin: 20px auto;
+                /* center horizontally */
+            }
+        }
+
+        @media (max-width: 991px) {
+            .health-card {
+                min-width: calc(50% - 20px);
+            }
+
+            .next-btn {
+                left: 70px;
+                top: 35px;
+            }
+
+            .prev-btn {
+                left: 10px;
+                top: 35px;
+            }
+
+            .health-card img {
+                height: 430px;
+            }
+        }
+
+        @media (max-width: 575px) {
+            .health-card {
+                min-width: 100%;
+            }
+
+            .prev-btn {
+                left: 20px;
+                top: 45px;
+            }
+
+            .next-btn {
+                left: 60px;
+                top: 45px;
+            }
+        }
+
+
+        .brands-heading {
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 50px;
+            color: #000;
+        }
+
+        .brands-heading span {
+            border-bottom: 6px solid #F96037;
+            padding-bottom: 2px;
+            display: inline-block;
+        }
+
+
+        .brand-names .brand {
+            font-size: 40px;
+            font-weight: 600;
+            color: #000000;
+            line-height: 64px;
+            letter-spacing: 2%;
+            padding: 10px 20px;
+            background: transparent;
+            border-radius: 12px;
+        }
+
+        /* =================================healthcare-marketing-sectio========================== */
+
+        .marketing-img {
+            width: 100%;
+            max-width: 756px;
+            height: 640px;
+            object-fit: cover;
+            /* border-radius: 12px; */
+        }
+
+        .marketing-heading {
+            font-size: 40px;
+            font-weight: 600;
+            line-height: 25px;
+            letter-spacing: 0;
+            color: #000000;
+            font-family: Inter;
+        }
+
+        .marketing-desc {
+            font-size: 25px;
+            line-height: 160%;
+            color: #404959;
+            margin-top: 20px;
+            font-family: Inter;
+
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 991px) {
+            .marketing-heading {
+                text-align: center;
+            }
+
+            .marketing-desc {
+                text-align: center;
+            }
+
+            .marketing-img {
+                margin: 0 auto;
+            }
+        }
+
+
+        /* ======================atomic-section============================ */
+
+
+        .atomic-section {
+            background: rgba(244, 139, 92, 0.25);
+            padding: 90px 0;
+            font-family: Inter, sans-serif;
+        }
+
+        .atomic-heading {
+            font-size: 45px;
+            font-weight: 700;
+            letter-spacing: 2%;
+            color: #000;
+            margin-bottom: 30px;
+        }
+
+        .atomic-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .atomic-buttons .btn {
+            width: 470px;
+            height: 67px;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-white {
+            background: #ffffff;
+            color: #161515;
+        }
+
+        .btn-orange {
+            background: #F38B5C;
+            color: #ffffff;
+        }
+
+        .btn-white:hover {
+            background: #f0f0f0;
+        }
+
+        .btn-orange:hover {
+            background: #e67147;
+        }
+
+        .atomic-desc {
+            font-size: 22px;
+            line-height: 160%;
+            color: #404959;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Responsive */
+        @media (max-width: 991px) {
+            .atomic-buttons .btn {
+                width: 80%;
+            }
+
+            .atomic-buttons {
+                flex-wrap: wrap;
+            }
+
+            .atomic-heading {
+                font-size: 36px;
+            }
+
+            .atomic-desc {
+                font-size: 20px;
+            }
+        }
+
+
+        /* BUTTONS */
+        .tab-btn {
+            width: 470px;
+            height: 67px;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #F38B5C;
+            color: #ffffff;
+        }
+
+        .tab-btn.active {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        /* TAB CONTENT */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .atomic-desc {
+            font-size: 22px;
+            line-height: 160%;
+            color: #404959;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 991px) {
+            .tab-btn {
+                width: 100%;
+            }
+        }
+
+
+
+        /*============================= experience-section ===================================== */
+
+        .experience-section {
+            background: rgba(244, 139, 92, 0.25);
+            padding: 20px 0;
+            font-family: Inter, sans-serif;
+            margin-top: 20px;
+        }
+
+        /* LEFT */
+        .experience-heading {
+            font-size: 60px;
+            font-weight: 700;
+            letter-spacing: 3%;
+            line-height: 69px;
+            max-width: 470px;
+            color: #000;
+        }
+
+        .talk-btn {
+            width: 220px;
+            height: 67px;
+            background: #404959;
+            color: #fff;
+            border-radius: 12px;
+            border: none;
+            font-size: 18px;
+            font-weight: 700;
+            margin-top: 30px;
+        }
+
+        .talk-btn:hover {
+            opacity: 0.9;
+            transition: all 0.4s ease-in-out;
+        }
+
+        /* RIGHT */
+        .cross-wrapper {
+            position: relative;
+            width: 654px;
+            height: 654px;
+            margin-left: auto;
+        }
+
+        /* CROSS LINES */
+        .cross-x {
+            position: absolute;
+            top: 50%;
+            left: 26px;
+            width: 597px;
+            height: 51px;
+            background: #F96037;
+            transform: translateY(-50%);
+        }
+
+        .cross-y {
+            position: absolute;
+            left: 50%;
+            top: -10px;
+            width: 51px;
+            height: 656px;
+            background: #F96037;
+            transform: translateX(-50%);
+        }
+
+        /* IMAGES */
+        .cross-img1 {
+            position: absolute;
+            width: 265px;
+            height: 306px;
+            object-fit: contain;
+        }
+
+        .cross-img2 {
+            position: absolute;
+            width: 265px;
+            height: 306px;
+            object-fit: contain;
+        }
+
+        .cross-img3 {
+            position: absolute;
+            width: 265px;
+            height: 286px;
+            object-fit: contain;
+        }
+
+        .cross-img4 {
+            position: absolute;
+            width: 265px;
+            height: 286px;
+            object-fit: contain;
+        }
+
+        /* POSITIONS */
+        .top-left {
+            top: -8px;
+            left: 32px;
+        }
+
+        .top-right {
+            top: -8px;
+            right: 32px;
+        }
+
+        .bottom-left {
+            bottom: 10px;
+            left: 30px;
+        }
+
+        .bottom-right {
+            bottom: 10px;
+            right: 31px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 991px) {
+            .cross-wrapper {
+                width: 100%;
+                height: 400px;
+                margin: 50px auto 0;
+            }
+
+            .cross-x {
+                position: absolute;
+                top: 50%;
+                left: 162px;
+                width: 371px;
+                height: 51px;
+
+            }
+
+            .cross-y {
+                height: 100%;
+                width: 30px;
+            }
+
+            .experience-heading {
+                font-size: 42px;
+                line-height: 54px;
+            }
+        }
+
+        @media(max-width: 768px) {
+            .top-right {
+                top: -9px !important;
+                right: 126px !important;
+            }
+
+            .cross-img2 {
+                position: absolute;
+                width: 240px;
+                height: 190px;
+                object-fit: contain;
+            }
+
+            .bottom-right {
+                bottom: 6px;
+                right: 114px;
+            }
+
+            .cross-img4 {
+                position: absolute;
+                width: 265px;
+                height: 177px;
+                object-fit: contain;
+            }
+
+            .bottom-left {
+                bottom: 10px;
+                left: 115px;
+            }
+
+            .cross-img3 {
+                position: absolute;
+                width: 265px;
+                height: 174px;
+                object-fit: contain;
+            }
+
+            .cross-img1 {
+                position: absolute;
+                width: 265px;
+                height: 192px;
+                object-fit: contain;
+            }
+
+            .top-left {
+                top: -9px;
+                left: 115px;
+            }
+        }
+
+
+        @media(max-width:767px) {
+            .cross-x {
+                position: absolute;
+                top: 50%;
+                left: -3px;
+                width: 359px;
+                height: 33px;
+            }
+
+            .top-left {
+                top: -5px;
+                left: -31px;
+            }
+
+            .top-right {
+                top: -7px !important;
+                right: -43px !important;
+            }
+
+            .bottom-left {
+                bottom: 11px;
+                left: -54px;
+            }
+
+            .cross-img1 {
+                position: absolute;
+                width: 217px;
+                height: 187px;
+                object-fit: contain;
+            }
+
+            .cross-img2 {
+                position: absolute;
+                width: 240px;
+                height: 188px;
+                object-fit: contain;
+            }
+
+            .cross-img3 {
+                position: absolute;
+                width: 265px;
+                height: 170px;
+                object-fit: contain;
+            }
+
+            .cross-img4 {
+                position: absolute;
+                width: 265px;
+                height: 170px;
+                object-fit: contain;
+            }
+
+            .bottom-right {
+                bottom: 11px;
+                right: -53px;
+            }
+        }
+
+        /* faqs */
+
+        .faq-dm-title {
+            font-family: Inter;
+            font-weight: 600;
+            line-height: 48px;
+            letter-spacing: 0;
+            color: #000000;
+            font-size: 40px;
+        }
+
+        .top-dm {
+            font-family: Inter;
+            font-weight: 600;
+            line-height: 160%;
+            letter-spacing: 0;
+            color: #FF5B2E;
+            font-size: 20px;
+        }
+
+        /* =====================project-section========================= */
+
+        .project-section {
+            background: rgba(244, 139, 92, 0.25);
+            padding: 40px 0;
+            font-family: Inter, sans-serif;
+            margin-top: 20px;
+        }
+
+        /* HEADING */
+        .project-heading {
+            font-size: 55px;
+            font-weight: 700;
+            line-height: 59px;
+            letter-spacing: 0;
+            color: #000000;
+            margin-bottom: 20px;
+        }
+
+        /* DESCRIPTION */
+        .project-desc {
+            font-size: 25px;
+            font-weight: 400;
+            line-height: 160%;
+            max-width: 811px;
+            margin: 0 auto 40px;
+            color: #404959;
+        }
+
+        /* BUTTON */
+        .contact-btn {
+            width: 279px;
+            height: 67px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            background: linear-gradient(90deg, #FF6036, #404959);
+            border-radius: 12px;
+
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 25px;
+            color: #ffffff;
+            text-decoration: none;
+
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.95;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 991px) {
+            .project-heading {
+                font-size: 42px;
+                line-height: 52px;
+            }
+
+            .project-desc {
+                font-size: 20px;
+            }
+
+            .contact-btn {
+                width: 100%;
+                max-width: 320px;
+                font-size: 22px;
+            }
+        }
+    </style>
+@endpush
+
+
+
+@section('frontend-content')
+
+
+
+    <section class="dm-services-section"
+        style="background-image: url('{{ asset('frontend/images/about/about-hero.png') }}');">
+
+        <div class="container">
+            <div class="row align-items-center">
+
+                <!-- LEFT COLUMN -->
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h1 class="dm-title">Sub Industries</h1>
+
+                    {{-- <h4 class="dm-subtitle">
+                        Customized Marketing Solutions That Deliver Results, Every Time
+                    </h4> --}}
+
+                    <p class="dm-desc">
+                        We create data-driven digital marketing strategies tailored to
+                        your business goals. From SEO and paid campaigns to social media
+                        and content marketing
+                    </p>
+
+                    {{-- <a href="#" class="dm-btn">Start Your Project</a> --}}
+                </div>
+
+                <!-- RIGHT COLUMN -->
+                <div class="col-lg-6 text-center d-flex align-items-center ">
+                    <img src="{{ asset('frontend/images/industry/industry.png') }}" alt="Digital Marketing"
+                        class="mc-right-img">
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    {{-- =================================== healthcare-section ============================ --}}
+
+    <section class="healthcare-section">
+        <div class="container text-cent">
+
+            <h5 class="top-tag ">HEALTHCARE MARKETING EXPERTS DALLAS AGENCY</h5>
+
+            <h2 class="health-heading">Powering Growth For <span>Healthcare </span>Business </h2>
+
+            <div class="row mt-5">
+                <!-- LEFT -->
+                <div class="col-lg-3">
+                    <h3 class="left-heading">Prescribed for Results</h3>
+                    <p class="left-desc">
+                        We help healthcare brands scale faster with performance-driven
+                        marketing strategies tailored for real growth.
+                    </p>
+                    <button class="view-btn">View All</button>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="col-lg-9 slider-wrapper">
+
+                    <!-- NAV BUTTONS -->
+                    <button class="nav-btn prev-btn"><i class="fa fa-arrow-left"></i></button>
+                    <button class="nav-btn next-btn"><i class="fa fa-arrow-right"></i></button>
+
+                    <!-- SLIDER -->
+                    <div class="custom-slider">
+                        <div class="slider-track">
+
+                            <div class="health-card">
+                                <img src="{{ asset('frontend/images/industry/subind-img.png') }}">
+                                <h4>Hope Project Leads</h4>
+                                <p>Helping healthcare providers generate qualified leads.</p>
+                            </div>
+
+                            <div class="health-card">
+                                <img src="{{ asset('frontend/images/industry/subind-img.png') }}">
+                                <h4>Medical Growth</h4>
+                                <p>Targeted marketing solutions for patient acquisition.</p>
+                            </div>
+
+                            <div class="health-card">
+                                <img src="{{ asset('frontend/images/industry/subind-img.png') }}">
+                                <h4>Clinic Expansion</h4>
+                                <p>Data-driven campaigns for long-term growth.</p>
+                            </div>
+
+                            <div class="health-card">
+                                <img src="{{ asset('frontend/images/industry/subind-img.png') }}">
+                                <h4>Hospital Reach</h4>
+                                <p>Performance marketing for healthcare brands.</p>
+                            </div>
+                            <div class="health-card">
+                                <img src="{{ asset('frontend/images/industry/subind-img.png') }}">
+                                <h4>Hospital Reach</h4>
+                                <p>Performance marketing for healthcare brands.</p>
+                            </div>
+                            <div class="health-card">
+                                <img src="{{ asset('frontend/images/industry/subind-img.png') }}">
+                                <h4>Hospital Reach</h4>
+                                <p>Performance marketing for healthcare brands.</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <section class="healthcare-brands py-5">
+            <div class="container text-center">
+
+                <!-- Heading -->
+                <h2 class="brands-heading">
+                    We deliver <span>consistent growth</span> for healthcare businesses
+                </h2>
+
+                <!-- Brand Names -->
+                <div class="brand-names d-flex justify-content-center flex-wrap gap-4 mt-4">
+                    <span class="brand">Brand One</span>
+                    <span class="brand">Brand Two</span>
+                    <span class="brand">Brand Three</span>
+                    <span class="brand">Brand Four</span>
+                </div>
+
+            </div>
+        </section>
+
+
+    </section>
+
+    {{-- =================== healthcare-marketing-sectio ======================= --}}
+
+
+    <section class="healthcare-marketing-section py-5">
+        <div class="container">
+            <div class="row ">
+
+                <!-- LEFT COLUMN: Image -->
+                <div class="col-lg-6 col-md-12 mb-4 mb-lg-0">
+                    <img src="{{ asset('frontend/images/industry/health-care.png') }}" alt="Healthcare Digital Marketing"
+                        class="img-fluid marketing-img">
+                </div>
+
+                <!-- RIGHT COLUMN: Heading + Description -->
+                <div class="col-lg-6 col-md-12">
+                    <h2 class="marketing-heading">
+                        Healthcare Digital Marketing
+                    </h2>
+                    <p class="marketing-desc">
+                        We provide comprehensive digital marketing solutions tailored specifically
+                        for healthcare businesses, helping them reach more patients and grow efficiently.
+                    </p>
+
+
+
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <h5>How does the platform work?</h5>
+                            <span class="faq-toggle"><i class="fa-solid fa-plus"></i></span>
+                        </div>
+                        <div class="faq-content">
+                            <p>
+                                Our platform helps users discover products efficiently
+                                using smart filters and recommendations.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <h5>How does the platform work?</h5>
+                            <span class="faq-toggle"><i class="fa-solid fa-plus"></i></span>
+                        </div>
+                        <div class="faq-content">
+                            <p>
+                                Our platform helps users discover products efficiently
+                                using smart filters and recommendations.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <h5>How does the platform work?</h5>
+                            <span class="faq-toggle"><i class="fa-solid fa-plus"></i></span>
+                        </div>
+                        <div class="faq-content">
+                            <p>
+                                Our platform helps users discover products efficiently
+                                using smart filters and recommendations.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <h5>Is customer support available?</h5>
+                            <span class="faq-toggle"><i class="fa-solid fa-plus"></i></span>
+                        </div>
+                        <div class="faq-content">
+                            <p>
+                                Yes, our support team is available 24/7 to assist you.
+                            </p>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    {{-- ============================== atomic-section ================================ --}}
+
+    <section class="atomic-section py-5">
+        <div class="container text-center">
+
+            <!-- Heading -->
+            <h2 class="atomic-heading">
+                Why Select Atomic as Your Digital Marketing Agency?
+            </h2>
+
+            <!-- Buttons -->
+            <!-- BUTTONS -->
+            <div class="atomic-buttons  mt-4">
+                <button class="tab-btn active" data-tab="tab1">Proven Results</button>
+                <button class="tab-btn" data-tab="tab2">Marketing Strategy</button>
+                <button class="tab-btn" data-tab="tab3">Growth Solutions</button>
+            </div>
+
+            <!-- TAB CONTENT -->
+            <div class="atomic-tab-content mt-4">
+
+                <p class="atomic-desc tab-content active" id="tab1">
+                    At Atomic, we deliver top-notch digital marketing solutions tailored to your business goals.
+                    Our proven strategies help brands increase visibility, generate leads, and achieve consistent growth.
+                </p>
+
+                <p class="atomic-desc tab-content" id="tab2">
+                    Our marketing strategies are data-driven and customer-focused.
+                    We build campaigns that improve brand awareness, engagement, and conversions across all channels.
+                </p>
+
+                <p class="atomic-desc tab-content" id="tab3">
+                    Atomic provides scalable growth solutions designed to increase ROI.
+                    From automation to performance marketing, we help businesses grow sustainably.
+                </p>
+
+            </div>
+
+
+        </div>
+    </section>
+
+
+    {{-- =============================== faqs ================================= --}}
+    <section class="faq-section">
+        <div class="container">
+            <div class="row align-items-start">
+
+                <!-- LEFT -->
+                <div class="col-lg-5 faq-left">
+                    <h2 class="faq-dm-title">Digital Marketing Services For Healthcare</h2>
+                    <h5 class="top-dm ">Website Design and Development</h5>
+
+                    <p class="faq-desc">
+                        Find answers to the most commonly asked questions about our
+                        platform, features, pricing, and support. Our team is always
+                        ready to help you. Find answers to the most commonly asked questions about our
+                        platform, features, pricing, and support. Our team is always
+                        ready to help you. Find answers to the most commonly asked questions about our
+                        platform, features, pricing, and support. Our team is always
+                        ready to help you. Find answers to the most commonly asked questions about our
+                        platform, features, pricing, and support. Our team is always
+                        ready to help you.
+                    </p>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="col-lg-7">
+
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <h5>How does the platform work?</h5>
+                            <span class="faq-toggle"><i class="fa-solid fa-plus"></i></span>
+                        </div>
+                        <div class="faq-content">
+                            <p>
+                                Our platform helps users discover products efficiently
+                                using smart filters and recommendations.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <h5>How does the platform work?</h5>
+                            <span class="faq-toggle"><i class="fa-solid fa-plus"></i></span>
+                        </div>
+                        <div class="faq-content">
+                            <p>
+                                Our platform helps users discover products efficiently
+                                using smart filters and recommendations.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <h5>How does the platform work?</h5>
+                            <span class="faq-toggle"><i class="fa-solid fa-plus"></i></span>
+                        </div>
+                        <div class="faq-content">
+                            <p>
+                                Our platform helps users discover products efficiently
+                                using smart filters and recommendations.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <h5>Is customer support available?</h5>
+                            <span class="faq-toggle"><i class="fa-solid fa-plus"></i></span>
+                        </div>
+                        <div class="faq-content">
+                            <p>
+                                Yes, our support team is available 24/7 to assist you.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-header">
+                            <h5>Can I upgrade my plan later?</h5>
+                            <span class="faq-toggle"><i class="fa-solid fa-plus"></i></span>
+                        </div>
+                        <div class="faq-content">
+                            <p>
+                                You can upgrade or downgrade your plan anytime from
+                                your dashboard.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="experience-section">
+        <div class="container">
+            <div class="row align-items-center">
+
+                <!-- LEFT COLUMN -->
+                <div class="col-lg-6">
+                    <h2 class="experience-heading">
+                        Experience Powerful Results with Healthcare Marketing By Atomic Design
+                    </h2>
+
+                    <button class="talk-btn">Let’s Talk</button>
+                </div>
+
+                <!-- RIGHT COLUMN -->
+                <div class="col-lg-6 position-relative">
+
+                    <div class="cross-wrapper">
+
+                        <!-- Horizontal Line -->
+                        <div class="cross-x"></div>
+
+                        <!-- Vertical Line -->
+                        <div class="cross-y"></div>
+
+                        <!-- IMAGES -->
+                        <img src="{{ asset('frontend/images/industry/atomic1.png') }}" class="cross-img1 top-left">
+                        <img src="{{ asset('frontend/images/industry/atomic2.png') }}" class="cross-img2 top-right">
+                        <img src="{{ asset('frontend/images/industry/atomic3.png') }}" class="cross-img3 bottom-left">
+                        <img src="{{ asset('frontend/images/industry/atomic4.png') }}" class="cross-img4 bottom-right">
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    {{-- ====================== project-section ========================= --}}
+
+
+    <section class="project-section">
+        <div class="container text-center">
+
+            <h2 class="project-heading">
+                Have A Project In Mind?
+            </h2>
+
+            <p class="project-desc">
+                We help brands turn ideas into impactful digital experiences.
+                Our team delivers scalable, data-driven solutions tailored to
+                your business goals and long-term growth.
+            </p>
+
+            <a href="#" class="contact-btn">
+                Contact Us
+            </a>
+
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+@endsection
+
+
+@push('frontend-scripts')
+    <script>
+        const track = document.querySelector('.slider-track');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        const cards = document.querySelectorAll('.health-card');
+
+        let index = 0;
+        let visibleCards = getVisibleCards();
+
+        function getVisibleCards() {
+            if (window.innerWidth <= 575) return 1; // Mobile
+            if (window.innerWidth <= 991) return 2; // Tablet
+            return 3; // Desktop
+        }
+
+        function updateSlider() {
+            const cardWidth = cards[0].offsetWidth + 30;
+            track.style.transform = `translateX(-${index * cardWidth}px)`;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            visibleCards = getVisibleCards();
+            if (index < cards.length - visibleCards) {
+                index++;
+                updateSlider();
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (index > 0) {
+                index--;
+                updateSlider();
+            }
+        });
+
+        /* 🔥 Handle resize */
+        window.addEventListener('resize', () => {
+            visibleCards = getVisibleCards();
+            index = 0;
+            updateSlider();
+        });
+    </script>
+
+    <script>
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+
+                // remove active from all
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+
+                // add active to clicked
+                button.classList.add('active');
+                document.getElementById(button.dataset.tab).classList.add('active');
+            });
+        });
+    </script>
+@endpush
