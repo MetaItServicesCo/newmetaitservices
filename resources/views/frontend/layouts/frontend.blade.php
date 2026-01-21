@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/global/plugins.bundle.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/plugins/custom/datatables/datatables.bundle.css') }}" />
 
+
     <!-- Select2 CSS -->
 
     <!--begin::Vendor Stylesheets(used by this page)-->
