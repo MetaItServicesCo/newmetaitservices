@@ -1,9 +1,9 @@
 @extends('frontend.layouts.frontend')
 
 {{-- @section('title', 'Home') --}}
-@section('meta_title', $data->meta_title ?? 'Meta IT Services')
-@section('meta_keywords', $data->meta_keywords ?? '')
-@section('meta_description', $data->meta_description ?? '')
+@section('meta_title', $seoMeta->meta_title ?? 'Meta IT Services')
+@section('meta_keywords', $seoMeta->meta_keywords ?? '')
+@section('meta_description', $seoMeta->meta_description ?? '')
 
 @push('frontend-styles')
     <style></style>
@@ -176,63 +176,7 @@
 
 
     <!-- ======================== kpi ection ============================= -->
-    <section class="kpi-section">
-        <div class="container text-center">
-
-            <!-- Main Heading -->
-            <h2 class="kpi-title">
-                Improve the KPIs That Matter Most to Your Business
-            </h2>
-
-            <!-- Buttons -->
-            <div class="kpi-buttons my-4">
-                <button class="kpi-btn active">Traffic</button>
-                <button class="kpi-btn">Leads</button>
-                <button class="kpi-btn">CPL</button>
-                <button class="kpi-btn">Data</button>
-                <button class="kpi-btn">Revenue</button>
-                <button class="kpi-btn">Campaign Management</button>
-            </div>
-
-        </div>
-
-        <!-- KPI Container -->
-        <div class="kpi container position-relative">
-
-            <div class="row align-items-center">
-
-                <!-- Left Column -->
-                <div class="col-lg-6 text-white">
-                    <h3 class="kpi-left-title">Boost Your Website Traffic and Visibility</h3>
-                    <p class="kpi-left-desc">
-                        Our SEO strategies focus on increasing organic traffic, improving search visibility,
-                        and driving high-quality leads. We optimize content, keywords, and campaigns
-                        to maximize ROI and enhance your digital presence.
-                    </p>
-                    <a href="#" class="kpi-left-btn">Explore SEO Services <img
-                            src="{{ asset('frontend/images/kips-icon.png') }}" alt=""> </a>
-                </div>
-
-                <!-- Right Column -->
-                <div class="col-lg-6  text-center">
-                    <img src="{{ asset('frontend/images/kpi-img.png') }}" alt="KPI Image" class="kpi-right-img">
-
-                    <!-- Cards -->
-                    <div class="kpi-card card1">
-                        <h4>Boost your presence in organic search results</h4>
-                    </div>
-                    <div class="kpi-card card2">
-                        <h4>Boost your presence in organic search results</h4>
-                    </div>
-                    <div class="kpi-card card3">
-                        <h4>Boost your presence in organic search results</h4>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
+    <x-kpi-section-component />
 
 
     <!-- ============= agency section =============== -->
@@ -297,75 +241,15 @@
 
 
     <!-- ================== port folio section ======================= -->
+    <x-portfolio-component />
 
-    <section class="portfolio-section">
-        <div class="container">
-
-            <!-- Heading -->
-            <h2 class="portfolio-title">PORTFOLIO</h2>
-
-            <!-- Cards -->
-            <div class="row justify-content-center g-3">
-
-                <!-- Card -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="portfolio-card">
-                        <img src="{{ asset('frontend/images/portfolio-img1.png') }}" alt="">
-                        <h3>Website Design for SCFC Canada</h3>
-                        <p>
-                            Born out of a vision, a single-minded objective that puts service before anything else,
-                            Swift Clearance and Forwarding Corp. surging forth to deliver the best services in the
-                            shipping and logistics scenario. Its meteoric rise stems out of a solid foundation.Its
-                            meteoric rise stems</p>
-                        <a href="#" class="read-more">Read more</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="portfolio-card">
-                        <img src="{{ asset('frontend/images/portfolio-img2.png') }}" alt="">
-                        <h3>Website Design for SCFC Canada</h3>
-                        <p>
-                            Born out of a vision, a single-minded objective that puts service before anything else,
-                            Swift Clearance and Forwarding Corp. surging forth to deliver the best services in the
-                            shipping and logistics scenario. Its meteoric rise stems out of a solid foundation.Its
-                            meteoric rise stems</p>
-                        <a href="#" class="read-more">Read more</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="portfolio-card">
-                        <img src="{{ asset('frontend/images/portfolio-img3.png') }}" alt="">
-                        <h3>Website Design for SCFC Canada</h3>
-                        <p>
-                            Born out of a vision, a single-minded objective that puts service before anything else,
-                            Swift Clearance and Forwarding Corp. surging forth to deliver the best services in the
-                            shipping and logistics scenario. Its meteoric rise stems out of a solid foundation.Its
-                            meteoric rise stems</p>
-                        <a href="#" class="read-more">Read more</a>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Center Button -->
-            <div class="portfolio-btn-wrap">
-                <button class="down-btn">
-                    <img src="{{ asset('frontend/images/portfolio-icon.png') }}" alt="">
-                </button>
-            </div>
-
-        </div>
-    </section>
 
     <!-- ========================== revnue section ============================== -->
-
-    <x-revenue />
-
-
+    <x-testimonial-component />
 
     <!-- ===================== faqs section ======================= -->
 
-    <x-faqs />
+    <x-faqs-component :pageName="'landing'" />
 
     <!-- ======================== seo section ================================ -->
 

@@ -1,5 +1,9 @@
 <?php
 
+use App\Models\GeneralSetting;
+use Illuminate\Support\Facades\Cache;
+
+
 if (!function_exists('theme')) {
     function theme()
     {
@@ -429,5 +433,19 @@ if (!function_exists('getIcon')) {
     function getIcon($name, $class = '', $type = '', $tag = 'span')
     {
         return theme()->getIcon($name, $class, $type, $tag);
+    }
+}
+
+
+if (! function_exists('setting')) {
+    function setting($key, $default = null)
+    {
+        $settings = Cache::rememberForever('app_settings', function () {
+            return GeneralSetting::where('is_active', true)
+                ->pluck('value', 'key')
+                ->toArray();
+        });
+
+        return $settings[$key] ?? $default;
     }
 }

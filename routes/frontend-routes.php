@@ -7,16 +7,14 @@ use Illuminate\Support\Facades\Route;
 // ===========================
 
 Route::get('/', function () {
-    return view('frontend.pages.landing-page');
+    $seoMeta = \App\Models\SeoMeta::where('page_name', 'landing')->where('is_active', 1)->first();
+
+    return view('frontend.pages.landing-page', compact('seoMeta'));
 })->name('landing.page');
 
-Route::get('/services', function () {
-    return view('frontend.pages.services');
-})->name('services.page');
+Route::get('/services', [App\Http\Controllers\ServicesController::class, 'services'])->name('services');
 
-Route::get('/main-services', function () {
-    return view('frontend.pages.main-services');
-})->name('main-services.page');
+Route::get('/service/{slug}', [App\Http\Controllers\ServicesController::class, 'service'])->name('service');
 
 Route::get('/subservices', function () {
     return view('frontend.pages.subservices');

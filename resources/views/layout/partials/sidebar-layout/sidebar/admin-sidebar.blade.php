@@ -1,5 +1,5 @@
 <div data-kt-menu-trigger="click"
-    class="menu-item menu-accordion {{ request()->routeIs('dashboard', 'admin-faqs.*', 'admin.testimonials.*') ? 'here show' : '' }}">
+    class="menu-item menu-accordion {{ request()->routeIs('dashboard', 'admin-faqs.*', 'admin.testimonials.*', 'admin.kpi-sections.*', 'admin-category.*', 'admin.portfolios.*', 'admin-seo-meta.*') ? 'here show' : '' }}">
     <span class="menu-link">
         <span class="menu-icon">{!! getIcon('element-11', 'fs-2') !!}</span>
         <span class="menu-title">Dashboards</span>
@@ -35,10 +35,98 @@
                 <span class="menu-bullet">
                     <span class="bullet bullet-dot"></span>
                 </span>
-                <span class="menu-title">{{ __('Testimonials') }}</span>
+                <span class="menu-title">{{ __('Create Testimonials') }}</span>
             </a>
         </div>
     </div>
+
+    <div class="menu-sub menu-sub-accordion">
+        <div class="menu-item">
+            <a class="menu-link {{ request()->routeIs('admin.kpi-sections.*') ? 'active' : '' }}"
+                href="{{ route('admin.kpi-sections.list') }}">
+                <span class="menu-bullet">
+                    <span class="bullet bullet-dot"></span>
+                </span>
+                <span class="menu-title">{{ __('Create KPI') }}</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="menu-sub menu-sub-accordion">
+        <div class="menu-item">
+            <a class="menu-link {{ request()->routeIs('admin-category.*') ? 'active' : '' }}"
+                href="{{ route('admin-category.list') }}">
+                <span class="menu-bullet">
+                    <span class="bullet bullet-dot"></span>
+                </span>
+                <span class="menu-title">{{ __('Categories') }}</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="menu-sub menu-sub-accordion">
+        <div class="menu-item">
+            <a class="menu-link {{ request()->routeIs('admin.portfolios.*') ? 'active' : '' }}"
+                href="{{ route('admin.portfolios.list') }}">
+                <span class="menu-bullet">
+                    <span class="bullet bullet-dot"></span>
+                </span>
+                <span class="menu-title">{{ __('Portfolios') }}</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="menu-sub menu-sub-accordion">
+        <div class="menu-item">
+            <a class="menu-link {{ request()->routeIs('admin-seo-meta.*') ? 'active' : '' }}"
+                href="{{ route('admin-seo-meta.list') }}">
+                <span class="menu-bullet">
+                    <span class="bullet bullet-dot"></span>
+                </span>
+                <span class="menu-title">{{ __('SEO Meta') }}</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<div data-kt-menu-trigger="click"
+    class="menu-item menu-accordion {{ request()->routeIs('admin.services.*', 'admin.sub-services.*') ? 'here show' : '' }}">
+    <span class="menu-link">
+        <span class="menu-icon"><i class="ki-solid ki-wrench fs-2x"></i></span>
+        <span class="menu-title">Services</span>
+        <span class="menu-arrow"></span>
+    </span>
+
+    <div class="menu-sub menu-sub-accordion">
+        <div class="menu-item">
+            <a class="menu-link {{ request()->routeIs('admin.services.*') ? 'active' : '' }}"
+                href="{{ route('admin.services.list') }}">
+                <span class="menu-bullet">
+                    <span class="bullet bullet-dot"></span>
+                </span>
+                <span class="menu-title">Create Services</span>
+            </a>
+        </div>
+    </div>
+    <div class="menu-sub menu-sub-accordion">
+        <div class="menu-item">
+            <a class="menu-link {{ request()->routeIs('admin.sub-services.*') ? 'active' : '' }}"
+                href="{{ route('admin.sub-services.list') }}">
+                <span class="menu-bullet">
+                    <span class="bullet bullet-dot"></span>
+                </span>
+                <span class="menu-title">Create Sub Services</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="menu-item">
+    <a class="menu-link" href="{{ route('admin-general.settings') }}">
+        <span class="menu-icon"><i class="ki-outline ki-gear fs-2x"></i></span>
+        <span class="menu-title">General Setting</span>
+    </a>
 </div>
 
 <!--end:Menu item-->

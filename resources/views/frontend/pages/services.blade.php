@@ -1,9 +1,9 @@
 @extends('frontend.layouts.frontend')
 
 {{-- @section('title', 'Home') --}}
-@section('meta_title', $data->meta_title ?? 'Meta IT Services')
-@section('meta_keywords', $data->meta_keywords ?? '')
-@section('meta_description', $data->meta_description ?? '')
+@section('meta_title', $seoMeta->meta_title ?? 'Meta IT Services')
+@section('meta_keywords', $seoMeta->meta_keywords ?? '')
+@section('meta_description', $seoMeta->meta_description ?? '')
 
 @push('frontend-styles')
     <style>
@@ -577,106 +577,8 @@
     <x-brand />
 
 
-    {{-- ===================== meta intro ======================== --}}
-    <section class="meta-intro-section">
-        <div class="container">
-            <!-- Heading -->
-            <h2 class="meta-heading">
-                Welcome to Meta IT web company, your trusted partner for Building
-                a powerful online presence.
-            </h2>
-
-            <!-- Description -->
-            <p class="meta-desc">
-                We help businesses grow by creating visually stunning, user-friendly, and
-                high-performance websites tailored to their unique goals. Our expert team
-                focuses on modern design trends, responsive layouts, and scalable solutions
-                that ensure your brand stands out in the digital world.
-            </p>
-
-            <!-- Card -->
-            <div class="meta-card">
-                <div class="row align-items-center">
-                    <!-- Left Image -->
-                    <div class="col-lg-4">
-                        <img src="{{ asset('frontend/images/services/meta-img.png') }}" alt="Website Design"
-                            class="meta-card-img">
-                    </div>
-
-                    <!-- Right Content -->
-                    <div class="col-lg-8">
-                        <h3 class="meta-card-title">Website Design Meta IT</h3>
-                        <p class="meta-card-desc">
-                            Our website design services combine creativity and functionality
-                            to deliver engaging digital experiences that convert visitors
-                            into loyal customers.
-                        </p>
-                        <a href="#" class="meta-btn">Design my Site</a>
-                    </div>
-                </div>
-            </div>
-            <div class="meta-card">
-                <div class="row align-items-center">
-                    <!-- Left Image -->
-                    <div class="col-lg-4">
-                        <img src="{{ asset('frontend/images/services/meta-img.png') }}" alt="Website Design"
-                            class="meta-card-img">
-                    </div>
-
-                    <!-- Right Content -->
-                    <div class="col-lg-8">
-                        <h3 class="meta-card-title">Website Design Meta IT</h3>
-                        <p class="meta-card-desc">
-                            Our website design services combine creativity and functionality
-                            to deliver engaging digital experiences that convert visitors
-                            into loyal customers.
-                        </p>
-                        <a href="#" class="meta-btn">Design my Site</a>
-                    </div>
-                </div>
-            </div>
-            <div class="meta-card">
-                <div class="row align-items-center">
-                    <!-- Left Image -->
-                    <div class="col-lg-4">
-                        <img src="{{ asset('frontend/images/services/meta-img.png') }}" alt="Website Design"
-                            class="meta-card-img">
-                    </div>
-
-                    <!-- Right Content -->
-                    <div class="col-lg-8">
-                        <h3 class="meta-card-title">Website Design Meta IT</h3>
-                        <p class="meta-card-desc">
-                            Our website design services combine creativity and functionality
-                            to deliver engaging digital experiences that convert visitors
-                            into loyal customers.
-                        </p>
-                        <a href="#" class="meta-btn">Design my Site</a>
-                    </div>
-                </div>
-            </div>
-            <div class="meta-card">
-                <div class="row align-items-center ">
-                    <!-- Left Image -->
-                    <div class="col-lg-4">
-                        <img src="{{ asset('frontend/images/services/meta-img.png') }}" alt="Website Design"
-                            class="meta-card-img">
-                    </div>
-
-                    <!-- Right Content -->
-                    <div class="col-lg-8">
-                        <h3 class="meta-card-title">Website Design Meta IT</h3>
-                        <p class="meta-card-desc">
-                            Our website design services combine creativity and functionality
-                            to deliver engaging digital experiences that convert visitors
-                            into loyal customers.
-                        </p>
-                        <a href="#" class="meta-btn">Design my Site</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    {{-- ===================== Major Services Section ======================== --}}
+    <x-major-services-component />
 
     {{-- ================ tech-marketing-section ========================== --}}
 
@@ -855,7 +757,7 @@
 
     <!-- ===================== faqs section ======================= -->
 
-    <x-faqs />
+   <x-faqs-component :pageName="'services'" />
 
 
 @endsection

@@ -39,17 +39,9 @@ class TestimonialDataTable extends DataTable
                 }
                 return '<span class="badge badge-danger">Inactive</span>';
             })
-            ->editColumn('image', function ($t) {
-                if (!$t->image) {
-                    return '-';
-                }
-
-                $url = asset('storage/testimonials/' . $t->image);
-
-                return '<img src="' . $url . '" alt="Image" width="60" height="60" style="object-fit: cover; border-radius: 5px;">';
-            })
+            
             ->addColumn('action', fn($t) => view('pages.testimonials._actions', compact('t'))->render())
-            ->rawColumns(['action', 'is_active', 'image'])
+            ->rawColumns(['action', 'is_active'])
             ->setRowId('id');
     }
 
@@ -72,7 +64,7 @@ class TestimonialDataTable extends DataTable
             ->minifiedAjax()
             ->processing(true)
             ->serverSide(true)
-            ->orderBy(6, 'desc')
+            ->orderBy(4, 'desc')
             ->addTableClass('table table-striped table-row-bordered gy-5 gs-7 border rounded text-gray-700 fw-semibold')
             ->setTableHeadClass('text-start text-muted fw-bold fs-7 text-uppercase gs-0')
             ->drawCallback(
@@ -91,8 +83,6 @@ class TestimonialDataTable extends DataTable
     {
         return [
             Column::make('short_description')->title('Short Description'),
-            Column::make('image')->title('Image'),
-            Column::make('image_alt')->title('Image Alt'),
             Column::make('rating')->title('Rating'),
 
             Column::make('is_active')->title('Is Active'),
