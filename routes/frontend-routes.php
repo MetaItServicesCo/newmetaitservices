@@ -16,9 +16,7 @@ Route::get('/services', [App\Http\Controllers\ServicesController::class, 'servic
 
 Route::get('/service/{slug}', [App\Http\Controllers\ServicesController::class, 'service'])->name('service');
 
-Route::get('/subservices', function () {
-    return view('frontend.pages.subservices');
-})->name('subservices.page');
+Route::get('/service/{serviceSlug}/{subServiceSlug}', [App\Http\Controllers\ServicesController::class, 'subService'])->name('service.subservice');
 
 Route::get('/about', function () {
     return view('frontend.pages.about');

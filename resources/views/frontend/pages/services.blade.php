@@ -651,68 +651,32 @@
             </div>
 
             <!-- Cards -->
-            <div class="row justify-content-center">
-                <!-- Card 1 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="outer-box">
-                        <div class="inner-card">
-                            <img src="{{ asset('frontend/images/offer-icon.png') }}" alt="Web Design" class="card-icon">
+            @if (!empty($subServices) && $subServices->count())
+                <div class="row justify-content-center">
+                    <!-- Card 1 -->
+                    @foreach ($subServices as $subService)
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="outer-box">
+                                <div class="inner-card">
+                                    <img src="{{ $subService->icon ? asset('storage/' . $subService->icon) : asset('frontend/images/offer-icon.png') }}" alt="Web Design"
+                                        class="card-icon">
 
 
-                            <h4 class="card-title">
-                                Web Design & Development
-                            </h4>
+                                    <h4 class="card-title">
+                                        {{ $subService->title ?? '' }}
+                                    </h4>
 
-                            <p class="card-desc">
-                                We build high-performing websites that are visually appealing,
-                                user-friendly, and optimized for business growth.
-                            </p>
+                                    <p class="card-desc">
+                                        {{ \Illuminate\Support\Str::limit($subService->short_description ?? '', 150) }}
+                                    </p>
 
-                            <a href="#" class="learn-bttn">Learn More</a>
+                                    <a href="#" class="learn-bttn">Learn More</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
-
-                <!-- Card 2 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="outer-box">
-                        <div class="inner-card">
-                            <img src="{{ asset('frontend/images/offer-icon.png') }}" alt="Web Design" class="card-icon">
-
-                            <h4 class="card-title">
-                                SEO Optimization
-                            </h4>
-
-                            <p class="card-desc">
-                                Data-driven SEO strategies designed to improve rankings,
-                                traffic, and conversions for B2B brands.
-                            </p>
-
-                            <a href="#" class="learn-bttn">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="outer-box">
-                        <div class="inner-card">
-                            <img src="{{ asset('frontend/images/offer-icon.png') }}" alt="Web Design" class="card-icon">
-
-                            <h4 class="card-title">
-                                Digital Marketing
-                            </h4>
-
-                            <p class="card-desc">
-                                Tailored marketing campaigns that drive leads, engagement,
-                                and long-term revenue growth.
-                            </p>
-
-                            <a href="#" class="learn-bttn">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endif
         </div>
     </section>
 
@@ -757,7 +721,7 @@
 
     <!-- ===================== faqs section ======================= -->
 
-   <x-faqs-component :pageName="'services'" />
+    <x-faqs-component :pageName="'services'" />
 
 
 @endsection

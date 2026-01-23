@@ -10,11 +10,16 @@ class SubService extends Model
         'service_id',
         'title',
         'slug',
+        'icon',
         'short_description',
         'main_points',
         'page_content',
         'is_active',
         'show_on_services_page',
+        'show_on_landing_page',
+        'meta_title',
+        'meta_keywords',
+        'meta_description',
     ];
 
     protected $casts = [
@@ -22,6 +27,7 @@ class SubService extends Model
         'page_content' => 'array',
         'is_active' => 'boolean',
         'show_on_services_page' => 'boolean',
+        'show_on_landing_page' => 'boolean',
     ];
 
     public function service()

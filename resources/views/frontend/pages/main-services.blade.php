@@ -737,16 +737,14 @@
                 <!-- LEFT COLUMN -->
                 <div class="col-lg-6 mb-4 mb-lg-0">
                     <h4 class="mc-badge">We Help Grow Business</h4>
-                    <h1 class="dm-title">Marketing Campaigns </h1>
+                    <h1 class="dm-title">{{ $service->title ?? '' }} </h1>
 
                     {{-- <h4 class="dm-subtitle">
                         Customized Marketing Solutions That Deliver Results, Every Time
                     </h4> --}}
 
                     <p class="dm-desc">
-                        We create data-driven digital marketing strategies tailored to
-                        your business goals. From SEO and paid campaigns to social media
-                        and content marketing
+                        {{ \Illuminate\Support\Str::limit($service->short_description ?? '', 180) }}
                     </p>
 
                     <a href="#" class="dm-btn">Start Your Project</a>
@@ -795,149 +793,40 @@
             <!-- Cards -->
             <div class="row justify-content-center">
                 <!-- Card 1 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="outter-box">
-                        <div class="innerr-card">
-                            <img src="{{ asset('frontend/images/offer-icon.png') }}" alt="Web Design" class="card-icon">
+                @if (!empty($subServices) && $subServices->count())
+                    @foreach ($subServices as $subService)
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="outter-box">
+                                <div class="innerr-card">
+                                    <img src="{{ $subService->icon ? asset('storage/' . $subService->icon) : asset('frontend/images/offer-icon.png') }}"
+                                        alt="Web Design" class="card-icon">
 
+                                    <h4 class="smart-title">
+                                        {{ $subService->title ?? '' }}
+                                    </h4>
 
-                            <h4 class="smart-title">
-                                Shopify Store Development
-                            </h4>
+                                    @if (!empty($subService->main_points))
+                                        <ul class="smart-desc">
+                                            @foreach ($subService->main_points as $point)
+                                                <li>{{ $point }}</li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
 
-                            <ul class="smart-desc">
-                                <li>Shopify store design</li>
-                                <li>Shopify store design</li>
-                                <li>Shopify store design</li>
-                                <li>Shopify store design</li>
-                            </ul>
-
-                            <a href="#" class="smart-bttn">
-                                View Service
-                                <img src="{{ asset('frontend/images/kips-icon.png') }}" alt="">
-                            </a>
+                                    <a href="{{ route('service.subservice', [
+                                        'serviceSlug' => $service->slug,
+                                        'subServiceSlug' => $subService->slug,
+                                    ]) }}"
+                                        class="smart-bttn">
+                                        View Service
+                                        <img src="{{ asset('frontend/images/kips-icon.png') }}" alt="">
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="outter-box">
-                        <div class="innerr-card">
-                            <img src="{{ asset('frontend/images/offer-icon.png') }}" alt="Web Design" class="card-icon">
+                    @endforeach
+                @endif
 
-
-                            <h4 class="smart-title">
-                                Shopify Store Development
-                            </h4>
-
-                            <ul class="smart-desc">
-                                <li>Shopify store design</li>
-                                <li>Shopify store design</li>
-                                <li>Shopify store design</li>
-                                <li>Shopify store design</li>
-                            </ul>
-
-                            <a href="#" class="smart-bttn">
-                                View Service
-                                <img src="{{ asset('frontend/images/kips-icon.png') }}" alt="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="outter-box">
-                        <div class="innerr-card">
-                            <img src="{{ asset('frontend/images/offer-icon.png') }}" alt="Web Design" class="card-icon">
-
-
-                            <h4 class="smart-title">
-                                Shopify Store Development
-                            </h4>
-
-                            <ul class="smart-desc">
-                                <li>Shopify store design</li>
-                                <li>Shopify store design</li>
-                                <li>Shopify store design</li>
-                                <li>Shopify store design</li>
-                            </ul>
-                            <a href="#" class="smart-bttn">
-                                View Service
-                                <img src="{{ asset('frontend/images/kips-icon.png') }}" alt="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="outter-box">
-                        <div class="innerr-card">
-                            <img src="{{ asset('frontend/images/offer-icon.png') }}" alt="Web Design" class="card-icon">
-
-
-                            <h4 class="smart-title">
-                                Shopify Store Development
-                            </h4>
-
-                            <ul class="smart-desc">
-                                <li>Shopify store design</li>
-                                <li>Shopify store design</li>
-                                <li>Shopify store design</li>
-                                <li>Shopify store design</li>
-                            </ul>
-
-                            <a href="#" class="smart-bttn">
-                                View Service
-                                <img src="{{ asset('frontend/images/kips-icon.png') }}" alt="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="outter-box">
-                        <div class="innerr-card">
-                            <img src="{{ asset('frontend/images/offer-icon.png') }}" alt="Web Design" class="card-icon">
-
-
-                            <h4 class="smart-title">
-                                Shopify Store Development
-                            </h4>
-
-                            <ul class="smart-desc">
-                                <li>Shopify store design</li>
-                                <li>Shopify store design</li>
-                                <li>Shopify store design</li>
-                                <li>Shopify store design</li>
-                            </ul>
-
-                            <a href="#" class="smart-bttn">
-                                View Service
-                                <img src="{{ asset('frontend/images/kips-icon.png') }}" alt="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="outter-box">
-                        <div class="innerr-card">
-                            <img src="{{ asset('frontend/images/offer-icon.png') }}" alt="Web Design" class="card-icon">
-
-
-                            <h4 class="smart-title">
-                                Shopify Store Development
-                            </h4>
-
-                            <ul class="smart-desc">
-                                <li>Shopify store design</li>
-                                <li>Shopify store design</li>
-                                <li>Shopify store design</li>
-                                <li>Shopify store design</li>
-                            </ul>
-
-                            <a href="#" class="smart-bttn">
-                                View Service
-                                <img src="{{ asset('frontend/images/kips-icon.png') }}" alt="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
                 <a href="" class="proposal-btn">Get Proposal
                     <img src="{{ asset('frontend/images/kips-icon.png') }}" alt="">
                 </a>

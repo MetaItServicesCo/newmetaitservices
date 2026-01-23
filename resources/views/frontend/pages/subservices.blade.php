@@ -1,9 +1,9 @@
 @extends('frontend.layouts.frontend')
 
 {{-- @section('title', 'Home') --}}
-@section('meta_title', $data->meta_title ?? 'Meta IT Services')
-@section('meta_keywords', $data->meta_keywords ?? '')
-@section('meta_description', $data->meta_description ?? '')
+@section('meta_title', $subService->meta_title ?? 'Meta IT Services')
+@section('meta_keywords', $subService->meta_keywords ?? '')
+@section('meta_description', $subService->meta_description ?? '')
 
 @push('frontend-styles')
     <style>
@@ -464,7 +464,7 @@
 
 
     <section class="dm-services-section"
-        style="background-image: url('{{ asset('frontend/images/main-services/mc-hero.png') }}');">
+        style="background-image: url('{{ $subService->page_content['hero_section']['image'] ? asset('storage/' . $subService->page_content['hero_section']['image']) : asset('frontend/images/main-services/mc-hero.png') }}');">
 
         <div class="container">
             <div class="row align-items-center">
@@ -472,16 +472,14 @@
                 <!-- LEFT COLUMN -->
                 <div class="col-lg-6 mb-4 mb-lg-0">
                     <h4 class="mc-badge">We Help Grow Business</h4>
-                    <h1 class="dm-title">B2B Marketing Campaigns </h1>
+                    <h1 class="dm-title">{{ $subService->title ?? '' }} </h1>
 
                     {{-- <h4 class="dm-subtitle">
                         Customized Marketing Solutions That Deliver Results, Every Time
                     </h4> --}}
 
                     <p class="dm-desc">
-                        We create data-driven digital marketing strategies tailored to
-                        your business goals. From SEO and paid campaigns to social media
-                        and content marketing
+                        {{ \Illuminate\Support\Str::limit($subService->short_description ?? '', 180) }}
                     </p>
 
                     <a href="#" class="dm-btn">Start Your Project</a>
@@ -549,37 +547,24 @@
                 <!-- RIGHT COLUMN -->
                 <div class="col-lg-8">
 
-                    <h2 class="right-heading">Successful marketing campaign</h2>
+                    <h2 class="right-heading">{{ $subService->page_content['hero_section']['main_heading'] ?? '' }}</h2>
                     <p class="right-desc">
-                        Libero diam auctor tristique hendrerit in eu vel id. Nec leo amet suscipit nulla. Nullam vitae sit
-                        tempus diam.Libero diam auctor tristique hendreritLibero diam t Libero diam auctor tristique
-                        hendrerit in eu vel id. Nec leo amet suscipit nulla. Nullam vitae sit tempus diam.Libero diam auctor
-                        tristique hendreritLibero diam t </p>
+                        {{ $subService->page_content['hero_section']['short_description'] ?? '' }}</p>
 
                     <div class="row align-items-cente campaign-card">
                         <div class="col-md-7">
-                            <h5>Type of marketing campaigns</h5>
+                            <h5>{{ $subService->page_content['campaign_section']['title'] ?? '' }}</h5>
 
-                            <div class="campaign-item">
-                                <i class="fa-solid fa-check"></i>
-                                Product marketing campaign
-                            </div>
-                            <div class="campaign-item">
-                                <i class="fa-solid fa-check"></i>
-                                Product marketing campaign
-                            </div>
-                            <div class="campaign-item">
-                                <i class="fa-solid fa-check"></i>
-                                Product marketing campaign
-                            </div>
-                            <div class="campaign-item">
-                                <i class="fa-solid fa-check"></i>
-                                Product marketing campaign
-                            </div>
+                            @foreach ($subService->page_content['campaign_section']['points'] ?? [] as $point)
+                                <div class="campaign-item">
+                                    <i class="fa-solid fa-check"></i>
+                                    {{ $point }}
+                                </div>
+                            @endforeach
                         </div>
 
                         <div class="col-md-5 text-center">
-                            <img src="{{ asset('frontend/images/main-services/compaign-img.png') }}" alt=""
+                            <img src="{{ $subService->page_content['campaign_section']['image'] ? asset('storage/' . $subService->page_content['campaign_section']['image']) : asset('frontend/images/main-services/compaign-img.png') }}" alt=""
                                 class="campaign-img">
                         </div>
                     </div>
@@ -589,75 +574,32 @@
 
                         <!-- Main Heading -->
                         <h2 class="process-title">
-                            Our proven Shopify Store Development Process
+                            {{ $subService->page_content['development_process']['title'] ?? '' }}
                         </h2>
 
-                        <!-- Item -->
-                        <div class="performance-item">
-                            <span class="performance-number">01</span>
-                            <h3 class="performance-subtitle">
-                                Proven Methods Strengthening Online Visibility
-                            </h3>
-                        </div>
+                        @foreach ($subService->page_content['development_process']['steps'] ?? [] as $index => $step)
+                            <!-- Item -->
+                            <div class="performance-item">
+                                <span class="performance-number">{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span>
+                                <h3 class="performance-subtitle">
+                                    {{ $step['title'] ?? '' }}
+                                </h3>
+                            </div>
 
-                        <!-- Description -->
-                        <p class="performance-desc">
-                            We use tested digital strategies and proven frameworks that help brands
-                            increase visibility, attract the right audience, and build a strong online
-                            presence that drives consistent and measurable results.
-                        </p>
-
-                        <!-- Item -->
-                        <div class="performance-item">
-                            <span class="performance-number">02</span>
-                            <h3 class="performance-subtitle">
-                                Proven Methods Strengthening Online Visibility
-                            </h3>
-                        </div>
-
-                        <!-- Description -->
-                        <p class="performance-desc">
-                            We use tested digital strategies and proven frameworks that help brands
-                            increase visibility, attract the right audience, and build a strong online
-                            presence that drives consistent and measurable results.
-                        </p>
-                        <!-- Item -->
-                        <div class="performance-item">
-                            <span class="performance-number">03</span>
-                            <h3 class="performance-subtitle">
-                                Proven Methods Strengthening Online Visibility
-                            </h3>
-                        </div>
-
-                        <!-- Description -->
-                        <p class="performance-desc">
-                            We use tested digital strategies and proven frameworks that help brands
-                            increase visibility, attract the right audience, and build a strong online
-                            presence that drives consistent and measurable results.
-                        </p>
-                        <!-- Item -->
-                        <div class="performance-item">
-                            <span class="performance-number">04</span>
-                            <h3 class="performance-subtitle">
-                                Proven Methods Strengthening Online Visibility
-                            </h3>
-                        </div>
-
-                        <!-- Description -->
-                        <p class="performance-desc">
-                            We use tested digital strategies and proven frameworks that help brands
-                            increase visibility, attract the right audience, and build a strong online
-                            presence that drives consistent and measurable results.
-                        </p>
+                            <!-- Description -->
+                            <p class="performance-desc">
+                                {{ $step['description'] ?? '' }}
+                            </p>
+                        @endforeach
 
                     </div>
                     <!-- HEADING ROW -->
                     <div class="row mt-4">
                         <div class="col-lg-8 ">
-                            <h2 class="commitment-heading">Our Commitments</h2>
+                            <h2 class="commitment-heading">
+                                {{ $subService->page_content['commitments_section']['title'] ?? '' }}</h2>
                             <p class="commitment-desc">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                {{ $subService->page_content['commitments_section']['description'] ?? '' }}
                             </p>
                         </div>
                     </div>
@@ -665,95 +607,32 @@
                     <!-- CARDS ROW -->
                     <div class="row g-3 mt-4">
 
-                        <!-- CARD 1 -->
-                        <div class="col-lg-3 col-md-6">
-                            <div class="outer-commit">
-                                <div class="inner-commit">
-                                    <div class="icon-box">
-                                        <img src="{{ asset('frontend/images/offer-icon.png') }}" alt="Web Design"
-                                            class="card-icon">
+                        @foreach ($subService->page_content['commitments_section']['points'] ?? [] as $index => $point)
+                            <div class="col-lg-3 col-md-6">
+                                <div class="outer-commit">
+                                    <div class="inner-commit">
+                                        <div class="icon-box">
+                                            <img src="{{ $subService->page_content['commitments_section']['icons'][$index] ? asset('storage/' . $subService->page_content['commitments_section']['icons'][$index]) : asset('frontend/images/offer-icon.png') }}" alt="Web Design"
+                                                class="card-icon">
 
+                                        </div>
+                                        <h4>{{ $point['title'] ?? '' }}</h4>
+                                        <p>
+                                            {{ $point['sub_title'] ?? '' }}
+                                        </p>
                                     </div>
-                                    <h4>24/7 Assistance</h4>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Sed do eiusmod tempor incididunt.
-                                    </p>
                                 </div>
                             </div>
-                        </div>
-
-                        <!-- CARD 2 -->
-                        <div class="col-lg-3 col-md-6">
-                            <div class="outer-commit">
-                                <div class="inner-commit">
-                                    <div class="icon-box">
-                                        <img src="{{ asset('frontend/images/offer-icon.png') }}" alt="Web Design"
-                                            class="card-icon">
-                                    </div>
-                                    <h4>Expert Support</h4>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Sed do eiusmod tempor incididunt.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- CARD 3 -->
-                        <div class="col-lg-3 col-md-6">
-                            <div class="outer-commit">
-                                <div class="inner-commit">
-                                    <div class="icon-box">
-                                        <img src="{{ asset('frontend/images/offer-icon.png') }}" alt="Web Design"
-                                            class="card-icon">
-                                    </div>
-                                    <h4>Fast Delivery</h4>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Sed do eiusmod tempor incididunt.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- CARD 4 -->
-                        <div class="col-lg-3 col-md-6">
-                            <div class="outer-commit">
-                                <div class="inner-commit">
-                                    <div class="icon-box">
-                                        <img src="{{ asset('frontend/images/offer-icon.png') }}" alt="Web Design"
-                                            class="card-icon">
-                                    </div>
-                                    <h4>Trusted Service</h4>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Sed do eiusmod tempor incididunt.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
+                        @endforeach
                     </div>
 
                     <div class="row mt-4">
-                        <h2 class="Shopify-heading">Why Chose Meta IT for Shopify Store Development?</h2>
+                        <h2 class="Shopify-heading">{{ $subService->page_content['why_choose_section']['title'] ?? '' }}
+                        </h2>
                         <ul class="Shopify-list ">
-                            <li><strong>Strong Performance</strong> Libero diam auctor tristique hendrerit in eu vel id. Nec
-                                leo amet
-                                suscipit nulla. Nullam ibero diam auctor tristique hend</li>
-                            <li><strong>Strong Performance</strong> Libero diam auctor tristique hendrerit in eu vel id. Nec
-                                leo amet
-                                suscipit nulla. Nullam ibero diam auctor tristique hend</li>
-                            <li><strong>Strong Performance</strong> Libero diam auctor tristique hendrerit in eu vel id. Nec
-                                leo amet
-                                suscipit nulla. Nullam ibero diam auctor tristique hend</li>
-                            <li><strong>Strong Performance</strong> Libero diam auctor tristique hendrerit in eu vel id. Nec
-                                leo amet
-                                suscipit nulla. Nullam ibero diam auctor tristique hend</li>
-                            <li><strong>Strong Performance</strong> Libero diam auctor tristique hendrerit in eu vel id. Nec
-                                leo amet
-                                suscipit nulla. Nullam ibero diam auctor tristique hend</li>
+                            @foreach ($subService->page_content['why_choose_section']['points'] ?? [] as $point)
+                                <li><strong>{{ $point['strong_text'] ?? '' }}</strong> {{ $point['text'] ?? '' }}</li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>

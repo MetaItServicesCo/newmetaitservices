@@ -276,11 +276,13 @@ class ServicesController extends Controller
             'service_id' => 'required|exists:services,id',
             'title' => 'required|string|max:255',
             'slug' => 'required|string|max:255|unique:sub_services,slug',
+            'icon' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'short_description' => 'nullable|string',
             'main_points' => 'nullable|array',
             'main_points.*' => 'nullable|string',
             'is_active' => 'required|boolean',
             'show_on_services_page' => 'required|boolean',
+            'show_on_landing_page' => 'required|boolean',
             // Hero Section
             'page_content.hero_section.main_heading' => 'required|string|max:255',
             'page_content.hero_section.short_description' => 'nullable|string',
@@ -328,27 +330,34 @@ class ServicesController extends Controller
             }
 
             // Handle commitment icons
+            $commitmentIcons = [];
             if ($request->hasFile('commitment_icons')) {
-                $commitmentIcons = [];
                 foreach ($request->file('commitment_icons') as $index => $file) {
                     if ($file) {
                         $commitmentIcons[$index] = $file->store('sub-services/commitments', 'public');
                     }
                 }
-                if (!empty($commitmentIcons)) {
-                    $pageContent['commitments_section']['icons'] = $commitmentIcons;
-                }
+            }
+            $pageContent['commitments_section']['icons'] = $commitmentIcons;
+
+            // Handle icon
+            if ($request->hasFile('icon')) {
+                $iconPath = $request->file('icon')->store('sub-services/icons', 'public');
+            } else {
+                $iconPath = null;
             }
 
             SubService::create([
                 'service_id' => $request->service_id,
                 'title' => $request->title,
                 'slug' => \Str::slug($request->slug),
+                'icon' => $iconPath,
                 'short_description' => $request->short_description,
                 'main_points' => $request->main_points,
                 'page_content' => $pageContent,
                 'is_active' => $request->is_active,
                 'show_on_services_page' => $request->show_on_services_page,
+                'show_on_landing_page' => $request->show_on_landing_page,
                 'meta_title' => $request->meta_title,
                 'meta_keywords' => $request->meta_keywords,
                 'meta_description' => $request->meta_description,
@@ -363,7 +372,7 @@ class ServicesController extends Controller
                 'line' => $e->getLine(),
             ]);
 
-            return back()->withInput()->with('error', 'Failed to create sub-service: ' . $e->getMessage());
+            return back()->withInput()->with('error', 'Failed to create sub-service: '.$e->getMessage());
         }
     }
 
@@ -372,6 +381,7 @@ class ServicesController extends Controller
         $services = Services::where('is_active', true)->get();
 
         $data = $subService;
+
         return view('pages.sub-services.create', compact('data', 'services'));
     }
 
@@ -381,11 +391,13 @@ class ServicesController extends Controller
             'service_id' => 'required|exists:services,id',
             'title' => 'required|string|max:255',
             'slug' => 'required|string|max:255|unique:sub_services,slug,'.$subService->id,
+            'icon' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'short_description' => 'nullable|string',
             'main_points' => 'nullable|array',
             'main_points.*' => 'nullable|string',
             'is_active' => 'required|boolean',
             'show_on_services_page' => 'required|boolean',
+            'show_on_landing_page' => 'required|boolean',
             // Hero Section
             'page_content.hero_section.main_heading' => 'required|string|max:255',
             'page_content.hero_section.short_description' => 'nullable|string',
@@ -437,29 +449,34 @@ class ServicesController extends Controller
             }
 
             // Handle commitment icons
+            $commitmentIcons = $subService->page_content['commitments_section']['icons'] ?? [];
             if ($request->hasFile('commitment_icons')) {
-                $commitmentIcons = [];
                 foreach ($request->file('commitment_icons') as $index => $file) {
                     if ($file) {
                         $commitmentIcons[$index] = $file->store('sub-services/commitments', 'public');
                     }
                 }
-                if (! empty($commitmentIcons)) {
-                    $pageContent['commitments_section']['icons'] = $commitmentIcons;
-                }
+            }
+            $pageContent['commitments_section']['icons'] = $commitmentIcons;
+
+            // Handle icon
+            if ($request->hasFile('icon')) {
+                $iconPath = $request->file('icon')->store('sub-services/icons', 'public');
             } else {
-                $pageContent['commitments_section']['icons'] = $subService->page_content['commitments_section']['icons'] ?? [];
+                $iconPath = $subService->icon;
             }
 
             $subService->update([
                 'service_id' => $request->service_id,
                 'title' => $request->title,
                 'slug' => \Str::slug($request->slug),
+                'icon' => $iconPath,
                 'short_description' => $request->short_description,
                 'main_points' => $request->main_points,
                 'page_content' => $pageContent,
                 'is_active' => $request->is_active,
                 'show_on_services_page' => $request->show_on_services_page,
+                'show_on_landing_page' => $request->show_on_landing_page,
                 'meta_title' => $request->meta_title,
                 'meta_keywords' => $request->meta_keywords,
                 'meta_description' => $request->meta_description,
@@ -475,7 +492,7 @@ class ServicesController extends Controller
                 'line' => $e->getLine(),
             ]);
 
-            return back()->withInput()->with('error', 'Failed to update sub-service: ' . $e->getMessage());
+            return back()->withInput()->with('error', 'Failed to update sub-service: '.$e->getMessage());
         }
     }
 
@@ -508,15 +525,34 @@ class ServicesController extends Controller
 
     public function services()
     {
+        $subServices = SubService::select('title', 'slug', 'short_description', 'icon')->where('is_active', true)
+            ->where('show_on_services_page', true)
+            ->get();
         $seoMeta = \App\Models\SeoMeta::where('page_name', 'services')->where('is_active', 1)->first();
 
-        return view('frontend.pages.services', compact('seoMeta'));
+        return view('frontend.pages.services', compact('seoMeta', 'subServices'));
     }
 
     public function service($slug)
     {
         $service = Services::where('slug', $slug)->where('is_active', true)->firstOrFail();
 
-        return view('frontend.pages.main-services', compact('service'));
+        $subServices = SubService::select('title', 'slug', 'main_points', 'icon')->where('is_active', true)
+            ->where('show_on_services_page', true)->where('service_id', $service->id)
+            ->get();
+
+        return view('frontend.pages.main-services', compact('service', 'subServices'));
+    }
+
+    public function subService($serviceSlug, $subServiceSlug)
+    {
+        $service = Services::where('slug', $serviceSlug)->where('is_active', true)->firstOrFail();
+
+        $subService = SubService::where('slug', $subServiceSlug)
+            ->where('is_active', true)
+            ->where('service_id', $service->id)
+            ->firstOrFail();
+
+        return view('frontend.pages.subservices', compact('service', 'subService'));
     }
 }
