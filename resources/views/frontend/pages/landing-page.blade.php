@@ -314,9 +314,8 @@
                         <h3>Website Design for SCFC Canada</h3>
                         <p>
                             Born out of a vision, a single-minded objective that puts service before anything else,
-                            Swift Clearance and Forwarding Corp. surging forth to deliver the best services in the
-                            shipping and logistics scenario. Its meteoric rise stems out of a solid foundation.Its
-                            meteoric rise stems</p>
+                            Swift Clearance and Forwarding Corp. 
+                        </p>
                         <a href="#" class="read-more">Read more</a>
                     </div>
                 </div>
@@ -326,9 +325,8 @@
                         <h3>Website Design for SCFC Canada</h3>
                         <p>
                             Born out of a vision, a single-minded objective that puts service before anything else,
-                            Swift Clearance and Forwarding Corp. surging forth to deliver the best services in the
-                            shipping and logistics scenario. Its meteoric rise stems out of a solid foundation.Its
-                            meteoric rise stems</p>
+                            Swift Clearance and Forwarding Corp.
+                        </p>
                         <a href="#" class="read-more">Read more</a>
                     </div>
                 </div>
@@ -338,9 +336,8 @@
                         <h3>Website Design for SCFC Canada</h3>
                         <p>
                             Born out of a vision, a single-minded objective that puts service before anything else,
-                            Swift Clearance and Forwarding Corp. surging forth to deliver the best services in the
-                            shipping and logistics scenario. Its meteoric rise stems out of a solid foundation.Its
-                            meteoric rise stems</p>
+                            Swift Clearance and Forwarding Corp. 
+                        </p>
                         <a href="#" class="read-more">Read more</a>
                     </div>
                 </div>
