@@ -243,62 +243,6 @@
     <!-- ================== port folio section ======================= -->
     <x-portfolio-component />
 
-    <section class="portfolio-section">
-        <div class="container">
-
-            <!-- Heading -->
-            <h2 class="portfolio-title">PORTFOLIO</h2>
-
-            <!-- Cards -->
-            <div class="row justify-content-center g-3">
-
-                <!-- Card -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="portfolio-card">
-                        <img src="{{ asset('frontend/images/portfolio-img1.png') }}" alt="">
-                        <h3>Website Design for SCFC Canada</h3>
-                        <p>
-                            Born out of a vision, a single-minded objective that puts service before anything else,
-                            Swift Clearance and Forwarding Corp. 
-                        </p>
-                        <a href="#" class="read-more">Read more</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="portfolio-card">
-                        <img src="{{ asset('frontend/images/portfolio-img2.png') }}" alt="">
-                        <h3>Website Design for SCFC Canada</h3>
-                        <p>
-                            Born out of a vision, a single-minded objective that puts service before anything else,
-                            Swift Clearance and Forwarding Corp.
-                        </p>
-                        <a href="#" class="read-more">Read more</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="portfolio-card">
-                        <img src="{{ asset('frontend/images/portfolio-img3.png') }}" alt="">
-                        <h3>Website Design for SCFC Canada</h3>
-                        <p>
-                            Born out of a vision, a single-minded objective that puts service before anything else,
-                            Swift Clearance and Forwarding Corp. 
-                        </p>
-                        <a href="#" class="read-more">Read more</a>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Center Button -->
-            <div class="portfolio-btn-wrap">
-                <button class="down-btn">
-                    <img src="{{ asset('frontend/images/portfolio-icon.png') }}" alt="">
-                </button>
-            </div>
-
-        </div>
-    </section>
-
     <!-- ========================== revnue section ============================== -->
     <x-testimonial-component />
 

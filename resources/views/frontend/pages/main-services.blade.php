@@ -866,6 +866,8 @@
                             @endforeach
                         </div>
                     </div>
+                    <p class="text-white">Let’s make something great work Together. <a href="">Get Free
+                                    Quote</a></p>
                 </div>
 
                 <!-- RIGHT COLUMN -->

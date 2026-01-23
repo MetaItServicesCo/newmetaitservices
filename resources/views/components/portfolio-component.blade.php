@@ -13,7 +13,7 @@
                         <img src="{{ $portfolio->thumbnail ? asset('storage/portfolios/thumbnails/' . $portfolio->thumbnail) : asset('frontend/images/portfolio-img1.png') }}"
                             alt="">
                         <h3>{{ \Illuminate\Support\Str::limit($portfolio->title ?? '', 50) }}</h3>
-                        <p>{{ \Illuminate\Support\Str::limit($portfolio->sub_title ?? '', 180) }}</p>
+                        <p>{{ \Illuminate\Support\Str::limit($portfolio->sub_title ?? '', 150) }}</p>
                         <a href="#" class="read-more">Read more</a>
                     </div>
                 </div>
