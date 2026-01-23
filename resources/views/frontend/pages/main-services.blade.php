@@ -158,7 +158,7 @@
         .outter-box {
             width: 100%;
             max-width: 508px;
-            height: 569px;
+            height: 490px;
             background: #FFFFFF;
             border: 5px solid #F38B5C;
             border-radius: 30px;
@@ -177,7 +177,7 @@
         .innerr-card {
             width: 100%;
             max-width: 395px;
-            height: 535px;
+            height: 460px;
             background: #404959;
             border-radius: 13px;
             padding: 35px 30px;
@@ -346,7 +346,7 @@
         /* LEFT SIDE */
         .solutions-left {
             background: #000000;
-            padding: 80px 40px;
+            padding: 20px 40px;
             color: #ffffff;
         }
 
@@ -421,10 +421,10 @@
             padding: 40px;
         }
 
-        .right-image {
+        .right-img {
             width: 100%;
-            max-width: 420px;
-            height: auto;
+            /* max-width: 420px; */
+            height: 100%;
         }
 
         /* RESPONSIVE */
@@ -481,7 +481,7 @@
         /* Image */
         .seo-image {
             width: 582px;
-            height: 846px;
+            height: 690px;
             border-radius: 30px;
             object-fit: cover;
             max-width: 100%;
@@ -684,7 +684,7 @@
         .custom-img {
             width: 100%;
             max-width: 585px;
-            height: 814px;
+            height: 570px;
             object-fit: cover;
             border-radius: 30px;
         }
@@ -938,7 +938,7 @@
 
     <section class="py-5 contact-form-section">
         <div class="container">
-            <div class="row align-items-center g-4">
+            <div class="row  g-4">
 
                 <!-- LEFT COLUMN (FORM) -->
                 <div class="col-lg-8">

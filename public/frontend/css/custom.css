@@ -1015,7 +1015,7 @@ body {
 .portfolio-card {
     width: 100%;
     max-width: 525px;
-    height: 650px;
+    height: 550px;
     border: 2px solid #F38B5C;
     padding: 20px;
     border-radius: 16px;
@@ -1031,7 +1031,7 @@ body {
 .portfolio-card img {
     width: 100%;
     max-width: 474px;
-    height: 326px;
+    height: 260px;
     border-radius: 10px;
     object-fit: cover;
     margin-bottom: 25px;
@@ -1617,4 +1617,35 @@ body {
     .toc-list {
         font-size: 18px;
     }
+}
+
+
+/* PAGINATION */
+.pagination-wrap {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 60px;
+}
+
+.page-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #A2A6B0;
+    transition: all 0.4s ease-in-out;
+}
+
+.page-btn:hover {
+    background: #404959;
+    border: none;
+    color: #ffffff;
+
+}
+
+.page-btn.active {
+    background: #F96037;
+    color: #fff;
+    border-color: #F96037;
 }

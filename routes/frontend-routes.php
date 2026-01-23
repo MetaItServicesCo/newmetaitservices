@@ -41,3 +41,11 @@ Route::get('/blogsdetail', function () {
 Route::get('/portfolio', function () {
     return view('frontend.pages.portfolio');
 })->name('portfolio.page');
+
+Route::get('/casestudy', function () {
+    return view('frontend.pages.case-study');
+})->name('case-study.page');
+
+Route::get('/contact', function () {
+    return view('frontend.pages.contact');
+})->name('contact.page');
