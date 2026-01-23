@@ -87,9 +87,6 @@ class TestimonialController extends Controller
     {
         // ---------------- VALIDATION ----------------
         $validated = $request->validate([
-            'title'             => 'required|string|max:255',
-            'image'             => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'image_alt'         => 'nullable|string|max:255',
             'rating'            => 'required|integer|min:1|max:5',
             'short_description' => 'nullable|string',
             'is_active'         => 'nullable|boolean',
@@ -105,19 +102,7 @@ class TestimonialController extends Controller
                 ? Testimonial::findOrFail($id)
                 : new Testimonial();
 
-            // ---------------- IMAGE UPLOAD ----------------
-            $directory = 'testimonials';
-
-            $testimonial->image = $this->updateImage(
-                $request,
-                'image',
-                $directory,
-                $testimonial->image ?? null
-            );
-
             // ---------------- DATA ASSIGNMENT ----------------
-            $testimonial->title = $validated['title'];
-            $testimonial->image_alt = $validated['image_alt'] ?? null;
             $testimonial->rating = $validated['rating'];
             $testimonial->short_description = $validated['short_description'] ?? null;
             $testimonial->is_active = $validated['is_active'] ?? true;
@@ -166,15 +151,6 @@ class TestimonialController extends Controller
 
         try {
             $testimonial = Testimonial::findOrFail($id);
-
-            // ---------------- DELETE IMAGE ----------------
-            if (!empty($testimonial->image)) {
-                $imagePath = 'testimonials/' . $testimonial->image;
-
-                if (Storage::disk('public')->exists($imagePath)) {
-                    Storage::disk('public')->delete($imagePath);
-                }
-            }
 
             // ---------------- DELETE RECORD ----------------
             $testimonial->delete();

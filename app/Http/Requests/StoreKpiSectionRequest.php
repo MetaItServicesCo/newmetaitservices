@@ -1,0 +1,33 @@
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class StoreKpiSectionRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     */
+    public function rules(): array
+    {
+        return [
+            'tag' => 'required|string|max:255|unique:kpi_sections,tag',
+            'content' => 'required|array',
+            'content.title' => 'required|string|max:255',
+            'content.subtitle' => 'required|string|max:500',
+            'content.points' => 'required|array|size:3',
+            'content.points.*' => 'required|string|max:255',
+        ];
+    }
+}

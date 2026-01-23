@@ -13,9 +13,7 @@ return new class extends Migration
     {
         Schema::create('testimonials', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
-            $table->string('image')->nullable();
-            $table->string('image_alt')->nullable();
+            
             $table->unsignedTinyInteger('rating')
                 ->comment('1 = worst, 5 = best');
             // Status

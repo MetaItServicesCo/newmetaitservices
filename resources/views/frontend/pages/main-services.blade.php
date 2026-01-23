@@ -1,9 +1,9 @@
 @extends('frontend.layouts.frontend')
 
 {{-- @section('title', 'Home') --}}
-@section('meta_title', $data->meta_title ?? 'Meta IT Services')
-@section('meta_keywords', $data->meta_keywords ?? '')
-@section('meta_description', $data->meta_description ?? '')
+@section('meta_title', $service->meta_title ?? 'Meta IT Services')
+@section('meta_keywords', $service->meta_keywords ?? '')
+@section('meta_description', $service->meta_description ?? '')
 
 @push('frontend-styles')
     <style>
@@ -737,16 +737,14 @@
                 <!-- LEFT COLUMN -->
                 <div class="col-lg-6 mb-4 mb-lg-0">
                     <h4 class="mc-badge">We Help Grow Business</h4>
-                    <h1 class="dm-title">Marketing Campaigns </h1>
+                    <h1 class="dm-title">{{ $service->title ?? '' }} </h1>
 
                     {{-- <h4 class="dm-subtitle">
                         Customized Marketing Solutions That Deliver Results, Every Time
                     </h4> --}}
 
                     <p class="dm-desc">
-                        We create data-driven digital marketing strategies tailored to
-                        your business goals. From SEO and paid campaigns to social media
-                        and content marketing
+                        {{ \Illuminate\Support\Str::limit($service->short_description ?? '', 180) }}
                     </p>
 
                     <a href="#" class="dm-btn">Start Your Project</a>
@@ -795,149 +793,40 @@
             <!-- Cards -->
             <div class="row justify-content-center">
                 <!-- Card 1 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="outter-box">
-                        <div class="innerr-card">
-                            <img src="{{ asset('frontend/images/offer-icon.png') }}" alt="Web Design" class="card-icon">
+                @if (!empty($subServices) && $subServices->count())
+                    @foreach ($subServices as $subService)
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="outter-box">
+                                <div class="innerr-card">
+                                    <img src="{{ $subService->icon ? asset('storage/' . $subService->icon) : asset('frontend/images/offer-icon.png') }}"
+                                        alt="Web Design" class="card-icon">
 
+                                    <h4 class="smart-title">
+                                        {{ $subService->title ?? '' }}
+                                    </h4>
 
-                            <h4 class="smart-title">
-                                Shopify Store Development
-                            </h4>
+                                    @if (!empty($subService->main_points))
+                                        <ul class="smart-desc">
+                                            @foreach ($subService->main_points as $point)
+                                                <li>{{ $point }}</li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
 
-                            <ul class="smart-desc">
-                                <li>Shopify store design</li>
-                                <li>Shopify store design</li>
-                                <li>Shopify store design</li>
-                                <li>Shopify store design</li>
-                            </ul>
-
-                            <a href="#" class="smart-bttn">
-                                View Service
-                                <img src="{{ asset('frontend/images/kips-icon.png') }}" alt="">
-                            </a>
+                                    <a href="{{ route('service.subservice', [
+                                        'serviceSlug' => $service->slug,
+                                        'subServiceSlug' => $subService->slug,
+                                    ]) }}"
+                                        class="smart-bttn">
+                                        View Service
+                                        <img src="{{ asset('frontend/images/kips-icon.png') }}" alt="">
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="outter-box">
-                        <div class="innerr-card">
-                            <img src="{{ asset('frontend/images/offer-icon.png') }}" alt="Web Design" class="card-icon">
+                    @endforeach
+                @endif
 
-
-                            <h4 class="smart-title">
-                                Shopify Store Development
-                            </h4>
-
-                            <ul class="smart-desc">
-                                <li>Shopify store design</li>
-                                <li>Shopify store design</li>
-                                <li>Shopify store design</li>
-                                <li>Shopify store design</li>
-                            </ul>
-
-                            <a href="#" class="smart-bttn">
-                                View Service
-                                <img src="{{ asset('frontend/images/kips-icon.png') }}" alt="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="outter-box">
-                        <div class="innerr-card">
-                            <img src="{{ asset('frontend/images/offer-icon.png') }}" alt="Web Design" class="card-icon">
-
-
-                            <h4 class="smart-title">
-                                Shopify Store Development
-                            </h4>
-
-                            <ul class="smart-desc">
-                                <li>Shopify store design</li>
-                                <li>Shopify store design</li>
-                                <li>Shopify store design</li>
-                                <li>Shopify store design</li>
-                            </ul>
-                            <a href="#" class="smart-bttn">
-                                View Service
-                                <img src="{{ asset('frontend/images/kips-icon.png') }}" alt="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="outter-box">
-                        <div class="innerr-card">
-                            <img src="{{ asset('frontend/images/offer-icon.png') }}" alt="Web Design" class="card-icon">
-
-
-                            <h4 class="smart-title">
-                                Shopify Store Development
-                            </h4>
-
-                            <ul class="smart-desc">
-                                <li>Shopify store design</li>
-                                <li>Shopify store design</li>
-                                <li>Shopify store design</li>
-                                <li>Shopify store design</li>
-                            </ul>
-
-                            <a href="#" class="smart-bttn">
-                                View Service
-                                <img src="{{ asset('frontend/images/kips-icon.png') }}" alt="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="outter-box">
-                        <div class="innerr-card">
-                            <img src="{{ asset('frontend/images/offer-icon.png') }}" alt="Web Design" class="card-icon">
-
-
-                            <h4 class="smart-title">
-                                Shopify Store Development
-                            </h4>
-
-                            <ul class="smart-desc">
-                                <li>Shopify store design</li>
-                                <li>Shopify store design</li>
-                                <li>Shopify store design</li>
-                                <li>Shopify store design</li>
-                            </ul>
-
-                            <a href="#" class="smart-bttn">
-                                View Service
-                                <img src="{{ asset('frontend/images/kips-icon.png') }}" alt="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="outter-box">
-                        <div class="innerr-card">
-                            <img src="{{ asset('frontend/images/offer-icon.png') }}" alt="Web Design" class="card-icon">
-
-
-                            <h4 class="smart-title">
-                                Shopify Store Development
-                            </h4>
-
-                            <ul class="smart-desc">
-                                <li>Shopify store design</li>
-                                <li>Shopify store design</li>
-                                <li>Shopify store design</li>
-                                <li>Shopify store design</li>
-                            </ul>
-
-                            <a href="#" class="smart-bttn">
-                                View Service
-                                <img src="{{ asset('frontend/images/kips-icon.png') }}" alt="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
                 <a href="" class="proposal-btn">Get Proposal
                     <img src="{{ asset('frontend/images/kips-icon.png') }}" alt="">
                 </a>
@@ -951,7 +840,6 @@
 
 
     {{-- ========================= industry-solutions-section ==================================== --}}
-
     <section class="industry-solutions-section">
         <div class="container-fluid p-0">
             <div class="row g-0">
@@ -960,79 +848,30 @@
                 <div class="col-lg-8 solutions-left">
                     <div class="solutions-content">
                         <h2 class="solutions-heading">
-                            Practical Industry Solutions Designed to Improve
-                            Efficiency and Quality
+                            {{ $service->engaging_content['section_one']['heading'] }}
                         </h2>
 
                         <div class="row">
-                            <!-- Card 1 -->
-                            <div class="col-md-6 mb-4">
-                                <div class="solution-card dark-card">
-                                    <img src=" {{ asset('frontend/images/main-services/industry-icon.png') }}"
-                                        alt="Icon" class="solution-icon">
+                            @foreach ($service->engaging_content['section_one']['points'] as $index => $point)
+                                <div class="col-md-6 mb-4">
+                                    <div class="solution-card {{ $index % 2 == 0 ? 'dark-card' : 'gray-card' }}">
+                                        <img src="{{ asset('frontend/images/main-services/industry-icon.png') }}"
+                                            alt="Icon" class="solution-icon">
 
-                                    <h4>Automation Made Simple</h4>
+                                        <h4>{{ $point['title'] }}</h4>
 
-                                    <p>
-                                        Streamline complex processes with intelligent automation
-                                        solutions designed to improve productivity and reduce errors.
-                                    </p>
+                                        <p>{{ $point['sub_title'] }}</p>
+                                    </div>
                                 </div>
-                            </div>
-
-                            <!-- Card 2 -->
-                            <div class="col-md-6 mb-4">
-                                <div class="solution-card gray-card">
-                                    <img src=" {{ asset('frontend/images/main-services/industry-icon.png') }}"
-                                        alt="Icon" class="solution-icon">
-
-                                    <h4>Automation Made Simple</h4>
-
-                                    <p>
-                                        Enhance operational efficiency with scalable systems
-                                        that deliver consistent quality and measurable results.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 mb-4">
-                                <div class="solution-card gray-card">
-                                    <img src=" {{ asset('frontend/images/main-services/industry-icon.png') }}"
-                                        alt="Icon" class="solution-icon">
-
-                                    <h4>Automation Made Simple</h4>
-
-                                    <p>
-                                        Streamline complex processes with intelligent automation
-                                        solutions designed to improve productivity and reduce errors.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <!-- Card 2 -->
-                            <div class="col-md-6 mb-4">
-                                <div class="solution-card dark-card">
-                                    <img src=" {{ asset('frontend/images/main-services/industry-icon.png') }}"
-                                        alt="Icon" class="solution-icon">
-
-                                    <h4>Automation Made Simple</h4>
-
-                                    <p>
-                                        Enhance operational efficiency with scalable systems
-                                        that deliver consistent quality and measurable results.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <p class="text-white">Let’s make something great work Together. <a href="">Get Free
-                                    Quote</a></p>
+                            @endforeach
                         </div>
                     </div>
                 </div>
 
                 <!-- RIGHT COLUMN -->
-                <div class="col-lg-4 solutions-righ">
-                    <img src=" {{ asset('frontend/images/main-services/solu.jpg') }}" alt="Icon" class="right-img">
+                <div class="col-lg-4 solutions-right">
+                    <img src="{{ asset('storage/' . $service->engaging_content['section_one']['image']['path']) }}"
+                        alt="{{ $service->engaging_content['section_one']['image']['alt'] }}" class="right-img">
                 </div>
 
             </div>
@@ -1047,17 +886,13 @@
             <div class="row align-items-start ">
                 <div class="col-lg-6">
                     <h2 class="seo-heading">
-                        How Our Expert SEO Services Increase Website Traffic
-                        And Conversions
+                        {{ $service->engaging_content['section_two']['heading'] }}
                     </h2>
                 </div>
 
                 <div class="col-lg-6">
                     <p class="seo-desc">
-                        Our expert SEO services focus on improving search visibility,
-                        driving high-quality traffic, and converting visitors into
-                        long-term customers through proven optimization strategies
-                        and data-driven decision making.
+                        {{ $service->engaging_content['section_two']['description'] }}
                     </p>
                 </div>
             </div>
@@ -1066,65 +901,25 @@
             <div class="row align-items-start mt-4">
                 <!-- Left Image -->
                 <div class="col-lg-6 mb-4 mb-lg-0">
-                    <img src="{{ asset('frontend/images/main-services/seo-imgg.png') }}" alt="SEO Performance"
-                        class="seo-image">
+                    <img src="{{ asset('storage/' . $service->engaging_content['section_two']['image']['path']) }}"
+                        alt="{{ $service->engaging_content['section_two']['image']['alt'] }}" class="seo-image">
                 </div>
 
                 <!-- Right Content -->
                 <div class="col-lg-6">
-
-                    <div class="performance-block">
-                        <div class="performance-itemm">
-                            <span class="performance-numberr">01</span>
-                            <h3 class="performance-subtitlee">
-                                Proven Methods Strengthening Online Visibility
-                            </h3>
+                    @foreach ($service->engaging_content['section_two']['points'] as $index => $point)
+                        <div class="performance-block">
+                            <div class="performance-itemm">
+                                <span class="performance-numberr">{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span>
+                                <h3 class="performance-subtitlee">
+                                    {{ $point['title'] }}
+                                </h3>
+                            </div>
+                            <p class="performance-desc">
+                                {{ $point['sub_title'] }}
+                            </p>
                         </div>
-                        <p class="performance-desc">
-                            Libero diam auctor tristique hendrerit in eu vel id. Nec leo amet suscipit nulla.
-                            Nullam vitae sit tempus diam. Libero diam auctor tristique hendrerit.
-                        </p>
-                    </div>
-
-                    <div class="performance-block">
-                        <div class="performance-itemm">
-                            <span class="performance-numberr">02</span>
-                            <h3 class="performance-subtitlee">
-                                Data-Driven SEO Strategies for Sustainable Growth
-                            </h3>
-                        </div>
-                        <p class="performance-desc">
-                            Libero diam auctor tristique hendrerit in eu vel id. Nec leo amet suscipit nulla.
-                            Nullam vitae sit tempus diam. Libero diam auctor tristique hendrerit.
-                        </p>
-                    </div>
-
-                    <div class="performance-block">
-                        <div class="performance-itemm">
-                            <span class="performance-numberr">04</span>
-                            <h3 class="performance-subtitlee">
-                                Conversion-Focused Optimization Techniques
-                            </h3>
-                        </div>
-                        <p class="performance-desc">
-                            Libero diam auctor tristique hendrerit in eu vel id. Nec leo amet suscipit nulla.
-                            Nullam vitae sit tempus diam. Libero diam auctor tristique hendrerit.
-                        </p>
-                    </div>
-
-                    <div class="performance-block">
-                        <div class="performance-itemm">
-                            <span class="performance-numberr">03</span>
-                            <h3 class="performance-subtitlee">
-                                Conversion-Focused Optimization Techniques
-                            </h3>
-                        </div>
-                        <p class="performance-desc">
-                            Libero diam auctor tristique hendrerit in eu vel id. Nec leo amet suscipit nulla.
-                            Nullam vitae sit tempus diam. Libero diam auctor tristique hendrerit.
-                        </p>
-                    </div>
-
+                    @endforeach
                 </div>
 
             </div>
@@ -1137,17 +932,9 @@
 
     <section class="bg-image-section"
         style="background-image: url('{{ asset('frontend/images/main-services/bg-image.png') }}');">
-
-
-
     </section>
 
     {{-- ================================ contact-form-section ================================ --}}
-
-
-
-
-
 
     <section class="py-5 contact-form-section">
         <div class="container">
@@ -1293,13 +1080,10 @@
     <x-services-offer />
 
     <!-- ========================== revnue section ============================== -->
-
-    <x-revenue />
-
+    <x-testimonial-component />
 
     <!-- ===================== faqs section ======================= -->
-
-    <x-faqs />
+    <x-faqs-component :pageName="'services'" />
 
 @endsection
 

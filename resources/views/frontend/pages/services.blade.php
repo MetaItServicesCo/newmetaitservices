@@ -1,9 +1,9 @@
 @extends('frontend.layouts.frontend')
 
 {{-- @section('title', 'Home') --}}
-@section('meta_title', $data->meta_title ?? 'Meta IT Services')
-@section('meta_keywords', $data->meta_keywords ?? '')
-@section('meta_description', $data->meta_description ?? '')
+@section('meta_title', $seoMeta->meta_title ?? 'Meta IT Services')
+@section('meta_keywords', $seoMeta->meta_keywords ?? '')
+@section('meta_description', $seoMeta->meta_description ?? '')
 
 @push('frontend-styles')
     <style>
@@ -577,106 +577,8 @@
     <x-brand />
 
 
-    {{-- ===================== meta intro ======================== --}}
-    <section class="meta-intro-section">
-        <div class="container">
-            <!-- Heading -->
-            <h2 class="meta-heading">
-                Welcome to Meta IT web company, your trusted partner for Building
-                a powerful online presence.
-            </h2>
-
-            <!-- Description -->
-            <p class="meta-desc">
-                We help businesses grow by creating visually stunning, user-friendly, and
-                high-performance websites tailored to their unique goals. Our expert team
-                focuses on modern design trends, responsive layouts, and scalable solutions
-                that ensure your brand stands out in the digital world.
-            </p>
-
-            <!-- Card -->
-            <div class="meta-card">
-                <div class="row align-items-center">
-                    <!-- Left Image -->
-                    <div class="col-lg-4">
-                        <img src="{{ asset('frontend/images/services/meta-img.png') }}" alt="Website Design"
-                            class="meta-card-img">
-                    </div>
-
-                    <!-- Right Content -->
-                    <div class="col-lg-8">
-                        <h3 class="meta-card-title">Website Design Meta IT</h3>
-                        <p class="meta-card-desc">
-                            Our website design services combine creativity and functionality
-                            to deliver engaging digital experiences that convert visitors
-                            into loyal customers.
-                        </p>
-                        <a href="#" class="meta-btn">Design my Site</a>
-                    </div>
-                </div>
-            </div>
-            <div class="meta-card">
-                <div class="row align-items-center">
-                    <!-- Left Image -->
-                    <div class="col-lg-4">
-                        <img src="{{ asset('frontend/images/services/meta-img.png') }}" alt="Website Design"
-                            class="meta-card-img">
-                    </div>
-
-                    <!-- Right Content -->
-                    <div class="col-lg-8">
-                        <h3 class="meta-card-title">Website Design Meta IT</h3>
-                        <p class="meta-card-desc">
-                            Our website design services combine creativity and functionality
-                            to deliver engaging digital experiences that convert visitors
-                            into loyal customers.
-                        </p>
-                        <a href="#" class="meta-btn">Design my Site</a>
-                    </div>
-                </div>
-            </div>
-            <div class="meta-card">
-                <div class="row align-items-center">
-                    <!-- Left Image -->
-                    <div class="col-lg-4">
-                        <img src="{{ asset('frontend/images/services/meta-img.png') }}" alt="Website Design"
-                            class="meta-card-img">
-                    </div>
-
-                    <!-- Right Content -->
-                    <div class="col-lg-8">
-                        <h3 class="meta-card-title">Website Design Meta IT</h3>
-                        <p class="meta-card-desc">
-                            Our website design services combine creativity and functionality
-                            to deliver engaging digital experiences that convert visitors
-                            into loyal customers.
-                        </p>
-                        <a href="#" class="meta-btn">Design my Site</a>
-                    </div>
-                </div>
-            </div>
-            <div class="meta-card">
-                <div class="row align-items-center ">
-                    <!-- Left Image -->
-                    <div class="col-lg-4">
-                        <img src="{{ asset('frontend/images/services/meta-img.png') }}" alt="Website Design"
-                            class="meta-card-img">
-                    </div>
-
-                    <!-- Right Content -->
-                    <div class="col-lg-8">
-                        <h3 class="meta-card-title">Website Design Meta IT</h3>
-                        <p class="meta-card-desc">
-                            Our website design services combine creativity and functionality
-                            to deliver engaging digital experiences that convert visitors
-                            into loyal customers.
-                        </p>
-                        <a href="#" class="meta-btn">Design my Site</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    {{-- ===================== Major Services Section ======================== --}}
+    <x-major-services-component />
 
     {{-- ================ tech-marketing-section ========================== --}}
 
@@ -749,68 +651,32 @@
             </div>
 
             <!-- Cards -->
-            <div class="row justify-content-center">
-                <!-- Card 1 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="outer-box">
-                        <div class="inner-card">
-                            <img src="{{ asset('frontend/images/offer-icon.png') }}" alt="Web Design" class="card-icon">
+            @if (!empty($subServices) && $subServices->count())
+                <div class="row justify-content-center">
+                    <!-- Card 1 -->
+                    @foreach ($subServices as $subService)
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="outer-box">
+                                <div class="inner-card">
+                                    <img src="{{ $subService->icon ? asset('storage/' . $subService->icon) : asset('frontend/images/offer-icon.png') }}" alt="Web Design"
+                                        class="card-icon">
 
 
-                            <h4 class="card-title">
-                                Web Design & Development
-                            </h4>
+                                    <h4 class="card-title">
+                                        {{ $subService->title ?? '' }}
+                                    </h4>
 
-                            <p class="card-desc">
-                                We build high-performing websites that are visually appealing,
-                                user-friendly, and optimized for business growth.
-                            </p>
+                                    <p class="card-desc">
+                                        {{ \Illuminate\Support\Str::limit($subService->short_description ?? '', 150) }}
+                                    </p>
 
-                            <a href="#" class="learn-bttn">Learn More</a>
+                                    <a href="#" class="learn-bttn">Learn More</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
-
-                <!-- Card 2 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="outer-box">
-                        <div class="inner-card">
-                            <img src="{{ asset('frontend/images/offer-icon.png') }}" alt="Web Design" class="card-icon">
-
-                            <h4 class="card-title">
-                                SEO Optimization
-                            </h4>
-
-                            <p class="card-desc">
-                                Data-driven SEO strategies designed to improve rankings,
-                                traffic, and conversions for B2B brands.
-                            </p>
-
-                            <a href="#" class="learn-bttn">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="outer-box">
-                        <div class="inner-card">
-                            <img src="{{ asset('frontend/images/offer-icon.png') }}" alt="Web Design" class="card-icon">
-
-                            <h4 class="card-title">
-                                Digital Marketing
-                            </h4>
-
-                            <p class="card-desc">
-                                Tailored marketing campaigns that drive leads, engagement,
-                                and long-term revenue growth.
-                            </p>
-
-                            <a href="#" class="learn-bttn">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endif
         </div>
     </section>
 
@@ -855,7 +721,7 @@
 
     <!-- ===================== faqs section ======================= -->
 
-    <x-faqs />
+    <x-faqs-component :pageName="'services'" />
 
 
 @endsection

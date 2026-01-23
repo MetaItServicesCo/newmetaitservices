@@ -30,40 +30,8 @@
                         @endif
                         <div class="row">
 
+                            <!-- Rating -->
                             <div class="col-lg-6 mb-4">
-                                <label for="title" class="form-label fw-semibold required">{{ __('Title') }}</label>
-                                <input type="text" id="title" name="title"
-                                    class="form-control form-control-lg @error('title') is-invalid @enderror"
-                                    value="{{ old('title', $data->title ?? '') }}">
-                                @error('title')
-                                    <div class="text-danger mt-1">{{ $message }}</div>
-                                @enderror
-                            </div>
-
-                            <div class="col-lg-6 mb-4">
-                                <label for="image" class="form-label fw-semibold">{{ __('Image') }}</label>
-                                <input type="file" id="image" name="image"
-                                    class="form-control form-control-lg @error('image') is-invalid @enderror">
-                                @if (isset($data->image) && $data->image)
-                                    <img src="{{ asset('storage/testimonials/' . $data->image) }}" alt="image"
-                                        class="img-image mt-2" width="100">
-                                @endif
-                                @error('image')
-                                    <div class="text-danger mt-1">{{ $message }}</div>
-                                @enderror
-                            </div>
-
-                            <div class="col-lg-4 mb-4">
-                                <label for="image_alt" class="form-label fw-semibold">{{ __('Image Alt') }}</label>
-                                <input type="text" id="image_alt" name="image_alt"
-                                    class="form-control form-control-lg @error('image_alt') is-invalid @enderror"
-                                    value="{{ old('image_alt', $data->image_alt ?? '') }}">
-                                @error('image_alt')
-                                    <div class="text-danger mt-1">{{ $message }}</div>
-                                @enderror
-                            </div>
-
-                            <div class="col-lg-4 mb-4">
                                 <label for="rating"
                                     class="form-label fw-semibold required">{{ __('Rating') }}</label>
 
@@ -104,7 +72,7 @@
                             </div>
 
                             <!-- Is Active -->
-                            <div class="col-lg-4 mb-4">
+                            <div class="col-lg-6 mb-4">
                                 <label for="is_active" class="form-label fw-semibold">{{ __('Active') }}</label>
                                 <select name="is_active" id="is_active"
                                     class="form-select form-select-lg @error('is_active') is-invalid @enderror">
@@ -120,21 +88,10 @@
                                 @enderror
                             </div>
 
-                            <!-- Short Description -->
-                            <div class="col-lg-12 mb-4">
-                                <label for="short_description"
-                                    class="form-label fw-semibold required">{{ __('Short Description') }}</label>
-                                <textarea id="short_description" name="short_description"
-                                    class="form-control form-control-lg @error('short_description') is-invalid @enderror" rows="3">{{ old('short_description', $data->short_description ?? '') }}</textarea>
-                                @error('short_description')
-                                    <div class="text-danger mt-1">{{ $message }}</div>
-                                @enderror
-                            </div>
-
                             <div class="col-lg-6 mb-4">
                                 <label for="highlight_percentage"
                                     class="form-label fw-semibold">{{ __('Highlight Percentage') }}</label>
-                                <input type="text" id="highlight_percentage" name="highlight_percentage"
+                                <input type="number" id="highlight_percentage" name="highlight_percentage"
                                     class="form-control form-control-lg @error('highlight_percentage') is-invalid @enderror"
                                     value="{{ old('highlight_percentage', $data->highlight_percentage ?? '') }}">
                                 @error('highlight_percentage')
@@ -149,6 +106,17 @@
                                     class="form-control form-control-lg @error('highlight_title') is-invalid @enderror"
                                     value="{{ old('highlight_title', $data->highlight_title ?? '') }}">
                                 @error('highlight_title')
+                                    <div class="text-danger mt-1">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <!-- Short Description -->
+                            <div class="col-lg-12 mb-4">
+                                <label for="short_description"
+                                    class="form-label fw-semibold required">{{ __('Short Description') }}</label>
+                                <textarea id="short_description" name="short_description"
+                                    class="form-control form-control-lg @error('short_description') is-invalid @enderror" rows="3">{{ old('short_description', $data->short_description ?? '') }}</textarea>
+                                @error('short_description')
                                     <div class="text-danger mt-1">{{ $message }}</div>
                                 @enderror
                             </div>

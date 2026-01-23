@@ -69,6 +69,8 @@
         {!! sprintf('<script src="%s"></script>', asset($path)) !!}
     @endforeach
     <!--end::Custom Javascript-->
+    <script src="{{ asset('assets/plugins/custom/ckeditor/ckeditor-classic.bundle.js') }}"></script>
+
     @stack('scripts')
     <!--end::Javascript-->
 
@@ -83,6 +85,32 @@
             toastr.error("{{ session('error') }}");
         </script>
     @endif
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const maxSize = 300 * 1024; // 300 KB
+
+            // Global function for file validation
+            window.validateFile = function(input, errorContainerId) {
+                const files = input.files;
+                let errorMessage = '';
+
+                for (let i = 0; i < files.length; i++) {
+                    if (files[i].size > maxSize) {
+                        errorMessage = `File "${files[i].name}" is too large. Maximum allowed size is 300 KB.`;
+                        input.value = '';
+                        break;
+                    }
+                }
+
+                const errorContainer = document.getElementById(errorContainerId);
+                if (errorContainer) {
+                    errorContainer.textContent = errorMessage;
+                }
+            };
+        });
+    </script>
+
 
     <script>
         document.addEventListener('livewire:init', () => {
