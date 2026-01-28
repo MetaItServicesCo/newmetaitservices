@@ -40,6 +40,15 @@ Route::get('/contact', function () {
     return view('frontend.pages.contact');
 })->name('contact.page');
 
+Route::get('/policy', function () {
+    return view('frontend.pages.policy');
+})->name('contact.policy');
+Route::get('/term', function () {
+    return view('frontend.pages.term');
+})->name('contact.term');
+Route::get('/disclaimer', function () {
+    return view('frontend.pages.disclaimer');
+})->name('contact.disclaimer');
 
 Route::prefix('ajax')->group(function () {
     // Blog filter route

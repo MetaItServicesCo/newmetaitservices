@@ -28,7 +28,8 @@
             bottom: 50px;
             transform: translateX(-50%);
             background: #FFFFFF;
-            width: 1215px;
+            width: 100%;
+            max-width: 1215px;
             height: 256px;
             border-radius: 10px;
             padding: 30px 40px;
@@ -122,6 +123,45 @@
             letter-spacing: 0;
             color: #000000;
             margin-bottom: 20px;
+        }
+
+        @media(max-width:768px) {
+            .info-card {
+
+                width: 90%;
+                max-width: 1215px;
+                height: auto;
+                padding: 30px 30px;
+            }
+
+            .card-heading {
+                font-size: 25px;
+                line-height: 35px;
+
+            }
+
+            .main-heading {
+                font-size: 30px;
+                text-align: center;
+            }
+
+            .main-desc {
+                /* margin-top: 10px; */
+                font-size: 16px;
+                text-align: center;
+            }
+
+            .sub-heading {
+                font-size: 30px;
+                text-align: center;
+
+            }
+
+            .content-list li {
+                font-size: 16px;
+
+                margin-bottom: 10px;
+            }
         }
     </style>
 @endpush

@@ -1,3 +1,31 @@
+<style>
+    .show-more-btn {
+        background: #F38B5C;
+        border: none;
+        color: #ffffff;
+        font-family: 'Lexend Deca', sans-serif;
+        font-weight: 500;
+        padding: 0;
+        width: 107px;
+        height: 42px;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .show-more-btn:hover {
+        background: #e47a4d;
+        /* thora dark shade */
+        transform: translateY(-2px);
+        box-shadow: 0 6px 14px rgba(243, 139, 92, 0.35);
+    }
+
+    .show-more-btn:active {
+        transform: translateY(0);
+        box-shadow: 0 3px 8px rgba(243, 139, 92, 0.25);
+    }
+</style>
+<section class="faq-section">
 @php
     // $faqs can be: Collection of Faq models OR Collection/array of [{question,answer}]
     $faqsCollection = $faqs instanceof \Illuminate\Support\Collection ? $faqs : collect($faqs);
@@ -52,7 +80,7 @@ $uid = 'faqs_' . uniqid();
                 @foreach ($faqsCollection as $index => $faq)
                     <div class="faq-item {{ $index >= 5 ? 'd-none' : '' }}">
                         <div class="faq-header">
-                            <h5>{{ $getQuestion($faq) }}</h5>
+                            <h3 class="fw-bold">{{ $faq->question }}</h3>
                             <span class="faq-toggle"><i class="fa-solid fa-plus"></i></span>
                         </div>
                         <div class="faq-content">

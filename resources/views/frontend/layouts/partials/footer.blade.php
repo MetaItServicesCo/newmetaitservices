@@ -1,7 +1,7 @@
 <style>
     .site-footer {
         background: #404959;
-        padding: 90px 0;
+        padding: 60px 0;
         color: #fff;
         font-family: Inter;
         margin-top: 150px;
@@ -57,7 +57,7 @@
 
     .footer-contact li i {
         color: #F96037;
-        font-size: 30px;
+        font-size: 20px;
     }
 
     /* SOCIAL */
@@ -67,12 +67,12 @@
     }
 
     .footer-social i {
-        font-size: 29px;
+        font-size: 20px;
     }
 
     .footer-social a {
-        width: 79.3px;
-        height: 79.3px;
+        width: 45px;
+        height: 45px;
         background: #FAFAFA;
         /* color: #404959; */
         color: #F38B5C;
@@ -126,12 +126,18 @@
         flex-direction: column;
         align-items: center;
         gap: 10px;
-        position: absolute;
+        position: fixed;
         bottom: 20px;
+        right: 20px;
+        z-index: 999;
+    }
+
+    .footer-question span {
+        color: #000000;
     }
 
     .footer-question img {
-        width: 40px;
+        width: 60px;
     }
 
     /* MOBILE */
@@ -174,7 +180,7 @@
         padding: 35px 20px;
         border-top-left-radius: 12px;
         border-top-right-radius: 12px;
-        height: 130px;
+        height: 100px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -183,9 +189,9 @@
     /* LEFT TEXT */
     .footer-cta-left {
         color: #fff;
-        font-size: 55px;
+        font-size: 30px;
         font-weight: 600;
-        line-height: 100%;
+        line-height: 1.35;
         max-width: 989px;
         letter-spacing: 0;
     }
@@ -198,8 +204,8 @@
     }
 
     .cta-icon {
-        width: 100px;
-        height: 100px;
+        width: 80px;
+        height: 80px;
         background: #ffffff;
         color: #F38B5C;
         border-radius: 50%;
@@ -210,14 +216,14 @@
     }
 
     .cta-icon i {
-        font-size: 70px;
+        font-size: 50px;
     }
 
     /* TEXT */
     .cta-text span {
         display: block;
         color: #fff;
-        font-size: 25px;
+        font-size: 20px;
         font-weight: 600;
         line-height: 100%;
         margin-top: 10px;
@@ -316,13 +322,147 @@
 
         }
     }
+
+    /* ================== model  css ===================== */
+
+    /* MODAL SIZE */
+    .question-modal {
+        width: 100%;
+        max-width: 330px;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    /* HEADER */
+    .question-header {
+        background: #404959;
+        border: none;
+    }
+
+    .question-header img {
+        width: 30px;
+    }
+
+    .question-header h6 {
+        font-family: Inter;
+        font-size: 11px;
+        font-weight: 700px;
+        line-height: 41px;
+    }
+
+    /* BODY */
+    .question-body {
+        background: #FCE2D6;
+        padding: 20px 30px;
+
+    }
+
+    /* HEADING */
+    .form-heading {
+        font-family: Inter;
+        font-size: 13px;
+        font-weight: 500px;
+        line-height: 18px;
+        color: #000000;
+        max-width: 364px;
+    }
+
+    /* INPUTS */
+    .question-input {
+        width: 100%;
+        max-width: 381px;
+        height: 30px;
+        background: #FCE2D6;
+        border: 1px solid #F96037;
+        border-radius: 12px;
+        padding: 0 15px;
+        margin-bottom: 8px;
+        font-family: 'Lexend Deca', sans-serif;
+        font-size: 12px;
+    }
+
+    .question-input option {
+        font-size: 12px;
+        color: #000000;
+
+    }
+
+    .message-input {
+        height: 60px;
+        padding-top: 10px;
+
+    }
+
+    /* SEND BUTTON */
+    .send-btn {
+        width: 100px;
+        height: 30px;
+        background: #404959;
+        color: #fff;
+        border: none;
+        border-radius: 12px;
+        font-size: 14px;
+    }
+
+    /* MOBILE RESPONSIVE */
+    @media (max-width: 576px) {
+        .question-modal {
+            width: 100%;
+        }
+
+        .question-input {
+            width: 100%;
+        }
+    }
+
+    .form-label-custom {
+        font-family: Inter;
+        font-size: 12px;
+        font-weight: 700px;
+        line-height: 41px;
+        color: #000000;
+        margin-bottom: 0px;
+        display: block;
+    }
+
+    .small {
+        font-family: Inter;
+        font-size: 12px;
+    }
+
+
+    /* ❌ backdrop blur & dark bg remove */
+    .modal-backdrop {
+        background: transparent !important;
+    }
+
+    /* RIGHT aligned modal */
+    .question-modal-right .modal-dialog {
+        position: fixed;
+        right: 20px;
+        top: 53%;
+        transform: translateY(-50%);
+        margin: 0;
+        max-width: 450px;
+        /* adjust width */
+    }
+
+    /* Animation (right se slide) */
+    .question-modal-right.fade .modal-dialog {
+        transform: translate(100%, -50%);
+        transition: transform 0.4s ease;
+    }
+
+    .question-modal-right.show .modal-dialog {
+        transform: translate(0, -50%);
+    }
 </style>
 <footer class="site-footer">
     <!-- FOOTER CTA -->
     <div class="footer-cta-wrapper">
         <div class="footer-cta">
             <div class="footer-cta-left">
-                Let’s talk about how we can <br>
+                Let’s talk about how we can
                 transform your business!
             </div>
 
@@ -417,12 +557,68 @@
                     <li>Australia</li>
                 </ul>
 
-                <div class="footer-question">
-                    <img src="{{ asset('frontend/images/footer-img.png') }}" alt="">
-                    <span class="">Have A Question</span>
-                </div>
+
+
             </div>
 
         </div>
+    </div>
+
+    <div class="modal fade question-modal-right" id="questionModal" tabindex="-1">
+        <div class="modal-dialog ">
+            <div class="modal-content question-modal">
+
+                <!-- HEADER -->
+                <div class="modal-header question-header">
+                    <div class="d-flex align-items-center gap-4">
+                        <img src="{{ asset('frontend/images/footer-img.png') }}" alt="">
+                        <h6 class="mb-0 text-white">Have A Question</h6>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- BODY -->
+                <div class="modal-body question-body">
+                    <h6 class="form-heading">Enter your question below and a representative will get right back to you.
+                    </h6>
+                    <form class="mt">
+
+                        {{-- <label class="form-label-custom">Name</label> --}}
+                        <input type="text" class="question-input" placeholder="Enter your name">
+
+                        {{-- <label class="form-label-custom">Country</label> --}}
+                        <select class="question-input">
+                            <option>Select country</option>
+                            <option>Pakistan</option>
+                            <option>USA</option>
+                            <option>UK</option>
+                            <option>Canada</option>
+                        </select>
+
+                        {{-- <label class="form-label-custom">Email</label> --}}
+                        <input type="email" class="question-input" placeholder="Enter your email">
+
+                        {{-- <label class="form-label-custom">Message</label> --}}
+                        <textarea class="question-input message-input" placeholder="Write your message"></textarea>
+
+                        <div class="form-check mt-2">
+                            <input class="form-check-input" type="checkbox" id="agree">
+                            <label class="form-check-label small" for="agree">
+                                By submitting you agree to receive SMS or emails for the provided channel.
+                                Rates may be applied.
+                            </label>
+                        </div>
+
+                        <button type="submit" class="send-btn mt-2">Send</button>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="footer-question" data-bs-toggle="modal" data-bs-target="#questionModal">
+        <img src="{{ asset('frontend/images/footer-img.png') }}" alt="">
+        <span>Have A Question</span>
     </div>
 </footer>

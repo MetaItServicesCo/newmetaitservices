@@ -176,10 +176,10 @@
             border-radius: 12px;
             font-weight: 600;
             transition: 0.3s ease;
-            width: 274px;
-            height: 67px;
-            font-size: 25px;
-            font-weight: 700;
+            width: 200px;
+            height: 50px;
+            font-size: 20px;
+            font-weight: 600;
             line-height: 25px;
             letter-spacing: 0;
         }
@@ -344,8 +344,8 @@
 
         /* Outer Box */
         .outer-box {
-            width: 427px;
-            height: 488px;
+            width: 400px;
+            height: 425px;
             background: #FCE2D6;
             border: 5px solid #ffffff;
             border-radius: 30px;
@@ -362,8 +362,8 @@
 
         /* Inner Card */
         .inner-card {
-            width: 396px;
-            height: 456px;
+            width: 370px;
+            height: 400px;
             background: #404959;
             border-radius: 13px;
             padding: 35px 30px;
@@ -404,8 +404,8 @@
 
         /* Button */
         .learn-bttn {
-            width: 241px;
-            height: 59px;
+            width: 200px;
+            height: 50px;
             background: linear-gradient(90deg, #FF6036, #404959);
             color: #ffffff;
             display: flex;
@@ -415,9 +415,9 @@
             font-weight: 600;
             border-radius: 12px;
             margin-top: 30px;
-            font-size: 25px;
+            font-size: 20px;
             line-height: 25;
-            font-weight: 700;
+            font-weight: 600;
             letter-spacing: 0;
             align-self: flex-start;
             transition: all 0.3s ease-in;
@@ -549,7 +549,7 @@
 
                 <!-- LEFT COLUMN -->
                 <div class="col-lg-6 mb-4 mb-lg-0">
-                    <h2 class="dm-title">Our Digital Marketing Services</h2>
+                    <h1 class="dm-title">Our Digital Marketing Services</h1>
 
                     <h4 class="dm-subtitle">
                         Customized Marketing Solutions That Deliver Results, Every Time
@@ -658,13 +658,13 @@
                         <div class="col-lg-4 col-md-6 mb-4">
                             <div class="outer-box">
                                 <div class="inner-card">
-                                    <img src="{{ $subService->icon ? asset('storage/' . $subService->icon) : asset('frontend/images/offer-icon.png') }}" alt="Web Design"
-                                        class="card-icon">
+                                    <img src="{{ $subService->icon ? asset('storage/' . $subService->icon) : asset('frontend/images/offer-icon.png') }}"
+                                        alt="Web Design" class="card-icon">
 
 
-                                    <h4 class="card-title">
+                                    <h3 class="card-title">
                                         {{ $subService->title ?? '' }}
-                                    </h4>
+                                    </h3>
 
                                     <p class="card-desc">
                                         {{ \Illuminate\Support\Str::limit($subService->short_description ?? '', 150) }}

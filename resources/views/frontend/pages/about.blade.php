@@ -624,6 +624,174 @@
 
             }
         }
+
+        /* ======================trusted-section ======================== */
+
+        .trusted-section {
+            background: #F5F5F5;
+            font-family: Inter;
+        }
+
+        .trusted-card img {
+            max-width: 70px;
+            margin-bottom: 20px;
+        }
+
+        .trusted-card h3 {
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 59px;
+            color: #000000;
+            margin-bottom: 0px;
+        }
+
+        .trusted-card p {
+            font-size: 20px;
+            line-height: 28px;
+            font-weight: 400;
+            color: #000000;
+            margin: 0;
+        }
+
+        /* ========================= tabs-section =============================== */
+        .tabs-section {
+            background: #F7F7F7;
+            font-family: Inter;
+        }
+
+        /* Tabs */
+        .tab-btn {
+            background: transparent;
+            border: none;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 25px;
+            padding-bottom: 8px;
+            cursor: pointer;
+
+        }
+
+        .tab-btn.active {
+            color: #F38B5C;
+            border-bottom: 2px solid #F38B5C;
+        }
+
+        /* Content */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Text */
+        .tab-label {
+            color: #F38B5C;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 59px;
+            letter-spacing: 0;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .tab-heading {
+            font-size: 55px;
+            font-weight: 700;
+            line-height: 59px;
+            letter-spacing: 0;
+            color: #000000;
+            margin-bottom: 15px;
+        }
+
+        .tab-desc {
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 160%;
+            letter-spacing: 0;
+            margin-bottom: 20px;
+        }
+
+        /* Info button */
+        .info-btn {
+            background: #fff;
+            width: 535.83px;
+            height: 91px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0 20px;
+            margin-bottom: 15px;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 59px;
+            color: #000000;
+            letter-spacing: 0;
+        }
+
+        .info-btn i {
+            color: #FF6036;
+            font-size: 20px;
+        }
+
+        /* Buttons */
+        .btn-primary-custom {
+            background: #FF6036;
+            color: #ffffff;
+            width: 264.93px;
+            height: 59px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 25px;
+            line-height: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary-custom img {
+            width: 50px;
+        }
+
+        /* 🔥 Hover Effect */
+        .btn-primary-custom:hover {
+            background: #e64f2b;
+            /* slightly darker */
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 96, 54, 0.4);
+            color: #ffffff;
+        }
+
+
+        .btn-outline-custom {
+            background: transparent;
+            color: #000000;
+            width: 264.93px;
+            height: 59px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 25px;
+            line-height: 25px;
+        }
+
+        .small-text {
+            font-size: 16px;
+            line-height: 160%;
+            color: #777777;
+        }
+
+        .small-text strong {
+            color: #000000;
+
+        }
     </style>
 @endpush
 @section('frontend-content')
@@ -745,27 +913,215 @@
         </div>
 
         {{-- ===================== bg-image-section ====================== --}}
+        <section class="trusted-section py-5">
+            <div class="container">
+                <div class="row text-center g-4">
 
+                    <div class="col-lg-3 col-md-6">
+                        <div class="trusted-card">
+                            <img src="{{ asset('frontend/images/about-logo1.png') }}" alt="Logo">
+                            <h3>Trusted Company</h3>
+                            <p>Digital marketing that helps<br>you to promote the world.</p>
+                        </div>
+                    </div>
 
-        <section class="bg-image-section"
-            style="background-image: url('{{ asset('frontend/images/about/about-bg-img.png') }}');">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="trusted-card">
+                            <img src="{{ asset('frontend/images/about-logo2.png') }}" alt="Logo">
+                            <h3>Trusted Company</h3>
+                            <p>Digital marketing that helps<br>you to promote the world.</p>
+                        </div>
+                    </div>
 
+                    <div class="col-lg-3 col-md-6">
+                        <div class="trusted-card">
+                            <img src="{{ asset('frontend/images/about-logo3.png') }}" alt="Logo">
+                            <h3>Trusted Company</h3>
+                            <p>Digital marketing that helps<br>you to promote the world.</p>
+                        </div>
+                    </div>
 
+                    <div class="col-lg-3 col-md-6">
+                        <div class="trusted-card">
+                            <img src="{{ asset('frontend/images/about-logo4.png') }}" alt="Logo">
+                            <h3>Trusted Company</h3>
+                            <p>Digital marketing that helps<br>you to promote the world.</p>
+                        </div>
+                    </div>
 
+                </div>
+            </div>
         </section>
-        <section class="bg-image-section2"
-            style="background-image: url('{{ asset('frontend/images/about/about-bg2.png') }}');">
+
+
+        {{-- <section class="bg-image-section"
+            style="background-image: url('{{ asset('frontend/images/about/about-bg-img.png') }}');"> --}}
 
 
 
+        {{-- ============================ tabs-section ======================== --}}
+        <section class="tabs-section py-5">
+            <div class="container">
+
+                <!-- TAB BUTTONS -->
+                <div class="tab-buttons d-flex gap-4 mb-5 justify-content-center border-bottom">
+                    <button class="tab-btn active" data-tab="tab1">Company benefits</button>
+                    <button class="tab-btn" data-tab="tab2">Competitive analysis</button>
+                    <button class="tab-btn" data-tab="tab3">Trusted experience</button>
+                    <button class="tab-btn" data-tab="tab4">Global partners</button>
+                </div>
+
+                <!-- TAB CONTENT -->
+                <div class="tab-content-wrapper">
+
+                    <!-- TAB 1 -->
+                    <div class="tab-content active" id="tab1">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6">
+                                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
+                                    class="img-fluid rounded" alt="">
+                            </div>
+
+                            <div class="col-lg-6">
+                                <span class="tab-label">COMPANY BENEFITS</span>
+                                <h2 class="tab-heading">Effective solutions for all business.</h2>
+                                <p class="tab-desc">
+                                    We deliver modern digital strategies that improve business
+                                    performance and help companies grow faster worldwide.
+                                </p>
+
+                                <div class="info-btn">
+                                    <i class="bi bi-briefcase"></i>
+                                    Business Transformation agency.
+                                </div>
+
+                                <p class="small-text">
+                                    Get your <strong>First Payment Today</strong> and grow your business.
+                                </p>
+
+                                <div class="d-flex gap-3">
+                                    <a href="#" class="btn-primary-custom">Explore services <img
+                                            src="{{ asset('frontend/images/kips-icon.png') }}" alt=""></a>
+                                    <a href="#" class="btn-outline-custom">Quick contact</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB 2 -->
+                    <div class="tab-content" id="tab2">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6">
+                                <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786"
+                                    class="img-fluid rounded" alt="">
+                            </div>
+
+                            <div class="col-lg-6">
+                                <span class="tab-label">COMPETITIVE ANALYSIS</span>
+                                <h2 class="tab-heading">Effective solutions for all business.</h2>
+                                <p class="tab-desc">
+                                    Our competitive research helps you stay ahead in the market
+                                    with data-driven marketing strategies.
+                                </p>
+
+                                <div class="info-btn">
+                                    <i class="bi bi-graph-up"></i>
+                                    Business Transformation agency.
+                                </div>
+
+                                <p class="small-text">
+                                    Get your <strong>First Payment Today</strong> and grow your business.
+                                </p>
+
+                                <div class="d-flex gap-3">
+                                    <a href="#" class="btn-primary-custom">Explore services</a>
+                                    <a href="#" class="btn-outline-custom">Quick contact</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB 3 -->
+                    <div class="tab-content" id="tab3">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6">
+                                <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d"
+                                    class="img-fluid rounded" alt="">
+                            </div>
+
+                            <div class="col-lg-6">
+                                <span class="tab-label">TRUSTED EXPERIENCE</span>
+                                <h2 class="tab-heading">Effective solutions for all business.</h2>
+                                <p class="tab-desc">
+                                    Years of experience delivering trusted solutions for
+                                    enterprises across industries.
+                                </p>
+
+                                <div class="info-btn">
+                                    <i class="bi bi-award"></i>
+                                    Business Transformation agency.
+                                </div>
+
+                                <p class="small-text">
+                                    Get your <strong>First Payment Today</strong> and grow your business.
+                                </p>
+
+                                <div class="d-flex gap-3">
+                                    <a href="#" class="btn-primary-custom">Explore services</a>
+                                    <a href="#" class="btn-outline-custom">Quick contact</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB 4 -->
+                    <div class="tab-content" id="tab4">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6">
+                                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d"
+                                    class="img-fluid rounded" alt="">
+                            </div>
+
+                            <div class="col-lg-6">
+                                <span class="tab-label">GLOBAL PARTNERS</span>
+                                <h2 class="tab-heading">Effective solutions for all business.</h2>
+                                <p class="tab-desc">
+                                    Partnering globally to bring world-class marketing
+                                    innovations to your business.
+                                </p>
+
+                                <div class="info-btn">
+                                    <i class="bi bi-globe"></i>
+                                    Business Transformation agency.
+                                </div>
+                                <p class="small-text">
+                                    Get your <strong>First Payment Today</strong> and grow your business.
+                                </p>
+
+                                <div class="d-flex gap-3">
+                                    <a href="#" class="btn-primary-custom">Explore services</a>
+                                    <a href="#" class="btn-outline-custom">Quick contact</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
         </section>
+
+
+
+
+    </section>
     </section>
 
     <x-brand-nextlevel />
 
     {{-- ======================= grow-section ======================== --}}
 
-    <section class="grow-section py-5">
+    <section class="grow-section py-5 ">
         <div class="container">
             <div class="row ">
 
@@ -805,7 +1161,8 @@
                         <!-- IMAGES -->
                         <div class="image-stack">
                             <img src="{{ asset('frontend/images/about/drand-img.png') }}" alt="" class="img-one">
-                            <img src="{{ asset('frontend/images/about/brand-img2.png') }}" alt="" class="img-two">
+                            <img src="{{ asset('frontend/images/about/brand-img2.png') }}" alt=""
+                                class="img-two">
                         </div>
 
                     </div>
@@ -821,7 +1178,7 @@
 
     {{-- ============team-section=====================  --}}
 
-    <section class="team-section py-5">
+    <section class="team-section py-5 my-2">
         <div class="container">
 
             <!-- HEADING -->
@@ -860,10 +1217,10 @@
     </section>
 
     {{-- ===================== bg-image-section ====================== --}}
-
-    <section class="bg-image-section2 "
-        style="background-image: url('{{ asset('frontend/images/main-services/bg-image.png') }}');">
-    </section>
+    <div class="my-4">
+        <x-career />
+    </div>
+    
 
     <!-- ========================== revnue section ============================== -->
     <x-testimonial-component />
@@ -871,7 +1228,8 @@
 
     {{-- ================= audit-section ======================= --}}
 
-    <section class="audit-section" style="background-image: url('{{ asset('frontend/images/about/audit-bg.png') }}');">
+    <section class="audit-section my-2"
+        style="background-image: url('{{ asset('frontend/images/about/audit-bg.png') }}');">
         <div class="container">
 
             <h2 class="audit-heading">
@@ -929,5 +1287,16 @@
 
 
 @push('frontend-scripts')
-    <script></script>
+    <script>
+        document.querySelectorAll(".tab-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+
+                document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+                document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
+
+                btn.classList.add("active");
+                document.getElementById(btn.dataset.tab).classList.add("active");
+            });
+        });
+    </script>
 @endpush

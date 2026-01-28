@@ -3,10 +3,47 @@ body {
     overflow-x: hidden;
 }
 
+h1 {
+    font-size: 44px !important;
+    line-height: 1.25 !important;
+    font-family: Inter !important;
+}
+
+h2 {
+    font-size: 30px !important;
+    line-height: 1.35 !important;
+    font-family: Inter !important;
+}
+
+h3 {
+    font-size: 20px !important;
+    line-height: 1.45 !important;
+    font-family: Inter !important;
+}
+
+h4 {
+    font-size: 16px !important;
+    line-height: 1.55 !important;
+    font-family: Inter !important;
+}
+
+p {
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+    font-family: Inter !important;
+}
+
+li {
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+    font-family: Inter !important;
+}
+
+
 /* ====================== navbar css =========================== */
 .custom-navbar {
     background-color: #404959;
-    height: 136px;
+    height: 100px;
 }
 
 .navbar-nav .nav-link {
@@ -15,6 +52,7 @@ body {
     font-family: Inter;
     font-size: 20px;
     margin-left: 50px;
+    display: block;
 }
 
 .navbar-nav .nav-link:hover {
@@ -46,8 +84,8 @@ body {
 
 .nav-logo-wrap {
     background: #FFFFFF;
-    width: 183px;
-    height: 124px;
+    width: 145px;
+    height: 90px;
     border-radius: 15px;
     display: flex;
     align-items: center;
@@ -58,7 +96,7 @@ body {
 /* Logo image */
 .nav-logo {
     width: 155px;
-    height: 96px;
+    height: 70px;
     object-fit: contain;
 }
 
@@ -410,12 +448,13 @@ body {
     color: #000000;
     cursor: pointer;
     transition: 0.3s ease;
-    width: 193px;
-    height: 81px;
+    width: 160px;
+    height: 50px;
     font-family: Inter;
-    font-weight: 700;
-    line-height: 100%;
-    font-size: 40px;
+    font-weight: 600;
+    line-height: 140%;
+    letter-spacing: 0.2px;
+    font-size: 15px;
 }
 
 .kpi-btn.active {
@@ -591,8 +630,8 @@ body {
 
 /* Left Image */
 .about-img {
-    width: 784px;
-    height: 788px;
+    width: 600px;
+    height: 614px;
     object-fit: cover;
     max-width: 100%;
 }
@@ -928,7 +967,7 @@ body {
 }
 
 .feature span {
-    font-size: 28px;
+    font-size: 18px;
     font-weight: 400;
     line-height: 160%;
     letter-spacing: 0;
@@ -1435,8 +1474,8 @@ body {
 
 /* ICON */
 .faq-toggle {
-    width: 56px;
-    height: 52px;
+    width: 35px;
+    height: 33px;
     border-radius: 10px;
     background: #F38B5C;
     color: #fff;
@@ -1629,12 +1668,16 @@ body {
 }
 
 .page-btn {
-    width: 42px;
-    height: 42px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     background: #fff;
     border: 2px solid #A2A6B0;
     transition: all 0.4s ease-in-out;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    line-height: 1;
 }
 
 .page-btn:hover {
