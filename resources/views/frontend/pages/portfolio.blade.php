@@ -118,8 +118,8 @@
         /* HEADER */
         .updates-header {
             /* display: flex;
-                                                    justify-content: center;
-                                                    align-items: center; */
+                                                            justify-content: center;
+                                                            align-items: center; */
             margin-bottom: 20px;
             text-align: center;
         }
@@ -256,7 +256,7 @@
             line-height: 150%;
         }
 
-       
+
 
         @media(max-width:768px) {
             .categories-wrapper {
@@ -339,16 +339,10 @@
 
                 <div class="categories-wrapper">
                     <div class="categories-track">
-                        <button class="cat-btn active">All Blogs</button>
-                        <button class="cat-btn">Technology</button>
-                        <button class="cat-btn">Design</button>
-                        <button class="cat-btn">Marketing</button>
-                        <button class="cat-btn">Healthcare</button>
-                        <button class="cat-btn">Education</button>
-                        <button class="cat-btn">SEO</button>
-                        <button class="cat-btn">AI</button>
-                        <button class="cat-btn">Business</button>
-                        <button class="cat-btn">Startup</button>
+                        <button class="cat-btn active">All</button>
+                        @foreach ($categories as $category)
+                            <button class="cat-btn">{{ $category->name }}</button>
+                        @endforeach
                     </div>
                 </div>
 
@@ -359,61 +353,25 @@
             <!-- BLOG CARDS -->
             <div class="row mt-5 g-4">
                 <!-- CARD -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="portfolio-cardd">
+                @foreach ($portfolios as $portfolio)
+                    <div class="col-lg-4 col-md-6">
+                        <div class="portfolio-cardd">
 
-                        <div class="image-wrapper">
-                            <img src="{{ asset('frontend/images/blog/portfolio.png') }}" alt="">
+                            <div class="image-wrapper">
+                                <img src="{{ $portfolio->thumbnail ? asset('storage/portfolios/thumbnails/'.$portfolio->thumbnail ) : asset('frontend/images/blog/portfolio.png') }}" alt="{{ $portfolio->image_alt ?? '' }}">
 
-                            <!-- OVERLAY CONTENT -->
-                            <div class="card-content">
-                                <h4>How to Make Website for School Project?</h4>
-                                <p>
-                                    Learn step-by-step how to create a school project website
-                                    using simple tools and best practices.
-                                </p>
+                                <!-- OVERLAY CONTENT -->
+                                <div class="card-content">
+                                    <h4>{{ $portfolio->title ?? '' }}</h4>
+                                    <p>
+                                        {{ $portfolio->sub_title ?? '' }}
+                                    </p>
+                                </div>
                             </div>
+
                         </div>
-
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="portfolio-cardd">
-
-                        <div class="image-wrapper">
-                            <img src="{{ asset('frontend/images/blog/portfolio.png') }}" alt="">
-
-                            <!-- OVERLAY CONTENT -->
-                            <div class="card-content">
-                                <h4>How to Make Website for School Project?</h4>
-                                <p>
-                                    Learn step-by-step how to create a school project website
-                                    using simple tools and best practices.
-                                </p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="portfolio-cardd">
-
-                        <div class="image-wrapper">
-                            <img src="{{ asset('frontend/images/blog/portfolio.png') }}" alt="">
-
-                            <!-- OVERLAY CONTENT -->
-                            <div class="card-content">
-                                <h4>How to Make Website for School Project?</h4>
-                                <p>
-                                    Learn step-by-step how to create a school project website
-                                    using simple tools and best practices.
-                                </p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
+                @endforeach
 
 
                 <!-- PAGINATION -->

@@ -3,16 +3,14 @@
 use App\Models\GeneralSetting;
 use Illuminate\Support\Facades\Cache;
 
-
-if (!function_exists('theme')) {
+if (! function_exists('theme')) {
     function theme()
     {
         return app(App\Core\Theme::class);
     }
 }
 
-
-if (!function_exists('getName')) {
+if (! function_exists('getName')) {
     /**
      * Get product name
      *
@@ -24,14 +22,10 @@ if (!function_exists('getName')) {
     }
 }
 
-
-if (!function_exists('addHtmlAttribute')) {
+if (! function_exists('addHtmlAttribute')) {
     /**
      * Add HTML attributes by scope
      *
-     * @param $scope
-     * @param $name
-     * @param $value
      *
      * @return void
      */
@@ -41,13 +35,10 @@ if (!function_exists('addHtmlAttribute')) {
     }
 }
 
-
-if (!function_exists('addHtmlAttributes')) {
+if (! function_exists('addHtmlAttributes')) {
     /**
      * Add multiple HTML attributes by scope
      *
-     * @param $scope
-     * @param $attributes
      *
      * @return void
      */
@@ -57,13 +48,10 @@ if (!function_exists('addHtmlAttributes')) {
     }
 }
 
-
-if (!function_exists('addHtmlClass')) {
+if (! function_exists('addHtmlClass')) {
     /**
      * Add HTML class by scope
      *
-     * @param $scope
-     * @param $value
      *
      * @return void
      */
@@ -73,12 +61,10 @@ if (!function_exists('addHtmlClass')) {
     }
 }
 
-
-if (!function_exists('printHtmlAttributes')) {
+if (! function_exists('printHtmlAttributes')) {
     /**
      * Print HTML attributes for the HTML template
      *
-     * @param $scope
      *
      * @return string
      */
@@ -88,13 +74,10 @@ if (!function_exists('printHtmlAttributes')) {
     }
 }
 
-
-if (!function_exists('printHtmlClasses')) {
+if (! function_exists('printHtmlClasses')) {
     /**
      * Print HTML classes for the HTML template
      *
-     * @param $scope
-     * @param $full
      *
      * @return string
      */
@@ -104,14 +87,10 @@ if (!function_exists('printHtmlClasses')) {
     }
 }
 
-
-if (!function_exists('getSvgIcon')) {
+if (! function_exists('getSvgIcon')) {
     /**
      * Get SVG icon content
      *
-     * @param $path
-     * @param $classNames
-     * @param $folder
      *
      * @return string
      */
@@ -121,12 +100,10 @@ if (!function_exists('getSvgIcon')) {
     }
 }
 
-
-if (!function_exists('setModeSwitch')) {
+if (! function_exists('setModeSwitch')) {
     /**
      * Set dark mode enabled status
      *
-     * @param $flag
      *
      * @return void
      */
@@ -136,8 +113,7 @@ if (!function_exists('setModeSwitch')) {
     }
 }
 
-
-if (!function_exists('isModeSwitchEnabled')) {
+if (! function_exists('isModeSwitchEnabled')) {
     /**
      * Check dark mode status
      *
@@ -149,12 +125,10 @@ if (!function_exists('isModeSwitchEnabled')) {
     }
 }
 
-
-if (!function_exists('setModeDefault')) {
+if (! function_exists('setModeDefault')) {
     /**
      * Set the mode to dark or light
      *
-     * @param $mode
      *
      * @return void
      */
@@ -164,8 +138,7 @@ if (!function_exists('setModeDefault')) {
     }
 }
 
-
-if (!function_exists('getModeDefault')) {
+if (! function_exists('getModeDefault')) {
     /**
      * Get current mode
      *
@@ -177,12 +150,10 @@ if (!function_exists('getModeDefault')) {
     }
 }
 
-
-if (!function_exists('setDirection')) {
+if (! function_exists('setDirection')) {
     /**
      * Set style direction
      *
-     * @param $direction
      *
      * @return void
      */
@@ -192,8 +163,7 @@ if (!function_exists('setDirection')) {
     }
 }
 
-
-if (!function_exists('getDirection')) {
+if (! function_exists('getDirection')) {
     /**
      * Get style direction
      *
@@ -205,8 +175,7 @@ if (!function_exists('getDirection')) {
     }
 }
 
-
-if (!function_exists('isRtlDirection')) {
+if (! function_exists('isRtlDirection')) {
     /**
      * Check if style direction is RTL
      *
@@ -218,12 +187,10 @@ if (!function_exists('isRtlDirection')) {
     }
 }
 
-
-if (!function_exists('extendCssFilename')) {
+if (! function_exists('extendCssFilename')) {
     /**
      * Extend CSS file name with RTL or dark mode
      *
-     * @param $path
      *
      * @return void
      */
@@ -233,8 +200,7 @@ if (!function_exists('extendCssFilename')) {
     }
 }
 
-
-if (!function_exists('includeFavicon')) {
+if (! function_exists('includeFavicon')) {
     /**
      * Include favicon from settings
      *
@@ -246,8 +212,7 @@ if (!function_exists('includeFavicon')) {
     }
 }
 
-
-if (!function_exists('includeFonts')) {
+if (! function_exists('includeFonts')) {
     /**
      * Include the fonts from settings
      *
@@ -259,12 +224,10 @@ if (!function_exists('includeFonts')) {
     }
 }
 
-
-if (!function_exists('getGlobalAssets')) {
+if (! function_exists('getGlobalAssets')) {
     /**
      * Get the global assets
      *
-     * @param $type
      *
      * @return array
      */
@@ -274,12 +237,10 @@ if (!function_exists('getGlobalAssets')) {
     }
 }
 
-
-if (!function_exists('addVendors')) {
+if (! function_exists('addVendors')) {
     /**
      * Add multiple vendors to the page by name. Refer to settings KT_THEME_VENDORS
      *
-     * @param $vendors
      *
      * @return void
      */
@@ -289,12 +250,10 @@ if (!function_exists('addVendors')) {
     }
 }
 
-
-if (!function_exists('addVendor')) {
+if (! function_exists('addVendor')) {
     /**
      * Add single vendor to the page by name. Refer to settings KT_THEME_VENDORS
      *
-     * @param $vendor
      *
      * @return void
      */
@@ -304,12 +263,10 @@ if (!function_exists('addVendor')) {
     }
 }
 
-
-if (!function_exists('addJavascriptFile')) {
+if (! function_exists('addJavascriptFile')) {
     /**
      * Add custom javascript file to the page
      *
-     * @param $file
      *
      * @return void
      */
@@ -319,12 +276,10 @@ if (!function_exists('addJavascriptFile')) {
     }
 }
 
-
-if (!function_exists('addCssFile')) {
+if (! function_exists('addCssFile')) {
     /**
      * Add custom CSS file to the page
      *
-     * @param $file
      *
      * @return void
      */
@@ -334,12 +289,10 @@ if (!function_exists('addCssFile')) {
     }
 }
 
-
-if (!function_exists('getVendors')) {
+if (! function_exists('getVendors')) {
     /**
      * Get vendor files from settings. Refer to settings KT_THEME_VENDORS
      *
-     * @param $type
      *
      * @return array
      */
@@ -349,8 +302,7 @@ if (!function_exists('getVendors')) {
     }
 }
 
-
-if (!function_exists('getCustomJs')) {
+if (! function_exists('getCustomJs')) {
     /**
      * Get custom js files from the settings
      *
@@ -362,8 +314,7 @@ if (!function_exists('getCustomJs')) {
     }
 }
 
-
-if (!function_exists('getCustomCss')) {
+if (! function_exists('getCustomCss')) {
     /**
      * Get custom css files from the settings
      *
@@ -375,13 +326,10 @@ if (!function_exists('getCustomCss')) {
     }
 }
 
-
-if (!function_exists('getHtmlAttribute')) {
+if (! function_exists('getHtmlAttribute')) {
     /**
      * Get HTML attribute based on the scope
      *
-     * @param $scope
-     * @param $attribute
      *
      * @return array
      */
@@ -391,12 +339,10 @@ if (!function_exists('getHtmlAttribute')) {
     }
 }
 
-
-if (!function_exists('isUrl')) {
+if (! function_exists('isUrl')) {
     /**
      * Get HTML attribute based on the scope
      *
-     * @param $url
      *
      * @return mixed
      */
@@ -406,12 +352,10 @@ if (!function_exists('isUrl')) {
     }
 }
 
-
-if (!function_exists('image')) {
+if (! function_exists('image')) {
     /**
      * Get image url by path
      *
-     * @param $path
      *
      * @return string
      */
@@ -421,13 +365,11 @@ if (!function_exists('image')) {
     }
 }
 
-
-if (!function_exists('getIcon')) {
+if (! function_exists('getIcon')) {
     /**
      * Get icon
      *
-     * @param $path
-     *
+     * @param  $path
      * @return string
      */
     function getIcon($name, $class = '', $type = '', $tag = 'span')
@@ -435,7 +377,6 @@ if (!function_exists('getIcon')) {
         return theme()->getIcon($name, $class, $type, $tag);
     }
 }
-
 
 if (! function_exists('setting')) {
     function setting($key, $default = null)
@@ -447,5 +388,61 @@ if (! function_exists('setting')) {
         });
 
         return $settings[$key] ?? $default;
+    }
+}
+
+if (! function_exists('highlightBracketText')) {
+
+    /**
+     * Highlight each [text] using different colors.
+     *
+     * @param  string  $text
+     * @param  array  $colors
+     * @return string
+     */
+    function highlightBracketText($text, $colors = ['#F96037'])
+    {
+        if (! $text) {
+            return '';
+        }
+
+        // Escape full text first
+        $escaped = e($text);
+
+        // Color index
+        $i = 0;
+
+        return preg_replace_callback('/\[(.*?)\]/', function ($match) use (&$i, $colors) {
+
+            // If colors array ends, repeat last color
+            $color = $colors[$i] ?? end($colors);
+
+            $i++;
+
+            return "<span style=\"color: {$color};\">{$match[1]}</span>";
+        }, $escaped);
+    }
+}
+
+if (! function_exists('highlightBorderBottom')) {
+
+    /**
+     * Add bottom border highlight to each [text].
+     *
+     * @param  string  $text
+     * @return string
+     */
+    function highlightBorderBottom($text)
+    {
+        if (! $text) {
+            return '';
+        }
+
+        // Escape full text for safety
+        $escaped = e($text);
+
+        return preg_replace_callback('/\[(.*?)\]/', function ($match) {
+            return '<span class="highlight-border-bottom">'.$match[1].'</span>';
+        }, $escaped);
     }
 }

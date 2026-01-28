@@ -175,6 +175,26 @@
             font-weight: 700;
         }
 
+        /* Mubeen Grid Mode Create  */
+        /* Grid mode */
+        .slider-wrapper.grid-view .custom-slider {
+            overflow: visible;
+        }
+
+        .slider-wrapper.grid-view .slider-track {
+            transform: none !important;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        /* Hide nav buttons in grid mode */
+        .slider-wrapper.grid-view .nav-btn {
+            display: none;
+        }
+
+        /* Grid Mode End */
+
         .slider-wrapper {
             position: relative;
         }
@@ -771,7 +791,6 @@
             color: #FF5B2E;
             font-size: 20px;
         }
-
     </style>
 @endpush
 
@@ -789,16 +808,14 @@
 
                 <!-- LEFT COLUMN -->
                 <div class="col-lg-6 mb-4 mb-lg-0">
-                    <h1 class="dm-title">Sub Industries</h1>
+                    <h1 class="dm-title">{{ $industry->name ?? '' }}</h1>
 
                     {{-- <h4 class="dm-subtitle">
                         Customized Marketing Solutions That Deliver Results, Every Time
                     </h4> --}}
 
                     <p class="dm-desc">
-                        We create data-driven digital marketing strategies tailored to
-                        your business goals. From SEO and paid campaigns to social media
-                        and content marketing
+                        {{ Illuminate\Support\Str::limit($industry->description ?? '', 310) }}
                     </p>
 
                     {{-- <a href="#" class="dm-btn">Start Your Project</a> --}}
@@ -821,19 +838,18 @@
     <section class="healthcare-section">
         <div class="container text-cent">
 
-            <h5 class="top-tag ">HEALTHCARE MARKETING EXPERTS DALLAS AGENCY</h5>
+            <h5 class="top-tag ">{{ $industry['sub_details']['hero_kicker'] ?? '' }}</h5>
 
-            <h2 class="health-heading">Powering Growth For <span>Healthcare </span>Business </h2>
+            <h2 class="health-heading">{!! highlightBorderBottom($industry['sub_details']['hero_title']) ?? '' !!}</h2>
 
             <div class="row mt-5">
                 <!-- LEFT -->
                 <div class="col-lg-3">
-                    <h3 class="left-heading">Prescribed for Results</h3>
+                    <h3 class="left-heading">{{ $industry['sub_details']['hero_side_title'] ?? '' }}</h3>
                     <p class="left-desc">
-                        We help healthcare brands scale faster with performance-driven
-                        marketing strategies tailored for real growth.
+                        {{ $industry['sub_details']['hero_side_description'] ?? '' }}
                     </p>
-                    <button class="view-btn">View All</button>
+                    <button class="view-btn" id="viewAllBtn">View All</button>
                 </div>
 
                 <!-- RIGHT -->
@@ -847,39 +863,21 @@
                     <div class="custom-slider">
                         <div class="slider-track">
 
-                            <div class="health-card">
-                                <img src="{{ asset('frontend/images/industry/subind-img.png') }}">
-                                <h4>Hope Project Leads</h4>
-                                <p>Helping healthcare providers generate qualified leads.</p>
-                            </div>
+                            @if (!empty($industry['sub_details']['hero_slider']) && is_array($industry['sub_details']['hero_slider']))
+                                @foreach ($industry['sub_details']['hero_slider'] as $item)
+                                    <div class="health-card">
+                                        <img src="{{ !empty($item['image'])
+                                            ? asset('storage/' . $item['image'])
+                                            : asset('frontend/images/industry/subind-img.png') }}"
+                                            alt="{{ $item['image_alt'] ?? 'Industry Image' }}">
 
-                            <div class="health-card">
-                                <img src="{{ asset('frontend/images/industry/subind-img.png') }}">
-                                <h4>Medical Growth</h4>
-                                <p>Targeted marketing solutions for patient acquisition.</p>
-                            </div>
+                                        <h4>{{ $item['title'] ?? '' }}</h4>
 
-                            <div class="health-card">
-                                <img src="{{ asset('frontend/images/industry/subind-img.png') }}">
-                                <h4>Clinic Expansion</h4>
-                                <p>Data-driven campaigns for long-term growth.</p>
-                            </div>
+                                        <p>{{ $item['excerpt'] ?? '' }}</p>
+                                    </div>
+                                @endforeach
+                            @endif
 
-                            <div class="health-card">
-                                <img src="{{ asset('frontend/images/industry/subind-img.png') }}">
-                                <h4>Hospital Reach</h4>
-                                <p>Performance marketing for healthcare brands.</p>
-                            </div>
-                            <div class="health-card">
-                                <img src="{{ asset('frontend/images/industry/subind-img.png') }}">
-                                <h4>Hospital Reach</h4>
-                                <p>Performance marketing for healthcare brands.</p>
-                            </div>
-                            <div class="health-card">
-                                <img src="{{ asset('frontend/images/industry/subind-img.png') }}">
-                                <h4>Hospital Reach</h4>
-                                <p>Performance marketing for healthcare brands.</p>
-                            </div>
 
                         </div>
                     </div>
@@ -888,14 +886,12 @@
             </div>
         </div>
 
-
-
         <section class="healthcare-brands py-5">
             <div class="container text-center">
 
                 <!-- Heading -->
                 <h2 class="brands-heading">
-                    We deliver <span>consistent growth</span> for healthcare businesses
+                    {!! highlightBorderBottom($industry['sub_details']['hero_bottom_text']) ?? '' !!}
                 </h2>
 
                 <!-- Brand Names -->
@@ -921,70 +917,33 @@
 
                 <!-- LEFT COLUMN: Image -->
                 <div class="col-lg-6 col-md-12 mb-4 mb-lg-0">
-                    <img src="{{ asset('frontend/images/industry/health-care.png') }}" alt="Healthcare Digital Marketing"
+                    <img src="{{ $industry['sub_details']['detail_accordion_section']['image'] ? asset('storage/' . $industry['sub_details']['detail_accordion_section']['image']) : asset('frontend/images/industry/health-care.png') }}"
+                        alt="{{ $industry['sub_details']['detail_accordion_section']['title'] }}"
                         class="img-fluid marketing-img">
                 </div>
 
                 <!-- RIGHT COLUMN: Heading + Description -->
                 <div class="col-lg-6 col-md-12">
                     <h2 class="marketing-heading">
-                        Healthcare Digital Marketing
+                        {{ $industry['sub_details']['detail_accordion_section']['title'] ?? '' }}
                     </h2>
                     <p class="marketing-desc">
-                        We provide comprehensive digital marketing solutions tailored specifically
-                        for healthcare businesses, helping them reach more patients and grow efficiently.
+                        {{ $industry['sub_details']['detail_accordion_section']['description'] ?? '' }}
                     </p>
+                    @foreach (collect(data_get($industry, 'sub_details.detail_accordion_section.items', []))->sortBy('sort_order') as $item)
+                        <div class="faq-item">
+                            <div class="faq-header">
+                                <h5>{{ $item['title'] ?? '' }}</h5>
+                                <span class="faq-toggle">
+                                    <i class="fa-solid fa-plus"></i>
+                                </span>
+                            </div>
 
-
-
-                    <div class="faq-item">
-                        <div class="faq-header">
-                            <h5>How does the platform work?</h5>
-                            <span class="faq-toggle"><i class="fa-solid fa-plus"></i></span>
+                            <div class="faq-content">
+                                <p>{{ $item['content'] ?? '' }}</p>
+                            </div>
                         </div>
-                        <div class="faq-content">
-                            <p>
-                                Our platform helps users discover products efficiently
-                                using smart filters and recommendations.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-header">
-                            <h5>How does the platform work?</h5>
-                            <span class="faq-toggle"><i class="fa-solid fa-plus"></i></span>
-                        </div>
-                        <div class="faq-content">
-                            <p>
-                                Our platform helps users discover products efficiently
-                                using smart filters and recommendations.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-header">
-                            <h5>How does the platform work?</h5>
-                            <span class="faq-toggle"><i class="fa-solid fa-plus"></i></span>
-                        </div>
-                        <div class="faq-content">
-                            <p>
-                                Our platform helps users discover products efficiently
-                                using smart filters and recommendations.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-header">
-                            <h5>Is customer support available?</h5>
-                            <span class="faq-toggle"><i class="fa-solid fa-plus"></i></span>
-                        </div>
-                        <div class="faq-content">
-                            <p>
-                                Yes, our support team is available 24/7 to assist you.
-                            </p>
-                        </div>
-                    </div>
-
+                    @endforeach
 
                 </div>
 
@@ -993,181 +952,157 @@
     </section>
 
     {{-- ============================== atomic-section ================================ --}}
+    @php
+        $tabsSection = data_get($industry, 'sub_details.detail_tabs_section', []);
+        $tabsTitle = data_get($tabsSection, 'title', '');
+        $tabsItems = collect(data_get($tabsSection, 'items', []))->sortBy(
+            fn($item) => (int) ($item['sort_order'] ?? 0),
+        );
+    @endphp
+    @if ($tabsItems->isNotEmpty())
+        <section class="atomic-section py-5">
+            <div class="container text-center">
 
-    <section class="atomic-section py-5">
-        <div class="container text-center">
+                <!-- Heading -->
+                @if ($tabsTitle)
+                    <h2 class="atomic-heading">{{ $tabsTitle }}</h2>
+                @endif
 
-            <!-- Heading -->
-            <h2 class="atomic-heading">
-                Why Select Atomic as Your Digital Marketing Agency?
-            </h2>
-
-            <!-- Buttons -->
-            <!-- BUTTONS -->
-            <div class="atomic-buttons  mt-4">
-                <button class="tab-btn active" data-tab="tab1">Proven Results</button>
-                <button class="tab-btn" data-tab="tab2">Marketing Strategy</button>
-                <button class="tab-btn" data-tab="tab3">Growth Solutions</button>
-            </div>
-
-            <!-- TAB CONTENT -->
-            <div class="atomic-tab-content mt-4">
-
-                <p class="atomic-desc tab-content active" id="tab1">
-                    At Atomic, we deliver top-notch digital marketing solutions tailored to your business goals.
-                    Our proven strategies help brands increase visibility, generate leads, and achieve consistent growth.
-                </p>
-
-                <p class="atomic-desc tab-content" id="tab2">
-                    Our marketing strategies are data-driven and customer-focused.
-                    We build campaigns that improve brand awareness, engagement, and conversions across all channels.
-                </p>
-
-                <p class="atomic-desc tab-content" id="tab3">
-                    Atomic provides scalable growth solutions designed to increase ROI.
-                    From automation to performance marketing, we help businesses grow sustainably.
-                </p>
+                <!-- Buttons -->
+                <div class="atomic-buttons mt-4">
+                    @foreach ($tabsItems as $index => $item)
+                        <button class="tab-btn {{ $index === 0 ? 'active' : '' }}" data-tab="tab{{ $index }}">
+                            {{ $item['title'] ?? '' }}
+                        </button>
+                    @endforeach
+                </div>
+                <!-- TAB CONTENT -->
+                <div class="atomic-tab-content mt-4">
+                    @foreach ($tabsItems as $index => $item)
+                        <p class="atomic-desc tab-content {{ $index === 0 ? 'active' : '' }}" id="tab{{ $index }}">
+                            {{ $item['content'] ?? '' }}
+                        </p>
+                    @endforeach
+                </div>
 
             </div>
-
-
-        </div>
-    </section>
+        </section>
+    @endif
 
 
     {{-- =============================== faqs ================================= --}}
-    <section class="faq-section">
-        <div class="container">
-            <div class="row align-items-start">
+    @php
+        $servicesSection = data_get($industry, 'sub_details.detail_services_section', []);
 
-                <!-- LEFT -->
-                <div class="col-lg-5 faq-left">
-                    <h2 class="faq-dm-title">Digital Marketing Services For Healthcare</h2>
-                    <h5 class="top-dm ">Website Design and Development</h5>
+        $title = data_get($servicesSection, 'title', '');
+        $highlightText = data_get($servicesSection, 'highlight_text', '');
+        $description = data_get($servicesSection, 'description', '');
 
-                    <p class="faq-desc">
-                        Find answers to the most commonly asked questions about our
-                        platform, features, pricing, and support. Our team is always
-                        ready to help you. Find answers to the most commonly asked questions about our
-                        platform, features, pricing, and support. Our team is always
-                        ready to help you. Find answers to the most commonly asked questions about our
-                        platform, features, pricing, and support. Our team is always
-                        ready to help you. Find answers to the most commonly asked questions about our
-                        platform, features, pricing, and support. Our team is always
-                        ready to help you.
-                    </p>
-                </div>
+        $accordionItems = collect(data_get($servicesSection, 'accordion_items', []))->sortBy(
+            fn($item) => (int) ($item['sort_order'] ?? 0),
+        );
+    @endphp
 
-                <!-- RIGHT -->
-                <div class="col-lg-7">
+    @if ($title || $accordionItems->isNotEmpty())
+        <section class="faq-section">
+            <div class="container">
+                <div class="row align-items-start">
 
-                    <div class="faq-item">
-                        <div class="faq-header">
-                            <h5>How does the platform work?</h5>
-                            <span class="faq-toggle"><i class="fa-solid fa-plus"></i></span>
-                        </div>
-                        <div class="faq-content">
-                            <p>
-                                Our platform helps users discover products efficiently
-                                using smart filters and recommendations.
+                    <!-- LEFT -->
+                    <div class="col-lg-5 faq-left">
+                        @if ($title)
+                            <h2 class="faq-dm-title">{{ $title }}</h2>
+                        @endif
+
+                        @if ($highlightText)
+                            <h5 class="top-dm">{{ $highlightText }}</h5>
+                        @endif
+
+                        @if ($description)
+                            <p class="faq-desc">
+                                {!! nl2br(e($description)) !!}
                             </p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-header">
-                            <h5>How does the platform work?</h5>
-                            <span class="faq-toggle"><i class="fa-solid fa-plus"></i></span>
-                        </div>
-                        <div class="faq-content">
-                            <p>
-                                Our platform helps users discover products efficiently
-                                using smart filters and recommendations.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-header">
-                            <h5>How does the platform work?</h5>
-                            <span class="faq-toggle"><i class="fa-solid fa-plus"></i></span>
-                        </div>
-                        <div class="faq-content">
-                            <p>
-                                Our platform helps users discover products efficiently
-                                using smart filters and recommendations.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-header">
-                            <h5>Is customer support available?</h5>
-                            <span class="faq-toggle"><i class="fa-solid fa-plus"></i></span>
-                        </div>
-                        <div class="faq-content">
-                            <p>
-                                Yes, our support team is available 24/7 to assist you.
-                            </p>
-                        </div>
+                        @endif
                     </div>
 
-                    <div class="faq-item">
-                        <div class="faq-header">
-                            <h5>Can I upgrade my plan later?</h5>
-                            <span class="faq-toggle"><i class="fa-solid fa-plus"></i></span>
-                        </div>
-                        <div class="faq-content">
-                            <p>
-                                You can upgrade or downgrade your plan anytime from
-                                your dashboard.
-                            </p>
-                        </div>
+                    <!-- RIGHT -->
+                    <div class="col-lg-7">
+                        @foreach ($accordionItems as $item)
+                            <div class="faq-item">
+                                <div class="faq-header">
+                                    <h5>{{ $item['title'] ?? '' }}</h5>
+                                    <span class="faq-toggle">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </span>
+                                </div>
+
+                                <div class="faq-content">
+                                    <p>{{ $item['content'] ?? '' }}</p>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
 
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
 
+    @php
+        $experienceSection = data_get($industry, 'sub_details.detail_experience_section', []);
 
-    <section class="experience-section">
-        <div class="container">
-            <div class="row align-items-center">
+        $title = data_get($experienceSection, 'title', '');
+        $images = data_get($experienceSection, 'images', []);
 
-                <!-- LEFT COLUMN -->
-                <div class="col-lg-6">
-                    <h2 class="experience-heading">
-                        Experience Powerful Results with Healthcare Marketing By Atomic Design
-                    </h2>
+    @endphp
+    @if ($title || !empty($images))
+        <section class="experience-section">
+            <div class="container">
+                <div class="row align-items-center">
 
-                    <button class="talk-btn">Let’s Talk</button>
-                </div>
+                    <!-- LEFT COLUMN -->
+                    <div class="col-lg-6">
+                        @if ($title)
+                            <h2 class="experience-heading">
+                                {{ $title }}
+                            </h2>
+                        @endif
 
-                <!-- RIGHT COLUMN -->
-                <div class="col-lg-6 position-relative">
+                        <button class="talk-btn">Let’s Talk</button>
+                    </div>
 
-                    <div class="cross-wrapper">
+                    <!-- RIGHT COLUMN -->
+                    <div class="col-lg-6 position-relative">
 
-                        <!-- Horizontal Line -->
-                        <div class="cross-x"></div>
+                        <div class="cross-wrapper">
 
-                        <!-- Vertical Line -->
-                        <div class="cross-y"></div>
+                            <!-- Horizontal Line -->
+                            <div class="cross-x"></div>
 
-                        <!-- IMAGES -->
-                        <img src="{{ asset('frontend/images/industry/atomic1.png') }}" class="cross-img1 top-left">
-                        <img src="{{ asset('frontend/images/industry/atomic2.png') }}" class="cross-img2 top-right">
-                        <img src="{{ asset('frontend/images/industry/atomic3.png') }}" class="cross-img3 bottom-left">
-                        <img src="{{ asset('frontend/images/industry/atomic4.png') }}" class="cross-img4 bottom-right">
+                            <!-- Vertical Line -->
+                            <div class="cross-y"></div>
+
+                            <!-- IMAGES -->
+                            @php
+                                $positions = ['top-left', 'top-right', 'bottom-left', 'bottom-right'];
+                            @endphp
+
+                            @foreach ($positions as $index => $position)
+                                <img src="{{ !empty($images[$index])
+                                    ? asset('storage/' . $images[$index])
+                                    : asset('frontend/images/industry/placeholder.png') }}"
+                                    class="cross-img{{ $index + 1 }} {{ $position }}"
+                                    alt="Experience Image {{ $index + 1 }}">
+                            @endforeach
+
+                        </div>
 
                     </div>
 
                 </div>
-
             </div>
-        </div>
-    </section>
-
-
-
+        </section>
+    @endif
 
 
 
@@ -1181,7 +1116,7 @@
 
 
 @push('frontend-scripts')
-    <script>
+    {{-- <script>
         const track = document.querySelector('.slider-track');
         const prevBtn = document.querySelector('.prev-btn');
         const nextBtn = document.querySelector('.next-btn');
@@ -1222,7 +1157,71 @@
             index = 0;
             updateSlider();
         });
-    </script>
+    </script> --}}
+
+    @push('frontend-scripts')
+        <script>
+            const track = document.querySelector('.slider-track');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            const cards = document.querySelectorAll('.health-card');
+            const viewAllBtn = document.getElementById('viewAllBtn');
+            const sliderWrapper = document.querySelector('.slider-wrapper');
+
+            let index = 0;
+            let visibleCards = getVisibleCards();
+            let isGridView = false;
+
+            function getVisibleCards() {
+                if (window.innerWidth <= 575) return 1;
+                if (window.innerWidth <= 991) return 2;
+                return 3;
+            }
+
+            function updateSlider() {
+                if (isGridView) return;
+
+                const cardWidth = cards[0].offsetWidth + 30;
+                track.style.transform = `translateX(-${index * cardWidth}px)`;
+            }
+
+            nextBtn.addEventListener('click', () => {
+                if (isGridView) return;
+
+                visibleCards = getVisibleCards();
+                if (index < cards.length - visibleCards) {
+                    index++;
+                    updateSlider();
+                }
+            });
+
+            prevBtn.addEventListener('click', () => {
+                if (isGridView) return;
+
+                if (index > 0) {
+                    index--;
+                    updateSlider();
+                }
+            });
+
+            /* 🔥 View All toggle */
+            viewAllBtn.addEventListener('click', () => {
+                isGridView = true;
+                sliderWrapper.classList.add('grid-view');
+                track.style.transform = 'none';
+            });
+
+            /* 🔥 Handle resize */
+            window.addEventListener('resize', () => {
+                if (isGridView) return;
+
+                visibleCards = getVisibleCards();
+                index = 0;
+                updateSlider();
+            });
+        </script>
+    @endpush
+
 
     <script>
         const tabButtons = document.querySelectorAll('.tab-btn');

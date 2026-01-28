@@ -237,4 +237,17 @@ class PortfolioController extends Controller
             ], 500);
         }
     }
+
+    public function portfolio()
+    {
+        $categories = Category::whereHas('portfolios') // only categories with portfolios
+            ->where('status', 1)
+            ->select('id', 'name', 'slug')
+            ->orderBy('name')
+            ->get();
+
+        $portfolios = Portfolio::with('category')->latest()->get();
+
+        return view('frontend.pages.portfolio', compact('categories', 'portfolios'));
+    }
 }

@@ -1,5 +1,5 @@
 <div data-kt-menu-trigger="click"
-    class="menu-item menu-accordion {{ request()->routeIs('dashboard', 'admin-faqs.*', 'admin.testimonials.*', 'admin.kpi-sections.*', 'admin-category.*', 'admin.portfolios.*', 'admin-seo-meta.*') ? 'here show' : '' }}">
+    class="menu-item menu-accordion {{ request()->routeIs('dashboard', 'admin-faqs.*', 'admin.testimonials.*', 'admin.kpi-sections.*', 'admin-category.*', 'admin.portfolios.*', 'admin-seo-meta.*', 'admin.teams.*', 'admin.industries.*', 'admin-blogs.*', 'admin-privacy-policy.*', 'admin-terms-conditions.*', 'admin-disclaimer.*', 'admin.brand-we-carry.*') ? 'here show' : '' }}">
     <span class="menu-link">
         <span class="menu-icon">{!! getIcon('element-11', 'fs-2') !!}</span>
         <span class="menu-title">Dashboards</span>
@@ -87,6 +87,90 @@
             </a>
         </div>
     </div>
+
+    <div class="menu-sub menu-sub-accordion">
+        <div class="menu-item">
+            <a class="menu-link {{ request()->routeIs('admin.teams.*') ? 'active' : '' }}"
+                href="{{ route('admin.teams.list') }}">
+                <span class="menu-bullet">
+                    <span class="bullet bullet-dot"></span>
+                </span>
+                <span class="menu-title">{{ __('Create Teams') }}</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="menu-sub menu-sub-accordion">
+        <div class="menu-item">
+            <a class="menu-link {{ request()->routeIs('admin.industries.*') ? 'active' : '' }}"
+                href="{{ route('admin.industries.list') }}">
+                <span class="menu-bullet">
+                    <span class="bullet bullet-dot"></span>
+                </span>
+                <span class="menu-title">Create Industries</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="menu-sub menu-sub-accordion">
+        <div class="menu-item">
+            <a class="menu-link {{ request()->routeIs('admin-blogs.*') ? 'active' : '' }}"
+                href="{{ route('admin-blogs.list') }}">
+                <span class="menu-bullet">
+                    <span class="bullet bullet-dot"></span>
+                </span>
+                <span class="menu-title">Create Blogs</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="menu-sub menu-sub-accordion">
+        <div class="menu-item">
+            <a class="menu-link {{ request()->routeIs('admin-privacy-policy.*') ? 'active' : '' }}"
+                href="{{ route('admin-privacy-policy.page') }}">
+                <span class="menu-bullet">
+                    <span class="bullet bullet-dot"></span>
+                </span>
+                <span class="menu-title">{{ __('Privacy Policy') }}</span>
+            </a>
+        </div>
+    </div>
+    <div class="menu-sub menu-sub-accordion">
+        <div class="menu-item">
+            <a class="menu-link {{ request()->routeIs('admin-terms-conditions.*') ? 'active' : '' }}"
+                href="{{ route('admin-terms-conditions.page') }}">
+                <span class="menu-bullet">
+                    <span class="bullet bullet-dot"></span>
+                </span>
+                <span class="menu-title">{{ __('Terms & Conditions') }}</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="menu-sub menu-sub-accordion">
+        <div class="menu-item">
+            <a class="menu-link {{ request()->routeIs('admin-disclaimer.*') ? 'active' : '' }}"
+                href="{{ route('admin-disclaimer.page') }}">
+                <span class="menu-bullet">
+                    <span class="bullet bullet-dot"></span>
+                </span>
+                <span class="menu-title">{{ __('Disclaimer') }}</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="menu-sub menu-sub-accordion">
+        <div class="menu-item">
+            <a class="menu-link {{ request()->routeIs('admin.brand-we-carry.*') ? 'active' : '' }}"
+                href="{{ route('admin.brand-we-carry.list') }}">
+                <span class="menu-bullet">
+                    <span class="bullet bullet-dot"></span>
+                </span>
+                <span class="menu-title">Brand We Carry</span>
+            </a>
+        </div>
+    </div>
+
 </div>
 
 

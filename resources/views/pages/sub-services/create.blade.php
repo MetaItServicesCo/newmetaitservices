@@ -450,6 +450,44 @@
                                     </div>
                                 </div>
                             </div>
+
+                             <div class="col-lg-12 mb-4 mt-5">
+                                <h3 class="fw-semibold mb-3">{{ __('FAQs') }}</h3>
+                                <div class="faqs-container">
+                                    @php
+                                        $faqs = old('faqs', $data->faqs ?? []);
+                                        if (empty($faqs)) {
+                                            $faqs = [['question' => '', 'answer' => '']];
+                                        }
+                                    @endphp
+                                    @foreach ($faqs as $index => $faq)
+                                        <div class="faq-item row mb-2">
+                                            <div class="col-md-5">
+                                                <input type="text" name="faqs[{{ $index }}][question]"
+                                                    class="form-control @error('faqs.' . $index . '.question') is-invalid @enderror"
+                                                    placeholder="Question"
+                                                    value="{{ $faq['question'] ?? '' }}">
+                                                @error('faqs.' . $index . '.question')
+                                                    <div class="text-danger mt-1">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                            <div class="col-md-5">
+                                                <textarea name="faqs[{{ $index }}][answer]" class="form-control @error('faqs.' . $index . '.answer') is-invalid @enderror"
+                                                    rows="2" placeholder="Answer">{{ $faq['answer'] ?? '' }}</textarea>
+                                                @error('faqs.' . $index . '.answer')
+                                                    <div class="text-danger mt-1">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button type="button" class="btn btn-danger remove-faq">Remove</button>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                    <button type="button" class="btn btn-success add-faq">Add More</button>
+                                </div>
+                            </div>
+
+                             {{-- Yaha pa b hum ne FAQ wala section bana hai .. same like jesa k hum ne services ma bana tha --}}
                             <div class="col-lg-12 mb-4 mt-5">
                                 <h3 class="fw-semibold mb-3">{{ __('SEO Section') }}</h3>
                                 <div class="col-lg-12 mb-4">
@@ -650,6 +688,36 @@
                         }
                     }
                 });
+
+                // Add/Remove FAQs
+                document.addEventListener('click', function(e) {
+                    if (e.target.classList.contains('add-faq')) {
+                        const container = e.target.closest('.faqs-container');
+                        const faqItems = container.querySelectorAll('.faq-item');
+                        const newIndex = faqItems.length;
+                        const newFaq = document.createElement('div');
+                        newFaq.className = 'faq-item row mb-2';
+                        newFaq.innerHTML = `
+                            <div class="col-md-5">
+                                <input type="text" name="faqs[${newIndex}][question]" class="form-control" placeholder="Question">
+                            </div>
+                            <div class="col-md-5">
+                                <textarea name="faqs[${newIndex}][answer]" class="form-control" rows="2" placeholder="Answer"></textarea>
+                            </div>
+                            <div class="col-md-2">
+                                <button type="button" class="btn btn-danger remove-faq">Remove</button>
+                            </div>
+                        `;
+                        container.insertBefore(newFaq, e.target);
+                    }
+
+                    if (e.target.classList.contains('remove-faq')) {
+                        if (confirm('Are you sure you want to remove this FAQ?')) {
+                            e.target.closest('.faq-item').remove();
+                        }
+                    }
+                });
+
 
             });
         </script>

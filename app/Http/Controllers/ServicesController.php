@@ -74,6 +74,9 @@ class ServicesController extends Controller
             'engaging_content.section_two.points.*.sub_title' => 'required|string',
             'section_one_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'section_two_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'faqs' => 'nullable|array',
+            'faqs.*.question' => 'required|string|max:255',
+            'faqs.*.answer' => 'required|string',
             'meta_title' => 'nullable|string|max:255',
             'meta_keywords' => 'nullable|string',
             'meta_description' => 'nullable|string',
@@ -98,6 +101,8 @@ class ServicesController extends Controller
                 $thumbnailPath = $request->file('thumbnail')->store('service/thumbnails', 'public');
             }
 
+            $faqs = $request->input('faqs', []);
+
             Services::create([
                 'title' => $request->title,
                 'slug' => \Str::slug($request->slug),
@@ -105,6 +110,7 @@ class ServicesController extends Controller
                 'thumbnail' => $thumbnailPath,
                 'thumbnail_alt' => $request->thumbnail_alt,
                 'engaging_content' => $engagingContent,
+                'faqs' => $faqs,
                 'is_active' => $request->is_active,
                 'meta_title' => $request->meta_title,
                 'meta_keywords' => $request->meta_keywords,
@@ -158,6 +164,9 @@ class ServicesController extends Controller
             'engaging_content.section_two.points.*.sub_title' => 'required|string',
             'section_one_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'section_two_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'faqs' => 'nullable|array',
+            'faqs.*.question' => 'required|string|max:255',
+            'faqs.*.answer' => 'required|string',
             'meta_title' => 'nullable|string|max:255',
             'meta_keywords' => 'nullable|string',
             'meta_description' => 'nullable|string',
@@ -186,6 +195,8 @@ class ServicesController extends Controller
                 $thumbnailPath = $request->file('thumbnail')->store('service/thumbnails', 'public');
             }
 
+            $faqs = $request->input('faqs', []);
+
             $service->update([
                 'title' => $request->title,
                 'slug' => \Str::slug($request->slug),
@@ -193,6 +204,7 @@ class ServicesController extends Controller
                 'thumbnail' => $thumbnailPath,
                 'thumbnail_alt' => $request->thumbnail_alt,
                 'engaging_content' => $engagingContent,
+                'faqs' => $faqs,
                 'is_active' => $request->is_active,
                 'meta_title' => $request->meta_title,
                 'meta_keywords' => $request->meta_keywords,
@@ -310,6 +322,10 @@ class ServicesController extends Controller
             'page_content.why_choose_section.points' => 'nullable|array',
             'page_content.why_choose_section.points.*.strong_text' => 'nullable|string|max:255',
             'page_content.why_choose_section.points.*.text' => 'nullable|string',
+
+            'faqs' => 'nullable|array',
+            'faqs.*.question' => 'required|string|max:255',
+            'faqs.*.answer' => 'required|string',
             // Meta fields
             'meta_title' => 'nullable|string|max:255',
             'meta_keywords' => 'nullable|string',
@@ -346,6 +362,7 @@ class ServicesController extends Controller
             } else {
                 $iconPath = null;
             }
+            $faqs = $request->input('faqs', []);
 
             SubService::create([
                 'service_id' => $request->service_id,
@@ -358,6 +375,7 @@ class ServicesController extends Controller
                 'is_active' => $request->is_active,
                 'show_on_services_page' => $request->show_on_services_page,
                 'show_on_landing_page' => $request->show_on_landing_page,
+                'faqs' => $faqs,
                 'meta_title' => $request->meta_title,
                 'meta_keywords' => $request->meta_keywords,
                 'meta_description' => $request->meta_description,
@@ -425,6 +443,11 @@ class ServicesController extends Controller
             'page_content.why_choose_section.points' => 'nullable|array',
             'page_content.why_choose_section.points.*.strong_text' => 'nullable|string|max:255',
             'page_content.why_choose_section.points.*.text' => 'nullable|string',
+
+            'faqs' => 'nullable|array',
+            'faqs.*.question' => 'required|string|max:255',
+            'faqs.*.answer' => 'required|string',
+
             // Meta fields
             'meta_title' => 'nullable|string|max:255',
             'meta_keywords' => 'nullable|string',
@@ -466,6 +489,8 @@ class ServicesController extends Controller
                 $iconPath = $subService->icon;
             }
 
+            $faqs = $request->input('faqs', []);
+
             $subService->update([
                 'service_id' => $request->service_id,
                 'title' => $request->title,
@@ -477,6 +502,7 @@ class ServicesController extends Controller
                 'is_active' => $request->is_active,
                 'show_on_services_page' => $request->show_on_services_page,
                 'show_on_landing_page' => $request->show_on_landing_page,
+                'faqs' => $faqs,
                 'meta_title' => $request->meta_title,
                 'meta_keywords' => $request->meta_keywords,
                 'meta_description' => $request->meta_description,
@@ -525,34 +551,85 @@ class ServicesController extends Controller
 
     public function services()
     {
-        $subServices = SubService::select('title', 'slug', 'short_description', 'icon')->where('is_active', true)
-            ->where('show_on_services_page', true)
-            ->get();
-        $seoMeta = \App\Models\SeoMeta::where('page_name', 'services')->where('is_active', 1)->first();
+        try {
+            $subServices = SubService::select('title', 'slug', 'short_description', 'icon')
+                ->where('is_active', true)
+                ->where('show_on_services_page', true)
+                ->get();
 
-        return view('frontend.pages.services', compact('seoMeta', 'subServices'));
+            $seoMeta = \App\Models\SeoMeta::where('page_name', 'services')
+                ->where('is_active', 1)
+                ->first();
+
+            return view('frontend.pages.services', compact('seoMeta', 'subServices'));
+
+        } catch (\Exception $e) {
+
+            Log::error('Services page error', [
+                'error' => $e->getMessage(),
+            ]);
+
+            return abort(500, 'Something went wrong. Please try again later.');
+        }
     }
 
     public function service($slug)
     {
-        $service = Services::where('slug', $slug)->where('is_active', true)->firstOrFail();
+        try {
+            $service = Services::where('slug', $slug)
+                ->where('is_active', true)
+                ->firstOrFail();
 
-        $subServices = SubService::select('title', 'slug', 'main_points', 'icon')->where('is_active', true)
-            ->where('show_on_services_page', true)->where('service_id', $service->id)
-            ->get();
+            $subServices = SubService::select('title', 'slug', 'main_points', 'icon')
+                ->where('is_active', true)
+                ->where('show_on_services_page', true)
+                ->where('service_id', $service->id)
+                ->get();
 
-        return view('frontend.pages.main-services', compact('service', 'subServices'));
+            return view('frontend.pages.main-services', compact('service', 'subServices'));
+
+        } catch (ModelNotFoundException $e) {
+
+            return abort(404, 'Service not found.');
+
+        } catch (\Exception $e) {
+
+            Log::error('Main service page error', [
+                'slug' => $slug,
+                'error' => $e->getMessage(),
+            ]);
+
+            return abort(500, 'Something went wrong. Please try again later.');
+        }
     }
 
     public function subService($serviceSlug, $subServiceSlug)
     {
-        $service = Services::where('slug', $serviceSlug)->where('is_active', true)->firstOrFail();
+        try {
+            $service = Services::where('slug', $serviceSlug)
+                ->where('is_active', true)
+                ->firstOrFail();
 
-        $subService = SubService::where('slug', $subServiceSlug)
-            ->where('is_active', true)
-            ->where('service_id', $service->id)
-            ->firstOrFail();
+            $subService = SubService::where('slug', $subServiceSlug)
+                ->where('is_active', true)
+                ->where('service_id', $service->id)
+                ->firstOrFail();
 
-        return view('frontend.pages.subservices', compact('service', 'subService'));
+            return view('frontend.pages.subservices', compact('service', 'subService'));
+
+        } catch (ModelNotFoundException $e) {
+
+            return abort(404, 'Service or Sub Service not found.');
+
+        } catch (\Exception $e) {
+
+            Log::error('Sub service page error', [
+                'service_slug' => $serviceSlug,
+                'sub_service_slug' => $subServiceSlug,
+                'error' => $e->getMessage(),
+            ]);
+
+            return abort(500, 'Something went wrong. Please try again later.');
+        }
     }
 }

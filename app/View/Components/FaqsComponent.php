@@ -13,8 +13,17 @@ class FaqsComponent extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct($pageName = 'landing')
+    public function __construct($pageName = null, $faqs = null)
     {
+        // If faqs array is passed (from services table JSON), use it
+        if (! empty($faqs) && is_array($faqs)) {
+            $this->faqs = collect($faqs);
+
+            return;
+        }
+
+        // Otherwise use FAQ table by page_name
+        $pageName = $pageName ?? 'landing';
         $this->faqs = \App\Models\Faq::where('page_name', $pageName)->latest()->get();
     }
 

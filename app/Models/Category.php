@@ -3,8 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Category extends Model
 {
@@ -15,4 +13,8 @@ class Category extends Model
         'show_on_header',
     ];
 
+    public function portfolios()
+    {
+        return $this->hasMany(Portfolio::class);
+    }
 }

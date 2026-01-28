@@ -1085,7 +1085,8 @@
     <x-testimonial-component />
 
     <!-- ===================== faqs section ======================= -->
-    <x-faqs-component :pageName="'services'" />
+    <x-faqs-component :faqs="$service->faqs" />
+
 
 @endsection
 

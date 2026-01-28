@@ -1,9 +1,9 @@
 @extends('frontend.layouts.frontend')
 
 {{-- @section('title', 'Home') --}}
-@section('meta_title', $data->meta_title ?? 'Meta IT Services')
-@section('meta_keywords', $data->meta_keywords ?? '')
-@section('meta_description', $data->meta_description ?? '')
+@section('meta_title', $blog->meta_title ?? 'Meta IT Services')
+@section('meta_keywords', $blog->meta_keywords ?? '')
+@section('meta_description', $blog->meta_description ?? '')
 
 @push('frontend-styles')
     <style>
@@ -130,90 +130,25 @@
 
 @section('frontend-content')
 
-
-
-
     <section class="custom-section">
-        <div class="container section-container"
-            style="background-image: url('{{ asset('frontend/images/blog/blogdetail.png') }}');">
+        <div class="container section-container" role="img" aria-label="{{ $blog->image_alt_text ?? $blog->title }}"
+            style="background-image: url('{{ asset('storage/blog/images/' . $blog->image) }}');">
 
             <!-- CARD -->
             <div class="info-card">
-                <button class="category-btn">Mobile App Development</button>
+                <button class="category-btn">{{ $blog->category?->name ?? '' }}</button>
 
                 <h2 class="card-heading">
-                    Signs you Need to Switch to a Custom Mobile APP Development Company
+                    {{ $blog->title ?? '' }}
                 </h2>
 
-                <p class="card-date">Nov 24, 2025</p>
+                <p class="card-date">{{ $blog->created_at->format('M d, Y') }}</p>
             </div>
 
         </div>
 
         <div class="container content-container">
-
-            <h2 class="main-heading">
-                Heading Heading Heading
-            </h2>
-
-            <p class="main-desc">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo libero tempore provident vero est eligendi
-                nulla quaerat ipsa facilis ab minima quos eos accusamus molestias quibusdam assumenda, natus soluta
-                accusantium?
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo libero tempore provident vero est eligendi
-                nulla quaerat ipsa facilis ab minima quos eos accusamus molestias quibusdam assumenda, natus soluta
-                accusantium?
-            </p>
-
-            <h2 class="sub-heading">
-                Heading
-            </h2>
-            <p class="main-desc">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo libero tempore provident vero est eligendi
-                nulla quaerat ipsa facilis ab minima quos eos accusamus molestias quibusdam assumenda, natus soluta
-                accusantium?
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo libero tempore provident vero est eligendi
-                nulla quaerat ipsa facilis ab minima quos eos accusamus molestias quibusdam assumenda, natus soluta
-                accusantium?
-            </p>
-            <ul class="content-list">
-                <li>First point goes here</li>
-                <li>Second point goes here</li>
-                <li>Third point goes here</li>
-                <li>Fourth point goes here</li>
-                <li>Fifth point goes here</li>
-                <li>Sixth point goes here</li>
-                <li>Seventh point goes here</li>
-                <li>Eighth point goes here</li>
-                <li>Ninth point goes here</li>
-                <li>Tenth point goes here</li>
-            </ul>
-
-
-            <h2 class="main-heading">
-                Heading Heading Heading
-            </h2>
-
-            <p class="main-desc">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo libero tempore provident vero est eligendi
-                nulla quaerat ipsa facilis ab minima quos eos accusamus molestias quibusdam assumenda, natus soluta
-                accusantium?
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo libero tempore provident vero est eligendi
-                nulla quaerat ipsa facilis ab minima quos eos accusamus molestias quibusdam assumenda, natus soluta
-                accusantium?
-            </p>
+            {!! $blog->description ?? '' !!}
         </div>
 
     </section>
