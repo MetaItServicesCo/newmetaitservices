@@ -186,7 +186,8 @@
 
         .case-card {
             position: relative;
-            width: 418px;
+            width: 100%;
+            max-width: 418px;
             height: 608px;
             border-radius: 20px;
             overflow: hidden;
@@ -306,6 +307,210 @@
             object-fit: cover;
             border: 7px solid #E4E6E7;
         }
+
+        /* =============== case model css */
+
+        /* MODAL 1 */
+        .modal {
+            overflow: hidden !important;
+        }
+
+        /* Body fix */
+        body.modal-open {
+            overflow: hidden !important;
+            padding-right: 0 !important;
+        }
+
+        /* CASE MODAL */
+        .case-modal {
+            background: #D9D9D9;
+            border-radius: 20px;
+            padding: 30px;
+            font-family: Inter;
+            max-height: 90vh;
+            overflow: hidden !important;
+        }
+
+        /* Modal body scroll allowed but hidden */
+        #caseDetailModal .modal-body {
+            max-height: calc(90vh - 80px);
+            overflow-y: auto;
+
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        #caseDetailModal .modal-body::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Modal dialog */
+        #caseDetailModal .modal-dialog {
+            overflow: hidden !important;
+        }
+
+
+        .case-img-wrap {
+            width: 100%;
+            max-width: 1054px;
+            height: 400px;
+            background: #000;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 40px;
+        }
+
+        .case-img-wrap img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .case-title {
+            font-size: 30px;
+            font-weight: 700;
+            line-height: 25px;
+            letter-spacing: 0;
+        }
+
+        .case-desc {
+            font-size: 25px;
+            font-weight: 400;
+            line-height: 160%;
+            letter-spacing: 0;
+            margin-top: 15px;
+        }
+
+        .case-list {
+            list-style: disc;
+            text-align: left;
+            max-width: 600px;
+            font-size: 25px;
+            font-weight: 400;
+            line-height: 160%;
+            letter-spacing: 0;
+            /* margin: 20px auto; */
+        }
+
+        .download-btn {
+            width: 353px;
+            height: 67px;
+            background: #404959;
+            border-radius: 12px;
+            border: none;
+            color: #fff;
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 25px;
+            letter-spacing: 0;
+        }
+
+        /* MODAL 2 */
+        .download-modal {
+            border-radius: 20px;
+            padding: 30px;
+        }
+
+        .form-title {
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .download-modal input,
+        .download-modal select {
+            width: 100%;
+            max-width: 672px;
+            height: 53px;
+            background: #EFEFEF;
+            border: 1px solid #F96037;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            padding: 0 15px;
+        }
+
+        .submit-btn {
+            width: 176px;
+            height: 50px;
+            background: #F38B5C;
+            border-radius: 12px;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .form-group {
+            text-align: left;
+            max-width: 672px;
+            margin: 0 auto 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #000;
+        }
+
+        .case-close {
+            position: absolute;
+            top: 4px;
+            right: 7px;
+            background-color: #fff;
+            border-radius: 50%;
+            padding: 10px;
+            opacity: 1;
+            z-index: 10;
+        }
+
+        @media(max-width:768px) {
+            .case-img-wrap {
+
+                height: 100% !important;
+
+                padding: 20px 30px !important;
+            }
+        }
+
+        @media(max-width:767px) {
+            .main-heading {
+                margin: 0 auto;
+                font-size: 27px;
+                line-height: 35px;
+            }
+
+            .col-title {
+                margin: 0px auto 10px;
+                font-size: 20px;
+
+            }
+
+            .col-desc {
+                font-size: 16px;
+
+            }
+
+            .newsletter-heading {
+                font-size: 28px !important;
+                line-height: 42px !important;
+                margin-bottom: 10px;
+                text-align: center;
+            }
+
+            .newsletter-desc {
+                font-size: 16px !important;
+
+                text-align: center;
+            }
+
+            .case-img-wrap {
+
+                height: 100% !important;
+
+                padding: 20px 30px !important;
+            }
+        }
     </style>
 @endpush
 
@@ -421,70 +626,74 @@
 
             <div class="row g-4 justify-content-center">
                 <div class="col-lg-4 col-md-6">
-                    <div class="case-card">
+                    <div class="case-card" data-bs-toggle="modal" data-bs-target="#caseDetailModal">
                         <img src="{{ asset('frontend/images/case.png') }}" alt="">
                         <div class="overlay">
                             <h4>Hope Project Leads</h4>
-                            <p>
-                                Strategic digital growth campaign that delivered outstanding results.
-                            </p>
+                            <p>Strategic digital growth campaign that delivered outstanding results.</p>
                         </div>
                     </div>
+
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="case-card">
+                    <div class="case-card" data-bs-toggle="modal" data-bs-target="#caseDetailModal">
                         <img src="{{ asset('frontend/images/case.png') }}" alt="">
                         <div class="overlay">
                             <h4>Hope Project Leads</h4>
-                            <p>
-                                Strategic digital growth campaign that delivered outstanding results.
-                            </p>
+                            <p>Strategic digital growth campaign that delivered outstanding results.</p>
                         </div>
                     </div>
+
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="case-card">
+                    <div class="case-card" data-bs-toggle="modal" data-bs-target="#caseDetailModal">
                         <img src="{{ asset('frontend/images/case.png') }}" alt="">
                         <div class="overlay">
                             <h4>Hope Project Leads</h4>
-                            <p>
-                                Strategic digital growth campaign that delivered outstanding results.
-                            </p>
+                            <p>Strategic digital growth campaign that delivered outstanding results.</p>
                         </div>
                     </div>
+
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="case-card">
+                    <div class="case-card" data-bs-toggle="modal" data-bs-target="#caseDetailModal">
                         <img src="{{ asset('frontend/images/case.png') }}" alt="">
                         <div class="overlay">
                             <h4>Hope Project Leads</h4>
-                            <p>
-                                Strategic digital growth campaign that delivered outstanding results.
-                            </p>
+                            <p>Strategic digital growth campaign that delivered outstanding results.</p>
                         </div>
                     </div>
+
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="case-card">
+                    <div class="case-card" data-bs-toggle="modal" data-bs-target="#caseDetailModal">
                         <img src="{{ asset('frontend/images/case.png') }}" alt="">
                         <div class="overlay">
                             <h4>Hope Project Leads</h4>
-                            <p>
-                                Strategic digital growth campaign that delivered outstanding results.
-                            </p>
+                            <p>Strategic digital growth campaign that delivered outstanding results.</p>
                         </div>
                     </div>
+
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="case-card">
+                    <div class="case-card" data-bs-toggle="modal" data-bs-target="#caseDetailModal">
                         <img src="{{ asset('frontend/images/case.png') }}" alt="">
                         <div class="overlay">
                             <h4>Hope Project Leads</h4>
-                            <p>
-                                Strategic digital growth campaign that delivered outstanding results.
-                            </p>
+                            <p>Strategic digital growth campaign that delivered outstanding results.</p>
                         </div>
                     </div>
+
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="case-card" data-bs-toggle="modal" data-bs-target="#caseDetailModal">
+                        <img src="{{ asset('frontend/images/case.png') }}" alt="">
+                        <div class="overlay">
+                            <h4>Hope Project Leads</h4>
+                            <p>Strategic digital growth campaign that delivered outstanding results.</p>
+                        </div>
+                    </div>
+
                 </div>
 
 
@@ -501,6 +710,94 @@
             </div>
         </div>
     </section>
+
+    {{-- =========== case model ================= --}}
+    <div class="modal fade" id="caseDetailModal" tabindex="-1">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content case-modal position-relative">
+
+                <!-- CLOSE BUTTON -->
+                <button type="button" class="btn-close case-close" data-bs-dismiss="modal" aria-label="Close">
+                </button>
+
+                <div class="modal-body">
+
+                    <!-- IMAGE -->
+                    <div class="case-img-wrap">
+                        <img src="{{ asset('frontend/images/large-img.png') }}" alt="">
+                    </div>
+
+                    <!-- CONTENT -->
+                    <h3 class="case-title">Hope Project Leads</h3>
+
+                    <p class="case-desc">
+                        Strategic digital growth campaign that delivered outstanding results.
+                    </p>
+
+                    <ul class="case-list">
+                        <li>Lead Generation Strategy</li>
+                        <li>Conversion Optimization</li>
+                        <li>Performance Marketing</li>
+                    </ul>
+
+                    <!-- DOWNLOAD BUTTON -->
+                    <div class="d-flex justify-content-center align-items-center">
+                        <button class="download-btn" id="openDownload">
+                            Download
+                        </button>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="downloadModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content download-modal">
+                <button type="button" class="btn-close case-close" data-bs-dismiss="modal" aria-label="Close">
+                </button>
+                <div class="modal-body ">
+
+                    <h3 class="form-title">Your Information</h3>
+
+                    <form>
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" placeholder="Name">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" placeholder="Email">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="text" placeholder="Phone Number">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Select Location</label>
+                            <select>
+                                <option value="">Select Location</option>
+                                <option>Pakistan</option>
+                                <option>UAE</option>
+                                <option>UK</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            Download
+                        </button>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <div class="mt-5">
@@ -550,4 +847,41 @@
 
 
 @push('frontend-scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const openDownloadBtn = document.getElementById('openDownload');
+            const caseModalEl = document.getElementById('caseDetailModal');
+            const downloadModalEl = document.getElementById('downloadModal');
+
+            openDownloadBtn.addEventListener('click', function() {
+
+                // Pehla modal close kar do
+                const caseModal = bootstrap.Modal.getInstance(caseModalEl) || new bootstrap.Modal(
+                    caseModalEl);
+                caseModal.hide();
+
+                // hidden.bs.modal par second modal open
+                caseModalEl.addEventListener('hidden.bs.modal', function handler() {
+                    const downloadModal = new bootstrap.Modal(downloadModalEl);
+                    downloadModal.show();
+                    caseModalEl.removeEventListener('hidden.bs.modal', handler);
+                });
+
+            });
+
+            // GLOBAL CLEANUP: jab koi bhi modal close ho
+            document.body.addEventListener('hidden.bs.modal', function() {
+                setTimeout(() => {
+                    if (!document.querySelector('.modal.show')) {
+                        document.querySelectorAll('.modal-backdrop').forEach(b => b.remove());
+                        document.body.classList.remove('modal-open');
+                        document.body.style.overflow = '';
+                        document.body.style.paddingRight = '';
+                    }
+                }, 300);
+            });
+
+        });
+    </script>
 @endpush

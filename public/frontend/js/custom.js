@@ -1,3 +1,34 @@
+//================ brand slidder ==========================
+
+var swiper = new Swiper(".brandSwiper", {
+    slidesPerView: 5,
+    spaceBetween: 30,
+    loop: true,
+    speed: 4000, // smooth continuous speed
+    autoplay: {
+        delay: 0,
+        disableOnInteraction: false,
+    },
+    allowTouchMove: false, // auto slide only
+    breakpoints: {
+        0: {
+            slidesPerView: 2,
+        },
+        576: {
+            slidesPerView: 3,
+        },
+        768: {
+            slidesPerView: 4,
+        },
+        1200: {
+            slidesPerView: 5,
+        }
+    }
+});
+
+
+// ============ model js ================
+
 
 // ======================== faqs js ===============================
 

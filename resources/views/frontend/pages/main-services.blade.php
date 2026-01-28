@@ -867,7 +867,7 @@
                         </div>
                     </div>
                     <p class="text-white">Let’s make something great work Together. <a href="">Get Free
-                                    Quote</a></p>
+                            Quote</a></p>
                 </div>
 
                 <!-- RIGHT COLUMN -->
@@ -932,9 +932,13 @@
     {{-- ===================== bg-image-section ====================== --}}
 
 
-    <section class="bg-image-section"
+    {{-- <section class="bg-image-section"
         style="background-image: url('{{ asset('frontend/images/main-services/bg-image.png') }}');">
-    </section>
+    </section> --}}
+
+
+    <x-career />
+
 
     {{-- ================================ contact-form-section ================================ --}}
 
@@ -1090,5 +1094,4 @@
 @endsection
 
 @push('frontend-scripts')
-    <script></script>
 @endpush

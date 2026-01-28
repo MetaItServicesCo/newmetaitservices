@@ -118,8 +118,8 @@
         /* HEADER */
         .updates-header {
             /* display: flex;
-                                                    justify-content: center;
-                                                    align-items: center; */
+                                                                                                                                            justify-content: center;
+                                                                                                                                            align-items: center; */
             margin-bottom: 20px;
             text-align: center;
         }
@@ -178,15 +178,15 @@
 
         .cat-btn {
             min-width: 192px;
-            height: 72px;
+            height: 50px;
             border-radius: 12px;
             background: #000000;
             color: #ffffff;
             border: none;
-            font-size: 30px;
-            font-weight: 700;
-            line-height: 160%;
-            letter-spacing: 0;
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 120%;
+            letter-spacing: 0.4px;
         }
 
         .cat-btn.active {
@@ -197,8 +197,8 @@
         /* card */
         .portfolio-cardd {
             width: 100%;
-            max-width: 657px;
-            height: 560px;
+            max-width: 360px;
+            height: 450px;
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
@@ -238,7 +238,7 @@
         /* CONTENT ON IMAGE */
         .card-content {
             position: absolute;
-            bottom: 40px;
+            bottom: 30px;
             left: 30px;
             right: 30px;
             color: #ffffff;
@@ -256,7 +256,7 @@
             line-height: 150%;
         }
 
-       
+
 
         @media(max-width:768px) {
             .categories-wrapper {
@@ -276,6 +276,120 @@
             }
 
 
+        }
+
+        /* ============ health model ============== */
+
+        /* MODAL BG & RADIUS */
+        .health-modal {
+            background: #D9D9D9;
+            border-radius: 20px;
+            border: none;
+        }
+
+        /* LEFT IMAGE */
+        .modal-left img {
+            width: 100%;
+            max-width: 1054px;
+            height: 467px;
+            max-width: 100%;
+            object-fit: cover;
+            /* border-radius: 20px 0 0 20px; */
+        }
+
+        @media(max-width:768px) {
+            .modal-left img {
+                height: 100%;
+
+            }
+        }
+
+        /* RIGHT COLUMN */
+        .modal-right {
+            padding: 30px;
+        }
+
+        .modal-right img {
+            width: 100%;
+            max-width: 396px;
+            height: 188px;
+            max-width: 100%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        /* TITLE */
+        .modal-content-text h3 {
+            font-size: 30px;
+            font-weight: 700;
+            line-height: 25px;
+            font-family: Inter;
+            margin-bottom: 15px;
+        }
+
+        /* DESC */
+        .modal-content-text .desc {
+            font-size: 25px;
+            font-weight: 400;
+            line-height: 160%;
+            font-family: Inter;
+            margin-bottom: 15px;
+        }
+
+        /* LIST */
+        .modal-content-text ul {
+            padding-left: 18px;
+        }
+
+        .modal-content-text ul li {
+            font-size: 25px;
+            font-weight: 400;
+            line-height: 160%;
+            font-family: Inter;
+            margin-bottom: 6px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 30px;
+            height: 30px;
+            background: #3E4959;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            font-size: 16px;
+            line-height: 1;
+            cursor: pointer;
+            transition: 0.3s ease;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            background: #000;
+        }
+
+        .btn-proposal {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 353px;
+            height: 67px;
+            background-color: #404959;
+            color: #ffffff;
+            font-size: 28px;
+            font-weight: 600;
+            text-align: center;
+            line-height: 25px;
+            font-family: Inter;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: 0.3s ease;
+        }
+
+        .btn-proposal:hover {
+            background-color: #2f3745;
         }
     </style>
 @endpush
@@ -360,7 +474,7 @@
             <div class="row mt-5 g-4">
                 <!-- CARD -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="portfolio-cardd">
+                    <div class="portfolio-cardd " data-bs-toggle="modal" data-bs-target="#healthModal">
 
                         <div class="image-wrapper">
                             <img src="{{ asset('frontend/images/blog/portfolio.png') }}" alt="">
@@ -378,7 +492,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="portfolio-cardd">
+                    <div class="portfolio-cardd " data-bs-toggle="modal" data-bs-target="#healthModal">
 
                         <div class="image-wrapper">
                             <img src="{{ asset('frontend/images/blog/portfolio.png') }}" alt="">
@@ -396,7 +510,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="portfolio-cardd">
+                    <div class="portfolio-cardd " data-bs-toggle="modal" data-bs-target="#healthModal">
 
                         <div class="image-wrapper">
                             <img src="{{ asset('frontend/images/blog/portfolio.png') }}" alt="">
@@ -413,7 +527,6 @@
 
                     </div>
                 </div>
-
 
 
                 <!-- PAGINATION -->
@@ -432,7 +545,67 @@
 
         </div>
     </section>
+    <div class="modal fade" id="healthModal" tabindex="-1">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content health-modal">
 
+                <div class="modal-body p-0 position-relative">
+
+                    <!-- CLOSE BUTTON -->
+                    <button type="button" class="modal-close" data-bs-dismiss="modal" aria-label="Close">
+                        ✕
+                    </button>
+
+                    <div class="container py-3">
+                        <div class="row g-4 p-4">
+
+                            <!-- LEFT COLUMN -->
+                            <div class="col-lg-8">
+                                <div class="modal-left">
+                                    <img src="{{ asset('frontend/images/large-img.png') }}" alt="">
+                                </div>
+                            </div>
+
+                            <!-- RIGHT COLUMN -->
+                            <div class="col-lg-4">
+                                <div class="modal-right">
+                                    <div class="row g-2">
+                                        <div class="col-12">
+                                            <img src="{{ asset('frontend/images/large-img.png') }}" alt="">
+                                        </div>
+                                        <div class="col-12">
+                                            <img src="{{ asset('frontend/images/large-img.png') }}" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- HEADING, DESCRIPTION & LIST -->
+                        <div class="modal-content-text mt-4 p-4">
+                            <h3>Hope Project Leads</h3>
+                            <p class="desc">
+                                Helping healthcare providers generate qualified leads through
+                                data-driven digital strategies.
+                            </p>
+                            <ul>
+                                <li>Lead generation strategy</li>
+                                <li>Healthcare focused campaigns</li>
+                                <li>Conversion optimization</li>
+                            </ul>
+                        </div>
+
+                        <div class="d-flex justify-content-center align-items-center">
+                            <a href="#" class="btn-proposal">Get A Proposal</a>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 
     <x-have-project />
 

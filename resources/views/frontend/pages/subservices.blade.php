@@ -458,6 +458,55 @@
         .Shopify-list strong {
             font-weight: 700;
         }
+
+
+        /* ===== REQUIRED BASE FIXES ===== */
+        body {
+            overflow-y: auto;
+        }
+
+        .marketing-section,
+        .marketing-section .container,
+        .marketing-section .row {
+            overflow: visible !important;
+            position: relative;
+        }
+
+        /* ===== DESKTOP ONLY ===== */
+        @media (min-width: 992px) {
+
+            .left-sticky-wrapper {
+                position: relative;
+            }
+
+            .left-sticky {
+                width: 100%;
+            }
+
+            .right-scroll {
+                max-height: calc(100vh - -300px);
+                overflow-y: auto;
+                padding-right: 10px;
+
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+
+            .right-scroll::-webkit-scrollbar {
+                width: 0;
+                background: transparent;
+            }
+
+            .right-scroll>* {
+                box-sizing: border-box;
+            }
+
+
+        }
+
+        .right-scroll {
+            scroll-behavior: smooth;
+        }
     </style>
 @endpush
 @section('frontend-content')
@@ -503,137 +552,145 @@
 
                 <!-- LEFT COLUMN -->
                 <div class="col-lg-4">
+                    <div class="left-sticky-wrapper">
 
-                    <!-- Services List -->
-                    <ul class="service-list">
-                        <li>
-                            <span>Engaging audiences</span>
-                            <img src="{{ asset('frontend/images/main-services/user-icon.png') }}" alt="">
-                        </li>
-                        <li>
-                            <span>Marketing research</span>
-                            <img src="{{ asset('frontend/images/main-services/loc-icon.png') }}" alt="">
-                        </li>
-                        <li>
-                            <span>Sales development</span>
-                            <img src="{{ asset('frontend/images/main-services/bag-icon.png') }}" alt="">
-                        </li>
-                        <li class="active">
-                            <span>Marketing campaign</span>
-                            <img src="{{ asset('frontend/images/main-services/camp-icon.png') }}" alt="">
+                        <div class="left-sticky">
+                            <!-- Services List -->
+                            <ul class="service-list">
+                                <li>
+                                    <span>Engaging audiences</span>
+                                    <img src="{{ asset('frontend/images/main-services/user-icon.png') }}" alt="">
+                                </li>
+                                <li>
+                                    <span>Marketing research</span>
+                                    <img src="{{ asset('frontend/images/main-services/loc-icon.png') }}" alt="">
+                                </li>
+                                <li>
+                                    <span>Sales development</span>
+                                    <img src="{{ asset('frontend/images/main-services/bag-icon.png') }}" alt="">
+                                </li>
+                                <li class="active">
+                                    <span>Marketing campaign</span>
+                                    <img src="{{ asset('frontend/images/main-services/camp-icon.png') }}" alt="">
 
-                        </li>
-                    </ul>
+                                </li>
+                            </ul>
 
-                    <!-- Question Card -->
-                    <div class="question-card mt-4">
-                        <h4>Have a Questions?</h4>
-                        <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, recusandae asperiores blanditiis
-                            vel quam excepturi beatae et, repellat ad reiciendis assumenda. </p>
+                            <!-- Question Card -->
+                            <div class="question-card mt-4">
+                                <h4>Have a Questions?</h4>
+                                <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, recusandae asperiores
+                                    blanditiis
+                                    vel quam excepturi beatae et, repellat ad reiciendis assumenda. </p>
 
-                        <a href="mailto:info@gmail.com" class="contact-btn">
-                            <i class="fa-solid fa-envelope"></i>
-                            info@gmail.com
-                        </a>
+                                <a href="mailto:info@gmail.com" class="contact-btn">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    info@gmail.com
+                                </a>
 
-                        <div class="phone-text mt-3">
-                            <i class="fa-solid fa-phone"></i>
-                            12345678
+                                <div class="phone-text mt-3">
+                                    <i class="fa-solid fa-phone"></i>
+                                    12345678
+                                </div>
+                            </div>
                         </div>
                     </div>
-
                 </div>
 
                 <!-- RIGHT COLUMN -->
                 <div class="col-lg-8">
 
-                    <h2 class="right-heading">{{ $subService->page_content['hero_section']['main_heading'] ?? '' }}</h2>
-                    <p class="right-desc">
-                        {{ $subService->page_content['hero_section']['short_description'] ?? '' }}</p>
+                    <div class="right-scroll">
 
-                    <div class="row align-items-cente campaign-card">
-                        <div class="col-md-7">
-                            <h5>{{ $subService->page_content['campaign_section']['title'] ?? '' }}</h5>
+                        <h2 class="right-heading">{{ $subService->page_content['hero_section']['main_heading'] ?? '' }}</h2>
+                        <p class="right-desc">
+                            {{ $subService->page_content['hero_section']['short_description'] ?? '' }}</p>
 
-                            @foreach ($subService->page_content['campaign_section']['points'] ?? [] as $point)
-                                <div class="campaign-item">
-                                    <i class="fa-solid fa-check"></i>
-                                    {{ $point }}
-                                </div>
-                            @endforeach
-                        </div>
+                        <div class="row align-items-cente campaign-card">
+                            <div class="col-md-7">
+                                <h5>{{ $subService->page_content['campaign_section']['title'] ?? '' }}</h5>
 
-                        <div class="col-md-5 text-center">
-                            <img src="{{ $subService->page_content['campaign_section']['image'] ? asset('storage/' . $subService->page_content['campaign_section']['image']) : asset('frontend/images/main-services/compaign-img.png') }}" alt=""
-                                class="campaign-img">
-                        </div>
-                    </div>
-
-
-                    <div class="row mt-5">
-
-                        <!-- Main Heading -->
-                        <h2 class="process-title">
-                            {{ $subService->page_content['development_process']['title'] ?? '' }}
-                        </h2>
-
-                        @foreach ($subService->page_content['development_process']['steps'] ?? [] as $index => $step)
-                            <!-- Item -->
-                            <div class="performance-item">
-                                <span class="performance-number">{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span>
-                                <h3 class="performance-subtitle">
-                                    {{ $step['title'] ?? '' }}
-                                </h3>
+                                @foreach ($subService->page_content['campaign_section']['points'] ?? [] as $point)
+                                    <div class="campaign-item">
+                                        <i class="fa-solid fa-check"></i>
+                                        {{ $point }}
+                                    </div>
+                                @endforeach
                             </div>
 
-                            <!-- Description -->
-                            <p class="performance-desc">
-                                {{ $step['description'] ?? '' }}
-                            </p>
-                        @endforeach
-
-                    </div>
-                    <!-- HEADING ROW -->
-                    <div class="row mt-4">
-                        <div class="col-lg-8 ">
-                            <h2 class="commitment-heading">
-                                {{ $subService->page_content['commitments_section']['title'] ?? '' }}</h2>
-                            <p class="commitment-desc">
-                                {{ $subService->page_content['commitments_section']['description'] ?? '' }}
-                            </p>
+                            <div class="col-md-5 text-center">
+                                <img src="{{ $subService->page_content['campaign_section']['image'] ? asset('storage/' . $subService->page_content['campaign_section']['image']) : asset('frontend/images/main-services/compaign-img.png') }}"
+                                    alt="" class="campaign-img">
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- CARDS ROW -->
-                    <div class="row g-3 mt-4">
 
-                        @foreach ($subService->page_content['commitments_section']['points'] ?? [] as $index => $point)
-                            <div class="col-lg-3 col-md-6">
-                                <div class="outer-commit">
-                                    <div class="inner-commit">
-                                        <div class="icon-box">
-                                            <img src="{{ $subService->page_content['commitments_section']['icons'][$index] ? asset('storage/' . $subService->page_content['commitments_section']['icons'][$index]) : asset('frontend/images/offer-icon.png') }}" alt="Web Design"
-                                                class="card-icon">
+                        <div class="row mt-5">
 
+                            <!-- Main Heading -->
+                            <h2 class="process-title">
+                                {{ $subService->page_content['development_process']['title'] ?? '' }}
+                            </h2>
+
+                            @foreach ($subService->page_content['development_process']['steps'] ?? [] as $index => $step)
+                                <!-- Item -->
+                                <div class="performance-item">
+                                    <span class="performance-number">{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span>
+                                    <h3 class="performance-subtitle">
+                                        {{ $step['title'] ?? '' }}
+                                    </h3>
+                                </div>
+
+                                <!-- Description -->
+                                <p class="performance-desc">
+                                    {{ $step['description'] ?? '' }}
+                                </p>
+                            @endforeach
+
+                        </div>
+                        <!-- HEADING ROW -->
+                        <div class="row mt-4">
+                            <div class="col-lg-8 ">
+                                <h2 class="commitment-heading">
+                                    {{ $subService->page_content['commitments_section']['title'] ?? '' }}</h2>
+                                <p class="commitment-desc">
+                                    {{ $subService->page_content['commitments_section']['description'] ?? '' }}
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- CARDS ROW -->
+                        <div class="row g-3 mt-4">
+
+                            @foreach ($subService->page_content['commitments_section']['points'] ?? [] as $index => $point)
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="outer-commit">
+                                        <div class="inner-commit">
+                                            <div class="icon-box">
+                                                <img src="{{ $subService->page_content['commitments_section']['icons'][$index] ? asset('storage/' . $subService->page_content['commitments_section']['icons'][$index]) : asset('frontend/images/offer-icon.png') }}"
+                                                    alt="Web Design" class="card-icon">
+
+                                            </div>
+                                            <h4>{{ $point['title'] ?? '' }}</h4>
+                                            <p>
+                                                {{ $point['sub_title'] ?? '' }}
+                                            </p>
                                         </div>
-                                        <h4>{{ $point['title'] ?? '' }}</h4>
-                                        <p>
-                                            {{ $point['sub_title'] ?? '' }}
-                                        </p>
                                     </div>
                                 </div>
-                            </div>
-                        @endforeach
-                    </div>
-
-                    <div class="row mt-4">
-                        <h2 class="Shopify-heading">{{ $subService->page_content['why_choose_section']['title'] ?? '' }}
-                        </h2>
-                        <ul class="Shopify-list ">
-                            @foreach ($subService->page_content['why_choose_section']['points'] ?? [] as $point)
-                                <li><strong>{{ $point['strong_text'] ?? '' }}</strong> {{ $point['text'] ?? '' }}</li>
                             @endforeach
-                        </ul>
+                        </div>
+
+                        <div class="row mt-4">
+                            <h2 class="Shopify-heading">
+                                {{ $subService->page_content['why_choose_section']['title'] ?? '' }}
+                            </h2>
+                            <ul class="Shopify-list ">
+                                @foreach ($subService->page_content['why_choose_section']['points'] ?? [] as $point)
+                                    <li><strong>{{ $point['strong_text'] ?? '' }}</strong> {{ $point['text'] ?? '' }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
@@ -663,5 +720,49 @@
 
 
 @push('frontend-scripts')
-    <script></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+            const left = document.querySelector(".left-sticky");
+            const right = document.querySelector(".right-scroll");
+
+            if (!left || !right) return;
+
+            const offsetTop = 100;
+            let lastScrollTop = 0;
+            const upThreshold = 5; // 👈 tiny movement ignore
+
+            right.addEventListener("scroll", function() {
+
+                const currentScroll = right.scrollTop;
+                const maxScroll = right.scrollHeight - right.clientHeight;
+
+                /* 🛑 Scroll END → fixed band */
+                if (currentScroll >= maxScroll - 2) {
+                    left.style.position = "static";
+                    left.style.top = "auto";
+                    left.style.width = "auto";
+                    lastScrollTop = currentScroll;
+                    return;
+                }
+
+                /* 🔼 REAL scroll UP */
+                if (lastScrollTop - currentScroll > upThreshold) {
+                    left.style.position = "static";
+                    left.style.top = offsetTop + "px";
+                    left.style.width = left.offsetWidth + "px";
+                }
+
+                /* 🔽 REAL scroll DOWN */
+                if (currentScroll - lastScrollTop > upThreshold) {
+                    left.style.position = "static";
+                    left.style.top = "auto";
+                    left.style.width = "auto";
+                }
+
+                lastScrollTop = currentScroll;
+            });
+
+        });
+    </script>
 @endpush
