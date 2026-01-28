@@ -102,12 +102,12 @@ class TermsAndConditionsController extends Controller
         }
     }
 
-    public function landingPage()
+    public function term()
     {
         try {
 
             $data = TermsAndConditions::first();
-            return view('frontend.pages.termspage', compact('data'));
+            return view('frontend.pages.term', compact('data'));
         } catch (\Throwable $e) {
 
             // Log the error

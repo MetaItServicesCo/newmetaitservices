@@ -969,48 +969,26 @@
                     <!-- SLIDER -->
                     <div class="custom-slider">
                         <div class="slider-track">
+                            @if (!empty($industry['sub_details']['hero_slider']) && is_array($industry['sub_details']['hero_slider']))
+                                @foreach ($industry['sub_details']['hero_slider'] as $item)
+                                    <div class="health-card" data-bs-toggle="modal" data-bs-target="#healthModal">
+                                        <img src="{{ !empty($item['image'])
+                                            ? asset('storage/' . $item['image'])
+                                            : asset('frontend/images/industry/subind-img.png') }}"
+                                            alt="{{ $item['image_alt'] ?? 'Industry Image' }}">
 
-                            <div class="health-card" data-bs-toggle="modal" data-bs-target="#healthModal">
-                                <img src="{{ asset('frontend/images/industry/subind-img.png') }}">
-                                <h4>Hope Project Leads</h4>
-                                <p>Helping healthcare providers generate qualified leads.</p>
-                            </div>
+                                        <h4>{{ $item['title'] ?? '' }}</h4>
 
+                                        <p>{{ $item['excerpt'] ?? '' }}</p>
 
-                            <div class="health-card" data-bs-toggle="modal" data-bs-target="#healthModal">
-                                <img src="{{ asset('frontend/images/industry/subind-img.png') }}">
-                                <h4>Medical Growth</h4>
-                                <p>Targeted marketing solutions for patient acquisition.</p>
-                            </div>
-
-                            <div class="health-card" data-bs-toggle="modal" data-bs-target="#healthModal">
-                                <img src="{{ asset('frontend/images/industry/subind-img.png') }}">
-                                <h4>Clinic Expansion</h4>
-                                <p>Data-driven campaigns for long-term growth.</p>
-                            </div>
-
-                            <div class="health-card" data-bs-toggle="modal" data-bs-target="#healthModal">
-                                <img src="{{ asset('frontend/images/industry/subind-img.png') }}">
-                                <h4>Hospital Reach</h4>
-                                <p>Performance marketing for healthcare brands.</p>
-                            </div>
-                            <div class="health-card" data-bs-toggle="modal" data-bs-target="#healthModal">
-                                <img src="{{ asset('frontend/images/industry/subind-img.png') }}">
-                                <h4>Hospital Reach</h4>
-                                <p>Performance marketing for healthcare brands.</p>
-                            </div>
-                            <div class="health-card" data-bs-toggle="modal" data-bs-target="#healthModal">
-                                <img src="{{ asset('frontend/images/industry/subind-img.png') }}">
-                                <h4>Hospital Reach</h4>
-                                <p>Performance marketing for healthcare brands.</p>
-                            </div>
+                                    </div>
+                                @endforeach
+                            @endif
 
                         </div>
                     </div>
 
                 </div>
-
-
 
             </div>
 
