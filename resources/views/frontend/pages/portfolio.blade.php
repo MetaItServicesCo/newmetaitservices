@@ -118,8 +118,8 @@
         /* HEADER */
         .updates-header {
             /* display: flex;
-                                                                                                                                            justify-content: center;
-                                                                                                                                            align-items: center; */
+            justify-content: center;
+            align-items: center; */
             margin-bottom: 20px;
             text-align: center;
         }
@@ -453,16 +453,10 @@
 
                 <div class="categories-wrapper">
                     <div class="categories-track">
-                        <button class="cat-btn active">All Blogs</button>
-                        <button class="cat-btn">Technology</button>
-                        <button class="cat-btn">Design</button>
-                        <button class="cat-btn">Marketing</button>
-                        <button class="cat-btn">Healthcare</button>
-                        <button class="cat-btn">Education</button>
-                        <button class="cat-btn">SEO</button>
-                        <button class="cat-btn">AI</button>
-                        <button class="cat-btn">Business</button>
-                        <button class="cat-btn">Startup</button>
+                        <button class="cat-btn active">All</button>
+                        @foreach ($categories as $category)
+                            <button class="cat-btn">{{ $category->name }}</button>
+                        @endforeach
                     </div>
                 </div>
 
@@ -487,7 +481,6 @@
                                     using simple tools and best practices.
                                 </p>
                             </div>
-                        </div>
 
                     </div>
                 </div>
@@ -506,7 +499,6 @@
                                 </p>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">

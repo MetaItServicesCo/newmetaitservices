@@ -4,17 +4,27 @@ use App\Http\Controllers\Apps\PermissionManagementController;
 use App\Http\Controllers\Apps\RoleManagementController;
 use App\Http\Controllers\Apps\UserManagementController;
 use App\Http\Controllers\Auth\SocialiteController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CKEditorController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\GeneralSettingController;
+use App\Http\Controllers\IndustryController;
 use App\Http\Controllers\KpiSectionController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\SeoMetaController;
-use App\Http\Controllers\TestimonialController;
-use App\Http\Controllers\GeneralSettingController;
 use App\Http\Controllers\ServicesController;
+use App\Http\Controllers\TeamController;
+use App\Http\Controllers\TestimonialController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TermsAndConditionsController;
+use App\Http\Controllers\DisclaimerController;
+use App\Http\Controllers\PrivacyPolicyController;
+use App\Http\Controllers\BrandWeCarryController;
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -122,7 +132,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 
     // ===========================
-    // Services 
+    // Services
     // ===========================
     Route::controller(ServicesController::class)->prefix('admin/services')->as('admin.services.')->group(function () {
         Route::get('/', 'index')->name('list');
@@ -134,7 +144,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 
     // ===========================
-    // Sub Services 
+    // Sub Services
     // ===========================
     Route::controller(ServicesController::class)->prefix('admin/sub-services')->as('admin.sub-services.')->group(function () {
         Route::get('/', 'subServices')->name('list');
@@ -143,6 +153,79 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/{subService}/edit', 'subServiceedit')->name('edit');
         Route::put('/{subService}', 'subServiceupdate')->name('update');
         Route::delete('/{subService}', 'subServicedestroy')->name('destroy');
+    });
+
+    // ===========================
+    // Teams
+    // ===========================
+    Route::controller(TeamController::class)->prefix('admin/teams')->as('admin.teams.')->group(function () {
+        Route::get('/', 'index')->name('list');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/{team}/edit', 'edit')->name('edit');
+        Route::put('/{team}', 'update')->name('update');
+        Route::delete('/{team}', 'destroy')->name('destroy');
+    });
+
+    // ===========================
+    // Industries
+    // ===========================
+    Route::controller(IndustryController::class)->prefix('admin/industries')->as('admin.industries.')->group(function () {
+        Route::get('/', 'index')->name('list');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/{industry}/edit', 'edit')->name('edit');
+        Route::put('/{industry}', 'update')->name('update');
+        Route::delete('/{industry}', 'destroy')->name('destroy');
+    });
+
+    // ===========================
+    // Blog
+    // ===========================
+    Route::controller(BlogController::class)->prefix('admin/blogs')->as('admin-blogs.')->group(function () {
+        Route::get('/list', 'list')->name('list');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/upload', 'upload')->name('upload');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/{id}/edit', 'edit')->name('edit');
+        Route::put('/{id}/update', 'update')->name('update');
+        Route::delete('/{id}/destroy', 'destroy')->name('destroy');
+    });
+
+    // ===========================
+    // Privacy Policy
+    // ===========================
+    Route::controller(PrivacyPolicyController::class)->prefix('admin/privacy-policy')->as('admin-privacy-policy.')->group(function () {
+        Route::get('/', 'index')->name('page');
+        Route::post('/store', 'storeOrUpdate')->name('store');
+    });
+
+    // ===========================
+    // Terms & Conditions
+    // ===========================
+    Route::controller(TermsAndConditionsController::class)->prefix('admin/terms-conditions')->as('admin-terms-conditions.')->group(function () {
+        Route::get('/', 'index')->name('page');
+        Route::post('/store', 'storeOrUpdate')->name('store');
+    });
+
+    // ===========================
+    // Disclaimer
+    // ===========================
+    Route::controller(DisclaimerController::class)->prefix('admin/disclaimer')->as('admin-disclaimer.')->group(function () {
+        Route::get('/', 'index')->name('page');
+        Route::post('/store', 'storeOrUpdate')->name('store');
+    });
+
+    // ===========================
+    // Branch We Carry Cards
+    // ===========================
+    Route::controller(BrandWeCarryController::class)->prefix('admin/brand-we-carry')->as('admin.brand-we-carry.')->group(function () {
+        Route::get('/', 'list')->name('list');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/{id}/edit', 'edit')->name('edit');
+        Route::put('/{id}/update', 'update')->name('update');
+        Route::delete('/{id}/delete', 'destroy')->name('delete');
     });
 });
 

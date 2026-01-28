@@ -18,6 +18,7 @@ class Services extends Model
         'thumbnail',
         'thumbnail_alt',
         'engaging_content',
+        'faqs',
         'is_active',
         'meta_title',
         'meta_keywords',
@@ -29,6 +30,7 @@ class Services extends Model
      */
     protected $casts = [
         'engaging_content' => 'array',
+        'faqs' => 'array',
         'is_active' => 'boolean',
     ];
 }

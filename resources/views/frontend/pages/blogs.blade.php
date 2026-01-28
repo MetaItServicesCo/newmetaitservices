@@ -453,6 +453,58 @@
         </div>
     </section>
 
+    {{-- <section class="latest-updates">
+        <div class="container">
+
+            <!-- HEADER -->
+            <div class="updates-header">
+                <h2>Latest Updates</h2>
+            </div>
+
+            <!-- CATEGORIES WITH SIDE BUTTONS -->
+            <div class="categories-main">
+
+                <button class="circle-btn cat-prev">‹</button>
+
+                <div class="categories-wrapper">
+                    <div class="categories-track">
+                        <button class="cat-btn active" data-slug="all">All Blogs</button>
+                        @if (isset($categories) && $categories->count() > 0)
+                            @foreach ($categories as $category)
+                                <button class="cat-btn" data-slug="{{ $category->slug }}">{{ $category->name }}</button>
+                            @endforeach
+                        @endif
+                    </div>
+                </div>
+
+                <button class="circle-btn cat-next">›</button>
+
+            </div>
+
+            <!-- BLOG CARDS -->
+            <div class="row mt-5 ">
+                <div id="blogs-container">
+                    <!-- CARD -->
+                    @if (isset($blogs))
+                        @include('partials.blog-cards', ['blogs' => $blogs])
+                    @else
+                        <div class="col-12 text-center py-5">
+                            <p class="text-muted">No blogs available.</p>
+                        </div>
+                    @endif
+                </div>
+
+            </div>
+
+            <div class="mt-4" id="blogs-pagination-container">
+                @if (isset($blogs))
+                    {{ $blogs->links('vendor.pagination.blogs-pagination') }}
+                @endif
+            </div>
+
+        </div>
+    </section> --}}
+
     <section class="latest-updates">
         <div class="container">
 
@@ -470,16 +522,12 @@
 
                 <div class="categories-wrapper">
                     <div class="categories-track">
-                        <button class="cat-btn active">All Blogs</button>
-                        <button class="cat-btn">Technology</button>
-                        <button class="cat-btn">Design</button>
-                        <button class="cat-btn">Marketing</button>
-                        <button class="cat-btn">Healthcare</button>
-                        <button class="cat-btn">Education</button>
-                        <button class="cat-btn">SEO</button>
-                        <button class="cat-btn">AI</button>
-                        <button class="cat-btn">Business</button>
-                        <button class="cat-btn">Startup</button>
+                        <button class="cat-btn active" data-slug="all">All Blogs</button>
+                        @if (isset($categories) && $categories->count() > 0)
+                            @foreach ($categories as $category)
+                                <button class="cat-btn" data-slug="{{ $category->slug }}">{{ $category->name }}</button>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
 
@@ -488,176 +536,45 @@
             </div>
 
             <!-- BLOG CARDS -->
-            <div class="row mt-5 ">
+            <div class="row mt-5" id="blogs-container">
                 <!-- CARD -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="blog-card">
-                        <img src="{{ asset('frontend/images/blog/blog-img.png') }}" alt="">
-                        <div class="body ">
-                            <button class="blog-tag">Software Development</button>
-                            <h4>How to Make Website for School Project?</h4>
-                            <p>
-                                Learn step-by-step how to create a school project website
-                                using simple tools and best practices.
-                            </p>
-                            <div class="blog-footer">
-                                <span>By Maria · Dec 15, 2025</span>
-                                <a href="#">Read More →</a>
+                @if (isset($blogs))
+                    @foreach ($blogs as $item)
+                        <div class="col-lg-4 col-md-6">
+                            <div class="blog-card">
+                                <img src="{{ asset('storage/blog/images/' . $item->image) }}" alt="">
+                                <div class="body ">
+                                    <button class="blog-tag">{{ $item->category?->name ?? '' }}</button>
+                                    <h4>{{ \Str::limit($item->title, 60 ?? '') }}</h4>
+                                    <p>
+                                        {{ \Str::limit($item->short_description, 140) }}
+                                    </p>
+                                    <div class="blog-footer">
+                                        <span>{{ $item->created_at->format('M d, Y') }}</span>
+                                        <a href="{{ route('blog.detail', $item->slug) }}">Read More →</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                    @endforeach
+                @else
+                    <div class="col-12 text-center py-5">
+                        <p class="text-muted">No blogs available.</p>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="blog-card">
-                        <img src="{{ asset('frontend/images/blog/blog-img.png') }}" alt="">
-                        <div class="body ">
-                            <button class="blog-tag">Software Development</button>
-                            <h4>How to Make Website for School Project?</h4>
-                            <p>
-                                Learn step-by-step how to create a school project website
-                                using simple tools and best practices.
-                            </p>
-                            <div class="blog-footer">
-                                <span>By Maria · Dec 15, 2025</span>
-                                <a href="#">Read More →</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="blog-card">
-                        <img src="{{ asset('frontend/images/blog/blog-img.png') }}" alt="">
-                        <div class="body ">
-                            <button class="blog-tag">Software Development</button>
-                            <h4>How to Make Website for School Project?</h4>
-                            <p>
-                                Learn step-by-step how to create a school project website
-                                using simple tools and best practices.
-                            </p>
-                            <div class="blog-footer">
-                                <span>By Maria · Dec 15, 2025</span>
-                                <a href="#">Read More →</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="blog-card">
-                        <img src="{{ asset('frontend/images/blog/blog-img.png') }}" alt="">
-                        <div class="body ">
-                            <button class="blog-tag">Software Development</button>
-                            <h4>How to Make Website for School Project?</h4>
-                            <p>
-                                Learn step-by-step how to create a school project website
-                                using simple tools and best practices.
-                            </p>
-                            <div class="blog-footer">
-                                <span>By Maria · Dec 15, 2025</span>
-                                <a href="#">Read More →</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="blog-card">
-                        <img src="{{ asset('frontend/images/blog/blog-img.png') }}" alt="">
-                        <div class="body ">
-                            <button class="blog-tag">Software Development</button>
-                            <h4>How to Make Website for School Project?</h4>
-                            <p>
-                                Learn step-by-step how to create a school project website
-                                using simple tools and best practices.
-                            </p>
-                            <div class="blog-footer">
-                                <span>By Maria · Dec 15, 2025</span>
-                                <a href="#">Read More →</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="blog-card">
-                        <img src="{{ asset('frontend/images/blog/blog-img.png') }}" alt="">
-                        <div class="body ">
-                            <button class="blog-tag">Software Development</button>
-                            <h4>How to Make Website for School Project?</h4>
-                            <p>
-                                Learn step-by-step how to create a school project website
-                                using simple tools and best practices.
-                            </p>
-                            <div class="blog-footer">
-                                <span>By Maria · Dec 15, 2025</span>
-                                <a href="#">Read More →</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="blog-card">
-                        <img src="{{ asset('frontend/images/blog/blog-img.png') }}" alt="">
-                        <div class="body ">
-                            <button class="blog-tag">Software Development</button>
-                            <h4>How to Make Website for School Project?</h4>
-                            <p>
-                                Learn step-by-step how to create a school project website
-                                using simple tools and best practices.
-                            </p>
-                            <div class="blog-footer">
-                                <span>By Maria · Dec 15, 2025</span>
-                                <a href="#">Read More →</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="blog-card">
-                        <img src="{{ asset('frontend/images/blog/blog-img.png') }}" alt="">
-                        <div class="body ">
-                            <button class="blog-tag">Software Development</button>
-                            <h4>How to Make Website for School Project?</h4>
-                            <p>
-                                Learn step-by-step how to create a school project website
-                                using simple tools and best practices.
-                            </p>
-                            <div class="blog-footer">
-                                <span>By Maria · Dec 15, 2025</span>
-                                <a href="#">Read More →</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="blog-card">
-                        <img src="{{ asset('frontend/images/blog/blog-img.png') }}" alt="">
-                        <div class="body ">
-                            <button class="blog-tag">Software Development</button>
-                            <h4>How to Make Website for School Project?</h4>
-                            <p>
-                                Learn step-by-step how to create a school project website
-                                using simple tools and best practices.
-                            </p>
-                            <div class="blog-footer">
-                                <span>By Maria · Dec 15, 2025</span>
-                                <a href="#">Read More →</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endif
+
             </div>
 
             <!-- PAGINATION -->
-            <div class="pagination-wrap">
-                <button class="page-btn">‹</button>
-                <button class="page-btn active">1</button>
-                <button class="page-btn">2</button>
-                <button class="page-btn">3</button>
-                <span>…</span>
-                <button class="page-btn">15</button>
-                <button class="page-btn">›</button>
+            <div class="mt-4" id="blogs-pagination-container">
+                @if (isset($blogs))
+                    {{ $blogs->links('vendor.pagination.blogs-pagination') }}
+                @endif
             </div>
 
         </div>
     </section>
+
 
 
     <section class="latest-digital">
@@ -666,8 +583,6 @@
             <!-- HEADER -->
             <div class="updates-header">
                 <h2>Digital Marketing</h2>
-
-
             </div>
 
 
@@ -675,161 +590,30 @@
             <!-- BLOG CARDS -->
             <div class="row mt-5 ">
                 <!-- CARD -->
+                @foreach ($maketingBlogs as $item)
+                    <div class="col-lg-4 col-md-6">
+                        <div class="digital-card">
+                            <img src="{{ asset('storage/blog/images/' . $item->image) }}"
+                                alt="{{ $item->image_alt_text ?? '' }}">
+                            <div class="digital ">
+                                <h4>{{ \Str::limit($item->title, 60 ?? '') }}</h4>
+                                <p>
+                                    {{ \Str::limit($item->short_description, 100) }}
+                                </p>
+                                <span>{{ $item->created_at->format('M d, Y') }}</span>
+                                <a href="{{ route('blog.detail', $item->slug) }}">
+                                    <button class="digital-tag">Read More</button></a>
 
-                <div class="col-lg-4 col-md-6">
-                    <div class="digital-card">
-                        <img src="{{ asset('frontend/images/blog/blog-img.png') }}" alt="">
-                        <div class="digital ">
-                            <h4>How to Make Website for School Project?</h4>
-                            <p>
-                                Learn step-by-step how to create a school project website
-                                using simple tools and best practices.
-                            </p>
-                            <span>By Maria · Dec 15, 2025</span>
-
-                            <button class="digital-tag">Read More</button>
-
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="digital-card">
-                        <img src="{{ asset('frontend/images/blog/blog-img.png') }}" alt="">
-                        <div class="digital ">
-                            <h4>How to Make Website for School Project?</h4>
-                            <p>
-                                Learn step-by-step how to create a school project website
-                                using simple tools and best practices.
-                            </p>
-                            <span>By Maria · Dec 15, 2025</span>
-
-                            <button class="digital-tag">Read More</button>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="digital-card">
-                        <img src="{{ asset('frontend/images/blog/blog-img.png') }}" alt="">
-                        <div class="digital ">
-                            <h4>How to Make Website for School Project?</h4>
-                            <p>
-                                Learn step-by-step how to create a school project website
-                                using simple tools and best practices.
-                            </p>
-                            <span>By Maria · Dec 15, 2025</span>
-
-                            <button class="digital-tag">Read More</button>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="digital-card">
-                        <img src="{{ asset('frontend/images/blog/blog-img.png') }}" alt="">
-                        <div class="digital ">
-                            <h4>How to Make Website for School Project?</h4>
-                            <p>
-                                Learn step-by-step how to create a school project website
-                                using simple tools and best practices.
-                            </p>
-                            <span>By Maria · Dec 15, 2025</span>
-
-                            <button class="digital-tag">Read More</button>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="digital-card">
-                        <img src="{{ asset('frontend/images/blog/blog-img.png') }}" alt="">
-                        <div class="digital ">
-                            <h4>How to Make Website for School Project?</h4>
-                            <p>
-                                Learn step-by-step how to create a school project website
-                                using simple tools and best practices.
-                            </p>
-                            <span>By Maria · Dec 15, 2025</span>
-
-                            <button class="digital-tag">Read More</button>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="digital-card">
-                        <img src="{{ asset('frontend/images/blog/blog-img.png') }}" alt="">
-                        <div class="digital ">
-                            <h4>How to Make Website for School Project?</h4>
-                            <p>
-                                Learn step-by-step how to create a school project website
-                                using simple tools and best practices.
-                            </p>
-                            <span>By Maria · Dec 15, 2025</span>
-
-                            <button class="digital-tag">Read More</button>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="digital-card">
-                        <img src="{{ asset('frontend/images/blog/blog-img.png') }}" alt="">
-                        <div class="digital ">
-                            <h4>How to Make Website for School Project?</h4>
-                            <p>
-                                Learn step-by-step how to create a school project website
-                                using simple tools and best practices.
-                            </p>
-                            <span>By Maria · Dec 15, 2025</span>
-
-                            <button class="digital-tag">Read More</button>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="digital-card">
-                        <img src="{{ asset('frontend/images/blog/blog-img.png') }}" alt="">
-                        <div class="digital ">
-                            <h4>How to Make Website for School Project?</h4>
-                            <p>
-                                Learn step-by-step how to create a school project website
-                                using simple tools and best practices.
-                            </p>
-                            <span>By Maria · Dec 15, 2025</span>
-
-                            <button class="digital-tag">Read More</button>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="digital-card">
-                        <img src="{{ asset('frontend/images/blog/blog-img.png') }}" alt="">
-                        <div class="digital ">
-                            <h4>How to Make Website for School Project?</h4>
-                            <p>
-                                Learn step-by-step how to create a school project website
-                                using simple tools and best practices.
-                            </p>
-                            <span>By Maria · Dec 15, 2025</span>
-
-                            <button class="digital-tag">Read More</button>
-
-                        </div>
-                    </div>
-                </div>
-
+                @endforeach
             </div>
 
 
 
         </div>
     </section>
-
-
-
 
 @endsection
 
@@ -855,6 +639,74 @@
                 index--;
                 track.style.transform = `translateX(-${index * 205}px)`;
             }
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const container = document.getElementById('blogs-container');
+            const paginationContainer = document.getElementById('blogs-pagination-container');
+            const filterUrl = "{{ route('blogs.filter') }}";
+
+            let activeSlug = 'all';
+
+            function fetchBlogs(slug, page = 1) {
+                activeSlug = slug;
+
+                container.innerHTML = `
+            <div class="col-12 text-center py-5">
+                <div class="spinner-border"></div>
+            </div>
+        `;
+
+                fetch(`${filterUrl}?slug=${slug}&page=${page}`, {
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        container.innerHTML = data.html;
+                        paginationContainer.innerHTML = data.pagination;
+                    })
+                    .catch(() => {
+                        container.innerHTML = `
+                <div class="col-12 text-center text-danger py-5">
+                    Failed to load blogs.
+                </div>
+            `;
+                    });
+            }
+
+            /* CATEGORY CLICK */
+            document.querySelector('.categories-track')
+                .addEventListener('click', function(e) {
+                    const btn = e.target.closest('.cat-btn');
+                    if (!btn) return;
+
+                    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    fetchBlogs(btn.dataset.slug, 1);
+                });
+
+            /* PAGINATION CLICK (Laravel default links) */
+            paginationContainer.addEventListener('click', function(e) {
+                const btn = e.target.closest('.page-btn');
+                if (!btn || btn.classList.contains('disabled')) return;
+
+                const page = btn.dataset.page;
+                if (!page) return;
+
+                fetchBlogs(activeSlug, page);
+
+                document.querySelector('.latest-updates').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+
+
         });
     </script>
 @endpush

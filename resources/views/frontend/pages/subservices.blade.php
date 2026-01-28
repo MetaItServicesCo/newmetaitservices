@@ -708,7 +708,7 @@
 
     </div>
     {{-- ============ faqs ======== --}}
-    <x-faqs />
+    <x-faqs-component :faqs="$subService->faqs" />
 
 
     {{-- ========== services offer ============ --}}

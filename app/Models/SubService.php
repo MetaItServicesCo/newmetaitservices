@@ -14,6 +14,7 @@ class SubService extends Model
         'short_description',
         'main_points',
         'page_content',
+        'faqs',
         'is_active',
         'show_on_services_page',
         'show_on_landing_page',
@@ -25,6 +26,7 @@ class SubService extends Model
     protected $casts = [
         'main_points' => 'array',
         'page_content' => 'array',
+        'faqs' => 'array',
         'is_active' => 'boolean',
         'show_on_services_page' => 'boolean',
         'show_on_landing_page' => 'boolean',

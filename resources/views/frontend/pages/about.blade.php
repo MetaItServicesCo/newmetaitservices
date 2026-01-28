@@ -1,9 +1,9 @@
 @extends('frontend.layouts.frontend')
 
 {{-- @section('title', 'Home') --}}
-@section('meta_title', $data->meta_title ?? 'Meta IT Services')
-@section('meta_keywords', $data->meta_keywords ?? '')
-@section('meta_description', $data->meta_description ?? '')
+@section('meta_title', $seoMeta->meta_title ?? 'Meta IT Services')
+@section('meta_keywords', $seoMeta->meta_keywords ?? '')
+@section('meta_description', $seoMeta->meta_description ?? '')
 
 @push('frontend-styles')
     <style>
@@ -1198,78 +1198,19 @@
             <!-- TEAM GRID -->
             <div class="row ">
 
-                <!-- MEMBER 1 -->
-                <div class="col-lg-2 col-md-4 col-sm-6">
-                    <div class="team-card">
-                        <div class="team-img bg-blue">
-                            <img src="{{ asset('frontend/images/about/team-img1.png') }}" alt=""
-                                class="marg-left">
+                <!-- MEMBER -->
+                @foreach ($teams as $team)
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="team-card">
+                            <div class="team-img bg-blue">
+                                <img src="{{ $team->image ? asset('storage/teams/'.$team->image) : asset('frontend/images/about/team-img1.png') }}" alt=""
+                                    class="marg-left">
+                            </div>
+                            <h5 class="team-name">{{ $team->name ?? '' }}</h5>
+                            <p class="team-role">{{ $team->designation ?? '' }}</p>
                         </div>
-                        <h5 class="team-name">John Smith</h5>
-                        <p class="team-role">Digital Marketing Strategist</p>
                     </div>
-                </div>
-
-                <!-- MEMBER 2 -->
-                <div class="col-lg-2 col-md-4 col-sm-6">
-                    <div class="team-card">
-                        <div class="team-img bg-purple">
-                            <img src="{{ asset('frontend/images/about/rem-bg.png') }}" alt=""
-                                class="marg-right">
-                        </div>
-                        <h5 class="team-name">Sarah Khan</h5>
-                        <p class="team-role">Digital Marketing Strategist</p>
-                    </div>
-                </div>
-
-                <!-- MEMBER 3 -->
-                <div class="col-lg-2 col-md-4 col-sm-6">
-                    <div class="team-card">
-                        <div class="team-img bg-yellow">
-                            <img src="{{ asset('frontend/images/about/team-img3.png') }}" alt=""
-                                class="marg-right">
-                        </div>
-                        <h5 class="team-name">Ali Raza</h5>
-                        <p class="team-role">Digital Marketing Strategist</p>
-                    </div>
-                </div>
-
-                <!-- MEMBER 4 -->
-                <div class="col-lg-2 col-md-4 col-sm-6">
-                    <div class="team-card">
-                        <div class="team-img bg-blue">
-                            <img src="{{ asset('frontend/images/about/team-img4.png') }}" alt=""
-                                class="marg-righ">
-                        </div>
-                        <h5 class="team-name">Emma Stone</h5>
-                        <p class="team-role">Digital Marketing Strategist</p>
-                    </div>
-                </div>
-
-                <!-- MEMBER 5 -->
-                <div class="col-lg-2 col-md-4 col-sm-6">
-                    <div class="team-card">
-                        <div class="team-img bg-purple">
-                            <img src="{{ asset('frontend/images/about/rem-bg2.png') }}" alt=""
-                                class="marg-left">
-                        </div>
-                        <h5 class="team-name">David Lee</h5>
-                        <p class="team-role">Digital Marketing Strategist</p>
-                    </div>
-                </div>
-
-                <!-- MEMBER 6 -->
-                <div class="col-lg-2 col-md-4 col-sm-6">
-                    <div class="team-card">
-                        <div class="team-img bg-yellow">
-                            <img src="{{ asset('frontend/images/about/team-img6.png') }}" alt=""
-                                class="marg-left">
-                        </div>
-                        <h5 class="team-name">Ayesha Noor</h5>
-                        <p class="team-role">Digital Marketing Strategist</p>
-                    </div>
-                </div>
-
+                @endforeach
             </div>
 
         </div>
@@ -1278,9 +1219,12 @@
     {{-- ===================== bg-image-section ====================== --}}
     <div class="my-4">
         <x-career />
-
     </div>
-    <x-revenue />
+    
+
+    <!-- ========================== revnue section ============================== -->
+    <x-testimonial-component />
+
 
     {{-- ================= audit-section ======================= --}}
 
