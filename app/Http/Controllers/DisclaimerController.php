@@ -107,6 +107,7 @@ class DisclaimerController extends Controller
 
             $data = Disclaimer::first();
             return view('frontend.pages.disclaimer', compact('data'));
+
         } catch (\Throwable $e) {
 
             // Log the error

@@ -118,8 +118,8 @@
         /* HEADER */
         .updates-header {
             /* display: flex;
-            justify-content: center;
-            align-items: center; */
+                                    justify-content: center;
+                                    align-items: center; */
             margin-bottom: 20px;
             text-align: center;
         }
@@ -467,59 +467,26 @@
             <!-- BLOG CARDS -->
             <div class="row mt-5 g-4">
                 <!-- CARD -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="portfolio-cardd " data-bs-toggle="modal" data-bs-target="#healthModal">
+                @foreach ($portfolios as $portfolio)
+                    <div class="col-lg-4 col-md-6">
+                        <div class="portfolio-cardd " data-bs-toggle="modal" data-bs-target="#healthModal">
 
-                        <div class="image-wrapper">
-                            <img src="{{ asset('frontend/images/blog/portfolio.png') }}" alt="">
+                            <div class="image-wrapper">
+                                <img src="{{ $portfolio->thumbnail ? asset('storage/portfolios/thumbnails/' . $portfolio->thumbnail) : asset('frontend/images/blog/portfolio.png') }}"
+                                    alt="{{ $portfolio->image_alt ?? '' }}">
 
-                            <!-- OVERLAY CONTENT -->
-                            <div class="card-content">
-                                <h4>How to Make Website for School Project?</h4>
-                                <p>
-                                    Learn step-by-step how to create a school project website
-                                    using simple tools and best practices.
-                                </p>
-                            </div>
+                                <!-- OVERLAY CONTENT -->
+                                <div class="card-content">
+                                    <h4>{{ $portfolio->title ?? '' }}</h4>
+                                    <p>
+                                        {{ $portfolio->sub_title ?? '' }}
+                                    </p>
+                                </div>
 
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="portfolio-cardd " data-bs-toggle="modal" data-bs-target="#healthModal">
-
-                        <div class="image-wrapper">
-                            <img src="{{ asset('frontend/images/blog/portfolio.png') }}" alt="">
-
-                            <!-- OVERLAY CONTENT -->
-                            <div class="card-content">
-                                <h4>How to Make Website for School Project?</h4>
-                                <p>
-                                    Learn step-by-step how to create a school project website
-                                    using simple tools and best practices.
-                                </p>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="portfolio-cardd " data-bs-toggle="modal" data-bs-target="#healthModal">
-
-                        <div class="image-wrapper">
-                            <img src="{{ asset('frontend/images/blog/portfolio.png') }}" alt="">
-
-                            <!-- OVERLAY CONTENT -->
-                            <div class="card-content">
-                                <h4>How to Make Website for School Project?</h4>
-                                <p>
-                                    Learn step-by-step how to create a school project website
-                                    using simple tools and best practices.
-                                </p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
+                @endforeach
 
                 <!-- PAGINATION -->
                 <div class="pagination-wrap">

@@ -67,11 +67,10 @@
     <section class="privacy-hero">
         <div class="container">
             <div class="privacy-content text-center">
-                <h1>Disclaimer</h1>
+                <h1>{{ $data->hero_title ?? '' }}</h1>
 
                 <p>
-                    Learn how we collect, use, and protect your personal information
-                    to ensure transparency and trust.
+                    {{ $data->hero_subtitle ?? '' }}
                 </p>
 
                 <div class="breadcrumb-custom">
@@ -84,7 +83,7 @@
     </section>
 
 
-
+    {!! $data->content !!}
 
 @endsection
 

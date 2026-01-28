@@ -15,6 +15,7 @@ class PrivacyPolicyController extends Controller
         try {
 
             $data = PrivacyPolicy::first();
+
             return view('pages.privacy-policy.index', compact('data'));
 
         } catch (\Throwable $e) {
@@ -22,8 +23,8 @@ class PrivacyPolicyController extends Controller
             // Log the error
             Log::error('Privacy Policy index load failed', [
                 'error_message' => $e->getMessage(),
-                'file'          => $e->getFile(),
-                'line'          => $e->getLine(),
+                'file' => $e->getFile(),
+                'line' => $e->getLine(),
             ]);
 
             // Graceful fallback
@@ -39,11 +40,11 @@ class PrivacyPolicyController extends Controller
     {
         // Validation
         $validatedData = $request->validate([
-            'id'                => 'nullable|exists:privacy_policies,id',
-            'hero_title'        => 'required|string',
-            'hero_subtitle'     => 'nullable|string',
-            'content'           => 'nullable|string',
-    
+            'id' => 'nullable|exists:privacy_policies,id',
+            'hero_title' => 'required|string',
+            'hero_subtitle' => 'nullable|string',
+            'content' => 'nullable|string',
+
         ]);
 
         DB::beginTransaction();
@@ -52,14 +53,14 @@ class PrivacyPolicyController extends Controller
 
             // Data common for both create & update
             $data = [
-                'hero_title'       => $validatedData['hero_title'],
-                'hero_subtitle'    => $validatedData['hero_subtitle'] ?? null,
-                'content'          => $validatedData['content'] ?? null,
-                
-                'updated_by'       => Auth::id(),
+                'hero_title' => $validatedData['hero_title'],
+                'hero_subtitle' => $validatedData['hero_subtitle'] ?? null,
+                'content' => $validatedData['content'] ?? null,
+
+                'updated_by' => Auth::id(),
             ];
 
-            if (!empty($validatedData['id'])) {
+            if (! empty($validatedData['id'])) {
                 // UPDATE
                 $privacyPolicy = PrivacyPolicy::findOrFail($validatedData['id']);
                 $privacyPolicy->update($data);
@@ -75,7 +76,7 @@ class PrivacyPolicyController extends Controller
                 ->back()
                 ->with(
                     'success',
-                    !empty($validatedData['id'])
+                    ! empty($validatedData['id'])
                         ? 'Privacy Policy updated successfully.'
                         : 'Privacy Policy created successfully.'
                 );
@@ -85,10 +86,10 @@ class PrivacyPolicyController extends Controller
 
             Log::error('Privacy Policy store/update failed', [
                 'error_message' => $e->getMessage(),
-                'file'          => $e->getFile(),
-                'line'          => $e->getLine(),
-                'user_id'       => Auth::id(),
-                'request_data'  => $request->except(['_token']),
+                'file' => $e->getFile(),
+                'line' => $e->getLine(),
+                'user_id' => Auth::id(),
+                'request_data' => $request->except(['_token']),
             ]);
 
             return redirect()
@@ -99,20 +100,21 @@ class PrivacyPolicyController extends Controller
                 ]);
         }
     }
-    public function landingPage()
+
+    public function policy()
     {
         try {
 
             $data = PrivacyPolicy::first();
-            return view('frontend.pages.privacypolicy', compact('data'));
+            return view('frontend.pages.policy', compact('data'));
 
         } catch (\Throwable $e) {
 
             // Log the error
             Log::error('Privacy Policy frontend landing load failed', [
                 'error_message' => $e->getMessage(),
-                'file'          => $e->getFile(),
-                'line'          => $e->getLine(),
+                'file' => $e->getFile(),
+                'line' => $e->getLine(),
             ]);
 
             // Graceful fallback for frontend

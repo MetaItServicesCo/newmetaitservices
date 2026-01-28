@@ -26,11 +26,11 @@
     }
 </style>
 <section class="faq-section">
-@php
-    // $faqs can be: Collection of Faq models OR Collection/array of [{question,answer}]
-    $faqsCollection = $faqs instanceof \Illuminate\Support\Collection ? $faqs : collect($faqs);
+    @php
+        // $faqs can be: Collection of Faq models OR Collection/array of [{question,answer}]
+        $faqsCollection = $faqs instanceof \Illuminate\Support\Collection ? $faqs : collect($faqs);
 
-    // If empty, don't render anything
+        // If empty, don't render anything
 if ($faqsCollection->isEmpty()) {
     return;
 }
@@ -53,90 +53,90 @@ $getAnswer = function ($faq) {
 
 // Unique id so multiple components can work on same page
 $uid = 'faqs_' . uniqid();
-@endphp
-<section class="faq-section" id="{{ $uid }}">
-    <div class="container">
-        <div class="row align-items-start">
+    @endphp
+    <section class="faq-section" id="{{ $uid }}">
+        <div class="container">
+            <div class="row align-items-start">
 
-            <!-- LEFT -->
-            <div class="col-lg-5 faq-left">
-                <h2 class="faq-title">Frequently Asked Questions</h2>
-                <p class="faq-desc">
-                    Find answers to the most commonly asked questions about our
-                    platform, features, pricing, and support. Our team is always
-                    ready to help you. Find answers to the most commonly asked questions about our
-                    platform, features, pricing, and support. Our team is always
-                    ready to help you. Find answers to the most commonly asked questions about our
-                    platform, features, pricing, and support. Our team is always
-                    ready to help you. Find answers to the most commonly asked questions about our
-                    platform, features, pricing, and support. Our team is always
-                    ready to help you.
-                </p>
-            </div>
+                <!-- LEFT -->
+                <div class="col-lg-5 faq-left">
+                    <h2 class="faq-title">Frequently Asked Questions</h2>
+                    <p class="faq-desc">
+                        Find answers to the most commonly asked questions about our
+                        platform, features, pricing, and support. Our team is always
+                        ready to help you. Find answers to the most commonly asked questions about our
+                        platform, features, pricing, and support. Our team is always
+                        ready to help you. Find answers to the most commonly asked questions about our
+                        platform, features, pricing, and support. Our team is always
+                        ready to help you. Find answers to the most commonly asked questions about our
+                        platform, features, pricing, and support. Our team is always
+                        ready to help you.
+                    </p>
+                </div>
 
-            <!-- RIGHT -->
-            <div class="col-lg-7">
+                <!-- RIGHT -->
+                <div class="col-lg-7">
 
-                @foreach ($faqsCollection as $index => $faq)
-                    <div class="faq-item {{ $index >= 5 ? 'd-none' : '' }}">
-                        <div class="faq-header">
-                            <h3 class="fw-bold">{{ $faq->question }}</h3>
-                            <span class="faq-toggle"><i class="fa-solid fa-plus"></i></span>
+                    @foreach ($faqsCollection as $index => $faq)
+                        <div class="faq-item {{ $index >= 5 ? 'd-none' : '' }}">
+                            <div class="faq-header">
+                                <h3 class="fw-bold">{{ $getQuestion($faq) }}</h3>
+                                <span class="faq-toggle"><i class="fa-solid fa-plus"></i></span>
+                            </div>
+                            <div class="faq-content">
+                                <p>{{ $getAnswer($faq) }}</p>
+                            </div>
                         </div>
-                        <div class="faq-content">
-                            <p>{{ $getAnswer($faq) }}</p>
+                    @endforeach
+
+                    @if ($totalFaqs > 5)
+                        <div class="faq-btn-wrap">
+                            <button class="show-more-btn" type="button" data-faq-show-more="{{ $uid }}">
+                                Show More
+                            </button>
                         </div>
-                    </div>
-                @endforeach
+                    @endif
 
-                @if ($totalFaqs > 5)
-                    <div class="faq-btn-wrap">
-                        <button class="show-more-btn" type="button" data-faq-show-more="{{ $uid }}">
-                            Show More
-                        </button>
-                    </div>
-                @endif
-
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<script>
-    (function() {
-        const rootId = @json($uid);
-        const root = document.getElementById(rootId);
-        if (!root) return;
-
-
-        const STEP = 5; // per click how many to show
-        let visibleFaqCount = STEP;
+    <script>
+        (function() {
+            const rootId = @json($uid);
+            const root = document.getElementById(rootId);
+            if (!root) return;
 
 
-        const faqItems = root.querySelectorAll('.faq-item');
-        const showMoreBtn = root.querySelector('[data-faq-show-more="' + rootId + '"]');
+            const STEP = 5; // per click how many to show
+            let visibleFaqCount = STEP;
 
 
-        // If total <= 5, button is not rendered anyway (but safe check)
-        if (!showMoreBtn) return;
+            const faqItems = root.querySelectorAll('.faq-item');
+            const showMoreBtn = root.querySelector('[data-faq-show-more="' + rootId + '"]');
 
 
-        showMoreBtn.addEventListener('click', function() {
-            const nextVisible = Math.min(visibleFaqCount + STEP, faqItems.length);
+            // If total <= 5, button is not rendered anyway (but safe check)
+            if (!showMoreBtn) return;
 
 
-            for (let i = visibleFaqCount; i < nextVisible; i++) {
-                faqItems[i].classList.remove('d-none');
-            }
+            showMoreBtn.addEventListener('click', function() {
+                const nextVisible = Math.min(visibleFaqCount + STEP, faqItems.length);
 
 
-            visibleFaqCount = nextVisible;
+                for (let i = visibleFaqCount; i < nextVisible; i++) {
+                    faqItems[i].classList.remove('d-none');
+                }
 
 
-            // If no more hidden items, hide button
-            if (visibleFaqCount >= faqItems.length) {
-                showMoreBtn.style.display = 'none';
-            }
-        });
-    })();
-</script>
+                visibleFaqCount = nextVisible;
+
+
+                // If no more hidden items, hide button
+                if (visibleFaqCount >= faqItems.length) {
+                    showMoreBtn.style.display = 'none';
+                }
+            });
+        })();
+    </script>
