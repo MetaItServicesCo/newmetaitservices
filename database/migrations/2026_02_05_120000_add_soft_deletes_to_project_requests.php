@@ -13,11 +13,6 @@ return new class extends Migration
     {
         Schema::table('project_requests', function (Blueprint $table) {
             $table->softDeletes();
-            
-            // Add indexes if they don't exist
-            $table->index('email');
-            $table->index('selected_date');
-            $table->index('created_at');
         });
     }
 
@@ -28,11 +23,6 @@ return new class extends Migration
     {
         Schema::table('project_requests', function (Blueprint $table) {
             $table->dropSoftDeletes();
-            
-            // Drop indexes
-            $table->dropIndex(['email']);
-            $table->dropIndex(['selected_date']);
-            $table->dropIndex(['created_at']);
         });
     }
 };
