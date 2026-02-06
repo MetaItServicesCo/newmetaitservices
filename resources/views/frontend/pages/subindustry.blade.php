@@ -1016,12 +1016,63 @@
                 </h2>
 
                 <!-- Brand Names -->
-                <div class="brand-names d-flex justify-content-center flex-wrap gap-4 mt-4">
-                    <span class="brand">Brand One</span>
-                    <span class="brand">Brand Two</span>
-                    <span class="brand">Brand Three</span>
-                    <span class="brand">Brand Four</span>
-                </div>
+                <section class="brand-section py-5 my-3">
+                    <div class="container">
+                        <div class="swiper brandSwiper">
+                            <div class="swiper-wrapper">
+
+                                <div class="swiper-slide brand-item">
+                                    <img src="https://cdn.simpleicons.org/paypal/000000" alt="PayPal">
+                                </div>
+
+                                <div class="swiper-slide brand-item">
+                                    <img src="https://cdn.simpleicons.org/walmart/000000" alt="Walmart">
+                                </div>
+
+                                <div class="swiper-slide brand-item">
+                                    <img src="https://cdn.simpleicons.org/amazon/000000" alt="Amazon">
+                                </div>
+
+                                <div class="swiper-slide brand-item">
+                                    <img src="https://cdn.simpleicons.org/google/000000" alt="Google">
+                                </div>
+
+                                <div class="swiper-slide brand-item">
+                                    <img src="https://cdn.simpleicons.org/microsoft/000000" alt="Microsoft">
+                                </div>
+
+                                <div class="swiper-slide brand-item">
+                                    <img src="https://cdn.simpleicons.org/shopify/000000" alt="Shopify">
+                                </div>
+
+                                <div class="swiper-slide brand-item">
+                                    <img src="https://cdn.simpleicons.org/netflix/000000" alt="Netflix">
+                                </div>
+
+                                <div class="swiper-slide brand-item">
+                                    <img src="https://cdn.simpleicons.org/spotify/000000" alt="Spotify">
+                                </div>
+
+                                <div class="swiper-slide brand-item">
+                                    <img src="https://cdn.simpleicons.org/meta/000000" alt="Meta">
+                                </div>
+
+                                <div class="swiper-slide brand-item">
+                                    <img src="https://cdn.simpleicons.org/slack/000000" alt="Slack">
+                                </div>
+
+                                <div class="swiper-slide brand-item">
+                                    <img src="https://cdn.simpleicons.org/intel/000000" alt="Intel">
+                                </div>
+
+                                <div class="swiper-slide brand-item">
+                                    <img src="https://cdn.simpleicons.org/adobe/000000" alt="Adobe">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
             </div>
         </section>
@@ -1147,7 +1198,8 @@
                 <!-- TAB CONTENT -->
                 <div class="atomic-tab-content mt-4">
                     @foreach ($tabsItems as $index => $item)
-                        <p class="atomic-desc tab-content {{ $index === 0 ? 'active' : '' }}" id="tab{{ $index }}">
+                        <p class="atomic-desc tab-content {{ $index === 0 ? 'active' : '' }}"
+                            id="tab{{ $index }}">
                             {{ $item['content'] ?? '' }}
                         </p>
                     @endforeach
