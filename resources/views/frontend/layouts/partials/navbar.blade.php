@@ -233,213 +233,213 @@
             <div class="">
                 <a href="{{ route('contact-us') }}" class="btn btn-contact">Contact</a>
             </div>
-        </div>
 
-        <!-- ============ MEGA DROPDOWNS ============ -->
+            <!-- ============ MEGA DROPDOWNS ============ -->
 
-        <!-- INDUSTRY -->
+            <!-- INDUSTRY -->
 
 
-        <!-- INDUSTRY -->
-        <div class="mega-dropdown" id="mega-industry">
-            <div class="container">
-                <div class="row g-4">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="mega-card">
-                            <h3>Get Growing!</h3>
-                            <p>Make Your Business Impossible To Ignore</p>
-                            <a href="#" class="talk-btn">Let’s Talk</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-9 col-md-6">
-                        <div class="row">
-                            <h2 class="Ind-title">Industries We Serves</h2>
-                            <div class="col-lg-3 col-md-6">
-                                <h5 class="mega-title">Industries</h5>
-                                <div class="mega-links">
-                                    <a href="#"><span>Healthcare</span></a>
-                                    <a href="#"><span>Finance</span></a>
-                                    <a href="#"><span>E-Commerce</span></a>
-                                    <a href="#"><span>Education</span></a>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-md-6">
-                                <h5 class="mega-title">Enterprise</h5>
-                                <div class="mega-links">
-                                    <a href="#"><span>Retail</span></a>
-                                    <a href="#"><span>Manufacturing</span></a>
-                                    <a href="#"><span>Logistics</span></a>
-                                    <a href="#"><span>Real Estate</span></a>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-md-6">
-                                <h5 class="mega-title">Startup</h5>
-                                <div class="mega-links">
-                                    <a href="#"><span>MVP Development</span></a>
-                                    <a href="#"><span>Product Design</span></a>
-                                    <a href="#"><span>Scaling</span></a>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-md-6">
-                                <h5 class="mega-title">Startup</h5>
-                                <div class="mega-links">
-                                    <a href="#"><span>MVP Development</span></a>
-                                    <a href="#"><span>Product Design</span></a>
-                                    <a href="#"><span>Scaling</span></a>
-                                </div>
+            <!-- INDUSTRY -->
+            <div class="mega-dropdown" id="mega-industry">
+                <div class="container">
+                    <div class="row g-4">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="mega-card">
+                                <h3>Get Growing!</h3>
+                                <p>Make Your Business Impossible To Ignore</p>
+                                <a href="#" class="talk-btn">Let’s Talk</a>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- SERVICES -->
-        <div class="mega-dropdown" id="mega-services">
-            <div class="container">
-                <div class="row g-4">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="mega-card">
-                            <h3>Get Growing!</h3>
-                            <p>Make Your Business Impossible To Ignore</p>
-                            <a href="#" class="talk-btn">Let’s Talk</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-9 col-md-6">
-                        <div class="row g-4">
-                            <div class="col-lg-4 col-md-6">
-                                <h5 class="mega-title">Software Development</h5>
-
-                            </div>
-
-                            <div class="col-lg-4 col-md-6">
-                                <h5 class="mega-title">Marketing</h5>
-
-                            </div>
-
-                            <div class="col-lg-4 col-md-6">
-                                <h5 class="mega-title">Advanced Tech</h5>
-
-                            </div>
-
-                            <div class="col-lg-4 col-md-6">
-                                <h5 class="mega-title">Software Development</h5>
-
-                            </div>
-
-                            <div class="col-lg-4 col-md-6">
-                                <h5 class="mega-title">Marketing</h5>
-
-                            </div>
-
-                            <div class="col-lg-4 col-md-6">
-                                <h5 class="mega-title">Advanced Tech</h5>
-
-                            </div>
-                        </div>
-                        <div class="row mt-4">
-                            <h2 class="Ind-title">Choose Yours</h2>
-
-                            <div class="col-lg-4 col-md-6">
-
-                                <h5 class="mega-title">Software Development</h5>
-                                <div class="mega-links">
-                                    <a href="#"><span>Web App Development</span></a>
-                                    <a href="#"><span>Mobile App Development</span></a>
-                                    <a href="#"><span>Mulesoft</span></a>
-                                    <a href="#"><span>Payment Integrations</span></a>
+                        <div class="col-lg-9 col-md-6">
+                            <div class="row">
+                                <h2 class="Ind-title">Industries We Serves</h2>
+                                <div class="col-lg-3 col-md-6">
+                                    <h5 class="mega-title">Industries</h5>
+                                    <div class="mega-links">
+                                        <a href="#"><span>Healthcare</span></a>
+                                        <a href="#"><span>Finance</span></a>
+                                        <a href="#"><span>E-Commerce</span></a>
+                                        <a href="#"><span>Education</span></a>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="col-lg-4 col-md-6">
-                                <h5 class="mega-title">Marketing</h5>
-                                <div class="mega-links">
-                                    <a href="#"><span>SEO / AEO / GEO</span></a>
-                                    <a href="#"><span>Graphic Designing</span></a>
-                                    <a href="#"><span>Content Writing</span></a>
+                                <div class="col-lg-3 col-md-6">
+                                    <h5 class="mega-title">Enterprise</h5>
+                                    <div class="mega-links">
+                                        <a href="#"><span>Retail</span></a>
+                                        <a href="#"><span>Manufacturing</span></a>
+                                        <a href="#"><span>Logistics</span></a>
+                                        <a href="#"><span>Real Estate</span></a>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="col-lg-4 col-md-6">
-                                <h5 class="mega-title">Advanced Tech</h5>
-                                <div class="mega-links">
-                                    <a href="#"><span>Blockchain</span></a>
-                                    <a href="#"><span>IoT</span></a>
-                                    <a href="#"><span>Web 3</span></a>
+                                <div class="col-lg-3 col-md-6">
+                                    <h5 class="mega-title">Startup</h5>
+                                    <div class="mega-links">
+                                        <a href="#"><span>MVP Development</span></a>
+                                        <a href="#"><span>Product Design</span></a>
+                                        <a href="#"><span>Scaling</span></a>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <h5 class="mega-title">Startup</h5>
+                                    <div class="mega-links">
+                                        <a href="#"><span>MVP Development</span></a>
+                                        <a href="#"><span>Product Design</span></a>
+                                        <a href="#"><span>Scaling</span></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- ABOUT -->
-        <div class="mega-dropdown" id="mega-about">
-            <div class="container">
-                <div class="row g-4">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="mega-card">
-                            <h3>Get Growing!</h3>
-                            <p>Make Your Business Impossible To Ignore</p>
-                            <a href="#" class="talk-btn">Let’s Talk</a>
+            <!-- SERVICES -->
+            <div class="mega-dropdown" id="mega-services">
+                <div class="container">
+                    <div class="row g-4">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="mega-card">
+                                <h3>Get Growing!</h3>
+                                <p>Make Your Business Impossible To Ignore</p>
+                                <a href="#" class="talk-btn">Let’s Talk</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-9 col-md-6">
-                        <div class="row g-4">
-                            <h2 class="Ind-title">Meta It Services Info</h2>
+                        <div class="col-lg-9 col-md-6">
+                            <div class="row g-4">
+                                <div class="col-lg-4 col-md-6">
+                                    <h5 class="mega-title">Software Development</h5>
 
-                            <div class="col-lg-3 col-md-6">
-                                <h5 class="mega-title">Company</h5>
-                                <div class="mega-links">
-                                    <a href="#"><span>Who We Are</span></a>
-                                    <a href="#"><span>Mission & Vision</span></a>
+                                </div>
+
+                                <div class="col-lg-4 col-md-6">
+                                    <h5 class="mega-title">Marketing</h5>
+
+                                </div>
+
+                                <div class="col-lg-4 col-md-6">
+                                    <h5 class="mega-title">Advanced Tech</h5>
+
+                                </div>
+
+                                <div class="col-lg-4 col-md-6">
+                                    <h5 class="mega-title">Software Development</h5>
+
+                                </div>
+
+                                <div class="col-lg-4 col-md-6">
+                                    <h5 class="mega-title">Marketing</h5>
+
+                                </div>
+
+                                <div class="col-lg-4 col-md-6">
+                                    <h5 class="mega-title">Advanced Tech</h5>
 
                                 </div>
                             </div>
+                            <div class="row mt-4">
+                                <h2 class="Ind-title">Choose Yours</h2>
 
-                            <div class="col-lg-3 col-md-6">
-                                <h5 class="mega-title">Careers</h5>
-                                <div class="mega-links">
-                                    <a href="#"><span>Life at MetaIt</span></a>
+                                <div class="col-lg-4 col-md-6">
+
+                                    <h5 class="mega-title">Software Development</h5>
+                                    <div class="mega-links">
+                                        <a href="#"><span>Web App Development</span></a>
+                                        <a href="#"><span>Mobile App Development</span></a>
+                                        <a href="#"><span>Mulesoft</span></a>
+                                        <a href="#"><span>Payment Integrations</span></a>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="col-lg-3 col-md-6">
-                                <h5 class="mega-title">Resources</h5>
-                                <div class="mega-links">
-                                    <a href="#"><span>Blogs</span></a>
+                                <div class="col-lg-4 col-md-6">
+                                    <h5 class="mega-title">Marketing</h5>
+                                    <div class="mega-links">
+                                        <a href="#"><span>SEO / AEO / GEO</span></a>
+                                        <a href="#"><span>Graphic Designing</span></a>
+                                        <a href="#"><span>Content Writing</span></a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6">
-                                <h5 class="mega-title">Resources</h5>
-                                <div class="mega-links">
-                                    <a href="#"><span>Blogs</span></a>
+
+                                <div class="col-lg-4 col-md-6">
+                                    <h5 class="mega-title">Advanced Tech</h5>
+                                    <div class="mega-links">
+                                        <a href="#"><span>Blockchain</span></a>
+                                        <a href="#"><span>IoT</span></a>
+                                        <a href="#"><span>Web 3</span></a>
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6">
-                                <h2 class="mega-title2">Metait Portfolio</h2>
-
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <h2 class="mega-title2">Case Studies</h2>
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- ABOUT -->
+            <div class="mega-dropdown" id="mega-about">
+                <div class="container">
+                    <div class="row g-4">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="mega-card">
+                                <h3>Get Growing!</h3>
+                                <p>Make Your Business Impossible To Ignore</p>
+                                <a href="#" class="talk-btn">Let’s Talk</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-6">
+                            <div class="row g-4">
+                                <h2 class="Ind-title">Meta It Services Info</h2>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <h5 class="mega-title">Company</h5>
+                                    <div class="mega-links">
+                                        <a href="#"><span>Who We Are</span></a>
+                                        <a href="#"><span>Mission & Vision</span></a>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <h5 class="mega-title">Careers</h5>
+                                    <div class="mega-links">
+                                        <a href="#"><span>Life at MetaIt</span></a>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3 col-md-6">
+                                    <h5 class="mega-title">Resources</h5>
+                                    <div class="mega-links">
+                                        <a href="#"><span>Blogs</span></a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <h5 class="mega-title">Resources</h5>
+                                    <div class="mega-links">
+                                        <a href="#"><span>Blogs</span></a>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4 col-md-6">
+                                    <h2 class="mega-title2">Metait Portfolio</h2>
+
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <h2 class="mega-title2">Case Studies</h2>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
         </div>
-
-
-
-
-    </div>
-</nav>
+    </nav>
+</header>
 
 
 
