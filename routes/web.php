@@ -22,6 +22,7 @@ use App\Http\Controllers\TermsAndConditionsController;
 use App\Http\Controllers\DisclaimerController;
 use App\Http\Controllers\PrivacyPolicyController;
 use App\Http\Controllers\BrandWeCarryController;
+use App\Http\Controllers\CaseStudyController;
 
 
 
@@ -226,6 +227,64 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/{id}/edit', 'edit')->name('edit');
         Route::put('/{id}/update', 'update')->name('update');
         Route::delete('/{id}/delete', 'destroy')->name('delete');
+    });
+
+    // ===========================
+    // CaseStudy
+    // ===========================
+    Route::controller(CaseStudyController::class)->prefix('admin/case-studies')->as('admin.case-studies.')->group(function () {
+        Route::get('/', 'list')->name('list');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/{id}/edit', 'edit')->name('edit');
+        Route::put('/{id}/update', 'update')->name('update');
+        Route::delete('/{id}/delete', 'destroy')->name('delete');
+    });
+
+    // ===========================
+    // Project Requests
+    // ===========================
+    Route::controller(\App\Http\Controllers\ProjectRequestController::class)->prefix('admin/project-requests')->as('admin.project-requests.')->group(function () {
+        Route::get('/', 'list')->name('list');
+        Route::get('/{id}', 'show')->name('show');
+        Route::delete('/{id}', 'destroy')->name('destroy');
+    });
+
+    // ===========================
+    // Questions
+    // ===========================
+    Route::controller(\App\Http\Controllers\QuestionController::class)->prefix('admin/questions')->as('admin.questions.')->group(function () {
+        Route::get('/', 'index')->name('list');
+        Route::get('/{id}', 'show')->name('show');
+        Route::delete('/{id}', 'destroy')->name('destroy');
+    });
+
+    // ===========================
+    // Service Inquiries
+    // ===========================
+    Route::controller(\App\Http\Controllers\ServiceInquiryController::class)->prefix('admin/service-inquiries')->as('admin.service-inquiries.')->group(function () {
+        Route::get('/', 'index')->name('list');
+        Route::get('/{id}', 'show')->name('show');
+        Route::patch('/{id}/update-status', 'updateStatus')->name('update-status');
+        Route::delete('/{id}', 'destroy')->name('destroy');
+    });
+
+    // ===========================
+    // Case Study Downloads
+    // ===========================
+    Route::controller(CaseStudyController::class)->prefix('admin/case-study-downloads')->as('admin.case-study-downloads.')->group(function () {
+        Route::get('/', 'downloadsList')->name('list');
+        Route::get('/{id}', 'showDownload')->name('show');
+        Route::delete('/{id}', 'destroyDownload')->name('destroy');
+    });
+
+    // ===========================
+    // Contact Inquiries
+    // ===========================
+    Route::controller(\App\Http\Controllers\ContactInquiryController::class)->prefix('admin/contact-inquiries')->as('admin.contact-inquiries.')->group(function () {
+        Route::get('/', 'index')->name('list');
+        Route::get('/{id}', 'show')->name('show');
+        Route::delete('/{id}', 'destroy')->name('destroy');
     });
 });
 

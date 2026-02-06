@@ -255,7 +255,11 @@ class BlogController extends Controller
 
             $maketingBlogs = Blog::where('type', 'marketing')->where('is_active', 1)->latest()->take(9)->select('id', 'title', 'slug', 'short_description', 'image_alt_text', 'created_at', 'image')->get();
 
-            return view('frontend.pages.blogs', compact('categories', 'blogs', 'maketingBlogs'));
+            $seoMeta = \App\Models\SeoMeta::where('page_name', 'blog')
+                ->where('is_active', 1)
+                ->first();
+
+            return view('frontend.pages.blogs', compact('categories', 'blogs', 'maketingBlogs', 'seoMeta'));
         } catch (\Throwable $e) {
             Log::error('Blog Landing Page Error: '.$e->getMessage(), [
                 'trace' => $e->getTraceAsString(),

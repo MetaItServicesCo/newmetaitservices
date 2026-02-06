@@ -88,7 +88,7 @@
             your business goals and long-term growth.
         </p>
 
-        <a href="#" class="contact-btn">
+        <a href="javascript:void(0)" class="contact-btn" data-bs-toggle="modal" data-bs-target="#projectModal">
             Contact Us
         </a>
 

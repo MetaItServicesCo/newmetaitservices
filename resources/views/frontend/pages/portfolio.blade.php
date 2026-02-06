@@ -1,9 +1,9 @@
 @extends('frontend.layouts.frontend')
 
 {{-- @section('title', 'Home') --}}
-@section('meta_title', $data->meta_title ?? 'Meta IT Services')
-@section('meta_keywords', $data->meta_keywords ?? '')
-@section('meta_description', $data->meta_description ?? '')
+@section('meta_title', $seoMeta->meta_title ?? 'Meta IT Services')
+@section('meta_keywords', $seoMeta->meta_keywords ?? '')
+@section('meta_description', $seoMeta->meta_description ?? '')
 
 @push('frontend-styles')
     <style>
@@ -118,8 +118,8 @@
         /* HEADER */
         .updates-header {
             /* display: flex;
-                                    justify-content: center;
-                                    align-items: center; */
+                                                                                justify-content: center;
+                                                                                align-items: center; */
             margin-bottom: 20px;
             text-align: center;
         }
@@ -391,6 +391,35 @@
         .btn-proposal:hover {
             background-color: #2f3745;
         }
+
+        /* Loader overlay */
+        .portfolio-loader {
+            position: relative;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Spinner */
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #ddd;
+            border-top: 4px solid #000;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
     </style>
 @endpush
 
@@ -453,9 +482,12 @@
 
                 <div class="categories-wrapper">
                     <div class="categories-track">
-                        <button class="cat-btn active">All</button>
+                        <button class="cat-btn {{ empty($categoryId) ? 'active' : '' }}" data-id="">All</button>
                         @foreach ($categories as $category)
-                            <button class="cat-btn">{{ $category->name }}</button>
+                            <button class="cat-btn {{ isset($categoryId) && $categoryId == $category->id ? 'active' : '' }}"
+                                data-id="{{ $category->id }}">
+                                {{ $category->name }}
+                            </button>
                         @endforeach
                     </div>
                 </div>
@@ -464,42 +496,15 @@
 
             </div>
 
-            <!-- BLOG CARDS -->
-            <div class="row mt-5 g-4">
-                <!-- CARD -->
-                @foreach ($portfolios as $portfolio)
-                    <div class="col-lg-4 col-md-6">
-                        <div class="portfolio-cardd " data-bs-toggle="modal" data-bs-target="#healthModal">
-
-                            <div class="image-wrapper">
-                                <img src="{{ $portfolio->thumbnail ? asset('storage/portfolios/thumbnails/' . $portfolio->thumbnail) : asset('frontend/images/blog/portfolio.png') }}"
-                                    alt="{{ $portfolio->image_alt ?? '' }}">
-
-                                <!-- OVERLAY CONTENT -->
-                                <div class="card-content">
-                                    <h4>{{ $portfolio->title ?? '' }}</h4>
-                                    <p>
-                                        {{ $portfolio->sub_title ?? '' }}
-                                    </p>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-
-                <!-- PAGINATION -->
-                <div class="pagination-wrap">
-                    <button class="page-btn">‹</button>
-                    <button class="page-btn active">1</button>
-                    <button class="page-btn">2</button>
-                    <button class="page-btn">3</button>
-                    <span>…</span>
-                    <button class="page-btn">15</button>
-                    <button class="page-btn">›</button>
-                </div>
+            <!-- PORTFOLIOS WRAPPER (IMPORTANT) -->
+            <div id="portfolio-wrapper">
+                @include('partials.portfolio-cards')
             </div>
 
+            <!-- AJAX LOADER -->
+            <div id="portfolio-loader" class="portfolio-loader d-none">
+                <div class="spinner"></div>
+            </div>
 
 
         </div>
@@ -521,39 +526,21 @@
                             <!-- LEFT COLUMN -->
                             <div class="col-lg-8">
                                 <div class="modal-left">
-                                    <img src="{{ asset('frontend/images/large-img.png') }}" alt="">
+                                    <img id="modal-main-image" src="" alt="">
                                 </div>
                             </div>
 
                             <!-- RIGHT COLUMN -->
                             <div class="col-lg-4">
                                 <div class="modal-right">
-                                    <div class="row g-2">
-                                        <div class="col-12">
-                                            <img src="{{ asset('frontend/images/large-img.png') }}" alt="">
-                                        </div>
-                                        <div class="col-12">
-                                            <img src="{{ asset('frontend/images/large-img.png') }}" alt="">
-                                        </div>
-                                    </div>
+                                    <div class="row g-2" id="modal-gallery"></div>
                                 </div>
                             </div>
 
                         </div>
 
                         <!-- HEADING, DESCRIPTION & LIST -->
-                        <div class="modal-content-text mt-4 p-4">
-                            <h3>Hope Project Leads</h3>
-                            <p class="desc">
-                                Helping healthcare providers generate qualified leads through
-                                data-driven digital strategies.
-                            </p>
-                            <ul>
-                                <li>Lead generation strategy</li>
-                                <li>Healthcare focused campaigns</li>
-                                <li>Conversion optimization</li>
-                            </ul>
-                        </div>
+                        <div class="modal-content-text mt-4 p-4"id="modal-description"></div>
 
                         <div class="d-flex justify-content-center align-items-center">
                             <a href="#" class="btn-proposal">Get A Proposal</a>
@@ -578,7 +565,6 @@
         const track = document.querySelector('.categories-track');
         const prev = document.querySelector('.cat-prev');
         const next = document.querySelector('.cat-next');
-
         let index = 0;
         const visible = 5;
 
@@ -595,5 +581,125 @@
                 track.style.transform = `translateX(-${index * 205}px)`;
             }
         });
+
+        // ================= CATEGORY FILTER =================
+        $(document).on('click', '.cat-btn', function() {
+            $('.cat-btn').removeClass('active');
+            $(this).addClass('active');
+
+            let categoryId = $(this).data('id') || '';
+            fetchPortfolios(categoryId, 1);
+        });
+
+
+        // ================= PAGINATION =================
+        $(document).on('click', '.page-btn:not([disabled])', function() {
+            let page = $(this).data('page');
+            let categoryId = $('.cat-btn.active').data('id') || '';
+
+            if (page) {
+                fetchPortfolios(categoryId, page);
+            }
+        });
+
+
+        // ================= AJAX FUNCTION =================
+        function fetchPortfolios(categoryId = '', page = 1) {
+            $.ajax({
+                url: "{{ route('portfolio') }}",
+                type: "GET",
+                data: {
+                    category_id: categoryId,
+                    page: page
+                },
+                beforeSend: function() {
+                    // Hide old content
+                    $('#portfolio-wrapper').hide();
+
+                    // Show loader
+                    $('#portfolio-loader').removeClass('d-none');
+                },
+                success: function(res) {
+                    // Inject new content
+                    $('#portfolio-wrapper').html(res);
+
+                    // Hide loader
+                    $('#portfolio-loader').addClass('d-none');
+
+                    // Show content
+                    $('#portfolio-wrapper').fadeIn(200);
+
+                    // Optional smooth scroll
+                    $('html, body').animate({
+                        scrollTop: $('#portfolio-wrapper').offset().top - 100
+                    }, 300);
+                },
+                error: function() {
+                    $('#portfolio-loader').addClass('d-none');
+
+                    $('#portfolio-wrapper')
+                        .html('<p class="text-danger text-center">Error loading portfolios</p>')
+                        .fadeIn(200);
+                }
+            });
+        }
+    </script>
+
+    <script>
+        $(document).on('click', '.portfolio-item', function() {
+
+            let portfolioId = $(this).data('id');
+
+            // Bootstrap 5 modal open
+            let modal = new bootstrap.Modal(document.getElementById('healthModal'));
+            modal.show();
+
+            // Reset modal content (loader state)
+            $('#modal-main-image').attr('src', '');
+            $('#modal-gallery').html('<p class="text-center">Loading...</p>');
+            $('#modal-description').html('');
+
+            $.ajax({
+                url: "{{ url('/portfolio') }}/" + portfolioId,
+                type: "GET",
+                success: function(res) {
+
+                    // MAIN IMAGE
+                    $('#modal-main-image').attr('src', res.thumbnail);
+
+                    // GALLERY
+                    let galleryHtml = '';
+                    if (res.gallery && res.gallery.length > 0) {
+                        res.gallery.forEach(function(img) {
+                            galleryHtml += `
+                            <div class="col-12">
+                                <img src="${img}"
+                                     class="img-fluid rounded gallery-thumb"
+                                     style="cursor:pointer"
+                                     onclick="changeMainImage('${img}')">
+                            </div>
+                        `;
+                        });
+                    } else {
+                        galleryHtml = `<p class="text-center">No gallery images</p>`;
+                    }
+
+                    $('#modal-gallery').html(galleryHtml);
+
+                    // DESCRIPTION (CKEditor HTML)
+                    $('#modal-description').html(res.description);
+                },
+                error: function() {
+                    $('#modal-gallery').html(
+                        '<p class="text-danger text-center">Error loading portfolio</p>'
+                    );
+                }
+            });
+        });
+
+        // Change main image on thumbnail click
+        function changeMainImage(src) {
+            $('#modal-main-image').attr('src', src);
+        }
     </script>
 @endpush

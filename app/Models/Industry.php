@@ -12,6 +12,9 @@ class Industry extends Model
         'description',
         'image',
         'image_alt',
+        'meta_title',
+        'meta_keywords',
+        'meta_description',
         'sub_details',
     ];
 

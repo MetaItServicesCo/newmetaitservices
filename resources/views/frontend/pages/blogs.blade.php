@@ -1,9 +1,9 @@
 @extends('frontend.layouts.frontend')
 
 {{-- @section('title', 'Home') --}}
-@section('meta_title', $data->meta_title ?? 'Meta IT Services')
-@section('meta_keywords', $data->meta_keywords ?? '')
-@section('meta_description', $data->meta_description ?? '')
+@section('meta_title', $seoMeta->meta_title ?? 'Meta IT Services')
+@section('meta_keywords', $seoMeta->meta_keywords ?? '')
+@section('meta_description', $seoMeta->meta_description ?? '')
 
 @push('frontend-styles')
     <style>

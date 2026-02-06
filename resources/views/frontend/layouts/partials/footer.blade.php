@@ -472,7 +472,11 @@
                 </div>
                 <div class="cta-text">
                     <span>Interested in working?</span>
-                    <p>Metait@gmail.com</p>
+                    @if (setting('email'))
+                        <p><a href="mailto:{{ setting('email') }}" class="text-white text-decoration-none hover-primary">
+                                {{ setting('email') }}
+                            </a></p>
+                    @endif
                 </div>
             </div>
         </div>
@@ -484,7 +488,9 @@
             <!-- COLUMN 1 (WIDE) -->
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="footer-logo-box">
-                    <img src="{{ asset('frontend/images/navbar-logo.png') }}" alt="Logo">
+                    @if (setting('site_logo'))
+                        <img src="{{ asset('storage/' . setting('site_logo')) }}" alt="{{ setting('site_name') }}">
+                    @endif
                 </div>
 
                 <p class="footer-desc">
@@ -493,16 +499,37 @@
                 </p>
 
                 <ul class="footer-contact">
-                    <li><i class="fa-solid fa-envelope"></i> Metait@gmail.com</li>
-                    <li><i class="fa-solid fa-phone"></i> 122345678</li>
-                    <li><i class="fa-solid fa-location-arrow"></i> USA</li>
+                    @if (setting('email'))
+                        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:{{ setting('email') }}"
+                                class="text-white text-decoration-none hover-primary">
+                                {{ setting('email') }}
+                            </a></li>
+                    @endif
+                    @if (setting('phone'))
+                        <li><i class="fa-solid fa-phone"></i> <a href="tel:{{ cleanPhone(setting('phone')) }}"
+                                class="text-white text-decoration-none hover-primary">
+                                {{ setting('phone') }}
+                            </a></li>
+                    @endif
+                    @if (setting('address'))
+                        <li><i class="fa-solid fa-location-arrow"></i> {{ setting('address') }}</li>
+                    @endif
                 </ul>
 
                 <div class="footer-social">
-                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    @if (setting('facebook'))
+                        <a href="{{ setting('facebook') }}" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                    @endif
+                    @if (setting('twitter'))
+                        <a href="{{ setting('twitter') }}" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                    @endif
+                    @if (setting('linkedin'))
+                        <a href="{{ setting('linkedin') }}" target="_blank"><i
+                                class="fa-brands fa-linkedin-in"></i></a>
+                    @endif
+                    @if (setting('instagram'))
+                        <a href="{{ setting('instagram') }}" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    @endif
                 </div>
             </div>
 
@@ -581,32 +608,44 @@
                 <div class="modal-body question-body">
                     <h6 class="form-heading">Enter your question below and a representative will get right back to you.
                     </h6>
-                    <form class="mt">
+                    <form class="mt" action="{{ route('question.submit') }}" method="post" id="questionForm">
+                        @csrf
 
-                        {{-- <label class="form-label-custom">Name</label> --}}
-                        <input type="text" class="question-input" placeholder="Enter your name">
+                        {{-- Name (required) --}}
+                        <input id="q_name" name="name" type="text" class="question-input required" placeholder="Enter your name">
+                        <span class="text-danger" id="error_name"></span>
 
-                        {{-- <label class="form-label-custom">Country</label> --}}
-                        <select class="question-input">
-                            <option>Select country</option>
-                            <option>Pakistan</option>
-                            <option>USA</option>
-                            <option>UK</option>
-                            <option>Canada</option>
+                        {{-- Country (required) --}}
+                        <select id="q_country" name="country" class="question-input required">
+                            <option value="">Select country</option>
+                            <option value="Pakistan">Pakistan</option>
+                            <option value="USA">USA</option>
+                            <option value="UK">UK</option>
+                            <option value="Canada">Canada</option>
                         </select>
+                        <span class="text-danger" id="error_country"></span>
 
-                        {{-- <label class="form-label-custom">Email</label> --}}
-                        <input type="email" class="question-input" placeholder="Enter your email">
+                        {{-- Email (required) --}}
+                        <input id="q_email" name="email" type="email" class="question-input required" placeholder="Enter your email">
+                        <span class="text-danger" id="error_email"></span>
 
-                        {{-- <label class="form-label-custom">Message</label> --}}
-                        <textarea class="question-input message-input" placeholder="Write your message"></textarea>
+                        {{-- Message (required) --}}
+                        <textarea id="q_message" name="message" class="question-input message-input required" placeholder="Write your message"></textarea>
+                        <span class="text-danger" id="error_message"></span>
 
                         <div class="form-check mt-2">
-                            <input class="form-check-input" type="checkbox" id="agree">
+                            <input class="form-check-input" type="checkbox" id="agree" name="agree" value="1">
                             <label class="form-check-label small" for="agree">
                                 By submitting you agree to receive SMS or emails for the provided channel.
                                 Rates may be applied.
                             </label>
+                        </div>
+
+                        <div class="col-12 form-group mb-3">
+                            <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+                            <div class="w-100" id="questionCaptcha" data-sitekey="{{ config('services.recaptcha.sitekey') }}">
+                            </div>
+                            <span class="text-danger" id="error_grecaptcha"></span>
                         </div>
 
                         <button type="submit" class="send-btn mt-2">Send</button>

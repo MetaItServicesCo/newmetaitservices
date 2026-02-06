@@ -107,7 +107,8 @@ class TermsAndConditionsController extends Controller
         try {
 
             $data = TermsAndConditions::first();
-            return view('frontend.pages.term', compact('data'));
+            $seoMeta = \App\Models\SeoMeta::where('page_name', 'terms_and_conditions')->where('is_active', 1)->first();
+            return view('frontend.pages.term', compact('data', 'seoMeta'));
         } catch (\Throwable $e) {
 
             // Log the error

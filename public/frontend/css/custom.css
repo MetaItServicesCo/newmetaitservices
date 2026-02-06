@@ -1692,3 +1692,300 @@ li {
     color: #fff;
     border-color: #F96037;
 }
+
+.founder-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .calendar {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 12px;
+            width: 100%;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            align-items: center;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .calendar-header button {
+            background: rgba(4, 67, 67, 0.09);
+            border: none;
+            font-size: 20px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.4s ease-in-out;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #949393;
+        }
+
+        .calendar-header button:hover {
+            background: #F38B5C;
+            color: #fff;
+
+        }
+
+        .calendar-week {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #044343;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 20px;
+        }
+
+        .calendar-day {
+            padding: 10px 0;
+            text-align: center;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 400;
+            font-family: 'Lexend Deca', sans-serif;
+        }
+
+        .calendar-day.active {
+            background: #F38B5C;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+
+            color: #fff;
+        }
+
+        /* 📱 Mobile */
+        @media (max-width: 576px) {
+            .calendar {
+                padding: 10px;
+            }
+
+            .calendar-header span {
+                font-size: 16px;
+            }
+
+            .calendar-day {
+                padding: 8px 0;
+                font-size: 13px;
+            }
+
+            .calendar-week span {
+                font-size: 12px;
+            }
+        }
+
+        .date-btn {
+            background: #BDC6C6;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            max-width: 140px;
+            height: 43.49px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .submitt-btnn {
+            background: #F38B5C;
+            border: none;
+            padding: 12px;
+            color: #fff;
+            border-radius: 12px;
+            width: 82px;
+            height: 43.49px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .day-btn {
+            background: transparent;
+            border: 1px solid #044343;
+            color: #044343;
+            padding: 6px 10px;
+            border-radius: 6px;
+            width: 189px;
+            height: 43.49px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.4s ease-in-out;
+        }
+
+        .day-btn:hover {
+            background: #044343;
+            color: #fff;
+
+        }
+
+        .day-btn.active {
+            background: rgba(243, 139, 92, 0.52);
+            color: #fff;
+            border: none;
+
+        }
+
+        .nav-logo {
+            max-width: 120px;
+        }
+
+        .head-msg {
+            font-family: 'Lexend Deca', sans-serif;
+            font-size: 7.65px;
+            font-weight: 400;
+            color: #044343;
+            line-height: 9.2px;
+        }
+
+        .dept-title {
+            font-family: 'Lexend Deca', sans-serif;
+            font-weight: 600;
+            font-size: 13px;
+            line-height: 21.4px;
+            color: #044343;
+        }
+
+        .bullet-text {
+            font-family: 'Lexend Deca', sans-serif;
+            color: #F38B5C;
+            font-weight: 500;
+            font-size: 9.18px;
+            margin-top: 12px;
+            position: relative;
+            padding-left: 14px;
+        }
+
+        .bullet-text::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #F38B5C;
+            font-size: 14px;
+            line-height: 1;
+        }
+
+        .desc-text {
+            font-family: 'Lexend Deca', sans-serif;
+            font-size: 11px;
+            font-weight: 400;
+            color: #044343;
+            margin-top: -16px;
+            line-height: 1.6;
+        }
+
+        .modal-header button:hover {
+            color: #F38B5C !important;
+
+        }
+
+        /* ============================ next ============================== */
+
+        .modal-title-main {
+            font-family: Inter;
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 41px;
+            color: #ffffff;
+            max-width: 800px;
+        }
+
+        /* LEFT CARD */
+        .info-card {
+            width: 100%;
+            max-width: 734px;
+            height: 213px;
+            background: #FCE2D6;
+            border-radius: 21px;
+            padding: 30px;
+            color: #044343;
+            font-family: Inter;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            /* align-items: center; */
+        }
+
+        /* FORM CARD */
+        .form-card {
+            background: #ffffff;
+            border-radius: 21px;
+            padding: 25px;
+            color: #000;
+        }
+
+        .form-title {
+            font-family: Inter;
+            font-weight: 600;
+        }
+
+        .form-subtitle {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .edit-link {
+            color: #F38B5C;
+            margin-left: 10px;
+            text-decoration: none;
+        }
+
+        /* INPUTS */
+        .custom-input {
+            width: 100%;
+            height: 40px;
+            border-radius: 12px;
+            border: 1px solid #F96037;
+            background: #EFEFEF;
+            padding: 0 15px;
+            font-family: Inter;
+        }
+
+        .custom-inputt {
+            height: 70px;
+            width: 100%;
+            border-radius: 12px;
+            border: 1px solid #F96037;
+            background: #EFEFEF;
+            font-family: Inter;
+            padding-left: 12px;
+        }
+
+        /* BUTTONS */
+        .back-btn {
+            width: 119px;
+            height: 40px;
+            background: #EFEFEF;
+            border: 1px solid #F96037;
+            border-radius: 12px;
+        }
+
+        .confirm-btn {
+            width: 119px;
+            height: 40px;
+            background: #F38B5C;
+            border: none;
+            color: #fff;
+            border-radius: 12px;
+        }

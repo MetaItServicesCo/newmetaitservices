@@ -196,8 +196,8 @@
 
 <nav class="navbar navbar-expand-lg custom-navbar">
     <div class="container  position-relative">
-        <a class="navbar-brand nav-logo-wrap" href="#">
-            <img src="{{ asset('frontend/images/navbar-logo.png') }}" alt="Logo" class="nav-logo">
+        <a class="navbar-brand nav-logo-wrap" href="{{ route('home') }}">
+            <img src="{{ asset('storage/' . setting('site_logo', 'frontend/images/logo.png')) }}" alt="{{ setting('site_name') }}" class="nav-logo">
         </a>
 
         <button class="navbar-toggler ms-auto" type="button">
@@ -212,26 +212,26 @@
                     </a>
                 </li>
                 <li class="nav-item mega-item" data-mega="industry">
-                    <a class="nav-link mega-trigger" href="#">
+                    <a class="nav-link mega-trigger" href="{{ route('industries') }}">
                         Industry <i class="fas fa-chevron-down"></i>
                     </a>
                 </li>
 
                 <li class="nav-item mega-item" data-mega="services">
-                    <a class="nav-link mega-trigger" href="#">
+                    <a class="nav-link mega-trigger" href="{{ route('services') }}">
                         Services <i class="fas fa-chevron-down"></i>
                     </a>
                 </li>
 
                 <li class="nav-item mega-item" data-mega="about">
-                    <a class="nav-link mega-trigger" href="#">
+                    <a class="nav-link mega-trigger" href="{{ route('about-us') }}">
                         About MetaIt <i class="fas fa-chevron-down"></i>
                     </a>
                 </li>
             </ul>
 
             <div class="">
-                <a href="#" class="btn btn-contact">Contact</a>
+                <a href="{{ route('contact-us') }}" class="btn btn-contact">Contact</a>
             </div>
         </div>
 

@@ -1,2 +1,43 @@
 User-agent: *
-Disallow:
+Allow: /
+Allow: /services
+Allow: /service/
+Allow: /about
+Allow: /industries
+Allow: /industry/
+Allow: /blogs
+Allow: /blog/
+Allow: /portfolio
+Allow: /portfolio/
+Allow: /casestudy
+Allow: /contact
+Allow: /policy
+Allow: /term
+Allow: /disclaimer
+Allow: /sitemap.xml
+Allow: /sitemap-index.xml
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /dashboard
+Disallow: /login
+Disallow: /register
+Disallow: /password/
+Disallow: /user-management/
+Disallow: /ajax/
+Disallow: /storage/
+Disallow: /vendor/
+Disallow: /node_modules/
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /*?*sort=
+Disallow: /*?*filter=
+Disallow: /*?*page=
+
+# Allow specific AJAX endpoints if needed (optional)
+# Allow: /ajax/blogs/filter
+# Allow: /ajax/industries/load-more
+
+Sitemap: https://newmetaitservices.com/sitemap.xml
+Sitemap: https://newmetaitservices.com/sitemap-index.xml
+

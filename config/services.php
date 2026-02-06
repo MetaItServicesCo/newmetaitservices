@@ -42,4 +42,9 @@ return [
         'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
         'redirect'      => '/auth/redirect/facebook',
     ],
+
+    'recaptcha' => [
+        'sitekey' => env('RECAPTCHA_SITE_KEY'),
+        'secret'  => env('RECAPTCHA_SECRET_KEY'),
+    ],
 ];

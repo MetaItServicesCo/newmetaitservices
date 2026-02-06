@@ -189,64 +189,22 @@
         </div>
     </div>
 
-    <section class="brand-section py-5 my-3">
-        <div class="container">
-            <div class="swiper brandSwiper">
-                <div class="swiper-wrapper">
-
-                    <div class="swiper-slide brand-item">
-                        <img src="https://cdn.simpleicons.org/paypal/000000" alt="PayPal">
+    @if(isset($brands) && $brands->count() > 0)
+        <section class="brand-section py-5 my-3">
+            <div class="container">
+                <div class="swiper brandSwiper">
+                    <div class="swiper-wrapper">
+                        @foreach ($brands as $brand)
+                            <div class="swiper-slide brand-item">
+                                <img src="{{ $brand->logo ? asset('storage/brands-we-carry/' . $brand->logo) : 'https://cdn.simpleicons.org/paypal/000000' }}" 
+                                     alt="{{ $brand->logo_alt ?? $brand->company_name }}">
+                            </div>
+                        @endforeach
                     </div>
-
-                    <div class="swiper-slide brand-item">
-                        <img src="https://cdn.simpleicons.org/walmart/000000" alt="Walmart">
-                    </div>
-
-                    <div class="swiper-slide brand-item">
-                        <img src="https://cdn.simpleicons.org/amazon/000000" alt="Amazon">
-                    </div>
-
-                    <div class="swiper-slide brand-item">
-                        <img src="https://cdn.simpleicons.org/google/000000" alt="Google">
-                    </div>
-
-                    <div class="swiper-slide brand-item">
-                        <img src="https://cdn.simpleicons.org/microsoft/000000" alt="Microsoft">
-                    </div>
-
-                    <div class="swiper-slide brand-item">
-                        <img src="https://cdn.simpleicons.org/shopify/000000" alt="Shopify">
-                    </div>
-
-                    <div class="swiper-slide brand-item">
-                        <img src="https://cdn.simpleicons.org/netflix/000000" alt="Netflix">
-                    </div>
-
-                    <div class="swiper-slide brand-item">
-                        <img src="https://cdn.simpleicons.org/spotify/000000" alt="Spotify">
-                    </div>
-
-                    <div class="swiper-slide brand-item">
-                        <img src="https://cdn.simpleicons.org/meta/000000" alt="Meta">
-                    </div>
-
-                    <div class="swiper-slide brand-item">
-                        <img src="https://cdn.simpleicons.org/slack/000000" alt="Slack">
-                    </div>
-
-                    <div class="swiper-slide brand-item">
-                        <img src="https://cdn.simpleicons.org/intel/000000" alt="Intel">
-                    </div>
-
-                    <div class="swiper-slide brand-item">
-                        <img src="https://cdn.simpleicons.org/adobe/000000" alt="Adobe">
-                    </div>
-
                 </div>
             </div>
-        </div>
-    </section>
-
+        </section>
+    @endif
 
 </section>
 

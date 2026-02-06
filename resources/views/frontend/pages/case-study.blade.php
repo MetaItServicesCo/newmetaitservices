@@ -1,9 +1,9 @@
 @extends('frontend.layouts.frontend')
 
 {{-- @section('title', 'Home') --}}
-@section('meta_title', $data->meta_title ?? 'Meta IT Services')
-@section('meta_keywords', $data->meta_keywords ?? '')
-@section('meta_description', $data->meta_description ?? '')
+@section('meta_title', $seoMeta->meta_title ?? 'Meta IT Services')
+@section('meta_keywords', $seoMeta->meta_keywords ?? '')
+@section('meta_description', $seoMeta->meta_description ?? '')
 
 @push('frontend-styles')
     <style>
@@ -517,9 +517,6 @@
 
 
 @section('frontend-content')
-
-
-
     <section class="dm-services-section"
         style="background-image: url('{{ asset('frontend/images/about/about-hero.png') }}');">
 
@@ -625,88 +622,83 @@
             <h3 class="case-heading">Download The Case Study Below</h3>
 
             <div class="row g-4 justify-content-center">
-                <div class="col-lg-4 col-md-6">
-                    <div class="case-card" data-bs-toggle="modal" data-bs-target="#caseDetailModal">
-                        <img src="{{ asset('frontend/images/case.png') }}" alt="">
-                        <div class="overlay">
-                            <h4>Hope Project Leads</h4>
-                            <p>Strategic digital growth campaign that delivered outstanding results.</p>
+                @foreach ($caseStudies as $caseStudy)
+                    <div class="col-lg-4 col-md-6">
+                        <div class="case-card" data-bs-toggle="modal" data-bs-target="#caseDetailModal"
+                            data-id="{{ $caseStudy->id }}" data-title="{{ $caseStudy->title }}"
+                            data-subtitle="{{ $caseStudy->sub_title }}"
+                            data-image="{{ asset('storage/case_study/' . $caseStudy->image) }}"
+                            data-image-alt="{{ $caseStudy->image_alt }}" data-description='{!! htmlspecialchars($caseStudy->description, ENT_QUOTES, 'UTF-8') !!}'
+                            data-document="{{ $caseStudy->document ? asset('storage/case_study/' . $caseStudy->document) : '' }}">
+                            <img src="{{ asset('storage/case_study/' . $caseStudy->image) }}"
+                                alt="{{ $caseStudy->image_alt }}">
+                            <div class="overlay">
+                                <h4>{{ $caseStudy->title }}</h4>
+                                <p>{{ $caseStudy->sub_title }}</p>
+                            </div>
                         </div>
+
                     </div>
-
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="case-card" data-bs-toggle="modal" data-bs-target="#caseDetailModal">
-                        <img src="{{ asset('frontend/images/case.png') }}" alt="">
-                        <div class="overlay">
-                            <h4>Hope Project Leads</h4>
-                            <p>Strategic digital growth campaign that delivered outstanding results.</p>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="case-card" data-bs-toggle="modal" data-bs-target="#caseDetailModal">
-                        <img src="{{ asset('frontend/images/case.png') }}" alt="">
-                        <div class="overlay">
-                            <h4>Hope Project Leads</h4>
-                            <p>Strategic digital growth campaign that delivered outstanding results.</p>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="case-card" data-bs-toggle="modal" data-bs-target="#caseDetailModal">
-                        <img src="{{ asset('frontend/images/case.png') }}" alt="">
-                        <div class="overlay">
-                            <h4>Hope Project Leads</h4>
-                            <p>Strategic digital growth campaign that delivered outstanding results.</p>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="case-card" data-bs-toggle="modal" data-bs-target="#caseDetailModal">
-                        <img src="{{ asset('frontend/images/case.png') }}" alt="">
-                        <div class="overlay">
-                            <h4>Hope Project Leads</h4>
-                            <p>Strategic digital growth campaign that delivered outstanding results.</p>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="case-card" data-bs-toggle="modal" data-bs-target="#caseDetailModal">
-                        <img src="{{ asset('frontend/images/case.png') }}" alt="">
-                        <div class="overlay">
-                            <h4>Hope Project Leads</h4>
-                            <p>Strategic digital growth campaign that delivered outstanding results.</p>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="case-card" data-bs-toggle="modal" data-bs-target="#caseDetailModal">
-                        <img src="{{ asset('frontend/images/case.png') }}" alt="">
-                        <div class="overlay">
-                            <h4>Hope Project Leads</h4>
-                            <p>Strategic digital growth campaign that delivered outstanding results.</p>
-                        </div>
-                    </div>
-
-                </div>
-
+                @endforeach
 
                 <!-- PAGINATION -->
-                <div class="pagination-wrap">
-                    <button class="page-btn">‹</button>
-                    <button class="page-btn active">1</button>
-                    <button class="page-btn">2</button>
-                    <button class="page-btn">3</button>
-                    <span>…</span>
-                    <button class="page-btn">15</button>
-                    <button class="page-btn">›</button>
-                </div>
+                @if ($caseStudies->hasPages())
+                    <div class="pagination-wrap">
+
+                        {{-- PREVIOUS --}}
+                        @if ($caseStudies->onFirstPage())
+                            <button class="page-btn" disabled>‹</button>
+                        @else
+                            <button class="page-btn"
+                                onclick="window.location='{{ $caseStudies->previousPageUrl() }}'">‹</button>
+                        @endif
+
+                        {{-- PAGE NUMBERS --}}
+                        @php
+                            $current = $caseStudies->currentPage();
+                            $last = $caseStudies->lastPage();
+
+                            $start = max(1, $current - 1);
+                            $end = min($last, $current + 1);
+                        @endphp
+
+                        {{-- FIRST PAGE --}}
+                        @if ($start > 1)
+                            <button class="page-btn" onclick="window.location='{{ $caseStudies->url(1) }}'">1</button>
+                            @if ($start > 2)
+                                <span>…</span>
+                            @endif
+                        @endif
+
+                        {{-- MIDDLE PAGES --}}
+                        @for ($page = $start; $page <= $end; $page++)
+                            <button class="page-btn {{ $page == $current ? 'active' : '' }}"
+                                onclick="window.location='{{ $caseStudies->url($page) }}'">
+                                {{ $page }}
+                            </button>
+                        @endfor
+
+                        {{-- LAST PAGE --}}
+                        @if ($end < $last)
+                            @if ($end < $last - 1)
+                                <span>…</span>
+                            @endif
+                            <button class="page-btn"
+                                onclick="window.location='{{ $caseStudies->url($last) }}'">{{ $last }}</button>
+                        @endif
+
+                        {{-- NEXT --}}
+                        @if ($caseStudies->hasMorePages())
+                            <button class="page-btn"
+                                onclick="window.location='{{ $caseStudies->nextPageUrl() }}'">›</button>
+                        @else
+                            <button class="page-btn" disabled>›</button>
+                        @endif
+
+                    </div>
+                @endif
+
+
             </div>
         </div>
     </section>
@@ -724,21 +716,17 @@
 
                     <!-- IMAGE -->
                     <div class="case-img-wrap">
-                        <img src="{{ asset('frontend/images/large-img.png') }}" alt="">
+                        <img id="modalCaseImage" src="" alt="">
                     </div>
 
                     <!-- CONTENT -->
-                    <h3 class="case-title">Hope Project Leads</h3>
+                    <div class="case-content mt-4">
+                        <h2 id="modalCaseTitle"></h2>
+                        <h5 id="modalCaseSubTitle" class="text-muted"></h5>
 
-                    <p class="case-desc">
-                        Strategic digital growth campaign that delivered outstanding results.
-                    </p>
+                        <div id="modalCaseDescription" class="mt-3"></div>
+                    </div>
 
-                    <ul class="case-list">
-                        <li>Lead Generation Strategy</li>
-                        <li>Conversion Optimization</li>
-                        <li>Performance Marketing</li>
-                    </ul>
 
                     <!-- DOWNLOAD BUTTON -->
                     <div class="d-flex justify-content-center align-items-center">
@@ -762,37 +750,46 @@
 
                     <h3 class="form-title">Your Information</h3>
 
-                    <form>
+                    <form id="downloadForm" method="POST">
+                        @csrf
+                        <input type="hidden" name="case_study_id" id="downloadCaseStudyId" value="">
+                        
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" placeholder="Name">
+                            <input type="text" name="name" id="download_name" class="form-control" placeholder="Name" required>
+                            <small class="text-danger d-block mt-1" id="error_name"></small>
                         </div>
 
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="email" placeholder="Email">
+                            <input type="email" name="email" id="download_email" class="form-control" placeholder="Email" required>
+                            <small class="text-danger d-block mt-1" id="error_email"></small>
                         </div>
 
                         <div class="form-group">
                             <label>Phone Number</label>
-                            <input type="text" placeholder="Phone Number">
+                            <input type="text" name="phone_number" id="download_phone" class="form-control" placeholder="Phone Number" required>
+                            <small class="text-danger d-block mt-1" id="error_phone_number"></small>
                         </div>
 
                         <div class="form-group">
                             <label>Select Location</label>
-                            <select>
+                            <select name="location" id="download_location" class="form-control" required>
                                 <option value="">Select Location</option>
-                                <option>Pakistan</option>
-                                <option>UAE</option>
-                                <option>UK</option>
+                                <option value="Pakistan">Pakistan</option>
+                                <option value="UAE">UAE</option>
+                                <option value="UK">UK</option>
+                                <option value="USA">USA</option>
+                                <option value="Canada">Canada</option>
+                                <option value="Other">Other</option>
                             </select>
+                            <small class="text-danger d-block mt-1" id="error_location"></small>
                         </div>
 
-                        <button type="submit" class="submit-btn">
+                        <button type="submit" class="submit-btn" id="downloadSubmitBtn">
                             Download
                         </button>
                     </form>
-
 
                 </div>
             </div>
@@ -819,12 +816,15 @@
                         Get expert tips, industry trends, and proven strategies delivered straight
                         to your inbox to help your business grow digitally.
                     </p>
+                    <form id="newsletterForm" method="post">
+                        @csrf
+                        <input type="email" name="email" id="newsletter_email" placeholder="Enter your email address" class="newsletter-input" required>
+                        <small class="text-danger d-block mt-2" id="error_newsletter_email"></small>
 
-                    <input type="email" placeholder="Enter your email address" class="newsletter-input">
-
-                    <div class="d-flex justify-content-center mt-4">
-                        <button class="subscribe-btn">Subscribe</button>
-                    </div>
+                        <div class="d-flex justify-content-center mt-4">
+                            <button type="submit" class="subscribe-btn" id="newsletterSubmitBtn">Subscribe</button>
+                        </div>
+                    </form>
                 </div>
 
                 <!-- RIGHT COLUMN -->
@@ -850,27 +850,264 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
-            const openDownloadBtn = document.getElementById('openDownload');
             const caseModalEl = document.getElementById('caseDetailModal');
             const downloadModalEl = document.getElementById('downloadModal');
+            const openDownloadBtn = document.getElementById('openDownload');
+            const hiddenCaseInput = document.getElementById('downloadCaseStudyId');
 
-            openDownloadBtn.addEventListener('click', function() {
+            const modalImage = document.getElementById('modalCaseImage');
+            const modalTitle = document.getElementById('modalCaseTitle');
+            const modalSubTitle = document.getElementById('modalCaseSubTitle');
+            const modalDescription = document.getElementById('modalCaseDescription');
 
-                // Pehla modal close kar do
-                const caseModal = bootstrap.Modal.getInstance(caseModalEl) || new bootstrap.Modal(
-                    caseModalEl);
-                caseModal.hide();
+            let selectedCaseId = null;
 
-                // hidden.bs.modal par second modal open
-                caseModalEl.addEventListener('hidden.bs.modal', function handler() {
-                    const downloadModal = new bootstrap.Modal(downloadModalEl);
-                    downloadModal.show();
-                    caseModalEl.removeEventListener('hidden.bs.modal', handler);
+            /* ===============================
+               CASE CARD CLICK → FILL MODAL
+            ================================ */
+            document.querySelectorAll('.case-card').forEach(card => {
+                card.addEventListener('click', function() {
+
+                    selectedCaseId = this.dataset.id;
+
+                    modalTitle.innerText = this.dataset.title;
+                    modalSubTitle.innerText = this.dataset.subtitle;
+
+                    modalImage.src = this.dataset.image;
+                    modalImage.alt = this.dataset.imageAlt ?? '';
+
+                    modalDescription.innerHTML = this.dataset.description;
+
+                    /* ===== DOWNLOAD BUTTON TOGGLE ===== */
+                    if (this.dataset.document && this.dataset.document.trim() !== '') {
+                        openDownloadBtn.style.display = 'block';
+                    } else {
+                        openDownloadBtn.style.display = 'none';
+                    }
                 });
-
             });
 
-            // GLOBAL CLEANUP: jab koi bhi modal close ho
+            /* ===============================
+               DOWNLOAD BUTTON CLICK
+            ================================ */
+            openDownloadBtn.addEventListener('click', function() {
+
+                // Set the case study ID in the hidden input BEFORE hiding modal
+                if (selectedCaseId) {
+                    const caseIdInput = document.getElementById('downloadCaseStudyId');
+                    if (caseIdInput) {
+                        caseIdInput.value = selectedCaseId;
+                        console.log('Case Study ID set to:', selectedCaseId);
+                        console.log('Hidden input value after setting:', caseIdInput.value);
+                    } else {
+                        console.error('Hidden input element not found');
+                    }
+                } else {
+                    console.warn('No case study ID selected');
+                }
+
+                const caseModal = bootstrap.Modal.getInstance(caseModalEl);
+                if (caseModal) {
+                    caseModal.hide();
+                }
+
+                // Wait for modal to hide, then show download modal
+                setTimeout(() => {
+                    const downloadModal = new bootstrap.Modal(downloadModalEl);
+                    downloadModal.show();
+                    
+                    // Verify ID is still set after modal opens
+                    const caseIdInput = document.getElementById('downloadCaseStudyId');
+                    console.log('After download modal opens - Case Study ID:', caseIdInput.value);
+                }, 300);
+            });
+
+            /* ===============================
+               DOWNLOAD FORM SUBMISSION
+            ================================ */
+            const downloadForm = document.getElementById('downloadForm');
+            const downloadSubmitBtn = document.getElementById('downloadSubmitBtn');
+            const originalDownloadBtnText = 'Download';
+
+            if (downloadForm) {
+                downloadForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+
+                    // Verify case_study_id is set before submission
+                    const caseIdInput = document.getElementById('downloadCaseStudyId');
+                    if (!caseIdInput.value) {
+                        console.error('Case Study ID is empty!');
+                        if (typeof toastr !== 'undefined') {
+                            toastr.error('Please select a case study first');
+                        }
+                        return;
+                    }
+
+                    console.log('Form submission - Case Study ID:', caseIdInput.value);
+
+                    // Clear previous errors
+                    document.querySelectorAll('[id^="error_"]').forEach(el => {
+                        el.textContent = '';
+                        el.style.display = 'none';
+                    });
+
+                    // Disable submit button and show loader
+                    downloadSubmitBtn.disabled = true;
+                    downloadSubmitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Processing...';
+
+                    try {
+                        // Prepare form data
+                        const formData = new FormData(downloadForm);
+                        
+                        // Ensure case_study_id is in the form data
+                        formData.set('case_study_id', caseIdInput.value);
+                        console.log('FormData case_study_id:', formData.get('case_study_id'));
+
+                        // Submit form via AJAX
+                        const response = await fetch("{{ route('case-study.download') }}", {
+                            method: 'POST',
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest',
+                                'Accept': 'application/json',
+                            },
+                            body: formData,
+                        });
+
+                        const data = await response.json();
+
+                        if (data.success) {
+                            // Show success toast using Toastr
+                            if (typeof toastr !== 'undefined') {
+                                toastr.success(data.message);
+                            }
+
+                            // Trigger download
+                            const link = document.createElement('a');
+                            link.href = data.download_url;
+                            link.download = '';
+                            document.body.appendChild(link);
+                            link.click();
+                            document.body.removeChild(link);
+
+                            // Close modal
+                            const downloadModal = bootstrap.Modal.getInstance(downloadModalEl);
+                            if (downloadModal) {
+                                downloadModal.hide();
+                            }
+
+                            // Reset form
+                            downloadForm.reset();
+                        } else {
+                            // Show errors
+                            if (data.errors) {
+                                Object.keys(data.errors).forEach(field => {
+                                    const errors = data.errors[field];
+                                    if (Array.isArray(errors)) {
+                                        showDownloadError(field, errors[0]);
+                                    } else {
+                                        showDownloadError(field, errors);
+                                    }
+                                });
+                            }
+
+                            // Show error toast using Toastr
+                            if (typeof toastr !== 'undefined') {
+                                toastr.error(data.message || 'Please fix the errors below');
+                            }
+                        }
+                    } catch (error) {
+                        console.error('Download form submission error:', error);
+                        
+                        if (typeof toastr !== 'undefined') {
+                            toastr.error('An unexpected error occurred. Please try again.');
+                        }
+                    } finally {
+                        // Re-enable submit button
+                        downloadSubmitBtn.disabled = false;
+                        downloadSubmitBtn.textContent = originalDownloadBtnText;
+                    }
+                });
+
+                /**
+                 * Show error message for download form field
+                 */
+                function showDownloadError(fieldName, message) {
+                    const errorEl = document.getElementById(`error_${fieldName}`);
+                    if (errorEl) {
+                        errorEl.textContent = message;
+                        errorEl.style.display = 'block';
+                    }
+                }
+
+                /**
+                 * Clear error message when user starts typing in download form
+                 */
+                const downloadFormInputs = downloadForm.querySelectorAll('input, select');
+                downloadFormInputs.forEach(input => {
+                    input.addEventListener('input', function() {
+                        const errorEl = document.getElementById(`error_${this.name}`);
+                        if (errorEl) {
+                            errorEl.textContent = '';
+                            errorEl.style.display = 'none';
+                        }
+                    });
+                });
+
+                /**
+                 * Reset download form when modal is closed
+                 */
+                downloadModalEl.addEventListener('hidden.bs.modal', function() {
+                    downloadForm.reset();
+                    document.querySelectorAll('[id^="error_"]').forEach(el => {
+                        el.textContent = '';
+                        el.style.display = 'none';
+                    });
+                    
+                    // Clear the case study ID and selectedCaseId when download modal closes
+                    const caseIdInput = document.getElementById('downloadCaseStudyId');
+                    if (caseIdInput) {
+                        caseIdInput.value = '';
+                    }
+                    selectedCaseId = null;
+                    console.log('Download modal closed - Case Study ID cleared');
+                });
+
+                /**
+                 * Ensure case study ID is set when download modal is shown
+                 */
+                downloadModalEl.addEventListener('show.bs.modal', function() {
+                    if (selectedCaseId) {
+                        const caseIdInput = document.getElementById('downloadCaseStudyId');
+                        if (caseIdInput) {
+                            caseIdInput.value = selectedCaseId;
+                            console.log('Download modal opened - Case Study ID set to:', selectedCaseId);
+                            console.log('Hidden input value in modal:', caseIdInput.value);
+                        }
+                    }
+                });
+            }
+
+            /* ===============================
+               RESET CASE MODAL DATA ON CLOSE
+            ================================ */
+            caseModalEl.addEventListener('hidden.bs.modal', function() {
+
+                modalTitle.innerText = '';
+                modalSubTitle.innerText = '';
+                modalDescription.innerHTML = '';
+
+                modalImage.src = '';
+                modalImage.alt = '';
+
+                openDownloadBtn.style.display = 'none';
+
+                // Don't clear selectedCaseId here - it's needed for the download modal
+                // selectedCaseId will be cleared when download modal closes
+            });
+
+            /* ===============================
+               BACKDROP / BODY CLEANUP
+            ================================ */
             document.body.addEventListener('hidden.bs.modal', function() {
                 setTimeout(() => {
                     if (!document.querySelector('.modal.show')) {
@@ -879,8 +1116,90 @@
                         document.body.style.overflow = '';
                         document.body.style.paddingRight = '';
                     }
-                }, 300);
+                }, 200);
             });
+
+            /* ===============================
+               NEWSLETTER FORM SUBMISSION
+            ================================ */
+            const newsletterForm = document.getElementById('newsletterForm');
+            const newsletterEmail = document.getElementById('newsletter_email');
+            const newsletterSubmitBtn = document.getElementById('newsletterSubmitBtn');
+            const errorNewsletterEmail = document.getElementById('error_newsletter_email');
+
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+
+                    // Clear previous errors
+                    errorNewsletterEmail.textContent = '';
+                    errorNewsletterEmail.style.display = 'none';
+
+                    // Disable submit button
+                    newsletterSubmitBtn.disabled = true;
+                    const originalText = newsletterSubmitBtn.textContent;
+                    newsletterSubmitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Subscribing...';
+
+                    try {
+                        // Get form data
+                        const formData = new FormData(newsletterForm);
+
+                        // Submit form via AJAX
+                        const response = await fetch("{{ route('newsletter.subscribe') }}", {
+                            method: 'POST',
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest',
+                                'Accept': 'application/json',
+                            },
+                            body: formData,
+                        });
+
+                        const data = await response.json();
+
+                        if (data.success) {
+                            // Show success toast using Toastr
+                            if (typeof toastr !== 'undefined') {
+                                toastr.success(data.message);
+                            }
+
+                            // Clear form
+                            newsletterForm.reset();
+                            newsletterEmail.value = '';
+
+                            // Scroll to top
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                        } else {
+                            // Show errors
+                            if (data.errors && data.errors.email) {
+                                const errorMsg = Array.isArray(data.errors.email) ? data.errors.email[0] : data.errors.email;
+                                errorNewsletterEmail.textContent = errorMsg;
+                                errorNewsletterEmail.style.display = 'block';
+                            }
+
+                            // Show error toast using Toastr
+                            if (typeof toastr !== 'undefined') {
+                                toastr.error(data.message || 'Please fix the errors below');
+                            }
+                        }
+                    } catch (error) {
+                        console.error('Newsletter subscription error:', error);
+
+                        if (typeof toastr !== 'undefined') {
+                            toastr.error('An unexpected error occurred. Please try again.');
+                        }
+                    } finally {
+                        // Re-enable submit button
+                        newsletterSubmitBtn.disabled = false;
+                        newsletterSubmitBtn.textContent = originalText;
+                    }
+                });
+
+                // Clear error message when user starts typing
+                newsletterEmail.addEventListener('input', function() {
+                    errorNewsletterEmail.textContent = '';
+                    errorNewsletterEmail.style.display = 'none';
+                });
+            }
 
         });
     </script>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DataTables\ServicesDataTable;
 use App\DataTables\SubServicesDataTable;
+use App\Models\BrandWeCarry;
 use App\Models\Services;
 use App\Models\SubService;
 use Exception;
@@ -586,7 +587,11 @@ class ServicesController extends Controller
                 ->where('service_id', $service->id)
                 ->get();
 
-            return view('frontend.pages.main-services', compact('service', 'subServices'));
+            $brands = BrandWeCarry::orderBy('company_name', 'asc')->get();
+
+            $mainServices = Services::orderBy('title', 'asc')->where('is_active', true)->select('id', 'title', 'slug')->get();
+
+            return view('frontend.pages.main-services', compact('service', 'subServices', 'brands', 'mainServices'));
 
         } catch (ModelNotFoundException $e) {
 

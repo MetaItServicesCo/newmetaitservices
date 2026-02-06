@@ -78,8 +78,6 @@
                                 @enderror
                             </div>
 
-
-
                         </div>
 
                         <input type="hidden" name="id" value="{{ $data->id ?? '' }}">
