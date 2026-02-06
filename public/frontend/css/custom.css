@@ -44,6 +44,8 @@ li {
 .custom-navbar {
     background-color: #404959;
     height: 100px;
+    /* border-top-right-radius: 82px;
+    border-bottom-left-radius: 82px; */
 }
 
 .navbar-nav .nav-link {
@@ -59,18 +61,80 @@ li {
     color: #F48B5C !important;
 }
 
-.btn-contact {
-    background: #ffffff;
-    color: #000;
-    padding: 8px 22px;
-    border-radius: 6px;
-    font-weight: 600;
-    width: 167px;
-    height: 42px;
+.contact-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.btn-contact:hover {
-    background: #F48B5C;
+
+
+/* Email section */
+.email-section p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    font-size: 16px;
+    color: #ffffff;
+    margin: 0;
+    font-family: Inter;
+
+}
+
+body.modal-open {
+    padding-right: 0 !important;
+}
+
+
+.email-section i {
+    color: #ffffff;
+    font-size: 20px;
+}
+
+
+/* Get a Quote Button */
+.get-quote-btn {
+    font-family: Inter;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 256px;
+    height: 50px;
+    background-color: #FF6036;
+    color: #fff;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 140%;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.3s;
+    border-top-right-radius: 22px;
+    border-bottom-left-radius: 22px;
+}
+
+@media(max-width:768px) {
+    .get-quote-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .contact-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: ;
+    }
+
+    .contact-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
+}
+
+.get-quote-btn:hover {
+    background-color: #e5552e;
 }
 
 /* Toggle icon white */
@@ -256,8 +320,8 @@ li {
 /* <!-- ========== end hero section css ================= --> */
 /*==================== brand section css ============================ */
 .brand-section {
-    padding: 50px 0;
-    background: #fff;
+    padding: 20px 0;
+    /* background: #fff; */
     font-family: Inter;
 
 }
@@ -810,6 +874,11 @@ li {
     justify-content: center;
 }
 
+.brand-item img {
+    width: 80px;
+    height: 70px;
+}
+
 .card-box {
     width: 396px;
     height: 386px;
@@ -1194,13 +1263,13 @@ li {
     line-height: 25px;
     letter-spacing: 0;
     color: #000000;
-    margin-bottom: 40px;
+    /* margin-bottom: 40px; */
 }
 
 /* Image */
 .impact-image img {
-    width: 187px;
-    height: 116px;
+    width: 150px;
+    height: 80px;
     object-fit: contain;
     margin-bottom: 30px;
 }
@@ -1241,6 +1310,7 @@ li {
     border-bottom: 2px solid #F38B5C;
     margin: 0 auto;
     position: relative;
+    height: 190px;
 }
 
 /* Arrows */

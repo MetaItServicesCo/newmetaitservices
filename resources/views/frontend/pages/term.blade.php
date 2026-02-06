@@ -82,8 +82,14 @@
         </div>
     </section>
 
-    {!! $data->content !!}
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-12">
+                {!! $data->content !!}
+            </div>
+        </div>
 
+    </div>
 
 @endsection
 

@@ -189,7 +189,7 @@
         </div>
     </div>
 
-    <section class="brand-section py-5 my-3">
+    <section class="brand-section pt-2 mt-2">
         <div class="container">
             <div class="swiper brandSwiper">
                 <div class="swiper-wrapper">

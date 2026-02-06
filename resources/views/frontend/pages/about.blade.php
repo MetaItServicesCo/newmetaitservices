@@ -67,15 +67,14 @@
             background: #F96037;
             color: #ffffff;
             border-radius: 12px;
+            font-size: 15px;
             font-weight: 600;
-            font-size: 20px;
-            font-weight: 700;
             line-height: 25px;
             letter-spacing: 0;
             text-decoration: none;
             transition: 0.3s ease;
-            width: 274px;
-            height: 67px;
+            width: 160px;
+            height: 50px;
 
         }
 
@@ -147,7 +146,7 @@
         /* CARD */
         .about-card {
             width: 172px;
-            height: 162px;
+            height: 120px;
             background: #404959;
             border-radius: 12px;
             color: #ffffff;
@@ -523,12 +522,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 608px;
-            height: 67px;
+            width: 350px;
+            height: 50px;
             background: #404959;
             border-radius: 12px;
             color: #ffffff;
-            font-size: 28px;
+            font-size: 20px;
             font-weight: 700;
             line-height: 59px;
             text-decoration: none;
@@ -545,8 +544,8 @@
         }
 
         .step-circle {
-            width: 103px;
-            height: 98px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             background: #FCE2D6;
             display: flex;
@@ -950,6 +949,8 @@
                     </div>
 
                 </div>
+                <p class="text-center my-5 fw-bold"><img src="{{ asset('frontend/images/about-check.png') }}" alt=""
+                        width="20" class="mb-2 me-1"> We provide quality marketing services to customers.</p>
             </div>
         </section>
 
@@ -960,7 +961,7 @@
 
 
         {{-- ============================ tabs-section ======================== --}}
-        <section class="tabs-section py-5">
+        <section class="tabs-section py-5 my-4">
             <div class="container">
 
                 <!-- TAB BUTTONS -->
@@ -1203,8 +1204,8 @@
                     <div class="col-lg-2 col-md-4 col-sm-6">
                         <div class="team-card">
                             <div class="team-img bg-blue">
-                                <img src="{{ $team->image ? asset('storage/teams/'.$team->image) : asset('frontend/images/about/team-img1.png') }}" alt=""
-                                    class="marg-left">
+                                <img src="{{ $team->image ? asset('storage/teams/' . $team->image) : asset('frontend/images/about/team-img1.png') }}"
+                                    alt="" class="marg-left">
                             </div>
                             <h5 class="team-name">{{ $team->name ?? '' }}</h5>
                             <p class="team-role">{{ $team->designation ?? '' }}</p>
@@ -1217,10 +1218,10 @@
     </section>
 
     {{-- ===================== bg-image-section ====================== --}}
-    <div class="my-4">
+    <div class="my-">
         <x-career />
     </div>
-    
+
 
     <!-- ========================== revnue section ============================== -->
     <x-testimonial-component />
@@ -1228,7 +1229,7 @@
 
     {{-- ================= audit-section ======================= --}}
 
-    <section class="audit-section my-2"
+    <section class="audit-section my-4"
         style="background-image: url('{{ asset('frontend/images/about/audit-bg.png') }}');">
         <div class="container">
 
