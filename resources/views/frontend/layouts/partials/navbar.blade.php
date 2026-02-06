@@ -207,7 +207,7 @@
         <div class="collapse navbar-collapse" id="mainNavbar">
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                 <li class="nav-item mega-item">
-                    <a class="nav-link mega-trigger" href="#">
+                    <a class="nav-link mega-trigger" href="{{ route('home') }}">
                         Home
                     </a>
                 </li>

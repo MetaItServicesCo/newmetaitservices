@@ -549,19 +549,21 @@
 
                 <!-- LEFT COLUMN -->
                 <div class="col-lg-6 mb-4 mb-lg-0">
-                    <h1 class="dm-title">Our Digital Marketing Services</h1>
+                    <h1 class="dm-title">Marketing Campaigns Directed By Visionaries</h1>
 
                     <h4 class="dm-subtitle">
-                        Customized Marketing Solutions That Deliver Results, Every Time
+                        Look around, and what do you see?
                     </h4>
 
                     <p class="dm-desc">
-                        We create data-driven digital marketing strategies tailored to
-                        your business goals. From SEO and paid campaigns to social media
-                        and content marketing
+                        The algorithm is a vast jungle with constantly shifting terrain, governed by unseen rules and fierce
+                        competition. How do you stay alert and survive? Meta IT. Our visionaries have the creative instinct
+                        to turn bold ideas into high-performing digital marketing packages for brandsthat help you stay on
+                        top of the market food chain.
                     </p>
 
-                    <a href="javascript:void(0)" class="dm-btn" data-bs-toggle="modal" data-bs-target="#projectModal">Start Your Project</a>
+                    <a href="javascript:void(0)" class="dm-btn" data-bs-toggle="modal" data-bs-target="#projectModal">Start
+                        Your Project</a>
 
                 </div>
 
@@ -589,21 +591,24 @@
                 <!-- Left Column -->
                 <div class="col-lg-7">
                     <h2 class="tech-heading">
-                        Advance technology to support digital <span> marketing
-                            decision-marketing</span>
+                        Artificial Intelligence Supports Lucrative<span> Digital Marketing Decisions</span>
                     </h2>
 
                     <p class="tech-desc">
-                        We leverage advanced technologies and data-driven strategies to help
-                        businesses make smarter digital marketing decisions. Our solutions
-                        improve efficiency, reduce costs, and maximize overall marketing
-                        performance.
+                        Meta IT’s AI-powered tech is breaking down efficiency barriers with smart automations. What does
+                        this mean? Doing away with manual procedures that slow down the pace. AI helps get rid of monotonous
+                        activities, shortening working time, and shifting the focus back to strategy and development. We
+                        employ AI to increase output across all departments and reduce expenses. Our clientele has received
+                        the benefit of cloud infrastructure optimization and scalable performance with no overhead. And this
+                        doesn’t mean losing the invaluable human touch. In fact, Meta IT’s use of AI has helped better
+                        personalize content and interactions with consumers in real-time with relevant decision-making.
+                        Seize the moment with resourceful and confident thinking before your competition.
                     </p>
 
                     <!-- Stats -->
                     <div class="tech-stats">
                         <div class="stat-item">
-                            <h3>20%</h3>
+                            <h3>32–40%</h3>
                             <h5>Efficiency Boost</h5>
                             <p>
                                 Improved campaign performance through automation and smart
@@ -612,16 +617,16 @@
                         </div>
 
                         <div class="stat-item">
-                            <h3>$500k</h3>
-                            <h5>Cost Saving</h5>
+                            <h3>~ 30%</h3>
+                            <h5>Cost Reduction</h5>
                             <p>
                                 Reduced marketing spend while increasing return on investment.
                             </p>
                         </div>
 
                         <div class="stat-item">
-                            <h3>1+ Million</h3>
-                            <h5>Marketing Reach</h5>
+                            <h3>+ $500 million</h3>
+                            <h5>Savings From AI Integration</h5>
                             <p>
                                 Expanded audience engagement and improved marketing efficiency.
                             </p>
@@ -647,7 +652,7 @@
             <div class="text-center mb-5">
                 <span class="serve-tag">Who We Serve</span>
                 <h2 class="serve-heading">
-                    B2B Digital Marketing Solutions Tailored for You
+                    Customized B2B Digital Marketing Solutions
                 </h2>
             </div>
 
@@ -686,26 +691,23 @@
         <div class="container">
             <div class="conversion-content">
                 <h2 class="conversion-title">
-                    Improve Conversion Analysis Services
+                    Improve Conversion Analysis With In-depth Journey Mapping
                 </h2>
 
                 <p class="conversion-desc">
-                    Our conversion analysis services help businesses identify user behavior,
-                    optimize digital journeys, and increase overall conversion rates.
-                    By leveraging data-driven insights, we uncover performance gaps,
-                    enhance engagement, and transform visitors into loyal customers
-                    through strategic optimization and continuous improvement.
-                    optimize digital journeys, and increase overall conversion rates.
-                    By leveraging data-driven insights, we uncover performance gaps,
-                    enhance engagement, and transform visitors into loyal customers
-                    through strategic optimization and continuous improvement.
+                    Quit making guesses as to why sales and prospects start to drop. Start knowing. Meta IT’s extensive
+                    journey mapping approach shows precisely how end consumers move, stall, and click “buy” across every
+                    touchpoint of your digital ecosystem. Like an animal on the prowl, we track your customers’ behavior all
+                    the way from the first click through to the final choice. Identifying friction early on helps businesses
+                    discover intent more accurately. Our blockchain audit tools are constructed to ultimately discover
+                    invisible revenue leaks. Seal exits and generate wins before misaligned design costs you any more
+                    growth.
                 </p>
                 <p class="conversion-desc">
-                    Our conversion analysis services help businesses identify user behavior,
-                    optimize digital journeys, and increase overall conversion rates.
-                    By leveraging data-driven insights, we uncover performance gaps,
-                    enhance engagement, and transform visitors into loyal customers
-                    through strategic optimization and continuous improvement.
+                    Every consumer interaction narrates a story. We read it. We refine it. Our designs speak for themselves.
+                    Meta IT’s B2B specialists produce formulaic strategies intended to guide users through clear-cut sales
+                    funnels. This isn’t surface-level analytics. It provides more precise insights leading to an increase in
+                    conversion rates, loyal customers, and smarter choices supported by facts.
                 </p>
 
                 <a href="#" class="contact-btn">Contact Us</a>

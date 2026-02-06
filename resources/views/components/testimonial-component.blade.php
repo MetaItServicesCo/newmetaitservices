@@ -1,14 +1,16 @@
 <section class="revenue-impact">
     <div class="container text-center">
 
-        <h2 class="impact-title">Real Revenue Impact for Our Clients</h2>
+        <h2 class="impact-title">Real Revenue Impact For Our Clients</h2>
 
         <div class="impact-image">
             <img src="{{ asset('frontend/images/navbar-logo.png') }}" alt="">
         </div>
 
         <p class="impact-desc">
-            Building a Structured Digital Platform and Product Catalog for Industrial Growth
+            Meta IT completely skyrocketed the way our customers interact with our products and website. Metrics weren’t
+            just the only thing that improved. Our promotions are more intuitive and connect with our clients on a
+            personal level, which we didn’t know was possible on a remote platform.
         </p>
 
         @if (!empty($testimonials) && $testimonials->count())

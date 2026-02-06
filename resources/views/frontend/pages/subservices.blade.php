@@ -184,7 +184,7 @@
             border-radius: 12px;
             text-decoration: none;
             margin-top: 15px;
-            width: 274px;
+            width: 300px;
             height: 67px;
             font-weight: 700;
             font-size: 20px;
@@ -531,7 +531,8 @@
                         {{ \Illuminate\Support\Str::limit($subService->short_description ?? '', 180) }}
                     </p>
 
-                    <a href="javascript:void(0)" class="dm-btn" data-bs-toggle="modal" data-bs-target="#projectModal">Start Your Project</a>
+                    <a href="javascript:void(0)" class="dm-btn" data-bs-toggle="modal" data-bs-target="#projectModal">Start
+                        Your Project</a>
                 </div>
 
                 <!-- RIGHT COLUMN -->
@@ -582,16 +583,18 @@
                                 <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, recusandae asperiores
                                     blanditiis
                                     vel quam excepturi beatae et, repellat ad reiciendis assumenda. </p>
-
-                                <a href="mailto:info@gmail.com" class="contact-btn">
-                                    <i class="fa-solid fa-envelope"></i>
-                                    info@gmail.com
-                                </a>
-
-                                <div class="phone-text mt-3">
-                                    <i class="fa-solid fa-phone"></i>
-                                    12345678
-                                </div>
+                                @if (setting('email'))
+                                    <a href="mailto:{{ setting('email') }}" target="_blank" class="contact-btn text-white text-decoration-none hover-primary">
+                                        <i class="fa-solid fa-envelope"></i>
+                                        {{ setting('email') }}
+                                    </a>
+                                @endif
+                                @if (setting('phone'))
+                                    <div class="phone-text mt-3">
+                                        <i class="fa-solid fa-phone"></i><a href="tel:{{ cleanPhone(setting('phone')) }}" class="text-white text-decoration-none hover-primary">
+                                            {{ setting('phone') }}</a>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -602,7 +605,8 @@
 
                     <div class="right-scroll">
 
-                        <h2 class="right-heading">{{ $subService->page_content['hero_section']['main_heading'] ?? '' }}</h2>
+                        <h2 class="right-heading">{{ $subService->page_content['hero_section']['main_heading'] ?? '' }}
+                        </h2>
                         <p class="right-desc">
                             {{ $subService->page_content['hero_section']['short_description'] ?? '' }}</p>
 

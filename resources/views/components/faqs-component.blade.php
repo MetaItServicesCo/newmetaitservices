@@ -62,15 +62,9 @@ $uid = 'faqs_' . uniqid();
                 <div class="col-lg-5 faq-left">
                     <h2 class="faq-title">Frequently Asked Questions</h2>
                     <p class="faq-desc">
-                        Find answers to the most commonly asked questions about our
-                        platform, features, pricing, and support. Our team is always
-                        ready to help you. Find answers to the most commonly asked questions about our
-                        platform, features, pricing, and support. Our team is always
-                        ready to help you. Find answers to the most commonly asked questions about our
-                        platform, features, pricing, and support. Our team is always
-                        ready to help you. Find answers to the most commonly asked questions about our
-                        platform, features, pricing, and support. Our team is always
-                        ready to help you.
+                        Meta IT’s FAQ section is your source for clear answers on common inquiries regarding our
+                        services. We’re here to help you understand just how we drive results and customize unique brand
+                        strategies.
                     </p>
                 </div>
 

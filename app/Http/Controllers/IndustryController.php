@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DataTables\IndustryDataTable;
 use App\Models\Industry;
+use App\Models\BrandWeCarry;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -404,8 +405,9 @@ class IndustryController extends Controller
     {
         try {
             $industry = Industry::where('slug', $slug)->firstOrFail();
+            $brands = BrandWeCarry::orderBy('company_name', 'asc')->get();
 
-            return view('frontend.pages.subindustry', compact('industry'));
+            return view('frontend.pages.subindustry', compact('industry', 'brands'));
         } catch (ModelNotFoundException $e) {
 
             // Agar slug exist nahi karta

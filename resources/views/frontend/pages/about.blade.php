@@ -1116,7 +1116,6 @@
 
 
     </section>
-    </section>
 
     <x-brand-nextlevel />
 
@@ -1219,7 +1218,7 @@
 
     {{-- ===================== bg-image-section ====================== --}}
     <div class="my-">
-        <x-career />
+        <x-career :brands="$brands"/>
     </div>
 
 

@@ -33,15 +33,15 @@ Route::get('/blog/{slug}', [App\Http\Controllers\BlogController::class, 'blogDet
 Route::get('/portfolio', [App\Http\Controllers\PortfolioController::class, 'portfolio'])->name('portfolio');
 Route::get('/portfolio/{id}', [App\Http\Controllers\PortfolioController::class, 'portfolioDetail'])->name('portfolio.detail');
 
-Route::get('/casestudy', [App\Http\Controllers\CaseStudyController::class, 'caseStudiesPage'])->name('case-study.page');
+Route::get('/case-studies', [App\Http\Controllers\CaseStudyController::class, 'caseStudiesPage'])->name('case-study.page');
 
 Route::get('/contact-us', function () {
     $seoMeta = \App\Models\SeoMeta::where('page_name', 'contact_us')->where('is_active', 1)->first();
     return view('frontend.pages.contact', compact('seoMeta'));
 })->name('contact-us');
 
-Route::get('/policy', [App\Http\Controllers\PrivacyPolicyController::class, 'policy'])->name('contact.policy');
-Route::get('/term', [App\Http\Controllers\TermsAndConditionsController::class, 'term'])->name('contact.term');
+Route::get('/privacy-policy', [App\Http\Controllers\PrivacyPolicyController::class, 'policy'])->name('contact.policy');
+Route::get('/terms-and-conditions', [App\Http\Controllers\TermsAndConditionsController::class, 'term'])->name('contact.term');
     
 Route::get('/disclaimer', [App\Http\Controllers\DisclaimerController::class, 'landingPage'])->name('contact.disclaimer');
 

@@ -2,16 +2,17 @@
     <div class="container">
         <!-- Heading -->
         <h2 class="meta-heading">
-            Welcome to Meta IT web company, your trusted partner for Building
-            a powerful online presence.
+            Outthinking The Digital Jungle: Sharper Insights For Real Growth
         </h2>
 
         <!-- Description -->
         <p class="meta-desc">
-            We help businesses grow by creating visually stunning, user-friendly, and
-            high-performance websites tailored to their unique goals. Our expert team
-            focuses on modern design trends, responsive layouts, and scalable solutions
-            that ensure your brand stands out in the digital world.
+            Marketing instincts are knowing that hesitation gets you hunted. Ascertaining real digital growth comes when
+            you understand how to strike precisely at the right moment. Meta IT works with the same confident intention.
+            Knowing thyself equals knowing your audience, i.e, what nourishes them and what chases them away. Our sharp
+            team of tacticians will help you build a base from the ground up and maneuver through the vines of brand
+            identity. The stiffness in your confidence from chasing fleeting trends will fade away as Meta IT will help
+            you harness b2b digital transformation strategies to showcase what your brand is really about.
         </p>
 
         <!-- Card -->

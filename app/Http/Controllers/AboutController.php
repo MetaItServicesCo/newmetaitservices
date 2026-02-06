@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BrandWeCarry;
 use App\Models\Team;
 
 class AboutController extends Controller
@@ -16,6 +17,8 @@ class AboutController extends Controller
             ->orderBy('sort_order', 'ASC')
             ->get();
 
-        return view('frontend.pages.about', compact('seoMeta', 'teams'));
+        $brands = BrandWeCarry::orderBy('company_name', 'asc')->get();
+
+        return view('frontend.pages.about', compact('seoMeta', 'teams', 'brands'));
     }
 }
