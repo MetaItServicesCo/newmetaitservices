@@ -238,16 +238,53 @@ class PortfolioController extends Controller
         }
     }
 
-    public function portfolio()
+    public function portfolio(Request $request)
     {
-        $categories = Category::whereHas('portfolios') // only categories with portfolios
+        $categories = Category::whereHas('portfolios')
             ->where('status', 1)
             ->select('id', 'name', 'slug')
             ->orderBy('name')
             ->get();
 
-        $portfolios = Portfolio::with('category')->latest()->get();
+        // Determine category filter
+        $categoryId = $request->filled('category_id') ? $request->category_id : null;
 
-        return view('frontend.pages.portfolio', compact('categories', 'portfolios'));
+        $portfolios = Portfolio::with('category')
+            ->when($categoryId, fn ($q) => $q->where('category_id', $categoryId))
+            ->latest()
+            ->paginate(12);
+
+            $seoMeta = \App\Models\SeoMeta::where('page_name', 'portfolio')
+                ->where('is_active', 1)
+                ->first();
+
+        if ($request->ajax()) {
+            return view('partials.portfolio-cards', compact('portfolios'))->render();
+        }
+
+        return view('frontend.pages.portfolio', compact('categories', 'portfolios', 'categoryId', 'seoMeta'));
+    }
+
+    // ================= PORTFOLIO DETAIL (MODAL) =================
+    public function portfolioDetail($id)
+    {
+        $portfolio = Portfolio::findOrFail($id);
+
+        return response()->json([
+            'title' => $portfolio->title,
+            'sub_title' => $portfolio->sub_title,
+            'image_alt' => $portfolio->image_alt,
+
+            'thumbnail' => $portfolio->thumbnail
+                ? asset('storage/portfolios/thumbnails/'.$portfolio->thumbnail)
+                : asset('frontend/images/placeholder.png'),
+
+            'gallery' => collect($portfolio->gallery_images)->map(function ($img) {
+                return asset('storage/portfolios/gallery/'.$img);
+            }),
+
+            // CKEditor HTML (safe)
+            'description' => $portfolio->description,
+        ]);
     }
 }

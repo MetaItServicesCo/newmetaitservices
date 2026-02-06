@@ -17,6 +17,7 @@ class PageHelper
             'privacy_policy' => 'Privacy Policy',
             'terms_and_conditions' => 'Terms and Conditions',
             'disclaimer' => 'Disclaimer',
+            'contact_us' => 'Contact us',
         ];
 
         ksort($labels); // ASC

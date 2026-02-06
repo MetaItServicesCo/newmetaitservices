@@ -607,7 +607,7 @@
         }
 
         .country-code {
-            width: 75px;
+            width: 85px;
             /* border-right: 1px solid #ccc; */
             border-radius: 14px 0 0 14px;
         }
@@ -704,7 +704,7 @@
         .form-box {
             background-color: #404959;
             padding: 30px;
-            height: 812px;
+            height: auto;
 
         }
 
@@ -747,7 +747,8 @@
                         {{ \Illuminate\Support\Str::limit($service->short_description ?? '', 180) }}
                     </p>
 
-                    <a href="#" class="dm-btn">Start Your Project</a>
+                    <a href="javascript:void(0)" class="dm-btn" data-bs-toggle="modal" data-bs-target="#projectModal">Start Your Project</a>
+
                 </div>
 
                 <!-- RIGHT COLUMN -->
@@ -872,8 +873,14 @@
 
                 <!-- RIGHT COLUMN -->
                 <div class="col-lg-4 solutions-right">
-                    <img src="{{ asset('storage/' . $service->engaging_content['section_one']['image']['path']) }}"
-                        alt="{{ $service->engaging_content['section_one']['image']['alt'] }}" class="right-img">
+                    @php
+                        $imagePath = $service->engaging_content['section_one']['image']['path'] ?? null;
+                        $imageAlt = $service->engaging_content['section_one']['image']['alt'] ?? 'Service Image';
+                    @endphp
+
+                    @if ($imagePath)
+                        <img src="{{ asset('storage/' . $imagePath) }}" alt="{{ $imageAlt }}" class="right-img">
+                    @endif
                 </div>
 
             </div>
@@ -903,8 +910,14 @@
             <div class="row align-items-start mt-4">
                 <!-- Left Image -->
                 <div class="col-lg-6 mb-4 mb-lg-0">
-                    <img src="{{ asset('storage/' . $service->engaging_content['section_two']['image']['path']) }}"
-                        alt="{{ $service->engaging_content['section_two']['image']['alt'] }}" class="seo-image">
+                    @php
+                        $imagePath = $service->engaging_content['section_two']['image']['path'] ?? null;
+                        $imageAlt = $service->engaging_content['section_two']['image']['alt'] ?? 'Service Image';
+                    @endphp
+
+                    @if ($imagePath)
+                        <img src="{{ asset('storage/' . $imagePath) }}" alt="{{ $imageAlt }}" class="seo-image">
+                    @endif
                 </div>
 
                 <!-- Right Content -->
@@ -937,7 +950,7 @@
     </section> --}}
 
 
-    <x-career />
+    <x-career :brands="$brands" />
 
 
     {{-- ================================ contact-form-section ================================ --}}
@@ -950,16 +963,21 @@
                 <div class="col-lg-8">
                     <div class="  form-box">
 
-                        <form>
+                        <form id="serviceInquiryForm" action="{{ route('service-inquiry.submit') }}" method="POST">
+                            @csrf
                             <!-- Full & Last Name -->
                             <div class="row mt-3">
                                 <div class="col-md-6 mt-3">
                                     <label class="form-label labell text-white">Full Name</label>
-                                    <input type="text" class="form-control custom-input">
+                                    <input type="text" name="first_name" id="first_name"
+                                        class="form-control custom-input" placeholder="Enter your first name">
+                                    <small class="text-danger d-block mt-1" id="error_first_name"></small>
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <label class="form-label labell text-white">Last Name</label>
-                                    <input type="text" class="form-control custom-input">
+                                    <input type="text" name="last_name" id="last_name" class="form-control custom-input"
+                                        placeholder="Enter your last name">
+                                    <small class="text-danger d-block mt-1" id="error_last_name"></small>
                                 </div>
                             </div>
 
@@ -967,22 +985,27 @@
                             <div class="row mt-3">
                                 <div class="col-md-6 mt-3">
                                     <label class="form-label labell text-white">Email</label>
-                                    <input type="email" class="form-control custom-input">
+                                    <input type="email" name="email" id="email"
+                                        class="form-control custom-input" placeholder="Enter your email">
+                                    <small class="text-danger d-block mt-1" id="error_email"></small>
                                 </div>
 
                                 <div class="col-md-6 mt-3">
                                     <label class="form-label labell text-white">Phone Number</label>
 
                                     <div class="phone-wrapper">
-                                        <select class="form-select country-code">
-                                            <option>+92</option>
-                                            <option>+1</option>
-                                            <option>+44</option>
+                                        <select class="form-select country-code" name="country_code" id="country_code">
+                                            <option value="+92">+92</option>
+                                            <option value="+1">+1</option>
+                                            <option value="+44">+44</option>
+                                            <option value="+91">+91</option>
+                                            <option value="+971">+971</option>
                                         </select>
 
-                                        <input type="text" class="form-control phone-number"
-                                            placeholder="Phone number">
+                                        <input type="text" name="phone_number" id="phone_number"
+                                            class="form-control phone-number" placeholder="Phone number">
                                     </div>
+                                    <small class="text-danger d-block mt-1" id="error_phone_number"></small>
                                 </div>
 
                             </div>
@@ -992,14 +1015,17 @@
                                 <label class="form-label labell text-white">Do You Have Website?</label>
                                 <div class="d-flex gap-4 text-white mt-3">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="website">
-                                        <label class="form-check-label">Yes</label>
+                                        <input class="form-check-input" type="radio" name="has_website"
+                                            id="website_yes" value="yes">
+                                        <label class="form-check-label" for="website_yes">Yes</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="website">
-                                        <label class="form-check-label">No</label>
+                                        <input class="form-check-input" type="radio" name="has_website"
+                                            id="website_no" value="no">
+                                        <label class="form-check-label" for="website_no">No</label>
                                     </div>
                                 </div>
+                                <small class="text-danger d-block mt-1" id="error_has_website"></small>
                             </div>
 
                             <!-- Subject -->
@@ -1007,64 +1033,43 @@
                                 <label class="form-label labell text-white">Select Subject / Service</label>
 
                                 <div class="service-checkboxes">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="service1">
-                                        <label class="form-check-label text-white" for="service1">
-                                            Web Development
-                                        </label>
-                                    </div>
 
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="service2">
-                                        <label class="form-check-label text-white" for="service2">
-                                            UI/UX Design
-                                        </label>
-                                    </div>
+                                    @if (isset($mainServices) && $mainServices->count() > 0)
+                                        @foreach ($mainServices as $mainService)
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                    id="service_{{ $mainService->id }}" name="services[]"
+                                                    value="{{ $mainService->id }}">
+                                                <label class="form-check-label text-white"
+                                                    for="service_{{ $mainService->id }}">
+                                                    {{ $mainService->title }}
+                                                </label>
+                                            </div>
+                                        @endforeach
+                                    @endif
 
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="service3">
-                                        <label class="form-check-label text-white" for="service3">
-                                            SEO
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="service2">
-                                        <label class="form-check-label text-white" for="service2">
-                                            UI/UX Design
-                                        </label>
-                                    </div>
-
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="service3">
-                                        <label class="form-check-label text-white" for="service3">
-                                            SEO
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="service1">
-                                        <label class="form-check-label text-white" for="service1">
-                                            Web Development
-                                        </label>
-                                    </div>
-
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="service2">
-                                        <label class="form-check-label text-white" for="service2">
-                                            UI/UX Design
-                                        </label>
-                                    </div>
                                 </div>
+                                <small class="text-danger d-block mt-1" id="error_services"></small>
                             </div>
 
 
                             <!-- Message -->
                             <div class="mt-5">
                                 <label class="form-label text-white labell">Message</label>
-                                <textarea class="form-control message-field" rows="3"></textarea>
+                                <textarea name="message" id="message" class="form-control message-field" rows="3"
+                                    placeholder="Enter your message (minimum 10 characters)"></textarea>
+                                <small class="text-danger d-block mt-1" id="error_message"></small>
+                            </div>
+
+                            <div class="col-12 form-group mt-5">
+                                <div class="g-recaptcha w-100" id="serviceCaptcha"
+                                    data-sitekey="{{ config('services.recaptcha.sitekey') }}">
+                                </div>
+                                <small class="text-danger d-block mt-1" id="error_captcha"></small>
                             </div>
 
                             <!-- Button -->
-                            <button type="submit" class=" submit-btn">
+                            <button type="submit" class="submit-btn" id="submitBtn">
                                 Submit <img src="{{ asset('frontend/images/kips-icon.png') }}" alt="">
                             </button>
                         </form>
@@ -1095,4 +1100,206 @@
 @endsection
 
 @push('frontend-scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('serviceInquiryForm');
+            const submitBtn = document.getElementById('submitBtn');
+            let serviceCaptchaWidget = null;
+
+            // Render service inquiry captcha when modal is shown
+            const projectModal = document.getElementById('projectModal');
+            if (projectModal) {
+                projectModal.addEventListener('shown.bs.modal', function() {
+                    renderServiceCaptcha();
+                });
+            }
+
+            // Render service inquiry captcha when page loads (if form is visible)
+            function renderServiceCaptcha() {
+                const captchaEl = document.getElementById('serviceCaptcha');
+                if (captchaEl && window.grecaptcha) {
+                    try {
+                        // Check if already rendered
+                        if (serviceCaptchaWidget === null) {
+                            serviceCaptchaWidget = grecaptcha.render('serviceCaptcha', {
+                                sitekey: captchaEl.getAttribute('data-sitekey'),
+                            });
+                        }
+                    } catch (e) {
+                        console.warn('Failed to render service captcha', e);
+                    }
+                }
+            }
+
+            // Render captcha on page load if form is visible
+            if (document.getElementById('serviceCaptcha') && document.getElementById('serviceCaptcha').offsetParent !== null) {
+                renderServiceCaptcha();
+            }
+
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                // Clear previous errors
+                clearErrors();
+
+                // Disable submit button
+                submitBtn.disabled = true;
+                submitBtn.innerHTML =
+                    '<span class="spinner-border spinner-border-sm me-2"></span>Submitting...';
+
+                try {
+                    // Get reCAPTCHA token from the service captcha widget
+                    let recaptchaToken = '';
+                    if (serviceCaptchaWidget !== null && window.grecaptcha) {
+                        recaptchaToken = grecaptcha.getResponse(serviceCaptchaWidget);
+                    }
+                    
+                    if (!recaptchaToken) {
+                        showError('captcha', 'Please verify the reCAPTCHA');
+                        if (serviceCaptchaWidget !== null && window.grecaptcha) {
+                            grecaptcha.reset(serviceCaptchaWidget);
+                        }
+                        resetSubmitBtn();
+                        return;
+                    }
+
+                    // Prepare form data
+                    const formData = new FormData(form);
+                    formData.append('g-recaptcha-response', recaptchaToken);
+
+                    // Submit form via AJAX
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'Accept': 'application/json',
+                        },
+                        body: formData,
+                    });
+
+                    const data = await response.json();
+
+                    if (data.success) {
+                        // Show success toast using Toastr
+                        if (typeof toastr !== 'undefined') {
+                            toastr.success(data.message);
+                        } else {
+                            showCustomToast('success', data.message);
+                        }
+
+                        // Reset form
+                        form.reset();
+                        if (serviceCaptchaWidget !== null && window.grecaptcha) {
+                            grecaptcha.reset(serviceCaptchaWidget);
+                        }
+
+                        // Close modal
+                        const modal = bootstrap.Modal.getInstance(projectModal);
+                        if (modal) {
+                            modal.hide();
+                        }
+
+                        // Scroll to top
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    } else {
+                        // Show errors
+                        if (data.errors) {
+                            Object.keys(data.errors).forEach(field => {
+                                const errors = data.errors[field];
+                                if (Array.isArray(errors)) {
+                                    showError(field, errors[0]);
+                                } else {
+                                    showError(field, errors);
+                                }
+                            });
+                        }
+
+                        // Show error toast using Toastr
+                        if (typeof toastr !== 'undefined') {
+                            toastr.error(data.message || 'Please fix the errors below');
+                        } else {
+                            showCustomToast('error', data.message || 'Please fix the errors below');
+                        }
+
+                        // Reset captcha on error
+                        if (serviceCaptchaWidget !== null && window.grecaptcha) {
+                            grecaptcha.reset(serviceCaptchaWidget);
+                        }
+                    }
+                } catch (error) {
+                    console.error('Form submission error:', error);
+
+                    if (typeof toastr !== 'undefined') {
+                        toastr.error('An unexpected error occurred. Please try again.');
+                    } else {
+                        showCustomToast('error', 'An unexpected error occurred. Please try again.');
+                    }
+
+                    if (serviceCaptchaWidget !== null && window.grecaptcha) {
+                        grecaptcha.reset(serviceCaptchaWidget);
+                    }
+                } finally {
+                    resetSubmitBtn();
+                }
+            });
+
+            /**
+             * Clear all error messages
+             */
+            function clearErrors() {
+                document.querySelectorAll('[id^="error_"]').forEach(el => {
+                    el.textContent = '';
+                    el.style.display = 'none';
+                });
+            }
+
+            /**
+             * Show error message for a field
+             */
+            function showError(fieldName, message) {
+                const errorEl = document.getElementById(`error_${fieldName}`);
+                if (errorEl) {
+                    errorEl.textContent = message;
+                    errorEl.style.display = 'block';
+                }
+            }
+
+            /**
+             * Reset submit button
+             */
+            function resetSubmitBtn() {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Submit <img src="{{ asset('frontend/images/kips-icon.png') }}" alt="">';
+            }
+
+            /**
+             * Show custom toast notification (fallback if Toastr not available)
+             */
+            function showCustomToast(type, message) {
+                const toast = document.createElement('div');
+                toast.className =
+                    `alert alert-${type === 'success' ? 'success' : 'danger'} alert-dismissible fade show`;
+                toast.setAttribute('role', 'alert');
+                toast.style.position = 'fixed';
+                toast.style.top = '20px';
+                toast.style.right = '20px';
+                toast.style.zIndex = '9999';
+                toast.style.minWidth = '300px';
+                toast.innerHTML = `
+                    ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                `;
+
+                document.body.appendChild(toast);
+
+                // Auto remove after 5 seconds
+                setTimeout(() => {
+                    toast.remove();
+                }, 5000);
+            }
+        });
+    </script>
 @endpush

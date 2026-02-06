@@ -531,7 +531,7 @@
                         {{ \Illuminate\Support\Str::limit($subService->short_description ?? '', 180) }}
                     </p>
 
-                    <a href="#" class="dm-btn">Start Your Project</a>
+                    <a href="javascript:void(0)" class="dm-btn" data-bs-toggle="modal" data-bs-target="#projectModal">Start Your Project</a>
                 </div>
 
                 <!-- RIGHT COLUMN -->

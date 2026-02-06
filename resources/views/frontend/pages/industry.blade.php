@@ -1,9 +1,9 @@
 @extends('frontend.layouts.frontend')
 
 {{-- @section('title', 'Home') --}}
-@section('meta_title', $data->meta_title ?? 'Meta IT Services')
-@section('meta_keywords', $data->meta_keywords ?? '')
-@section('meta_description', $data->meta_description ?? '')
+@section('meta_title', $seoMeta->meta_title ?? 'Meta IT Services')
+@section('meta_keywords', $seoMeta->meta_keywords ?? '')
+@section('meta_description', $seoMeta->meta_description ?? '')
 
 @push('frontend-styles')
     <style>
@@ -350,32 +350,11 @@
         </div>
 
         <!-- Inner Container -->
-        @foreach ($industries as $industry)
-            <div class="container-fluid industry-box">
-                <div class="row align-items-center">
+        <div id="industriesContainer">
+            @include('frontend.pages.industry-items', ['industries' => $industries])
+        </div>
 
-                    <!-- Left Column -->
-                    <div class="col-lg-6 col-md-6 d-flex justify-content-center">
-                        <div class="industry-card">
-                            <img src="{{ asset('storage/' . $industry->image) }}" alt="{{ $industry->image_alt ?? $industry->name }}">
-                            <h4>{{ $industry->name ?? ''}}</h4>
-                        </div>
-                    </div>
-
-                    <!-- Right Column -->
-                    <div class="col-lg-6 col-md-6">
-                        <p class="industry-long-desc">
-                            {{ $industry->description ?? '' }}
-                        </p>
-
-                        <a href="{{ route('industry.detail', $industry->slug) }}" class="industry-btn">View Full Detail</a>
-                    </div>
-
-                </div>
-            </div>
-        @endforeach
-
-        <button class="explore-btn">
+        <button class="explore-btn" id="loadMoreBtn" @if(!$industries->hasMorePages()) style="display: none;" @endif>
             Explore More Industries
         </button>
 
@@ -385,5 +364,69 @@
 
 
 @push('frontend-scripts')
-    <script></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let currentPage = 1;
+            let isLoading = false;
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            const industriesContainer = document.getElementById('industriesContainer');
+
+            if (loadMoreBtn) {
+                loadMoreBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    if (isLoading) return;
+
+                    isLoading = true;
+                    currentPage++;
+
+                    // Show loading state
+                    loadMoreBtn.disabled = true;
+                    const originalText = loadMoreBtn.textContent;
+                    loadMoreBtn.textContent = 'Loading...';
+
+                    fetch(`{{ route('industries.load-more') }}?page=${currentPage}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                // Append new industries
+                                industriesContainer.insertAdjacentHTML('beforeend', data.html);
+
+                                // Hide button if no more pages
+                                if (!data.hasMore) {
+                                    loadMoreBtn.style.display = 'none';
+                                } else {
+                                    loadMoreBtn.disabled = false;
+                                    loadMoreBtn.textContent = originalText;
+                                }
+
+                                // Scroll to new content
+                                const newItems = industriesContainer.querySelectorAll('.industry-box:last-child');
+                                if (newItems.length > 0) {
+                                    newItems[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                }
+                            } else {
+                                console.error('Error loading industries:', data.message);
+                                loadMoreBtn.disabled = false;
+                                loadMoreBtn.textContent = originalText;
+                                if (typeof toastr !== 'undefined') {
+                                    toastr.error(data.message || 'Error loading more industries');
+                                }
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            loadMoreBtn.disabled = false;
+                            loadMoreBtn.textContent = originalText;
+                            if (typeof toastr !== 'undefined') {
+                                toastr.error('An error occurred while loading more industries');
+                            }
+                        })
+                        .finally(() => {
+                            isLoading = false;
+                        });
+                });
+            }
+        });
+    </script>
 @endpush

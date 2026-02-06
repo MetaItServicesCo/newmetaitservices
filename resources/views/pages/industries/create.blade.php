@@ -637,6 +637,44 @@
                                 </div>
                             </div>
 
+                             <div class="col-lg-12 mb-4 mt-5">
+                                <h3 class="fw-semibold mb-3">{{ __('SEO Section') }}</h3>
+                                <div class="col-lg-12 mb-4">
+                                    <label for="meta_title"
+                                        class="form-label fw-semibold">{{ __('Meta Title') }}</label>
+                                    <input type="text" id="meta_title" name="meta_title"
+                                        class="form-control form-control-lg @error('meta_title') is-invalid @enderror"
+                                        value="{{ old('meta_title', $industry->meta_title ?? '') }}">
+                                    @error('meta_title')
+                                        <div class="text-danger mt-1">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="col-lg-12 mb-4">
+                                    <label for="meta_keywords"
+                                        class="form-label fw-semibold">{{ __('Meta Keyword') }}</label>
+                                    <input type="text" id="meta_keywords" name="meta_keywords"
+                                        class="form-control form-control-lg @error('meta_keywords') is-invalid @enderror"
+                                        value="{{ old('meta_keywords', $industry->meta_keywords ?? '') }}">
+
+                                    @error('meta_keywords')
+                                        <div class="text-danger mt-1">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+
+
+                                <div class="col-lg-12 mb-4">
+                                    <label for="meta_description"
+                                        class="form-label fw-semibold">{{ __('Meta Description') }}</label>
+                                    <textarea id="meta_description" name="meta_description"
+                                        class="form-control form-control-lg @error('meta_description') is-invalid @enderror" rows="5">{{ old('meta_description', $industry->meta_description ?? '') }}</textarea>
+                                    @error('meta_description')
+                                        <div class="text-danger mt-1">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
                         </div>
 
                         @error('general')

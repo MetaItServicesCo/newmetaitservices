@@ -1,9 +1,9 @@
 @extends('frontend.layouts.frontend')
 
 {{-- @section('title', 'Home') --}}
-@section('meta_title', $data->meta_title ?? 'Meta IT Services')
-@section('meta_keywords', $data->meta_keywords ?? '')
-@section('meta_description', $data->meta_description ?? '')
+@section('meta_title', $industry->meta_title ?? 'Meta IT Services')
+@section('meta_keywords', $industry->meta_keywords ?? '')
+@section('meta_description', $industry->meta_description ?? '')
 
 @push('frontend-styles')
     <style>
@@ -970,18 +970,31 @@
                     <div class="custom-slider">
                         <div class="slider-track">
                             @if (!empty($industry['sub_details']['hero_slider']) && is_array($industry['sub_details']['hero_slider']))
-                                @foreach ($industry['sub_details']['hero_slider'] as $item)
-                                    <div class="health-card" data-bs-toggle="modal" data-bs-target="#healthModal">
-                                        <img src="{{ !empty($item['image'])
-                                            ? asset('storage/' . $item['image'])
-                                            : asset('frontend/images/industry/subind-img.png') }}"
-                                            alt="{{ $item['image_alt'] ?? 'Industry Image' }}">
+                                @foreach ($industry['sub_details']['hero_slider'] as $index => $item)
+                                    @if (!empty($item['image']))
+                                        @php
+                                            $imagePath = asset('storage/' . $item['image']);
+                                        @endphp
+                                        <div class="health-card slider-item" data-index="{{ $index }}"
+                                            data-image="{{ $imagePath }}"
+                                            data-title="{{ htmlspecialchars($item['title'] ?? '') }}"
+                                            data-excerpt="{{ htmlspecialchars($item['excerpt'] ?? '') }}"
+                                            data-description="{{ htmlspecialchars($item['description'] ?? '') }}"
+                                            data-gallery='@json($item['gallery_images'] ?? [])'>
 
-                                        <h4>{{ $item['title'] ?? '' }}</h4>
+                                            <img src="{{ $imagePath }}" alt="{{ $item['image_alt'] ?? 'Industry Image' }}">
 
-                                        <p>{{ $item['excerpt'] ?? '' }}</p>
+                                            <h4>{{ $item['title'] ?? '' }}</h4>
 
-                                    </div>
+                                            <p>{{ $item['excerpt'] ?? '' }}</p>
+
+                                        </div>
+                                    @endif
+                                    {{-- Store full HTML in a JS object --}}
+                                    <script>
+                                        window.sliderDescriptions = window.sliderDescriptions || {};
+                                        window.sliderDescriptions[{{ $index }}] = {!! json_encode($item['description'] ?? '') !!};
+                                    </script>
                                 @endforeach
                             @endif
 
@@ -1084,7 +1097,7 @@
                             <!-- LEFT COLUMN -->
                             <div class="col-lg-8">
                                 <div class="modal-left">
-                                    <img src="{{ asset('frontend/images/large-img.png') }}" alt="">
+                                    <img id="modal-main-image" src="" alt="">
                                 </div>
                             </div>
 
@@ -1092,38 +1105,22 @@
                             <div class="col-lg-4">
                                 <div class="modal-right">
                                     <div class="row g-2">
-                                        <div class="col-12">
-                                            <img src="{{ asset('frontend/images/large-img.png') }}" alt="">
-                                        </div>
-                                        <div class="col-12">
-                                            <img src="{{ asset('frontend/images/large-img.png') }}" alt="">
-                                        </div>
+                                        <div class="col-12" id="modal-gallery"></div>
                                     </div>
                                 </div>
+
                             </div>
 
+                            <!-- HEADING, DESCRIPTION & LIST -->
+                            <div class="modal-content-text mt-4 p-4" id="modal-description"></div>
+
+                            <div class="d-flex justify-content-center align-items-center">
+                                <a href="#" class="btn-proposal">Get A Proposal</a>
+
+                            </div>
                         </div>
 
-                        <!-- HEADING, DESCRIPTION & LIST -->
-                        <div class="modal-content-text mt-4 p-4">
-                            <h3>Hope Project Leads</h3>
-                            <p class="desc">
-                                Helping healthcare providers generate qualified leads through
-                                data-driven digital strategies.
-                            </p>
-                            <ul>
-                                <li>Lead generation strategy</li>
-                                <li>Healthcare focused campaigns</li>
-                                <li>Conversion optimization</li>
-                            </ul>
-                        </div>
-
-                        <div class="d-flex justify-content-center align-items-center">
-                            <a href="#" class="btn-proposal">Get A Proposal</a>
-
-                        </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -1463,4 +1460,43 @@
             });
         });
     </script>
+
+    <script>
+        $(document).on('click', '.slider-item', function() {
+            let image = $(this).data('image');
+            let gallery = $(this).data('gallery');
+            let index = $(this).data('index');
+
+            // Open modal
+            let modal = new bootstrap.Modal(document.getElementById('healthModal'));
+            modal.show();
+
+            // Main image
+            $('#modal-main-image').attr('src', image);
+
+            // Description (from JS object)
+            let descriptionHtml = window.sliderDescriptions[index] || '';
+            $('#modal-description').html(descriptionHtml);
+
+            // Gallery
+            let galleryHtml = '';
+            if (gallery && gallery.length > 0) {
+                gallery.forEach(img => {
+                    let fullImg = "{{ asset('storage') }}/" + img;
+                    galleryHtml += `
+                <div class="col-12">
+                    <img src="${fullImg}" class="img-fluid rounded" style="cursor:pointer" onclick="changeMainImage('${fullImg}')">
+                </div>`;
+                });
+            } else {
+                galleryHtml = `<p class="text-muted">No gallery images</p>`;
+            }
+            $('#modal-gallery').html(galleryHtml);
+        });
+
+        function changeMainImage(src) {
+            $('#modal-main-image').attr('src', src);
+        }
+    </script>
+
 @endpush

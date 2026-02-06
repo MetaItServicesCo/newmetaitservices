@@ -22,8 +22,8 @@ class DisclaimerController extends Controller
             // Log the error
             Log::error('Disclaimer index load failed', [
                 'error_message' => $e->getMessage(),
-                'file'          => $e->getFile(),
-                'line'          => $e->getLine(),
+                'file' => $e->getFile(),
+                'line' => $e->getLine(),
             ]);
 
             // Graceful fallback - redirect back with error
@@ -40,11 +40,11 @@ class DisclaimerController extends Controller
     {
         // Validation
         $validatedData = $request->validate([
-            'id'                => 'nullable|exists:disclaimers,id',
-            'hero_title'        => 'required|string|max:255',
-            'hero_subtitle'     => 'nullable|string',
-            'content'           => 'nullable|string',
-            
+            'id' => 'nullable|exists:disclaimers,id',
+            'hero_title' => 'required|string|max:255',
+            'hero_subtitle' => 'nullable|string',
+            'content' => 'nullable|string',
+
         ]);
 
         DB::beginTransaction();
@@ -53,14 +53,14 @@ class DisclaimerController extends Controller
 
             // Common data for both create & update
             $data = [
-                'hero_title'       => $validatedData['hero_title'],
-                'hero_subtitle'    => $validatedData['hero_subtitle'] ?? null,
-                'content'          => $validatedData['content'] ?? null,
-                
-                'updated_by'       => Auth::id(),
+                'hero_title' => $validatedData['hero_title'],
+                'hero_subtitle' => $validatedData['hero_subtitle'] ?? null,
+                'content' => $validatedData['content'] ?? null,
+
+                'updated_by' => Auth::id(),
             ];
 
-            if (!empty($validatedData['id'])) {
+            if (! empty($validatedData['id'])) {
                 // UPDATE
                 $disclaimer = Disclaimer::findOrFail($validatedData['id']);
                 $disclaimer->update($data);
@@ -76,7 +76,7 @@ class DisclaimerController extends Controller
                 ->back()
                 ->with(
                     'success',
-                    !empty($validatedData['id'])
+                    ! empty($validatedData['id'])
                         ? 'Disclaimer updated successfully.'
                         : 'Disclaimer created successfully.'
                 );
@@ -87,10 +87,10 @@ class DisclaimerController extends Controller
             // Log the error
             Log::error('Disclaimer store/update failed', [
                 'error_message' => $e->getMessage(),
-                'file'          => $e->getFile(),
-                'line'          => $e->getLine(),
-                'user_id'       => Auth::id(),
-                'request_data'  => $request->except(['_token']),
+                'file' => $e->getFile(),
+                'line' => $e->getLine(),
+                'user_id' => Auth::id(),
+                'request_data' => $request->except(['_token']),
             ]);
 
             return redirect()
@@ -101,20 +101,23 @@ class DisclaimerController extends Controller
                 ]);
         }
     }
+
     public function landingPage()
     {
         try {
 
             $data = Disclaimer::first();
-            return view('frontend.pages.disclaimer', compact('data'));
+            $seoMeta = \App\Models\SeoMeta::where('page_name', 'disclaimer')->where('is_active', 1)->first();
+
+            return view('frontend.pages.disclaimer', compact('data', 'seoMeta'));
 
         } catch (\Throwable $e) {
 
             // Log the error
             Log::error('Disclaimer frontend landing load failed', [
                 'error_message' => $e->getMessage(),
-                'file'          => $e->getFile(),
-                'line'          => $e->getLine(),
+                'file' => $e->getFile(),
+                'line' => $e->getLine(),
             ]);
 
             // Graceful fallback for frontend

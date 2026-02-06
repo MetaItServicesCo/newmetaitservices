@@ -1,9 +1,9 @@
 @extends('frontend.layouts.frontend')
 
 {{-- @section('title', 'Home') --}}
-@section('meta_title', $data->meta_title ?? 'Meta IT Services')
-@section('meta_keywords', $data->meta_keywords ?? '')
-@section('meta_description', $data->meta_description ?? '')
+@section('meta_title', $seoMeta->meta_title ?? 'Meta IT Services')
+@section('meta_keywords', $seoMeta->meta_keywords ?? '')
+@section('meta_description', $seoMeta->meta_description ?? '')
 
 @push('frontend-styles')
     <style>
@@ -589,20 +589,28 @@
                                 <div class="icon-circle">
                                     <i class="fa-solid fa-envelope"></i>
                                 </div>
-                                <div class="info-text">
-                                    <strong>Email</strong>
-                                    <span>Metait@gmail.com</span>
-                                </div>
+                                @if (setting('email'))
+                                    <div class="info-text">
+                                        <strong>Email</strong>
+                                        <a href="mailto:{{ setting('email') }}" target="_blank">
+                                            <span>{{ setting('email') }}</span>
+                                        </a>
+                                    </div>
+                                @endif
                             </div>
 
                             <div class="contact-item">
                                 <div class="icon-circle">
                                     <i class="fa-solid fa-phone"></i>
                                 </div>
-                                <div class="info-text">
-                                    <strong>Phone</strong>
-                                    <span>123456789</span>
-                                </div>
+                                @if (setting('phone'))
+                                    <div class="info-text">
+                                        <strong>Phone</strong>
+                                        <a href="tel:{{ cleanPhone(setting('phone')) }}">
+                                            <span>{{ setting('phone') }}</span>
+                                        </a>
+                                    </div>
+                                @endif
                             </div>
                         </div>
 
@@ -611,10 +619,12 @@
                                 <div class="icon-circle">
                                     <i class="fa-solid fa-location-arrow"></i>
                                 </div>
-                                <div class="info-text">
-                                    <strong>Address</strong>
-                                    <span>Metait@gmail.com</span>
-                                </div>
+                                @if (setting('address'))
+                                    <div class="info-text">
+                                        <strong>Address</strong>
+                                        <span>{{ setting('address') }}</span>
+                                    </div>
+                                @endif
                             </div>
 
                             <div class="contact-item">
@@ -635,10 +645,18 @@
 
                     <!-- SOCIAL ICONS -->
                     <div class="social-icons d-flex gap-3">
-                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        @if (setting('facebook'))
+                            <a href="{{ setting('facebook') }}" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                        @endif
+                        @if (setting('twitter'))
+                            <a href="{{ setting('twitter') }}" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                        @endif
+                        @if (setting('linkedin'))
+                            <a href="{{ setting('linkedin') }}" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                        @endif
+                        @if (setting('instagram'))
+                            <a href="{{ setting('instagram') }}" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                        @endif
                     </div>
 
                 </div>
@@ -646,37 +664,48 @@
                 <!-- RIGHT COLUMN -->
                 <div class="col-lg-6">
                     <div class="contact-form-wrapper">
-                        <form>
-
+                        <form id="contactForm" method="POST">
+                            @csrf
                             <div class="row">
                                 <div class="col-md-12 mb-3">
                                     <label>First Name</label>
-                                    <input type="text" class="form-control custom-input" placeholder="First Name">
+                                    <input type="text" name="first_name" id="first_name"
+                                        class="form-control custom-input" placeholder="First Name" required>
+                                    <small class="text-danger d-block mt-1" id="error_first_name"></small>
                                 </div>
 
                                 <div class="col-md-12 mb-3">
                                     <label>Last Name</label>
-                                    <input type="text" class="form-control custom-input" placeholder="Last Name">
+                                    <input type="text" name="last_name" id="last_name" class="form-control custom-input"
+                                        placeholder="Last Name" required>
+                                    <small class="text-danger d-block mt-1" id="error_last_name"></small>
                                 </div>
 
                                 <div class="col-md-12 mb-3">
                                     <label>Phone Number</label>
-                                    <input type="text" class="form-control custom-input" placeholder="Phone Number">
+                                    <input type="text" name="phone_number" id="phone_number"
+                                        class="form-control custom-input" placeholder="Phone Number" required>
+                                    <small class="text-danger d-block mt-1" id="error_phone_number"></small>
                                 </div>
 
                                 <div class="col-md-12 mb-3">
                                     <label>Email</label>
-                                    <input type="email" class="form-control custom-input" placeholder="Email">
+                                    <input type="email" name="email" id="email" class="form-control custom-input"
+                                        placeholder="example@company.com" required>
+                                    <small class="text-danger d-block mt-1" id="error_email"></small>
                                 </div>
 
                                 <div class="col-md-12 mb-3">
                                     <label>Company Name</label>
-                                    <input type="text" class="form-control custom-input" placeholder="Company Name">
+                                    <input type="text" name="company_name" id="company_name"
+                                        class="form-control custom-input" placeholder="Company Name">
+                                    <small class="text-danger d-block mt-1" id="error_company_name"></small>
                                 </div>
 
                                 <div class="col-md-12 mb-3">
                                     <label>Company URL</label>
-                                    <input type="text" class="form-control custom-input" placeholder="Company URL">
+                                    <input type="url" name="company_url" id="company_url"
+                                        class="form-control custom-input" placeholder="https://example.com">
                                     <small class="form-text">
                                         The Web Address of your Company’s official website.
                                     </small>
@@ -685,15 +714,23 @@
 
                             <div class="mb-3">
                                 <label>Share Your Vision With Us!</label>
-                                <textarea class="form-control custom-textarea" rows="4" placeholder="Any Additional Information..."></textarea>
+                                <textarea name="message" id="message" class="form-control custom-textarea" rows="4"
+                                    placeholder="Any Additional Information..." required></textarea>
                                 <small class="form-text">
                                     Feel free to use this space for any additional comments you’d like us to consider.
                                     If you have a specific service in mind, please let us know!
                                 </small>
                             </div>
-                            <div class="d-flex justify-content-center">
 
-                                <button type="submit" class="submit-btn">
+                            <div class="col-12 form-group mb-3">
+                                <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+                                <div class="g-recaptcha w-100" id="contactCaptcha"
+                                    data-sitekey="{{ config('services.recaptcha.sitekey') }}"></div>
+                                <small class="text-danger d-block mt-1" id="error_g-recaptcha-response"></small>
+                            </div>
+
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" class="submit-btn" id="contactSubmitBtn">
                                     Submit
                                 </button>
                             </div>
@@ -719,17 +756,149 @@
             </div>
         </div>
     </section>
-
-
-
-
-
-
-
-
-
 @endsection
 
 
 @push('frontend-scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contactForm');
+            const contactSubmitBtn = document.getElementById('contactSubmitBtn');
+            const originalText = 'Submit';
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+
+                    // Clear previous errors
+                    document.querySelectorAll('[id^="error_"]').forEach(el => {
+                        el.textContent = '';
+                        el.style.display = 'none';
+                    });
+
+                    // Disable submit button and show loader
+                    contactSubmitBtn.disabled = true;
+                    contactSubmitBtn.innerHTML =
+                        'Submitting...<span class="spinner-border spinner-border-sm me-2"></span>';
+
+                    try {
+                        // Get reCAPTCHA token
+                        const recaptchaToken = grecaptcha.getResponse();
+                        if (!recaptchaToken) {
+                            showError('g-recaptcha-response', 'Please verify the reCAPTCHA');
+                            resetCaptcha();
+                            resetSubmitBtn();
+                            return;
+                        }
+
+                        // Prepare form data
+                        const formData = new FormData(contactForm);
+                        formData.append('g-recaptcha-response', recaptchaToken);
+
+                        // Submit form via AJAX
+                        const response = await fetch("{{ route('contact.submit') }}", {
+                            method: 'POST',
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest',
+                                'Accept': 'application/json',
+                            },
+                            body: formData,
+                        });
+
+                        const data = await response.json();
+
+                        if (data.success) {
+                            // Show success toast using Toastr
+                            if (typeof toastr !== 'undefined') {
+                                toastr.success(data.message);
+                            }
+
+                            // Reset form
+                            contactForm.reset();
+                            resetCaptcha();
+
+                            // Scroll to top
+                            window.scrollTo({
+                                top: 0,
+                                behavior: 'smooth'
+                            });
+                        } else {
+                            // Show errors
+                            if (data.errors) {
+                                Object.keys(data.errors).forEach(field => {
+                                    const errors = data.errors[field];
+                                    if (Array.isArray(errors)) {
+                                        showError(field, errors[0]);
+                                    } else {
+                                        showError(field, errors);
+                                    }
+                                });
+                            }
+
+                            // Show error toast using Toastr
+                            if (typeof toastr !== 'undefined') {
+                                toastr.error(data.message || 'Please fix the errors below');
+                            }
+
+                            // Reset captcha on error
+                            resetCaptcha();
+                        }
+                    } catch (error) {
+                        console.error('Form submission error:', error);
+
+                        if (typeof toastr !== 'undefined') {
+                            toastr.error('An unexpected error occurred. Please try again.');
+                        }
+
+                        resetCaptcha();
+                    } finally {
+                        // Always reset button at the end
+                        resetSubmitBtn();
+                    }
+                });
+
+                /**
+                 * Show error message for a field
+                 */
+                function showError(fieldName, message) {
+                    const errorEl = document.getElementById(`error_${fieldName}`);
+                    if (errorEl) {
+                        errorEl.textContent = message;
+                        errorEl.style.display = 'block';
+                    }
+                }
+
+                /**
+                 * Reset captcha
+                 */
+                function resetCaptcha() {
+                    if (typeof grecaptcha !== 'undefined') {
+                        grecaptcha.reset();
+                    }
+                }
+
+                /**
+                 * Reset submit button - removes loader and re-enables button
+                 */
+                function resetSubmitBtn() {
+                    contactSubmitBtn.disabled = false;
+                    contactSubmitBtn.textContent = originalText;
+                }
+
+                /**
+                 * Clear error message when user starts typing
+                 */
+                const formInputs = contactForm.querySelectorAll('input, textarea');
+                formInputs.forEach(input => {
+                    input.addEventListener('input', function() {
+                        const errorEl = document.getElementById(`error_${this.name}`);
+                        if (errorEl) {
+                            errorEl.textContent = '';
+                            errorEl.style.display = 'none';
+                        }
+                    });
+                });
+            }
+        });
+    </script>
 @endpush

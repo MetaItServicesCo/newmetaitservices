@@ -106,7 +106,9 @@ class PrivacyPolicyController extends Controller
         try {
 
             $data = PrivacyPolicy::first();
-            return view('frontend.pages.policy', compact('data'));
+            $seoMeta = \App\Models\SeoMeta::where('page_name', 'privacy_policy')->where('is_active', 1)->first();
+
+            return view('frontend.pages.policy', compact('data', 'seoMeta'));
 
         } catch (\Throwable $e) {
 

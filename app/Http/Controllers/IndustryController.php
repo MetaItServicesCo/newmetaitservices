@@ -31,6 +31,11 @@ class IndustryController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'image_alt' => 'nullable|string|max:255',
             'sub_details' => 'nullable|array',
+
+            // Meta fields
+            'meta_title' => 'nullable|string|max:255',
+            'meta_keywords' => 'nullable|string',
+            'meta_description' => 'nullable|string',
         ]);
 
         try {
@@ -71,7 +76,7 @@ class IndustryController extends Controller
             if (! isset($subDetails['detail_accordion_section'])) {
                 $subDetails['detail_accordion_section'] = [];
             }
-            
+
             // Handle accordion section image upload
             // Check for file in nested structure
             $accordionImageFile = null;
@@ -80,7 +85,7 @@ class IndustryController extends Controller
             } elseif (isset($request->allFiles()['sub_details']['detail_accordion_section']['image'])) {
                 $accordionImageFile = $request->allFiles()['sub_details']['detail_accordion_section']['image'];
             }
-            
+
             if ($accordionImageFile) {
                 $subDetails['detail_accordion_section']['image'] = $accordionImageFile->store('industries/accordion', 'public');
             } elseif (isset($subDetails['detail_accordion_section']['image']) && ! empty($subDetails['detail_accordion_section']['image'])) {
@@ -119,6 +124,10 @@ class IndustryController extends Controller
                 'image' => $imagePath,
                 'image_alt' => $request->image_alt,
                 'sub_details' => $subDetails,
+                'meta_title' => $request->meta_title,
+                'meta_keywords' => $request->meta_keywords,
+                'meta_description' => $request->meta_description,
+
             ]);
 
             return redirect()->route('admin.industries.list')->with('success', 'Industry created successfully.');
@@ -148,6 +157,10 @@ class IndustryController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'image_alt' => 'nullable|string|max:255',
             'sub_details' => 'nullable|array',
+            // Meta fields
+            'meta_title' => 'nullable|string|max:255',
+            'meta_keywords' => 'nullable|string',
+            'meta_description' => 'nullable|string',
         ]);
 
         try {
@@ -206,9 +219,9 @@ class IndustryController extends Controller
             if (! isset($subDetails['detail_accordion_section'])) {
                 $subDetails['detail_accordion_section'] = [];
             }
-            
+
             $existingAccordionImage = $existingSubDetails['detail_accordion_section']['image'] ?? null;
-            
+
             // Handle accordion section image upload
             // Check for file in nested structure
             $accordionImageFile = null;
@@ -217,7 +230,7 @@ class IndustryController extends Controller
             } elseif (isset($request->allFiles()['sub_details']['detail_accordion_section']['image'])) {
                 $accordionImageFile = $request->allFiles()['sub_details']['detail_accordion_section']['image'];
             }
-            
+
             if ($accordionImageFile) {
                 // Delete old image if exists
                 if ($existingAccordionImage && Storage::disk('public')->exists($existingAccordionImage)) {
@@ -273,6 +286,9 @@ class IndustryController extends Controller
                 'image' => $imagePath,
                 'image_alt' => $request->image_alt,
                 'sub_details' => $subDetails,
+                'meta_title' => $request->meta_title,
+                'meta_keywords' => $request->meta_keywords,
+                'meta_description' => $request->meta_description,
             ]);
 
             return redirect()->route('admin.industries.list')->with('success', 'Industry updated successfully.');
@@ -346,15 +362,61 @@ class IndustryController extends Controller
 
     public function industry()
     {
-        $industries = Industry::latest()->get();
+        try {
+            $industries = Industry::latest()->paginate(6);
 
-        return view('frontend.pages.industry', compact('industries'));
+            $seoMeta = \App\Models\SeoMeta::where('page_name', 'industry')
+                ->where('is_active', 1)
+                ->first();
+
+            return view('frontend.pages.industry', compact('industries', 'seoMeta'));
+        } catch (\Exception $e) {
+
+            Log::error('Industry list error: '.$e->getMessage());
+
+            return abort(500, 'Something went wrong. Please try again later.');
+        }
+    }
+
+    public function loadMore(Request $request)
+    {
+        try {
+            $page = $request->input('page', 2);
+            $industries = Industry::latest()->paginate(6, ['*'], 'page', $page);
+
+            return response()->json([
+                'success' => true,
+                'html' => view('frontend.pages.industry-items', compact('industries'))->render(),
+                'hasMore' => $industries->hasMorePages(),
+                'nextPage' => $industries->currentPage() + 1,
+            ]);
+        } catch (\Exception $e) {
+            Log::error('Industry load more error: '.$e->getMessage());
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Error loading more industries',
+            ], 500);
+        }
     }
 
     public function industryDetail($slug)
     {
-        $industry = Industry::where('slug', $slug)->first();
+        try {
+            $industry = Industry::where('slug', $slug)->firstOrFail();
 
-        return view('frontend.pages.subindustry', compact('industry'));
+            return view('frontend.pages.subindustry', compact('industry'));
+        } catch (ModelNotFoundException $e) {
+
+            // Agar slug exist nahi karta
+            return abort(404, 'Industry not found');
+        } catch (\Exception $e) {
+
+            Log::error('Industry detail error: '.$e->getMessage(), [
+                'slug' => $slug,
+            ]);
+
+            return abort(500, 'Something went wrong. Please try again later.');
+        }
     }
 }

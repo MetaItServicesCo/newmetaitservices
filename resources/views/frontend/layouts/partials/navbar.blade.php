@@ -194,57 +194,44 @@
     }
 </style>
 
-<header class="fixed-to">
+<nav class="navbar navbar-expand-lg custom-navbar">
+    <div class="container  position-relative">
+        <a class="navbar-brand nav-logo-wrap" href="{{ route('home') }}">
+            <img src="{{ asset('storage/' . setting('site_logo', 'frontend/images/logo.png')) }}" alt="{{ setting('site_name') }}" class="nav-logo">
+        </a>
 
-    <nav class="navbar navbar-expand-lg custom-navbar">
-        <div class="container  position-relative">
-            <a class="navbar-brand nav-logo-wrap" href="#">
-                <img src="{{ asset('frontend/images/navbar-logo.png') }}" alt="Logo" class="nav-logo">
-            </a>
+        <button class="navbar-toggler ms-auto" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <button class="navbar-toggler ms-auto" type="button">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <div class="collapse navbar-collapse" id="mainNavbar">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                <li class="nav-item mega-item">
+                    <a class="nav-link mega-trigger" href="#">
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item mega-item" data-mega="industry">
+                    <a class="nav-link mega-trigger" href="{{ route('industries') }}">
+                        Industry <i class="fas fa-chevron-down"></i>
+                    </a>
+                </li>
 
-            <div class="collapse navbar-collapse" id="mainNavbar">
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                    <li class="nav-item mega-item">
-                        <a class="nav-link mega-trigger" href="#">
-                            Home
-                        </a>
-                    </li>
-                    <li class="nav-item mega-item" data-mega="industry">
-                        <a class="nav-link mega-trigger" href="#">
-                            Industry <i class="fas fa-chevron-down"></i>
-                        </a>
-                    </li>
+                <li class="nav-item mega-item" data-mega="services">
+                    <a class="nav-link mega-trigger" href="{{ route('services') }}">
+                        Services <i class="fas fa-chevron-down"></i>
+                    </a>
+                </li>
 
-                    <li class="nav-item mega-item" data-mega="services">
-                        <a class="nav-link mega-trigger" href="#">
-                            Services <i class="fas fa-chevron-down"></i>
-                        </a>
-                    </li>
+                <li class="nav-item mega-item" data-mega="about">
+                    <a class="nav-link mega-trigger" href="{{ route('about-us') }}">
+                        About MetaIt <i class="fas fa-chevron-down"></i>
+                    </a>
+                </li>
+            </ul>
 
-                    <li class="nav-item mega-item" data-mega="about">
-                        <a class="nav-link mega-trigger" href="#">
-                            About MetaIt <i class="fas fa-chevron-down"></i>
-                        </a>
-                    </li>
-                </ul>
-
-                <div class="contact-wrapper text-center">
-                    <!-- Email Section -->
-                    <div class="email-section">
-                        <p>
-                            <i class="fa-solid fa-envelope mt-2"></i>
-                            email@example.com
-                        </p>
-                    </div>
-
-
-                    <!-- Get a Quote Button -->
-                    <a href="#" class=" get-quote-btn">Get a Quote</a>
-                </div>
+            <div class="">
+                <a href="{{ route('contact-us') }}" class="btn btn-contact">Contact</a>
             </div>
 
             <!-- ============ MEGA DROPDOWNS ============ -->
