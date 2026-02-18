@@ -194,10 +194,11 @@
     }
 </style>
 
-<nav class="navbar navbar-expand-lg custom-navbar">
+<nav class="navbar navbar-expand-lg custom-navbar fixed-top">
     <div class="container  position-relative">
         <a class="navbar-brand nav-logo-wrap" href="{{ route('home') }}">
-            <img src="{{ asset('storage/' . setting('site_logo', 'frontend/images/logo.png')) }}" alt="{{ setting('site_name') }}" class="nav-logo">
+            <img src="{{ asset('storage/' . setting('site_logo', 'frontend/images/logo.png')) }}"
+                alt="{{ setting('site_name') }}" class="nav-logo">
         </a>
 
         <button class="navbar-toggler ms-auto" type="button">
@@ -230,9 +231,17 @@
                 </li>
             </ul>
 
-            <div class="">
-                <a href="{{ route('contact-us') }}" class="btn btn-contact">Contact</a>
+            {{-- <div class="">
+                <a href="{{ route('contact-us') }}" class="bt btn-contact">Contact</a>
+            </div> --}}
+            <div>
+                <a href="{{ route('contact-us') }}" class="btnn btn-outline">
+                    <em>Contact</em>
+                </a>
+
+
             </div>
+
 
             <!-- ============ MEGA DROPDOWNS ============ -->
 
@@ -245,8 +254,8 @@
                     <div class="row g-4">
                         <div class="col-lg-3 col-md-6">
                             <div class="mega-card">
-                                <h3>Get Growing!</h3>
-                                <p>Make Your Business Impossible To Ignore</p>
+                                <h3>See Impact!</h3>
+                                <p> Start Building A Stronger Brand</p>
                                 <a href="#" class="talk-btn">Let’s Talk</a>
                             </div>
                         </div>
@@ -302,8 +311,8 @@
                     <div class="row g-4">
                         <div class="col-lg-3 col-md-6">
                             <div class="mega-card">
-                                <h3>Get Growing!</h3>
-                                <p>Make Your Business Impossible To Ignore</p>
+                                <h3>See Impact!</h3>
+                                <p> Start Building A Stronger Brand</p>
                                 <a href="#" class="talk-btn">Let’s Talk</a>
                             </div>
                         </div>
@@ -382,8 +391,8 @@
                     <div class="row g-4">
                         <div class="col-lg-3 col-md-6">
                             <div class="mega-card">
-                                <h3>Get Growing!</h3>
-                                <p>Make Your Business Impossible To Ignore</p>
+                                <h3>See Impact!</h3>
+                                <p> Start Building A Stronger Brand</p>
                                 <a href="#" class="talk-btn">Let’s Talk</a>
                             </div>
                         </div>
@@ -438,7 +447,7 @@
 
 
         </div>
-    </nav>
+</nav>
 </header>
 
 

@@ -14,6 +14,8 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            margin-top: 98px;
+
         }
 
 
@@ -344,7 +346,8 @@
 
         /* Outer Box */
         .outer-box {
-            width: 400px;
+            width: 100%;
+            max-width: 400px;
             height: 425px;
             background: #FCE2D6;
             border: 5px solid #ffffff;
@@ -362,7 +365,8 @@
 
         /* Inner Card */
         .inner-card {
-            width: 370px;
+            width: 100%;
+            max-width: 370px;
             height: 400px;
             background: #404959;
             border-radius: 13px;
@@ -541,8 +545,7 @@
 
     {{-- ================================== dm-services section ================================== --}}
 
-    <section class="dm-services-section"
-        style="background-image: url('{{ asset('frontend/images/services/service-hero-img.png') }}');">
+    <section class="dm-services-section" style="background-image: url('{{ asset('frontend/images/hero-img.png') }}');">
 
         <div class="container">
             <div class="row align-items-center">
@@ -561,7 +564,8 @@
                         and content marketing
                     </p>
 
-                    <a href="javascript:void(0)" class="dm-btn" data-bs-toggle="modal" data-bs-target="#projectModal">Start Your Project</a>
+                    <a href="javascript:void(0)" class="dm-btn" data-bs-toggle="modal" data-bs-target="#projectModal">Start
+                        Your Project</a>
 
                 </div>
 
@@ -668,7 +672,7 @@
                                     </h3>
 
                                     <p class="card-desc">
-                                        {{ \Illuminate\Support\Str::limit($subService->short_description ?? '', 150) }}
+                                        {{ \Illuminate\Support\Str::limit($subService->short_description ?? '', 120) }}
                                     </p>
 
                                     <a href="#" class="learn-bttn">Learn More</a>

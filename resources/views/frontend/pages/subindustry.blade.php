@@ -14,6 +14,8 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            margin-top: 98px;
+
         }
 
 
@@ -907,8 +909,7 @@
 
 
 
-    <section class="dm-services-section"
-        style="background-image: url('{{ asset('frontend/images/about/about-hero.png') }}');">
+    <section class="dm-services-section" style="background-image: url('{{ asset('frontend/images/hero-img.png') }}');">
 
         <div class="container">
             <div class="row align-items-center">
@@ -982,7 +983,8 @@
                                             data-description="{{ htmlspecialchars($item['description'] ?? '') }}"
                                             data-gallery='@json($item['gallery_images'] ?? [])'>
 
-                                            <img src="{{ $imagePath }}" alt="{{ $item['image_alt'] ?? 'Industry Image' }}">
+                                            <img src="{{ $imagePath }}"
+                                                alt="{{ $item['image_alt'] ?? 'Industry Image' }}">
 
                                             <h4>{{ $item['title'] ?? '' }}</h4>
 
@@ -1134,14 +1136,12 @@
         <div class="container">
             <div class="row ">
 
-                <!-- LEFT COLUMN: Image -->
                 <div class="col-lg-6 col-md-12 mb-4 mb-lg-0">
                     <img src="{{ $industry['sub_details']['detail_accordion_section']['image'] ? asset('storage/' . $industry['sub_details']['detail_accordion_section']['image']) : asset('frontend/images/industry/health-care.png') }}"
                         alt="{{ $industry['sub_details']['detail_accordion_section']['title'] }}"
                         class="img-fluid marketing-img">
                 </div>
 
-                <!-- RIGHT COLUMN: Heading + Description -->
                 <div class="col-lg-6 col-md-12">
                     <h2 class="marketing-heading">
                         {{ $industry['sub_details']['detail_accordion_section']['title'] ?? '' }}
@@ -1267,6 +1267,7 @@
             </div>
         </section>
     @endif
+    
 
     @php
         $experienceSection = data_get($industry, 'sub_details.detail_experience_section', []);
@@ -1275,12 +1276,11 @@
         $images = data_get($experienceSection, 'images', []);
 
     @endphp
-    @if ($title || !empty($images))
+    {{-- @if ($title || !empty($images))
         <section class="experience-section">
             <div class="container">
                 <div class="row align-items-center">
 
-                    <!-- LEFT COLUMN -->
                     <div class="col-lg-6">
                         @if ($title)
                             <h2 class="experience-heading">
@@ -1291,18 +1291,14 @@
                         <button class="talk-btn">Let’s Talk</button>
                     </div>
 
-                    <!-- RIGHT COLUMN -->
                     <div class="col-lg-6 position-relative">
 
                         <div class="cross-wrapper">
 
-                            <!-- Horizontal Line -->
                             <div class="cross-x"></div>
 
-                            <!-- Vertical Line -->
                             <div class="cross-y"></div>
 
-                            <!-- IMAGES -->
                             @php
                                 $positions = ['top-left', 'top-right', 'bottom-left', 'bottom-right'];
                             @endphp
@@ -1322,7 +1318,7 @@
                 </div>
             </div>
         </section>
-    @endif
+    @endif --}}
 
 
 

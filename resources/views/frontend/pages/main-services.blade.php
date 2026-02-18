@@ -14,6 +14,8 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            margin-top: 98px;
+
         }
 
 
@@ -728,8 +730,7 @@
 
 
 
-    <section class="dm-services-section"
-        style="background-image: url('{{ asset('frontend/images/main-services/mc-hero.png') }}');">
+    <section class="dm-services-section" style="background-image: url('{{ asset('frontend/images/hero-img.png') }}');">
 
         <div class="container">
             <div class="row align-items-center">
@@ -747,7 +748,8 @@
                         {{ \Illuminate\Support\Str::limit($service->short_description ?? '', 180) }}
                     </p>
 
-                    <a href="javascript:void(0)" class="dm-btn" data-bs-toggle="modal" data-bs-target="#projectModal">Start Your Project</a>
+                    <a href="javascript:void(0)" class="dm-btn" data-bs-toggle="modal" data-bs-target="#projectModal">Start
+                        Your Project</a>
 
                 </div>
 
@@ -975,8 +977,8 @@
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <label class="form-label labell text-white">Last Name</label>
-                                    <input type="text" name="last_name" id="last_name" class="form-control custom-input"
-                                        placeholder="Enter your last name">
+                                    <input type="text" name="last_name" id="last_name"
+                                        class="form-control custom-input" placeholder="Enter your last name">
                                     <small class="text-danger d-block mt-1" id="error_last_name"></small>
                                 </div>
                             </div>
@@ -1132,7 +1134,8 @@
             }
 
             // Render captcha on page load if form is visible
-            if (document.getElementById('serviceCaptcha') && document.getElementById('serviceCaptcha').offsetParent !== null) {
+            if (document.getElementById('serviceCaptcha') && document.getElementById('serviceCaptcha')
+                .offsetParent !== null) {
                 renderServiceCaptcha();
             }
 
@@ -1153,7 +1156,7 @@
                     if (serviceCaptchaWidget !== null && window.grecaptcha) {
                         recaptchaToken = grecaptcha.getResponse(serviceCaptchaWidget);
                     }
-                    
+
                     if (!recaptchaToken) {
                         showError('captcha', 'Please verify the reCAPTCHA');
                         if (serviceCaptchaWidget !== null && window.grecaptcha) {

@@ -14,6 +14,8 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            margin-top: 98px;
+
         }
 
 
@@ -34,7 +36,7 @@
             line-height: 60px;
             letter-spacing: 0;
             margin-bottom: 15px;
-            max-width: 450px;
+            max-width: 470px;
             /* margin-top: 20px; */
         }
 
@@ -517,24 +519,25 @@
 
 
 @section('frontend-content')
-    <section class="dm-services-section"
-        style="background-image: url('{{ asset('frontend/images/about/about-hero.png') }}');">
+    <section class="dm-services-section" style="background-image: url('{{ asset('frontend/images/hero-img.png') }}');">
 
         <div class="container">
             <div class="row align-items-center">
 
                 <!-- LEFT COLUMN -->
                 <div class="col-lg-6 mb-4 mb-lg-0">
-                    <h1 class="dm-title">Case Studies</h1>
+                    <h1 class="dm-title">Real-World Impact: Case Studies | Meta IT Services
+                    </h1>
 
                     {{-- <h4 class="dm-subtitle">
                         Customized Marketing Solutions That Deliver Results, Every Time
                     </h4> --}}
 
                     <p class="dm-desc">
-                        We create data-driven digital marketing strategies tailored to
-                        your business goals. From SEO and paid campaigns to social media
-                        and content marketing
+                        We’ve helped hundreds of companies tear down the old ways and replace them with modern and more
+                        impactful digital engines. Our case studies explore how perfected engineering and intuitive
+                        foresight can convert operational challenges into market victories.
+
                     </p>
 
                     {{-- <a href="#" class="dm-btn">Start Your Project</a> --}}
@@ -558,7 +561,7 @@
 
             <!-- MAIN HEADING -->
             <h2 class="main-heading">
-                Transform Your Business with Buzz Digital Agency’s Proven Strategies
+                Transform Your Business with Meta IT’s Proven Strategies
             </h2>
 
             <!-- TWO COLUMNS -->
@@ -566,48 +569,56 @@
                 <div class="col-lg-6 col-md-6">
                     <span class="number">01</span>
                     <h4 class="col-title">
-                        Discover the power of digital marketing with Buzz Digital Agency
+                        Data-Driven Decision Support
                     </h4>
                     <p class="col-desc">
-                        We help brands grow with data-driven strategies, creative campaigns, and proven digital solutions.
+                        We transform chaotic data into keys for success. Through the use of real-time analytics and
+                        predictive modeling, we empower leadership with trustworthy high-stakes decisions.
                     </p>
                 </div>
 
                 <div class="col-lg-6 col-md-6">
                     <span class="number">02</span>
                     <h4 class="col-title">
-                        Discover the power of digital marketing with Buzz Digital Agency
+                        Infrastructure Modernization & Scaling
                     </h4>
                     <p class="col-desc">
-                        Our team delivers measurable results through innovation, performance, and smart execution.
+                        Legacy systems should no longer define your limit. We move and streamline your environment to the
+                        cloud so that your architecture is elastic, secure and capable of managing large spikes in traffic.
                     </p>
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <span class="number">03</span>
                     <h4 class="col-title">
-                        Discover the power of digital marketing with Buzz Digital Agency
+                        Operational Automation & Efficiency
                     </h4>
                     <p class="col-desc">
-                        We help brands grow with data-driven strategies, creative campaigns, and proven digital solutions.
+                        Stop wasting human talent on repetitive tasks. We use AI and software that remove human error and
+                        reduce overhead. Enable your workforce to concentrate solely on valuable innovation and bottom-line
+                        growth.
                     </p>
                 </div>
 
                 <div class="col-lg-6 col-md-6">
                     <span class="number">04</span>
                     <h4 class="col-title">
-                        Discover the power of digital marketing with Buzz Digital Agency
+                        Strategic Innovation Roadmap
                     </h4>
                     <p class="col-desc">
-                        Our team delivers measurable results through innovation, performance, and smart execution.
+                        We don't just provide tech. We provide a vision. Our advisors recognize the up-and-coming trends and
+                        disruptions in your niche. We focus on developing a long-term approach that would keep your brand
+                        current and in control of the changing markets.
                     </p>
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <span class="number">05</span>
                     <h4 class="col-title">
-                        Discover the power of digital marketing with Buzz Digital Agency
+                        Security & Compliance Hardening
                     </h4>
                     <p class="col-desc">
-                        Our team delivers measurable results through innovation, performance, and smart execution.
+                        Protect your brand with stronger digital defense systems. We build security into each tier of your
+                        department operations. Our clients achieve high standards and have the speed and agility needed to
+                        compete in the modern business environment.
                     </p>
                 </div>
 
@@ -753,22 +764,25 @@
                     <form id="downloadForm" method="POST">
                         @csrf
                         <input type="hidden" name="case_study_id" id="downloadCaseStudyId" value="">
-                        
+
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" name="name" id="download_name" class="form-control" placeholder="Name" required>
+                            <input type="text" name="name" id="download_name" class="form-control"
+                                placeholder="Name" required>
                             <small class="text-danger d-block mt-1" id="error_name"></small>
                         </div>
 
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="email" name="email" id="download_email" class="form-control" placeholder="Email" required>
+                            <input type="email" name="email" id="download_email" class="form-control"
+                                placeholder="Email" required>
                             <small class="text-danger d-block mt-1" id="error_email"></small>
                         </div>
 
                         <div class="form-group">
                             <label>Phone Number</label>
-                            <input type="text" name="phone_number" id="download_phone" class="form-control" placeholder="Phone Number" required>
+                            <input type="text" name="phone_number" id="download_phone" class="form-control"
+                                placeholder="Phone Number" required>
                             <small class="text-danger d-block mt-1" id="error_phone_number"></small>
                         </div>
 
@@ -818,7 +832,8 @@
                     </p>
                     <form id="newsletterForm" method="post">
                         @csrf
-                        <input type="email" name="email" id="newsletter_email" placeholder="Enter your email address" class="newsletter-input" required>
+                        <input type="email" name="email" id="newsletter_email"
+                            placeholder="Enter your email address" class="newsletter-input" required>
                         <small class="text-danger d-block mt-2" id="error_newsletter_email"></small>
 
                         <div class="d-flex justify-content-center mt-4">
@@ -915,7 +930,7 @@
                 setTimeout(() => {
                     const downloadModal = new bootstrap.Modal(downloadModalEl);
                     downloadModal.show();
-                    
+
                     // Verify ID is still set after modal opens
                     const caseIdInput = document.getElementById('downloadCaseStudyId');
                     console.log('After download modal opens - Case Study ID:', caseIdInput.value);
@@ -953,12 +968,13 @@
 
                     // Disable submit button and show loader
                     downloadSubmitBtn.disabled = true;
-                    downloadSubmitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Processing...';
+                    downloadSubmitBtn.innerHTML =
+                        '<span class="spinner-border spinner-border-sm me-2"></span>Processing...';
 
                     try {
                         // Prepare form data
                         const formData = new FormData(downloadForm);
-                        
+
                         // Ensure case_study_id is in the form data
                         formData.set('case_study_id', caseIdInput.value);
                         console.log('FormData case_study_id:', formData.get('case_study_id'));
@@ -1017,7 +1033,7 @@
                         }
                     } catch (error) {
                         console.error('Download form submission error:', error);
-                        
+
                         if (typeof toastr !== 'undefined') {
                             toastr.error('An unexpected error occurred. Please try again.');
                         }
@@ -1062,7 +1078,7 @@
                         el.textContent = '';
                         el.style.display = 'none';
                     });
-                    
+
                     // Clear the case study ID and selectedCaseId when download modal closes
                     const caseIdInput = document.getElementById('downloadCaseStudyId');
                     if (caseIdInput) {
@@ -1138,7 +1154,8 @@
                     // Disable submit button
                     newsletterSubmitBtn.disabled = true;
                     const originalText = newsletterSubmitBtn.textContent;
-                    newsletterSubmitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Subscribing...';
+                    newsletterSubmitBtn.innerHTML =
+                        '<span class="spinner-border spinner-border-sm me-2"></span>Subscribing...';
 
                     try {
                         // Get form data
@@ -1167,11 +1184,15 @@
                             newsletterEmail.value = '';
 
                             // Scroll to top
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                            window.scrollTo({
+                                top: 0,
+                                behavior: 'smooth'
+                            });
                         } else {
                             // Show errors
                             if (data.errors && data.errors.email) {
-                                const errorMsg = Array.isArray(data.errors.email) ? data.errors.email[0] : data.errors.email;
+                                const errorMsg = Array.isArray(data.errors.email) ? data.errors.email[
+                                    0] : data.errors.email;
                                 errorNewsletterEmail.textContent = errorMsg;
                                 errorNewsletterEmail.style.display = 'block';
                             }

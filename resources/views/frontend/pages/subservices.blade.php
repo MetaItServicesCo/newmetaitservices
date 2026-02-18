@@ -14,6 +14,8 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            margin-top: 98px;
+
         }
 
 
@@ -513,7 +515,7 @@
 
 
     <section class="dm-services-section"
-        style="background-image: url('{{ $subService->page_content['hero_section']['image'] ? asset('storage/' . $subService->page_content['hero_section']['image']) : asset('frontend/images/main-services/mc-hero.png') }}');">
+        style="background-image: url('{{ $subService->page_content['hero_section']['image'] ? asset('storage/' . $subService->page_content['hero_section']['image']) : asset('frontend/images/hero-img.png') }}');">
 
         <div class="container">
             <div class="row align-items-center">
@@ -531,7 +533,8 @@
                         {{ \Illuminate\Support\Str::limit($subService->short_description ?? '', 180) }}
                     </p>
 
-                    <a href="javascript:void(0)" class="dm-btn" data-bs-toggle="modal" data-bs-target="#projectModal">Start Your Project</a>
+                    <a href="javascript:void(0)" class="dm-btn" data-bs-toggle="modal" data-bs-target="#projectModal">Start
+                        Your Project</a>
                 </div>
 
                 <!-- RIGHT COLUMN -->

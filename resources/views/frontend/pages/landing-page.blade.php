@@ -303,6 +303,26 @@
             color: #fff;
             border-radius: 12px;
         }
+
+
+
+        .headingSwiper {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .headingSwiper .swiper-slide {
+            width: auto;
+        }
+
+        .brand-title {
+            font-size: clamp(28px, 4vw, 56px);
+            font-weight: 700;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            padding-right: 80px;
+        }
     </style>
 @endpush
 
@@ -353,16 +373,30 @@
     </section>
 
 
- 
+
 
     <!-- =================== brand section ============================== -->
     <section class="brand-section">
         <div class="container text-center">
 
             <!-- Heading -->
-            <h2 class="brand-title">
-                We treat your BRAND like it’s ours. Why? Be
-            </h2>
+            <div class="swiper headingSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <h2 class="brand-title">
+                            We treat your BRAND like it’s ours. Why? Be
+                        </h2>
+                    </div>
+
+                    <!-- duplicate slide (smooth infinite loop ke liye) -->
+                    <div class="swiper-slide">
+                        <h2 class="brand-title">
+                            We treat your BRAND like it’s ours. Why? Be
+                        </h2>
+                    </div>
+                </div>
+            </div>
+
 
             <!-- Description -->
             <p class="brand-desc">

@@ -468,6 +468,19 @@
     .question-modal-right.show .modal-dialog {
         transform: translate(0, -50%);
     }
+
+    .tooltip-inner {
+        background-color: #111;
+        color: #fff;
+        font-size: 13px;
+        padding: 8px 12px;
+        border-radius: 6px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .tooltip.bs-tooltip-top .tooltip-arrow::before {
+        border-top-color: #111;
+    }
 </style>
 <footer class="site-footer">
     <!-- FOOTER CTA -->
@@ -506,8 +519,10 @@
                 </div>
 
                 <p class="footer-desc">
-                    We help businesses grow through digital solutions,
-                    marketing strategies, and innovative technology.
+                    Meta IT is a digital marketing and IT solution company that delivers intelligent tech and
+                    data-driven marketing. We offer scalable solutions at comprehensive rate plans to help modern
+                    businesses grow.
+
                 </p>
 
                 <ul class="footer-contact">
@@ -624,7 +639,8 @@
                         @csrf
 
                         {{-- Name (required) --}}
-                        <input id="q_name" name="name" type="text" class="question-input required" placeholder="Enter your name">
+                        <input id="q_name" name="name" type="text" class="question-input required"
+                            placeholder="Enter your name">
                         <span class="text-danger" id="error_name"></span>
 
                         {{-- Country (required) --}}
@@ -638,7 +654,8 @@
                         <span class="text-danger" id="error_country"></span>
 
                         {{-- Email (required) --}}
-                        <input id="q_email" name="email" type="email" class="question-input required" placeholder="Enter your email">
+                        <input id="q_email" name="email" type="email" class="question-input required"
+                            placeholder="Enter your email">
                         <span class="text-danger" id="error_email"></span>
 
                         {{-- Message (required) --}}
@@ -646,7 +663,8 @@
                         <span class="text-danger" id="error_message"></span>
 
                         <div class="form-check mt-2">
-                            <input class="form-check-input" type="checkbox" id="agree" name="agree" value="1">
+                            <input class="form-check-input" type="checkbox" id="agree" name="agree"
+                                value="1">
                             <label class="form-check-label small" for="agree">
                                 By submitting you agree to receive SMS or emails for the provided channel.
                                 Rates may be applied.
@@ -655,7 +673,8 @@
 
                         <div class="col-12 form-group mb-3">
                             <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-                            <div class="w-100" id="questionCaptcha" data-sitekey="{{ config('services.recaptcha.sitekey') }}">
+                            <div class="w-100" id="questionCaptcha"
+                                data-sitekey="{{ config('services.recaptcha.sitekey') }}">
                             </div>
                             <span class="text-danger" id="error_grecaptcha"></span>
                         </div>
@@ -668,8 +687,31 @@
             </div>
         </div>
     </div>
-    <div class="footer-question" data-bs-toggle="modal" data-bs-target="#questionModal">
+    <div class="footer-question" data-bs-target="#questionModal" id="footerQuestion">
+
         <img src="{{ asset('frontend/images/footer-img.png') }}" alt="">
         <span>Have A Question</span>
     </div>
+
+
+
 </footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+
+        // Tooltip initialize
+        var footerQuestion = document.getElementById('footerQuestion');
+        var tooltip = new bootstrap.Tooltip(footerQuestion, {
+            title: "Need help? Ask us anything",
+            placement: "top"
+        });
+
+        // Click par modal open
+        footerQuestion.addEventListener('click', function() {
+            var modal = new bootstrap.Modal(document.getElementById('questionModal'));
+            modal.show();
+        });
+
+    });
+</script>

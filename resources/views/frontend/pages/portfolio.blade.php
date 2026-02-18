@@ -118,8 +118,8 @@
         /* HEADER */
         .updates-header {
             /* display: flex;
-                                                                                justify-content: center;
-                                                                                align-items: center; */
+                                                                                                    justify-content: center;
+                                                                                                    align-items: center; */
             margin-bottom: 20px;
             text-align: center;
         }
@@ -429,24 +429,24 @@
 
 
 
-    <section class="dm-services-section"
-        style="background-image: url('{{ asset('frontend/images/about/about-hero.png') }}');">
+    <section class="dm-services-section" style="background-image: url('{{ asset('frontend/images/hero-img.png') }}');">
 
         <div class="container">
             <div class="row align-items-center">
 
                 <!-- LEFT COLUMN -->
                 <div class="col-lg-6 mb-4 mb-lg-0">
-                    <h1 class="dm-title">Portfolio Page</h1>
+                    <h1 class="dm-title">Portfolios | Meta IT Services</h1>
 
                     {{-- <h4 class="dm-subtitle">
                         Customized Marketing Solutions That Deliver Results, Every Time
                     </h4> --}}
 
                     <p class="dm-desc">
-                        We create data-driven digital marketing strategies tailored to
-                        your business goals. From SEO and paid campaigns to social media
-                        and content marketing
+                        Whether it’s innovating giant healthcare data tunnels or creating reflexive AI to support emerging
+                        startups, our portfolio displays an unrivaled quest for perfection. At Meta IT, we create
+                        high-performance digital legacies that drive quantifiable ROI.
+
                     </p>
 
                     {{-- <a href="#" class="dm-btn">Start Your Project</a> --}}
@@ -466,12 +466,15 @@
 
             <!-- HEADER -->
             <div class="updates-header">
-                <h2>Our Featured Work</h2>
+                <h2>Our Featured Work: Turning Complex Challenges into Advantageous Gains
+                </h2>
 
-                <p>Libero diam auctor tristique hendrerit in eu vel id. Nec leo amet suscipit nulla. Nullam vitae sit tempus
-                    diam.Libero diam auctor tristique hendreritLibero diam t Libero diam auctor tristique hendrerit in eu
-                    vel id. Nec leo amet suscipit nulla. Nullam vitae sit tempus diam.Libero diam auctor tristique
-                    hendreritLibero diam t </p>
+                <p>Meta IT’s goal has always remained the same. Solve the unsolvable. With a commitment to grit and
+                    transparent communication with every client, we’ve dipped into every sector. Our portfolio seeks to go
+                    beyond completed code and marketing projects. Each IT project summary reflects on the strategic
+                    collaborations that helped shape industry standards. Learn how Meta IT’s result-first mentality turns
+                    whiteboard ideas into solid realities.
+                </p>
 
             </div>
 

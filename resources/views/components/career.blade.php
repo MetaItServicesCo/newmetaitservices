@@ -28,29 +28,45 @@
         width: 100%;
         max-width: 509px;
         height: 274px;
-        background: #FFFFFF;
+        /* background: #FFFFFF; */
         border-radius: 5px;
         padding: 30px;
-        display: flex;
+        /* display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: space-between; */
         /* border: 1px solid #000000; */
         box-shadow: 0 0 25.9px rgba(0, 0, 0, 0.3);
+        background-size: contain;
+        background-position: center center;
+        background-repeat: no-repeat;
+
+        position: relative;
+        box-sizing: border-box;
     }
 
     .career-card-red {
         width: 100%;
         max-width: 509px;
         height: 274px;
-        background: #F38B5C;
+
         border-radius: 5px;
         padding: 30px;
-        display: flex;
+
+        /* display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        /* border: 1px solid #000000; */
+        justify-content: space-between; */
+
         box-shadow: 0 0 25.9px rgba(0, 0, 0, 0.3);
+
+        background-size: contain;
+        background-position: center center;
+        background-repeat: no-repeat;
+
+        box-sizing: border-box;
+        position: relative;
+
     }
+
 
     /* Card Heading */
     .career-card h3 {
@@ -86,6 +102,10 @@
         font-size: 20px;
         line-height: 41px;
         letter-spacing: 0;
+        position: absolute;
+        bottom: 20px;
+        transition: all 0.4s ease-in-out;
+
     }
 
     .join-black {
@@ -102,12 +122,22 @@
         font-size: 20px;
         line-height: 41px;
         letter-spacing: 0;
+        position: absolute;
+        bottom: 20px;
+        transition: all 0.4s ease-in-out;
+    }
+
+    .join-black:hover {
+        background: #303742;
+
     }
 
     .join-btn:hover {
         background: #e6794a;
         color: #fff;
     }
+
+
 
     /* ===================== brand slider ====================== */
 
@@ -148,18 +178,16 @@
             <!-- LEFT -->
             <div class="col-lg-6">
                 <h2 class="career-heading">
-                    Committed staff are <br>
-                    Ready to help you.
+                    Meta IT’s Marketing Pros <br> Ready To Level Up Your Brand!
                 </h2>
             </div>
 
             <!-- RIGHT -->
             <div class="col-lg-6">
                 <p class="career-desc">
-                    Our team is built with passionate professionals who are dedicated
-                    to delivering excellence. We believe in collaboration, innovation,
-                    and continuous growth. Join a workplace where your skills are valued,
-                    your ideas matter, and your career moves forward with confidence.
+                    From social media strategy to novel AI-powered solutions, Meta IT harnesses fresher ways to dominate
+                    industries on the web. Create a brand that is impossible to ignore.
+
                 </p>
             </div>
         </div>
@@ -167,37 +195,40 @@
         <!-- CARDS ROW -->
         <div class="row g-4">
             <div class="col-lg-4">
-                <div class="career-card ">
-                    <h3>Build a greatest career with crafto marketing</h3>
+                <div class="career-card " style="background-image: url('{{ asset('frontend/images/bg-w-img.png') }}');">
+                    <h3>Digital Marketing Consultation</h3>
                     <a href="#" class="join-btn">Join With Us</a>
                 </div>
             </div>
 
             <div class="col-lg-4">
-                <div class="career-card-red ">
-                    <h3>Build a greatest career with crafto marketing</h3>
-                    <a href="#" class="join-black">Join With Us</a>
+                <div class="career-card-red"
+                    style="background-image: url('{{ asset('frontend/images/bg-red.png') }}');">
+                    <h3>AI-Powered Solutions</h3>
+                    <a href="#" class="join-black">Discover more</a>
                 </div>
+
             </div>
 
             <div class="col-lg-4">
-                <div class="career-card">
-                    <h3>Build a greatest career with crafto marketing</h3>
-                    <a href="#" class="join-btn">Join With Us</a>
+                <div class="career-card " style="background-image: url('{{ asset('frontend/images/bg-w-img.png') }}');">
+                    <h3>Elevate Digital Presence
+                    </h3>
+                    <a href="#" class="join-btn">Connect now</a>
                 </div>
             </div>
         </div>
     </div>
 
-    @if(isset($brands) && $brands->count() > 0)
+    @if (isset($brands) && $brands->count() > 0)
         <section class="brand-section py-5 my-3">
             <div class="container">
                 <div class="swiper brandSwiper">
                     <div class="swiper-wrapper">
                         @foreach ($brands as $brand)
                             <div class="swiper-slide brand-item">
-                                <img src="{{ $brand->logo ? asset('storage/brands-we-carry/' . $brand->logo) : 'https://cdn.simpleicons.org/paypal/000000' }}" 
-                                     alt="{{ $brand->logo_alt ?? $brand->company_name }}">
+                                <img src="{{ $brand->logo ? asset('storage/brands-we-carry/' . $brand->logo) : 'https://cdn.simpleicons.org/paypal/000000' }}"
+                                    alt="{{ $brand->logo_alt ?? $brand->company_name }}">
                             </div>
                         @endforeach
                     </div>

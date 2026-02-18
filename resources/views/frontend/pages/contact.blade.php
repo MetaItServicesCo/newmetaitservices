@@ -14,6 +14,8 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            margin-top: 98px;
+
         }
 
 
@@ -515,6 +517,26 @@
             width: 100%;
             height: 450px;
         }
+
+
+
+        .agree-check {
+            display: flex;
+            align-items: flex-start;
+            /* 👈 icon top + text clean */
+            gap: 10px;
+        }
+
+        .agree-check .form-check-input {
+            margin-top: 4px;
+            /* 👈 text ke first line ke barabar */
+            flex-shrink: 0;
+        }
+
+        .agree-check .form-check-label {
+            line-height: 1.6;
+            font-size: 14px;
+        }
     </style>
 @endpush
 
@@ -524,24 +546,24 @@
 
 
 
-    <section class="dm-services-section"
-        style="background-image: url('{{ asset('frontend/images/about/about-hero.png') }}');">
+    <section class="dm-services-section" style="background-image: url('{{ asset('frontend/images/hero-img.png') }}');">
 
         <div class="container">
             <div class="row align-items-center">
 
                 <!-- LEFT COLUMN -->
                 <div class="col-lg-6 mb-4 mb-lg-0">
-                    <h1 class="dm-title">Contact Us</h1>
+                    <h1 class="dm-title">Contact Us | Meta IT Services</h1>
 
                     {{-- <h4 class="dm-subtitle">
                         Customized Marketing Solutions That Deliver Results, Every Time
                     </h4> --}}
 
                     <p class="dm-desc">
-                        We create data-driven digital marketing strategies tailored to
-                        your business goals. From SEO and paid campaigns to social media
-                        and content marketing
+                        Meta IT makes accessibility a standard. Need an answer to a question or simply want to discuss an
+                        idea with us? We’re here to stay responsive. Contact us to begin discussing how to transform your
+                        ambitions into personalized action plans.
+
                     </p>
 
                     {{-- <a href="#" class="dm-btn">Start Your Project</a> --}}
@@ -721,6 +743,17 @@
                                     If you have a specific service in mind, please let us know!
                                 </small>
                             </div>
+
+                            <div class="form-check agree-check mt-3">
+                                <input class="form-check-input" type="checkbox" id="agreeCheck" required>
+
+                                <label class="form-check-label" for="agreeCheck">
+                                    When you check this box, you agree that you’ve read and accepted Meta IT’s
+                                    terms and conditions, disclaimer, privacy policy. You consent to be
+                                    contacted using the information you provided us.
+                                </label>
+                            </div>
+
 
                             <div class="col-12 form-group mb-3">
                                 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
