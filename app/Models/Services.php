@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\SubService;
 
 class Services extends Model
 {
@@ -33,4 +34,9 @@ class Services extends Model
         'faqs' => 'array',
         'is_active' => 'boolean',
     ];
+
+    public function subServices()
+    {
+        return $this->hasMany(SubService::class, 'service_id');
+    }
 }

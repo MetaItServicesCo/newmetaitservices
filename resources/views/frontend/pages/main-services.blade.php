@@ -828,7 +828,7 @@
                     @endforeach
                 @endif
 
-                <a href="" class="proposal-btn">Get Proposal
+                <a href="{{ route('contact-us') }}" class="proposal-btn">Get Proposal
                     <img src="{{ asset('frontend/images/kips-icon.png') }}" alt="">
                 </a>
             </div>
@@ -867,7 +867,7 @@
                             @endforeach
                         </div>
                     </div>
-                    <p class="text-white">Let’s make something great work Together. <a href="">Get Free
+                    <p class="text-white">Let’s make something great work Together. <a href="{{ route('contact-us') }}">Get Free
                             Quote</a></p>
                 </div>
 

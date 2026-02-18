@@ -710,7 +710,7 @@
                     conversion rates, loyal customers, and smarter choices supported by facts.
                 </p>
 
-                <a href="#" class="contact-btn">Contact Us</a>
+                <a href="{{ route('contact-us') }}" class="contact-btn">Contact Us</a>
             </div>
         </div>
     </section>

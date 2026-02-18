@@ -906,7 +906,7 @@
                                             </div>
                                             <!--end::Time-->
                                             <!--begin::Title-->
-                                            <a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary mb-2">Sales Pitch Proposal</a>
+                                            <a href="{{ route('contact-us') }}" class="fs-5 fw-bold text-gray-900 text-hover-primary mb-2">Sales Pitch Proposal</a>
                                             <!--end::Title-->
                                             <!--begin::User-->
                                             <div class="fs-7 text-muted">Lead by
@@ -964,7 +964,7 @@
                                             </div>
                                             <!--end::Time-->
                                             <!--begin::Title-->
-                                            <a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary mb-2">Sales Pitch Proposal</a>
+                                            <a href="{{ route('contact-us') }}" class="fs-5 fw-bold text-gray-900 text-hover-primary mb-2">Sales Pitch Proposal</a>
                                             <!--end::Title-->
                                             <!--begin::User-->
                                             <div class="fs-7 text-muted">Lead by
@@ -1045,7 +1045,7 @@
                                             </div>
                                             <!--end::Time-->
                                             <!--begin::Title-->
-                                            <a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary mb-2">Sales Pitch Proposal</a>
+                                            <a href="{{ route('contact-us') }}" class="fs-5 fw-bold text-gray-900 text-hover-primary mb-2">Sales Pitch Proposal</a>
                                             <!--end::Title-->
                                             <!--begin::User-->
                                             <div class="fs-7 text-muted">Lead by
@@ -1466,7 +1466,7 @@
                                             </div>
                                             <!--end::Time-->
                                             <!--begin::Title-->
-                                            <a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary mb-2">Sales Pitch Proposal</a>
+                                            <a href="{{ route('contact-us') }}" class="fs-5 fw-bold text-gray-900 text-hover-primary mb-2">Sales Pitch Proposal</a>
                                             <!--end::Title-->
                                             <!--begin::User-->
                                             <div class="fs-7 text-muted">Lead by

@@ -26,7 +26,7 @@
                 <p class="kpi-left-desc" id="kpi-subtitle">
                     {{ $activeKpi->content['subtitle'] }}
                 </p>
-                <a href="#" class="kpi-left-btn">Explore SEO Services <img
+                <a href="{{ route('service', 'digital-marketing') }}" class="kpi-left-btn">Explore SEO Services <img
                         src="{{ asset('frontend/images/kips-icon.png') }}" alt=""> </a>
             </div>
 

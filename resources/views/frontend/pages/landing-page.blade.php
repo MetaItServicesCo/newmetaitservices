@@ -518,10 +518,10 @@
                         </div>
                     </div>
                     <div class="about-buttons">
-                        <a href="#" class="btn-learn">Learn more <img
+                        <a href="{{ route('about-us') }}" class="btn-learn">Learn more <img
                                 src="{{ asset('frontend/images/kips-icon.png') }}" alt="">
                         </a>
-                        <a href="#" class="btn-outline">Our services <img
+                        <a href="{{ route('services') }}" class="btn-outline">Our services <img
                                 src="{{ asset('frontend/images/agency-icon.png') }}" alt=""> </a>
                     </div>
                 </div>

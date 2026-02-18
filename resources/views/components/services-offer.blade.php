@@ -11,7 +11,7 @@
                 <div class="swiper-wrapper">
                     @foreach ($offers as $offer)
                         <div class="swiper-slide">
-                            <a href="" class="text-decoration-none">
+                            <a href="{{ route('service.subservice', ['serviceSlug' => optional($offer->service)->slug, 'subServiceSlug' => $offer->slug]) }}" class="text-decoration-none">
                                 <div class="card-box">
                                     <img src="{{ $offer->icon ? asset('storage/' . $offer->icon) : asset('frontend/images/offer-icon.png') }}"
                                         alt="">

@@ -24,6 +24,6 @@
          </div>
 
          <!-- Learn More Button -->
-         <a href="#" class="learn-btn">Discover More</a>
+         <a href="{{ route('services') }}" class="learn-btn">Discover More</a>
      </div>
  </section>

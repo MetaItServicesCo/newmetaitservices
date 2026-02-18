@@ -543,7 +543,7 @@
                         <div class="modal-content-text mt-4 p-4"id="modal-description"></div>
 
                         <div class="d-flex justify-content-center align-items-center">
-                            <a href="#" class="btn-proposal">Get A Proposal</a>
+                            <a href="{{ route('contact-us') }}" class="btn-proposal">Get A Proposal</a>
 
                         </div>
                     </div>

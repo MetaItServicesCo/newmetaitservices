@@ -169,21 +169,21 @@
             <div class="col-lg-4">
                 <div class="career-card ">
                     <h3>Build a greatest career with crafto marketing</h3>
-                    <a href="#" class="join-btn">Join With Us</a>
+                    <a href="{{ route('contact-us') }}" class="join-btn">Join With Us</a>
                 </div>
             </div>
 
             <div class="col-lg-4">
                 <div class="career-card-red ">
                     <h3>Build a greatest career with crafto marketing</h3>
-                    <a href="#" class="join-black">Join With Us</a>
+                    <a href="{{ route('contact-us') }}" class="join-black">Join With Us</a>
                 </div>
             </div>
 
             <div class="col-lg-4">
                 <div class="career-card">
                     <h3>Build a greatest career with crafto marketing</h3>
-                    <a href="#" class="join-btn">Join With Us</a>
+                    <a href="{{ route('contact-us') }}" class="join-btn">Join With Us</a>
                 </div>
             </div>
         </div>

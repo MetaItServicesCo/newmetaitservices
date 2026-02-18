@@ -1001,9 +1001,9 @@
                                 </p>
 
                                 <div class="d-flex gap-3">
-                                    <a href="#" class="btn-primary-custom">Explore services <img
+                                    <a href="{{ route('services') }}" class="btn-primary-custom">Explore services <img
                                             src="{{ asset('frontend/images/kips-icon.png') }}" alt=""></a>
-                                    <a href="#" class="btn-outline-custom">Quick contact</a>
+                                    <a href="{{ route('contact-us') }}" class="btn-outline-custom">Quick contact</a>
                                 </div>
                             </div>
                         </div>
@@ -1035,8 +1035,8 @@
                                 </p>
 
                                 <div class="d-flex gap-3">
-                                    <a href="#" class="btn-primary-custom">Explore services</a>
-                                    <a href="#" class="btn-outline-custom">Quick contact</a>
+                                    <a href="{{ route('services') }}" class="btn-primary-custom">Explore services</a>
+                                    <a href="{{ route('contact-us') }}" class="btn-outline-custom">Quick contact</a>
                                 </div>
                             </div>
                         </div>
@@ -1068,8 +1068,8 @@
                                 </p>
 
                                 <div class="d-flex gap-3">
-                                    <a href="#" class="btn-primary-custom">Explore services</a>
-                                    <a href="#" class="btn-outline-custom">Quick contact</a>
+                                    <a href="{{ route('services') }}" class="btn-primary-custom">Explore services</a>
+                                    <a href="{{ route('contact-us') }}" class="btn-outline-custom">Quick contact</a>
                                 </div>
                             </div>
                         </div>
@@ -1100,8 +1100,8 @@
                                 </p>
 
                                 <div class="d-flex gap-3">
-                                    <a href="#" class="btn-primary-custom">Explore services</a>
-                                    <a href="#" class="btn-outline-custom">Quick contact</a>
+                                    <a href="{{ route('services') }}" class="btn-primary-custom">Explore services</a>
+                                    <a href="{{ route('contact-us') }}" class="btn-outline-custom">Quick contact</a>
                                 </div>
                             </div>
                         </div>
@@ -1166,9 +1166,9 @@
                         </div>
 
                     </div>
-                    <button class="about-proposal-btn">
+                        <a href="{{ route('contact-us') }}" class="about-proposal-btn">
                         Get Proposal
-                    </button>
+                        </a>
 
                 </div>
 
@@ -1236,7 +1236,7 @@
                 How to Get Started with Your Free Digital Marketing Audit
             </h2>
 
-            <a href="#" class="audit-btn">
+            <a href="{{ route('contact-us') }}" class="audit-btn">
                 Claim Your Free Consultation Today
             </a>
 

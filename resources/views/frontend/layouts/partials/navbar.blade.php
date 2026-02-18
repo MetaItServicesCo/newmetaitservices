@@ -247,7 +247,7 @@
                             <div class="mega-card">
                                 <h3>Get Growing!</h3>
                                 <p>Make Your Business Impossible To Ignore</p>
-                                <a href="#" class="talk-btn">Let’s Talk</a>
+                                <a href="{{ route('contact-us') }}" class="talk-btn">Let’s Talk</a>
                             </div>
                         </div>
                         <div class="col-lg-9 col-md-6">

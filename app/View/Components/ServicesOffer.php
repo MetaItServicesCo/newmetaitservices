@@ -15,7 +15,9 @@ class ServicesOffer extends Component
      */
     public function __construct()
     {
-        $this->offers = SubService::select('title', 'slug', 'icon', 'short_description')->where('is_active', true)
+        $this->offers = SubService::select('id', 'service_id', 'title', 'slug', 'icon', 'short_description')
+            ->with(['service:id,slug'])
+            ->where('is_active', true)
             ->where('show_on_landing_page', true)
             ->get();
     }
