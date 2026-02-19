@@ -189,15 +189,15 @@
         </div>
     </div>
 
-    @if(isset($brands) && $brands->count() > 0)
+    @if (isset($brands) && $brands->count() > 0)
         <section class="brand-section py-5 my-3">
             <div class="container">
                 <div class="swiper brandSwiper">
                     <div class="swiper-wrapper">
                         @foreach ($brands as $brand)
                             <div class="swiper-slide brand-item">
-                                <img src="{{ $brand->logo ? asset('storage/brands-we-carry/' . $brand->logo) : 'https://cdn.simpleicons.org/paypal/000000' }}" 
-                                     alt="{{ $brand->logo_alt ?? $brand->company_name }}">
+                                <img src="{{ $brand->logo ? asset('storage/brands-we-carry/' . $brand->logo) : 'https://cdn.simpleicons.org/paypal/000000' }}"
+                                    alt="{{ $brand->logo_alt ?? $brand->company_name }}">
                             </div>
                         @endforeach
                     </div>
@@ -205,6 +205,8 @@
             </div>
         </section>
     @endif
+
+
 
 </section>
 

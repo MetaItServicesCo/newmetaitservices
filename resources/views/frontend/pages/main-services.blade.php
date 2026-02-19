@@ -167,10 +167,13 @@
             justify-content: center;
             margin: auto;
             transition: all 0.4s ease-in-out;
+            overflow: hidden;
+            /* 🔥 FIX */
+
         }
 
         .outter-box:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px)
         }
 
         /* Inner Card */
@@ -184,6 +187,9 @@
             color: #ffffff;
             display: flex;
             flex-direction: column;
+            position: relative;
+            /* 🔥 FIX */
+
         }
 
         /* Icon */
@@ -217,27 +223,35 @@
         }
 
         /* Button */
+        .outter-box,
+        .innerr-card {
+            cursor: default;
+        }
+
         .smart-bttn {
             width: 241px;
             height: 59px;
+
             background: linear-gradient(90deg, #FF6036, #404959);
             color: #ffffff;
-            display: flex;
+
+            display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
+
             text-decoration: none;
-            font-weight: 600;
+            font-size: 25px;
+            font-weight: 700;
+
             border-radius: 12px;
             margin-top: 30px;
-            font-size: 25px;
-            line-height: 25;
-            font-weight: 700;
-            letter-spacing: 0;
-            align-self: flex-start;
-            transition: all 0.3s ease-in;
 
+            transition: all 0.3s ease-in;
+            cursor: pointer;
+            /* ✔ only here */
         }
+
 
         .smart-bttn img {
             width: 50px;
@@ -247,27 +261,34 @@
             transform: scale(1.04)
         }
 
+        .proposal-btn-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+
         .proposal-btn {
-            width: 100%;
-            max-width: 499px;
+            width: 499px;
             height: 67px;
+
             background: #404959;
             color: #ffffff;
-            display: flex;
+
+            display: inline-flex;
+            /* 👈 IMPORTANT */
             align-items: center;
             justify-content: center;
             gap: 10px;
+
             text-decoration: none;
-            font-weight: 600;
-            border-radius: 12px;
-            margin-top: 30px;
             font-size: 25px;
-            line-height: 25;
             font-weight: 700;
-            letter-spacing: 0;
+
+            border-radius: 12px;
             transition: all 0.3s ease-in;
 
+            margin: 50px auto;
         }
+
 
         .proposal-btn:hover {
             transform: scale(1.02);
@@ -747,7 +768,8 @@
                         {{ \Illuminate\Support\Str::limit($service->short_description ?? '', 180) }}
                     </p>
 
-                    <a href="javascript:void(0)" class="dm-btn" data-bs-toggle="modal" data-bs-target="#projectModal">Start Your Project</a>
+                    <a href="javascript:void(0)" class="dm-btn" data-bs-toggle="modal" data-bs-target="#projectModal">Start
+                        Your Project</a>
 
                 </div>
 
@@ -796,7 +818,7 @@
                 <!-- Card 1 -->
                 @if (!empty($subServices) && $subServices->count())
                     @foreach ($subServices as $subService)
-                        <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="col-lg-4 col-md-6">
                             <div class="outter-box">
                                 <div class="innerr-card">
                                     <img src="{{ $subService->icon ? asset('storage/' . $subService->icon) : asset('frontend/images/offer-icon.png') }}"
@@ -828,6 +850,10 @@
                     @endforeach
                 @endif
 
+
+            </div>
+
+            <div class="proposal-btn-wrapper">
                 <a href="{{ route('contact-us') }}" class="proposal-btn">Get Proposal
                     <img src="{{ asset('frontend/images/kips-icon.png') }}" alt="">
                 </a>
@@ -867,7 +893,8 @@
                             @endforeach
                         </div>
                     </div>
-                    <p class="text-white">Let’s make something great work Together. <a href="{{ route('contact-us') }}">Get Free
+                    <p class="text-white">Let’s make something great work Together. <a href="{{ route('contact-us') }}">Get
+                            Free
                             Quote</a></p>
                 </div>
 
@@ -975,8 +1002,8 @@
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <label class="form-label labell text-white">Last Name</label>
-                                    <input type="text" name="last_name" id="last_name" class="form-control custom-input"
-                                        placeholder="Enter your last name">
+                                    <input type="text" name="last_name" id="last_name"
+                                        class="form-control custom-input" placeholder="Enter your last name">
                                     <small class="text-danger d-block mt-1" id="error_last_name"></small>
                                 </div>
                             </div>
@@ -1132,7 +1159,8 @@
             }
 
             // Render captcha on page load if form is visible
-            if (document.getElementById('serviceCaptcha') && document.getElementById('serviceCaptcha').offsetParent !== null) {
+            if (document.getElementById('serviceCaptcha') && document.getElementById('serviceCaptcha')
+                .offsetParent !== null) {
                 renderServiceCaptcha();
             }
 
@@ -1153,7 +1181,7 @@
                     if (serviceCaptchaWidget !== null && window.grecaptcha) {
                         recaptchaToken = grecaptcha.getResponse(serviceCaptchaWidget);
                     }
-                    
+
                     if (!recaptchaToken) {
                         showError('captcha', 'Please verify the reCAPTCHA');
                         if (serviceCaptchaWidget !== null && window.grecaptcha) {
