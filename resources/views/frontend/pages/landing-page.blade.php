@@ -321,8 +321,8 @@
                     <p class="hero-desc">
                         Creating superior conversions and outlasting worthy competitors means expanding beyond the ordinary.
                         Meta IT pushes through the digital noise and propels itself towards more ambitious results. Web
-                        design isn’t just a captivating visual experience. It’s elevated digital marketing packages and
-                        stronger performance with real incremental growth. Let’s craft a brand that dominates together.
+                        design isn't just a captivating visual experience. It's elevated digital marketing packages and
+                        stronger performance with real incremental growth. Let's craft a brand that dominates together.
                     </p>
 
                     <div class="button-wraper">
@@ -358,12 +358,12 @@
 
 
     <!-- =================== brand section ============================== -->
-    <section class="brand-section">
+    <section class="brand-section" id="brand-section">
         <div class="container text-center">
 
             <!-- Heading -->
             <h2 class="brand-title">
-                Your brand’s vision is our mission. We curate and execute designs backed by purposeful strategies resulting
+                Your brand's vision is our mission. We curate and execute designs backed by purposeful strategies resulting
                 in measurable conversion outcomes!
             </h2>
 
@@ -406,12 +406,12 @@
 
 
     <!-- ================== performance-section ==================== -->
-    <section class="performance-section">
+    <section class="performance-section" id="performance-section">
         <div class="container">
 
             <!-- Main Heading -->
             <h2 class="performance-title">
-                Why Meta IT’s Digital Marketing Services Deliver High Performance Results
+                Why Meta IT's Digital Marketing Services Deliver High Performance Results
             </h2>
 
             <!-- Item -->
@@ -425,7 +425,7 @@
             <!-- Description -->
             <p class="performance-desc">
                 As masters of the digital landscape, Meta IT hones key metrics to make smarter decisions towards fluctuating
-                consumer patterns. What does this mean for the businesses we work with? We’re always on the mark and reared
+                consumer patterns. What does this mean for the businesses we work with? We're always on the mark and reared
                 towards marketing efficiency.
             </p>
 
@@ -483,7 +483,7 @@
 
     <!-- ============= agency section =============== -->
 
-    <section class="about-agency-section">
+    <section class="about-agency-section" id="agency-section">
         <div class="container">
             <div class="row ">
 
@@ -552,7 +552,7 @@
     <!-- ======================== seo section ================================ -->
 
 
-    <section class="seo-section">
+    <section class="seo-section" id="seo-section">
         <div class="container">
             <div class="row align-items-start">
 
@@ -564,7 +564,7 @@
 
                     <p class="seo-desc">
                         Brands that are impossible to ignore are brands that show up where it matters, and tossing in a few
-                        keywords won’t cut it. Rank your website productively. Meta IT helps our clients drive the right
+                        keywords won't cut it. Rank your website productively. Meta IT helps our clients drive the right
                         kind of visitors to their digital home by securing the momentum for real engagement. Our SEO
                         marketing solutions are a powerful way to garner accelerated traffic with content that is valuable
                         and influential.
@@ -591,7 +591,7 @@
                             SEO marketing solutions with Meta IT compound over time for more sustainable revenue growth.
                         </li>
                         <li>
-                            Strong SEO equals more appeal and visibility, so you’re always outperforming your competitors.
+                            Strong SEO equals more appeal and visibility, so you're always outperforming your competitors.
                         </li>
 
                     </ul>
@@ -608,16 +608,27 @@
                         <h4 class="toc-title">Table of Contents</h4>
 
                         <ul class="toc-list">
-                            <li>Zemalt</li>
-                            <li>Zemalt</li>
-                            <li>Zemalt</li>
-                            <li>Zemalt</li>
-                            <li>Zemalt</li>
-                            <li>Zemalt</li>
-                            <li>Zemalt</li>
-                            <li>Zemalt</li>
-                            <li>Zemalt</li>
-                            <li>Zemalt</li>
+                            <li>
+                                <a href="#brand-section">
+                                    Your brand's vision is our mission. We curate and execute designs backed by purposeful
+                                    strategies resulting in measurable conversion outcomes!
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#performance-section">
+                                    Why Meta IT's Digital Marketing Services Deliver High Performance Results
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#agency-section">
+                                    Inclusive Performance-based Marketing For Diverse Industries
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#seo-section">
+                                    Transform the Search Bar Into a Revenue Driver with SEO Marketing Services
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
