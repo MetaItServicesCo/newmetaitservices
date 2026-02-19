@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DataTables\ServicesDataTable;
 use App\DataTables\SubServicesDataTable;
+use App\Jobs\SendNewServicePublishedEmails;
 use App\Models\BrandWeCarry;
 use App\Models\Services;
 use App\Models\SubService;
@@ -104,7 +105,7 @@ class ServicesController extends Controller
 
             $faqs = $request->input('faqs', []);
 
-            Services::create([
+            $service = Services::create([
                 'title' => $request->title,
                 'slug' => \Str::slug($request->slug),
                 'short_description' => $request->short_description,
@@ -117,6 +118,10 @@ class ServicesController extends Controller
                 'meta_keywords' => $request->meta_keywords,
                 'meta_description' => $request->meta_description,
             ]);
+
+            if ($service->is_active) {
+                SendNewServicePublishedEmails::dispatch($service->id);
+            }
 
             return redirect()->route('admin.services.list')->with('success', 'Service created successfully.');
         } catch (\Exception $e) {
