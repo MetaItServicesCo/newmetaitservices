@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\BlogsDataTable;
+use App\Jobs\SendNewBlogPublishedEmails;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Traits\UploadImageTrait;
@@ -85,7 +86,11 @@ class BlogController extends Controller
                 $validated['image'] = $this->uploadImage($request->file('image'), 'blog/images');
             }
 
-            Blog::create($validated);
+            $blog = Blog::create($validated);
+
+            if ($blog->is_active) {
+                SendNewBlogPublishedEmails::dispatch($blog->id);
+            }
 
             DB::commit();
 
