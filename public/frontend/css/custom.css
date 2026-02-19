@@ -39,6 +39,62 @@ li {
     font-family: Inter !important;
 } */
 
+.dm-services-section {
+    min-height: auto !important;
+    margin-top: 85px !important;
+}
+
+@media(max-width:768px) {
+    .dm-title {
+        /* font-size: 40px; */
+
+        margin: 10px auto !important;
+
+    }
+
+    .dm-desc {
+        margin: 20px auto !important;
+    }
+
+    .dm-subtitle {
+        margin: 10px auto !important;
+
+    }
+
+    .dm-btn {
+        margin: 20px auto !important;
+    }
+
+    .dm-right-img {
+        height: 100%;
+    }
+}
+
+@media(max-width:767px) {
+    .dm-title {
+        font-size: 40px !important;
+
+        margin: 10px auto !important;
+
+    }
+
+    .dm-btn {
+        margin: 20px auto !important;
+    }
+
+    .dm-desc {
+        font-size: 16px !important;
+
+    }
+
+    .mc-right-img {
+        height: 100% !important;
+    }
+
+    .dm-right-img {
+        height: 100% !important;
+    }
+}
 
 /* ====================== navbar css =========================== */
 .custom-navbar {
@@ -159,16 +215,34 @@ body.modal-open {
 
 /* Logo image */
 .nav-logo {
-    width: 155px;
-    height: 70px;
+    /* width: 155px;
+    height: 70px; */
+    width: 100%;
+    height: 100%;
     object-fit: contain;
+}
+
+@media(max-width:768px) {
+    .nav-logo-wrap {
+        width: 130px;
+        height: 75px;
+
+    }
+
+    .custom-navbar {
+        height: 90px;
+    }
 }
 
 @media(max-width:767px) {
     .nav-logo-wrap {
-        width: 101px;
-        height: 70px;
+        width: 101px !important;
+        height: 70px !important;
 
+    }
+
+    .custom-navbar {
+        height: 85px !important;
     }
 
     .nav-logo {
@@ -323,7 +397,7 @@ body.modal-open {
     background: url('/frontend/images/hero-img.png') no-repeat center center / cover;
     padding: 50px 0;
     /* height: 600px; */
-    margin-top: 98px;
+    margin-top: 85px;
 }
 
 /* Typography */
@@ -687,7 +761,7 @@ body.modal-open {
 /* KPI Container */
 .kpi {
     background: rgba(244, 139, 92, 0.25);
-    padding: 10px 30px;
+    padding: 15px 30px;
     height: 585px;
     border-radius: 12px;
     margin-top: 40px;
@@ -824,7 +898,7 @@ body.modal-open {
     }
 
     .kpi-card h4 {
-        font-size: 26px;
+        font-size: 20px;
         max-width: 500px;
 
     }
@@ -836,9 +910,9 @@ body.modal-open {
 
     .kpi-btn {
 
-        height: 67px;
+        height: 52px;
 
-        font-size: 25px;
+        font-size: 17px;
     }
 }
 
@@ -984,9 +1058,18 @@ body.modal-open {
     }
 }
 
-@media (max-width: 575px) {
+@media (max-width: 767px) {
     .about-title {
         font-size: 32px;
+    }
+
+    .feature-icon {
+        width: 30px !important;
+        height: 30px !important;
+    }
+
+    .feature span {
+        font-size: 14px !important;
     }
 }
 
@@ -1185,7 +1268,7 @@ body.modal-open {
     justify-content: center;
     gap: 40px;
     margin-bottom: 40px;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
 }
 
 .feature {
@@ -1253,6 +1336,10 @@ body.modal-open {
     .next-level-desc {
         font-size: 18px;
 
+    }
+
+    .features {
+        margin-top: 20px !important;
     }
 }
 
@@ -1468,7 +1555,7 @@ body.modal-open {
     border-bottom: 2px solid #F38B5C;
     margin: 0 auto;
     position: relative;
-    height: 190px;
+    height: 100%;
 }
 
 /* Arrows */
@@ -1517,11 +1604,17 @@ body.modal-open {
         width: 94% !important;
         margin: 0 auto !important;
     }
+
 }
 
 @media (max-width: 768px) {
     .impact-title {
         line-height: 50px;
+    }
+
+    .border-wraper {
+
+        height: 270px !important;
     }
 }
 
@@ -1534,6 +1627,11 @@ body.modal-open {
         z-index: 10;
         width: 26px !important;
         height: 26px !important;
+    }
+
+    .border-wraper {
+
+        height: 330px !important;
     }
 
     .nav-btn.prev {
@@ -1592,6 +1690,7 @@ body.modal-open {
     border-right: 3px solid #F38B5C;
     padding: 10px;
     width: 100%;
+    height: 230px;
 }
 
 /* Stars */

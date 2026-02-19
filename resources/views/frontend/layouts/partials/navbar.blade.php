@@ -25,6 +25,7 @@
         transform: translateY(150px);
         pointer-events: none;
         transition: opacity 0.5s ease, transform 0.5s ease;
+        overflow-y: hidden;
     }
 
     .mega-dropdown.show {
@@ -40,16 +41,26 @@
             padding: 25px 15px;
             margin-top: 10px;
             border-radius: 16px;
+
             display: none;
             transform: none;
             opacity: 1;
             pointer-events: auto;
+
+            /* 🔥 Scroll Fix */
+            max-height: 70vh;
+            /* screen ka 70% */
+            overflow-y: auto;
+            /* vertical scroll */
+            -webkit-overflow-scrolling: touch;
+            /* smooth iOS scroll */
         }
 
         .mega-dropdown.show {
             display: block;
         }
     }
+
 
 
 
@@ -447,6 +458,8 @@
 
 
         </div>
+    </div>
+
 </nav>
 </header>
 

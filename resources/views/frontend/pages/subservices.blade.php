@@ -422,9 +422,9 @@
         }
 
         .inner-commit p {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 400;
-            line-height: 160%;
+            line-height: 140%;
             letter-spacing: 0;
             font-family: Inter;
             color: #FFFFFF;

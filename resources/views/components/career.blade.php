@@ -194,14 +194,14 @@
 
         <!-- CARDS ROW -->
         <div class="row g-4">
-            <div class="col-lg-4">
+            <div class="col-lg-4 col-md-6">
                 <div class="career-card " style="background-image: url('{{ asset('frontend/images/bg-w-img.png') }}');">
                     <h3>Digital Marketing Consultation</h3>
                     <a href="#" class="join-btn">Join With Us</a>
                 </div>
             </div>
 
-            <div class="col-lg-4">
+            <div class="col-lg-4 col-md-6">
                 <div class="career-card-red"
                     style="background-image: url('{{ asset('frontend/images/bg-red.png') }}');">
                     <h3>AI-Powered Solutions</h3>
@@ -210,7 +210,7 @@
 
             </div>
 
-            <div class="col-lg-4">
+            <div class="col-lg-4 col-md-6">
                 <div class="career-card " style="background-image: url('{{ asset('frontend/images/bg-w-img.png') }}');">
                     <h3>Elevate Digital Presence
                     </h3>

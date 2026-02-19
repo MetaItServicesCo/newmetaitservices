@@ -47,7 +47,7 @@
                                             </p>
                                         </div>
 
-                                        <div class="d-flex gap-2  align-items-center mt-2">
+                                        <div class="d-flex gap-2  align-items-cente mt-2">
                                             <h3 class="percent">{{ $testimonial->highlight_percentage ?? '' }}%</h3>
                                             <span class="metric">
                                                 {{ $testimonial->highlight_title ?? '' }}
