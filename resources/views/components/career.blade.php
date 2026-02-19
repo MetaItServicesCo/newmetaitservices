@@ -67,6 +67,15 @@
 
     }
 
+    @media(max-width:768px) {
+        .career-card-red {
+            height: 220px;
+        }
+
+        .career-card {
+            height: 220px;
+        }
+    }
 
     /* Card Heading */
     .career-card h3 {
