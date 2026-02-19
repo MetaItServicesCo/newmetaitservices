@@ -14,7 +14,7 @@
                             alt="">
                         <h3>{{ \Illuminate\Support\Str::limit($portfolio->title ?? '', 50) }}</h3>
                         <p>{{ \Illuminate\Support\Str::limit($portfolio->sub_title ?? '', 150) }}</p>
-                        <a href="#" class="read-more">Read more</a>
+                        <a href="{{ route('portfolio') }}" class="read-more">Read more</a>
                     </div>
                 </div>
             @endforeach
