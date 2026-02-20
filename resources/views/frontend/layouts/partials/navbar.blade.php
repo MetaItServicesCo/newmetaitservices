@@ -277,9 +277,9 @@
                             <i class="fas fa-chevron-down"></i>
                         </span>
                     </div>
-                    <a class="nav-link mega-trigger" href="{{ route('home') }}">
+                    {{-- <a class="nav-link mega-trigger" href="{{ route('home') }}">
                         Home
-                    </a>
+                    </a> --}}
                 </li>
 
                 <!-- SERVICES -->
