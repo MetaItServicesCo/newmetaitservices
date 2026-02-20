@@ -210,7 +210,7 @@
             left: 0;
             top: 0;
             width: 100%;
-            height: 127px;
+            height: 137px;
             background: linear-gradient(to right,
                     #F38B5C 0%,
                     #404959 100%);
@@ -223,15 +223,24 @@
         }
 
         .case-card h4 {
-            font-size: 30px;
+            font-size: 25px;
             font-weight: 700;
             margin-bottom: 10px;
         }
 
         .case-card p {
-            font-size: 18px;
-            line-height: 160%;
+            font-size: 16px;
+            line-height: 1.6;
+
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            /* 👈 2 lines */
+            -webkit-box-orient: vertical;
+
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
+
 
         @media(max-width:991px) {
             .case-card {
@@ -250,13 +259,13 @@
             }
 
             .case-card .overlay {
-                height: 164px;
+                height: 117px;
             }
         }
 
         @media(max-width:767px) {
             .case-card .overlay {
-                height: 150px !important;
+                height: 117px !important;
             }
         }
 
