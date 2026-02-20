@@ -113,10 +113,20 @@
         font-weight: 300;
         letter-spacing: 0;
         line-height: 162%;
+        transition: all 0.4s ease-in-out;
     }
 
-    .footer-links li:hover {
-        color: #dcdcdc;
+    .footer-links li a {
+        text-decoration: none;
+        color: #FFFFFF;
+
+    }
+
+    .footer-links li a:hover {
+        /* color: #dcdcdc; */
+        color: #F96037;
+
+
     }
 
     /* QUESTION */
@@ -468,6 +478,19 @@
     .question-modal-right.show .modal-dialog {
         transform: translate(0, -50%);
     }
+
+    .tooltip-inner {
+        background-color: #111;
+        color: #fff;
+        font-size: 13px;
+        padding: 8px 12px;
+        border-radius: 6px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .tooltip.bs-tooltip-top .tooltip-arrow::before {
+        border-top-color: #111;
+    }
 </style>
 <footer class="site-footer">
     <!-- FOOTER CTA -->
@@ -506,8 +529,10 @@
                 </div>
 
                 <p class="footer-desc">
-                    We help businesses grow through digital solutions,
-                    marketing strategies, and innovative technology.
+                    Meta IT is a digital marketing and IT solution company that delivers intelligent tech and
+                    data-driven marketing. We offer scalable solutions at comprehensive rate plans to help modern
+                    businesses grow.
+
                 </p>
 
                 <ul class="footer-contact">
@@ -549,13 +574,14 @@
             <div class="col-lg-2 col-md-6 mb-4">
                 <h5 class="footer-title">Services</h5>
                 <ul class="footer-links">
-                    <li>SEO Services</li>
-                    <li>Web Development</li>
-                    <li>UI/UX Design</li>
-                    <li>Digital Marketing</li>
-                    <li>Brand Strategy</li>
-                    <li>Content Writing</li>
-                    <li>Performance Ads</li>
+                    <li> <a href="https://metaitservices.co/service/digital-marketing">Digital Marketing</a></li>
+                    <li><a href="https://metaitservices.co/service/software-development">Software Development</a></li>
+                    <li><a href="https://metaitservices.co/service/artificial-intelligence">Artificial Intelligence</a>
+                    </li>
+                    <li><a href="https://metaitservices.co/service/cloud-devops">Cloud DevOps</a></li>
+                    <li><a href="https://metaitservices.co/service/advisory-strategy">Advisory Strategy</a></li>
+                    <li><a href="https://metaitservices.co/service/data-analytics">Data Analytics</a></li>
+                    <li><a href="https://metaitservices.co/service/workflow-automation">Workflow Automation</a></li>
                 </ul>
             </div>
 
@@ -563,26 +589,25 @@
             <div class="col-lg-2 col-md-6 mb-4">
                 <h5 class="footer-title">Industries</h5>
                 <ul class="footer-links">
-                    <li>Healthcare</li>
-                    <li>Ecommerce</li>
-                    <li>Finance</li>
-                    <li>Education</li>
-                    <li>Real Estate</li>
-                    <li>Technology</li>
-                    <li>Logistics</li>
+                    <li><a href="https://metaitservices.co/industry/healthcare">Healthcare & Life</a></li>
+                    <li><a href="https://metaitservices.co/industry/education-and-edtech">Education & Tech</a></li>
+                    <li><a href="https://metaitservices.co/industry/retail-and-ecommerce">Retail & Ecommerce</a></li>
+                    <li><a href="https://metaitservices.co/industry/finance-and-fintech">Finance Tech</a></li>
+                    <li><a href="https://metaitservices.co/industry/startups-saas">Startup & SaaS</a></li>
                 </ul>
             </div>
 
             <!-- COLUMN 4 -->
             <div class="col-lg-2 col-md-6 mb-4">
-                <h5 class="footer-title">Resources</h5>
+                <h5 class="footer-title">Usefull Links</h5>
                 <ul class="footer-links">
-                    <li>Blog</li>
-                    <li>Case Studies</li>
-                    <li>FAQs</li>
-                    <li>Help Center</li>
-                    <li>Privacy Policy</li>
-                    <li>Terms & Conditions</li>
+                    <li><a href="https://metaitservices.co/case-studies">Case-studies</a></li>
+                    <li><a href="https://metaitservices.co/services">Services</a></li>
+                    <li><a href="https://metaitservices.co/blogs">Blogs</a></li>
+                    <li><a href="https://metaitservices.co/privacy-policy">Privacy Policy</a></li>
+                    <li><a href="https://metaitservices.co/terms-and-conditions">Terms & Condition</a></li>
+                    <li><a href="https://metaitservices.co/disclaimer">Disclaimer</a></li>
+                    <li><a href="https://metaitservices.co/blogs/write-for-us">Write For Us</a></li>
                 </ul>
             </div>
 
@@ -594,6 +619,7 @@
                     <li>Canada</li>
                     <li>UK</li>
                     <li>Australia</li>
+                    <li>UAE</li>
                 </ul>
 
 
@@ -624,7 +650,8 @@
                         @csrf
 
                         {{-- Name (required) --}}
-                        <input id="q_name" name="name" type="text" class="question-input required" placeholder="Enter your name">
+                        <input id="q_name" name="name" type="text" class="question-input required"
+                            placeholder="Enter your name">
                         <span class="text-danger" id="error_name"></span>
 
                         {{-- Country (required) --}}
@@ -638,15 +665,18 @@
                         <span class="text-danger" id="error_country"></span>
 
                         {{-- Email (required) --}}
-                        <input id="q_email" name="email" type="email" class="question-input required" placeholder="Enter your email">
+                        <input id="q_email" name="email" type="email" class="question-input required"
+                            placeholder="Enter your email">
                         <span class="text-danger" id="error_email"></span>
 
                         {{-- Message (required) --}}
-                        <textarea id="q_message" name="message" class="question-input message-input required" placeholder="Write your message"></textarea>
+                        <textarea id="q_message" name="message" class="question-input message-input required"
+                            placeholder="Write your message"></textarea>
                         <span class="text-danger" id="error_message"></span>
 
                         <div class="form-check mt-2">
-                            <input class="form-check-input" type="checkbox" id="agree" name="agree" value="1">
+                            <input class="form-check-input" type="checkbox" id="agree" name="agree"
+                                value="1">
                             <label class="form-check-label small" for="agree">
                                 By submitting you agree to receive SMS or emails for the provided channel.
                                 Rates may be applied.
@@ -655,7 +685,8 @@
 
                         <div class="col-12 form-group mb-3">
                             <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-                            <div class="w-100" id="questionCaptcha" data-sitekey="{{ config('services.recaptcha.sitekey') }}">
+                            <div class="w-100" id="questionCaptcha"
+                                data-sitekey="{{ config('services.recaptcha.sitekey') }}">
                             </div>
                             <span class="text-danger" id="error_grecaptcha"></span>
                         </div>
@@ -668,8 +699,31 @@
             </div>
         </div>
     </div>
-    <div class="footer-question" data-bs-toggle="modal" data-bs-target="#questionModal">
+    <div class="footer-question" data-bs-target="#questionModal" id="footerQuestion">
+
         <img src="{{ asset('frontend/images/footer-img.png') }}" alt="">
         <span>Have A Question</span>
     </div>
+
+
+
 </footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+
+        // Tooltip initialize
+        var footerQuestion = document.getElementById('footerQuestion');
+        var tooltip = new bootstrap.Tooltip(footerQuestion, {
+            title: "Need help? Ask us anything",
+            placement: "top"
+        });
+
+        // Click par modal open
+        footerQuestion.addEventListener('click', function() {
+            var modal = new bootstrap.Modal(document.getElementById('questionModal'));
+            modal.show();
+        });
+
+    });
+</script>

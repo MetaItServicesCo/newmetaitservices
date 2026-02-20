@@ -14,6 +14,8 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            margin-top: 98px;
+
         }
 
 
@@ -214,7 +216,7 @@
 
         /* Description */
         .smart-desc {
-            font-size: 20px;
+            font-size: 16px;
             line-height: 162%;
             font-weight: 400;
             letter-spacing: 0;
@@ -341,7 +343,7 @@
             }
 
             .smart-desc {
-                font-size: 16px;
+                font-size: 14px;
 
             }
 
@@ -424,7 +426,7 @@
         }
 
         .solution-card p {
-            font-size: 20px;
+            font-size: 14px;
             font-weight: 400;
             line-height: 129%;
             letter-spacing: 0;
@@ -458,7 +460,7 @@
 
             .solution-card {
                 width: 100%;
-                height: auto;
+                /* height: auto; */
             }
 
             .solutions-heading {
@@ -702,10 +704,11 @@
         }
 
 
-        .custom-img {
+        .custom-imge {
             width: 100%;
             max-width: 585px;
-            height: 570px;
+            /* height: 570px; */
+            height: 810px !important;
             object-fit: cover;
             border-radius: 30px;
         }
@@ -749,8 +752,7 @@
 
 
 
-    <section class="dm-services-section"
-        style="background-image: url('{{ asset('frontend/images/main-services/mc-hero.png') }}');">
+    <section class="dm-services-section" style="background-image: url('{{ asset('frontend/images/hero-img.png') }}');">
 
         <div class="container">
             <div class="row align-items-center">
@@ -769,6 +771,7 @@
                     </p>
 
                     <a href="javascript:void(0)" class="dm-btn" data-bs-toggle="modal" data-bs-target="#projectModal">Start
+                       
                         Your Project</a>
 
                 </div>
@@ -892,10 +895,12 @@
                                 </div>
                             @endforeach
                         </div>
+
+                        <p class="text-white ">Let’s make something great work Together. <a href="{{ route('contact-us') }}"
+                                class="text-decoration-none">Get Free
+                                Quote</a></p>
                     </div>
-                    <p class="text-white">Let’s make something great work Together. <a href="{{ route('contact-us') }}">Get
-                            Free
-                            Quote</a></p>
+
                 </div>
 
                 <!-- RIGHT COLUMN -->
@@ -1105,9 +1110,9 @@
                 </div>
 
                 <!-- RIGHT COLUMN (IMAGE) -->
-                <div class="col-lg-4 text-end">
+                <div class="col-lg-4 text-en">
                     <img src="{{ asset('frontend/images/main-services/form-img.png') }}" alt="Contact"
-                        class="img-fluid custom-img">
+                        class="img-fluid custom-imge">
                 </div>
 
             </div>

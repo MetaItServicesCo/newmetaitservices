@@ -14,6 +14,7 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            margin-top: 98px;
         }
 
 
@@ -321,8 +322,16 @@
             border-radius: 12px;
         }
 
+        @media(max-width:768px) {
+            .stats-card {
+
+                height: 100%;
+
+            }
+        }
+
         .stats-card h3 {
-            font-size: 60px;
+            font-size: 30px;
             font-weight: 700;
             line-height: 150%;
             letter-spacing: 0;
@@ -450,22 +459,12 @@
 
         .team-img img {
             height: 246px;
-            object-fit: contain;
+            object-fit: cover;
             background: transparent;
 
         }
 
-        .marg-left {
-            margin-left: 82px;
-        }
 
-        .marg-right {
-            margin-right: 82px;
-        }
-
-        .marg-righ {
-            margin-left: 20px;
-        }
 
         /* BACKGROUND COLORS */
         .bg-blue {
@@ -598,9 +597,16 @@
             }
         }
 
+        @media (max-width: 768px) {
+            .audit-btn {
+                width: 70% !important;
+
+            }
+        }
+
         @media (max-width: 767px) {
             .audit-btn {
-                width: 86%;
+                width: 86% !important;
                 font-size: 14px;
                 margin-bottom: 20px;
                 height: 50px;
@@ -796,8 +802,7 @@
 @section('frontend-content')
 
 
-    <section class="dm-services-section"
-        style="background-image: url('{{ asset('frontend/images/about/about-hero.png') }}');">
+    <section class="dm-services-section" style="background-image: url('{{ asset('frontend/images/hero-img.png') }}');">
 
         <div class="container">
             <div class="row align-items-center">
@@ -837,19 +842,21 @@
 
                 <!-- LEFT COLUMN -->
                 <div class="col-lg-6">
-                    <h2 class="about-heading">About Us</h2>
+                    <h2 class="about-heading">Meta IT’s Road To Bespoke New Wave Digital Marketing Strategies</h2>
                     <p class="about-desc">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit.
-                        Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit.
-                        Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        What happens when a group of bright thinkers and strategists come to the epic realization that the
+                        standard for digital success simply isn't good enough? We obsess over it and then…we build it.
+                        Founded in 2022 on this very momentum of change and 15 years of previous experience, Meta IT quickly
+                        became recognized as an industry-leading IT solutions firm. We’ve demonstrated outstanding results
+                        in aiding international brands towards corporate success ever since.
+                        Our tech tacticians believe marketing is an economical and hope-filled investment that deserves the
+                        maximum ROI. Deep expertise coupled with the relentless pursuit towards determined growth for our
+                        clients is what empowers us to lead with confidence.
+
                     </p>
 
-                    <a href="javascript:void(0)" class="dm-btn" data-bs-toggle="modal" data-bs-target="#projectModal">Start Your Project</a>
+                    <a href="javascript:void(0)" class="dm-btn" data-bs-toggle="modal" data-bs-target="#projectModal">Start
+                        Your Project</a>
 
                 </div>
 
@@ -893,18 +900,18 @@
 
                 <!-- LEFT COLUMN -->
                 <div class="col-lg-6">
-                    <span class="welcome-text">Welcome to marketing Agency</span>
+                    <span class="welcome-text">Welcome to Meta IT Services</span>
                     <h2 class="welcome-heading">
-                        Guiding your business to achieve success.
+                        Impactful Marketing Made To Produce Undeniable Success
                     </h2>
                 </div>
 
                 <!-- RIGHT COLUMN -->
                 <div class="col-lg-6">
                     <p class="welcome-desc">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                        If you’re ready to outperform and outrank your competitors on all sides of the commercial sphere,
+                        it’s time to connect with Meta IT. We capitalize on the fine print that other digital marketing
+                        agencies ignore. Surge your business into a corporation that consumers look towards first.
                     </p>
                 </div>
 
@@ -920,37 +927,41 @@
                         <div class="trusted-card">
                             <img src="{{ asset('frontend/images/about-logo1.png') }}" alt="Logo">
                             <h3>Trusted Company</h3>
-                            <p>Digital marketing that helps<br>you to promote the world.</p>
+                            <p>Transparent consultations & guidance, locking in on long-term relationships</p>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-6">
                         <div class="trusted-card">
                             <img src="{{ asset('frontend/images/about-logo2.png') }}" alt="Logo">
-                            <h3>Trusted Company</h3>
-                            <p>Digital marketing that helps<br>you to promote the world.</p>
+                            <h3>Professional Work</h3>
+                            <p>High-quality and precise strategy execution with superior industry knowledge.
+                            </p>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-6">
                         <div class="trusted-card">
                             <img src="{{ asset('frontend/images/about-logo3.png') }}" alt="Logo">
-                            <h3>Trusted Company</h3>
-                            <p>Digital marketing that helps<br>you to promote the world.</p>
+                            <h3>Fixed Cost Project</h3>
+                            <p>We keep it straight. No surprises, hidden fees, or false expectations.
+                            </p>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-6">
                         <div class="trusted-card">
                             <img src="{{ asset('frontend/images/about-logo4.png') }}" alt="Logo">
-                            <h3>Trusted Company</h3>
-                            <p>Digital marketing that helps<br>you to promote the world.</p>
+                            <h3>Dedicated Team</h3>
+                            <p>Tacticians invested in your goals with access to staff augmentation.
+                            </p>
                         </div>
                     </div>
 
                 </div>
                 <p class="text-center my-5 fw-bold"><img src="{{ asset('frontend/images/about-check.png') }}" alt=""
-                        width="20" class="mb-2 me-1"> We provide quality marketing services to customers.</p>
+                        width="20" class="mb-2 me-1"> Meta IT’s team is united by the ambition towards corporate
+                    success.</p>
             </div>
         </section>
 
@@ -969,7 +980,7 @@
                     <button class="tab-btn active" data-tab="tab1">Company benefits</button>
                     <button class="tab-btn" data-tab="tab2">Competitive analysis</button>
                     <button class="tab-btn" data-tab="tab3">Trusted experience</button>
-                    <button class="tab-btn" data-tab="tab4">Global partners</button>
+                    <button class="tab-btn" data-tab="tab4">Real Results</button>
                 </div>
 
                 <!-- TAB CONTENT -->
@@ -985,10 +996,11 @@
 
                             <div class="col-lg-6">
                                 <span class="tab-label">COMPANY BENEFITS</span>
-                                <h2 class="tab-heading">Effective solutions for all business.</h2>
+                                <h2 class="tab-heading">A Team Built Around You</h2>
                                 <p class="tab-desc">
-                                    We deliver modern digital strategies that improve business
-                                    performance and help companies grow faster worldwide.
+                                    Meta IT’s team will have a direct interface with your business model and goals. No
+                                    tedious learning necessary, no hand-off. Just talented professionals who are in line
+                                    with your objectives and are responsive to speed.
                                 </p>
 
                                 <div class="info-btn">
@@ -1019,10 +1031,13 @@
 
                             <div class="col-lg-6">
                                 <span class="tab-label">COMPETITIVE ANALYSIS</span>
-                                <h2 class="tab-heading">Effective solutions for all business.</h2>
+                                <h2 class="tab-heading">Know Your Competition Cold</h2>
                                 <p class="tab-desc">
-                                    Our competitive research helps you stay ahead in the market
-                                    with data-driven marketing strategies.
+                                    Meta IT deconstructs what your competitors are doing well, poorly, and not doing at all.
+                                    Then we craft better strategies that take advantage of loopholes and get noticed.
+                                    Customers will prefer to go to you, not compromise or substitute you for a better
+                                    option.
+
                                 </p>
 
                                 <div class="info-btn">
@@ -1052,10 +1067,12 @@
 
                             <div class="col-lg-6">
                                 <span class="tab-label">TRUSTED EXPERIENCE</span>
-                                <h2 class="tab-heading">Effective solutions for all business.</h2>
+                                <h2 class="tab-heading">Experience You Can Trust</h2>
                                 <p class="tab-desc">
-                                    Years of experience delivering trusted solutions for
-                                    enterprises across industries.
+                                    No experiments. No trial and errors. Our team has real-life experience with diverse
+                                    industries. We’ve been tested under pressure and proven to be effective. You receive
+                                    confident playing, direction, and teammates who understand how to win.
+
                                 </p>
 
                                 <div class="info-btn">
@@ -1084,11 +1101,13 @@
                             </div>
 
                             <div class="col-lg-6">
-                                <span class="tab-label">GLOBAL PARTNERS</span>
-                                <h2 class="tab-heading">Effective solutions for all business.</h2>
+                                <span class="tab-label">Real Results</span>
+                                <h2 class="tab-heading">Results That Really Count
+                                </h2>
                                 <p class="tab-desc">
-                                    Partnering globally to bring world-class marketing
-                                    innovations to your business.
+                                    Our priorities lie in results and not ego. Increased traffic, improved leads, reduced
+                                    costs, and better ROI. This is the Meta IT way. Growth you can quantify and promises
+                                    made achievable.
                                 </p>
 
                                 <div class="info-btn">
@@ -1127,16 +1146,19 @@
 
                 <!-- LEFT COLUMN -->
                 <div class="col-lg-7">
-                    <h2 class="grow-heading">Grow Your Brand Online</h2>
+                    <h2 class="grow-heading">No More Bowing To Numbers In Vain. Actually, Grow Your Brand.</h2>
                     <p class="grow-desc">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse.
-                        Cillum dolore eu fugiat nulla pariatur.
-                        Excepteur sint occaecat cupidatat non proident.
-                        Sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        Curabitur pretium tincidunt lacus.
+                        Meta IT has abandoned the pursuit of chasing down meaningless vanity metrics. Numbers exist to
+                        analyze your business growth. Our job focuses on linking every strategy to real business outcomes
+                        like demand, revenue, and visibility through organic traffic. We keep track of what is actually
+                        important and eliminate what isn't, with a continuous emphasis on optimization and continual rise
+                        through any means possible. This isn’t about luck or the complicated, fancy words other digital
+                        marketing agencies use to hype up false hope. This is about proper execution and clear-cut formulas
+                        to take down barriers of success and make way for opportunities. Meta IT is all about action. This
+                        is exactly how we’ve helped hundreds of clients go from stagnation to confidence and control over
+                        their revenue. Begin producing results without excuses or compromises ever again, begin with Meta
+                        IT.
+
                     </p>
                 </div>
 
@@ -1146,10 +1168,11 @@
 
                         <!-- CARD -->
                         <div class="stats-card">
-                            <h3>230+</h3>
-                            <p>Successful Projects Completed Duis aute irure dolor in reprehenderit in voluptate velit esse.
-                                Cillum dolore eu fugiat nulla pariatur.
-                                Excepteur sint occaecat cupidatat non proident.
+                            <h3>126+ Clients Satisfied</h3>
+                            <p>…And we’re only getting bigger. Our client relationships are built on trust and long-term
+                                value. This isn’t a one-and-done deal with empty promises. Our clients remain partners with
+                                us because we’re adaptable and personable without exception.
+
                                 .</p>
 
                             <!-- PROGRESS BORDER -->
@@ -1183,15 +1206,15 @@
 
             <!-- HEADING -->
             <div class=" mb-5">
-                <h2 class="team-heading">Meet The Team</h2>
+                <h2 class="team-heading">Meet The Strategists and Tacticians Behind Meta IT</h2>
                 <p class="team-desc">
-                    Libero diam auctor tristique hendrerit in eu vel id. Nec leo amet suscipit nulla. Nullam vitae sit
-                    tempus diam.Libero diam auctor tristique hendreritLibero diam t Libero diam auctor tristique hendrerit
-                    in eu vel id. Nec leo amet suscipit nulla. Nullam vitae sit tempus diam.Libero diam auctor tristique
-                    hendreritLibero diam t Libero diam auctor tristique hendrerit in eu vel id. Nec leo amet suscipit nulla.
-                    Nullam vitae sit tempus diam.Libero diam auctor tristique hendreritLibero diam t Libero diam auctor
-                    tristique hendrerit in eu vel id. Nec leo amet suscipit nulla. Nullam vitae sit tempus diam.Libero diam
-                    auctor tristique hendreritLibero diam t
+                    Meet the minds who make Meta IT an unstoppable force. Our meetings aren’t the typical fancy clipboards,
+                    pen-clicking and number toss games. This marketing strategy talk comes with installation. Meta IT’s
+                    offices house number-based thinkers, creative problem solvers, and obsessive talented minds from all
+                    over the world. Our mission isn't aiming for the baseline or simply being “good enough.” Bringing to
+                    life the enormous potential of our business partners is only made possible because we believe in their
+                    message and purpose, and are ready to put in the grit of hard work towards their cause.
+
                 </p>
             </div>
 
@@ -1204,7 +1227,7 @@
                         <div class="team-card">
                             <div class="team-img bg-blue">
                                 <img src="{{ $team->image ? asset('storage/teams/' . $team->image) : asset('frontend/images/about/team-img1.png') }}"
-                                    alt="" class="marg-left">
+                                    alt="" class="img-fluid">
                             </div>
                             <h5 class="team-name">{{ $team->name ?? '' }}</h5>
                             <p class="team-role">{{ $team->designation ?? '' }}</p>
@@ -1233,8 +1256,7 @@
         <div class="container">
 
             <h2 class="audit-heading">
-                How to Get Started with Your Free Digital Marketing Audit
-            </h2>
+                How to Get Started With A Free Digital Marketing Audit & Consultation </h2>
 
             <a href="{{ route('contact-us') }}" class="audit-btn">
                 Claim Your Free Consultation Today
@@ -1246,9 +1268,12 @@
                     <!-- Step 1 -->
                     <div class="audit-step">
                         <div class="step-circle">1</div>
-                        <h3>Step 1. Complete the Audit Request Form</h3>
+                        <h3>Head On Over To Our “Contact Us” Form
+                        </h3>
                         <p>
-                            Fill out our quick form with your business details so we can understand your goals.
+                            Our Contact Us form makes it easy for potential clients to reach out to our team. You can get in
+                            touch with one of our consultants after sending a message directly through our website about
+                            service needs or any queries you may have.
                         </p>
                     </div>
                 </div>
@@ -1257,9 +1282,11 @@
                     <!-- Step 2 -->
                     <div class="audit-step">
                         <div class="step-circle">2</div>
-                        <h3>Step 2. We Analyze Your Online Presence</h3>
+                        <h3>Talk With One of Our Experts</h3>
                         <p>
-                            Our experts review your website, SEO, ads, and social media performance.
+                            After we connect, we start diving deep right away into the nitty gritty. You’ll get on board
+                            with one of our leading experts on your current efforts and your goals so we can pinpoint
+                            opportunities for transformation and what we should be doing moving forward.
                         </p>
                     </div>
                 </div>
@@ -1268,9 +1295,11 @@
                     <!-- Step 3 -->
                     <div class="audit-step">
                         <div class="step-circle">3</div>
-                        <h3>Step 3. Get Your Custom Strategy</h3>
+                        <h3>Get Your Personalized Action Plan</h3>
                         <p>
-                            Receive a detailed report with actionable insights and growth opportunities.
+                            What you walk away with is a roadmap to the future of your business. Every action plan is
+                            personal and led with an ownership mentality. From SEO, leads, conversions, AI-powered
+                            solutions, network security, and more, Meta IT will tackle any and all of your endeavors.
                         </p>
                     </div>
                 </div>

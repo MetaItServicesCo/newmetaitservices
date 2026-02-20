@@ -14,6 +14,8 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            margin-top: 98px;
+
         }
 
 
@@ -200,6 +202,10 @@
             font-size: 20px;
             line-height: 25px;
             letter-spacing: 0;
+        }
+
+        .phone-text i {
+            color: #F96037;
         }
 
         /* RIGHT SIDE */
@@ -420,9 +426,9 @@
         }
 
         .inner-commit p {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 400;
-            line-height: 160%;
+            line-height: 140%;
             letter-spacing: 0;
             font-family: Inter;
             color: #FFFFFF;
@@ -513,7 +519,7 @@
 
 
     <section class="dm-services-section"
-        style="background-image: url('{{ $subService->page_content['hero_section']['image'] ? asset('storage/' . $subService->page_content['hero_section']['image']) : asset('frontend/images/main-services/mc-hero.png') }}');">
+        style="background-image: url('{{ $subService->page_content['hero_section']['image'] ? asset('storage/' . $subService->page_content['hero_section']['image']) : asset('frontend/images/hero-img.png') }}');">
 
         <div class="container">
             <div class="row align-items-center">
@@ -603,7 +609,7 @@
                 <!-- RIGHT COLUMN -->
                 <div class="col-lg-8">
 
-                    <div class="right-scroll">
+                    <div class="right-scroll mt-4">
 
                         <h2 class="right-heading">{{ $subService->page_content['hero_section']['main_heading'] ?? '' }}
                         </h2>

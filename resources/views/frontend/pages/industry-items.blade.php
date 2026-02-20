@@ -5,8 +5,9 @@
             <!-- Left Column -->
             <div class="col-lg-6 col-md-6 d-flex justify-content-center">
                 <div class="industry-card">
-                    <img src="{{ asset('storage/' . $industry->image) }}" alt="{{ $industry->image_alt ?? $industry->name }}">
-                    <h4>{{ $industry->name ?? ''}}</h4>
+                    <img src="{{ asset('storage/' . $industry->image) }}"
+                        alt="{{ $industry->image_alt ?? $industry->name }}">
+                    <h4>{{ $industry->name ?? '' }}</h4>
                 </div>
             </div>
 
@@ -16,7 +17,8 @@
                     {{ $industry->description ?? '' }}
                 </p>
 
-                <a href="{{ route('industry.detail', $industry->slug) }}" class="industry-btn">View Full Detail</a>
+                <a href="{{ route('industry.detail', $industry->slug) }}" class="industry-btn">See More Detail
+                </a>
             </div>
 
         </div>

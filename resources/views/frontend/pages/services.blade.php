@@ -14,6 +14,8 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            margin-top: 98px;
+
         }
 
 
@@ -143,7 +145,7 @@
             width: 100%;
             max-width: 424px;
             height: auto;
-            border-radius: 10px;
+            /* border-radius: 10px; */
         }
 
         /* Card Content */
@@ -236,7 +238,7 @@
         }
 
         .tech-heading span {
-            color: #F96037;
+            color: #F38B5C;
         }
 
         /* Description */
@@ -253,6 +255,7 @@
         /* Stats */
         .tech-stats {
             display: flex;
+            /* justify-content: center; */
             gap: 20px;
             flex-wrap: wrap;
         }
@@ -264,7 +267,7 @@
         .stat-item h3 {
             font-size: 36px;
             font-weight: 700;
-            color: #F96037;
+            color: #F38B5C;
             margin-bottom: 5px;
         }
 
@@ -290,6 +293,7 @@
             max-width: 600px;
             height: 480px;
             transition: all 0.4s ease-in-out;
+            border-radius: 18px;
         }
 
         .tech-image:hover {
@@ -299,8 +303,14 @@
         /* Responsive */
         @media (max-width: 991px) {
             .tech-heading {
-                font-size: 32px;
-                line-height: 44px;
+                font-size: 31px;
+                line-height: 38px;
+                text-align: center;
+            }
+
+            .tech-desc {
+                font-size: 18px;
+                text-align: center;
             }
 
             .tech-stats {
@@ -310,8 +320,28 @@
             .stat-item {
                 max-width: 100%;
             }
+
+            .tech-image {
+                height: 100% !important;
+            }
+
+            .stat-item p {
+                max-width: 218px;
+            }
+
+            .tech-stats {
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                flex-wrap: wrap;
+            }
         }
 
+        @media (max-width: 767px) {
+            .tech-image {
+                height: 100% !important;
+            }
+        }
 
         /* ================================= who-we-serve-section css ===================================== */
 
@@ -344,7 +374,8 @@
 
         /* Outer Box */
         .outer-box {
-            width: 400px;
+            width: 100%;
+            max-width: 400px;
             height: 425px;
             background: #FCE2D6;
             border: 5px solid #ffffff;
@@ -362,7 +393,8 @@
 
         /* Inner Card */
         .inner-card {
-            width: 370px;
+            width: 100%;
+            max-width: 370px;
             height: 400px;
             background: #404959;
             border-radius: 13px;
@@ -394,7 +426,7 @@
 
         /* Description */
         .card-desc {
-            font-size: 20px;
+            font-size: 16px;
             line-height: 162%;
             font-weight: 400;
             letter-spacing: 0;
@@ -436,6 +468,7 @@
 
             }
 
+
             .inner-card {
                 width: 320px;
 
@@ -446,13 +479,10 @@
                 line-height: 44px;
             }
 
-            .learn-btn {
-                width: 100%;
-            }
+
 
             .card-title {
                 font-size: 20px;
-                ;
             }
 
             .card-desc {
@@ -529,7 +559,7 @@
             }
 
             .contact-btn {
-                width: 100%;
+                /* width: 100%; */
                 text-align: center;
             }
         }
@@ -541,8 +571,7 @@
 
     {{-- ================================== dm-services section ================================== --}}
 
-    <section class="dm-services-section"
-        style="background-image: url('{{ asset('frontend/images/services/service-hero-img.png') }}');">
+    <section class="dm-services-section" style="background-image: url('{{ asset('frontend/images/hero-img.png') }}');">
 
         <div class="container">
             <div class="row align-items-center">
@@ -673,7 +702,7 @@
                                     </h3>
 
                                     <p class="card-desc">
-                                        {{ \Illuminate\Support\Str::limit($subService->short_description ?? '', 150) }}
+                                        {{ \Illuminate\Support\Str::limit($subService->short_description ?? '', 120) }}
                                     </p>
 
                                     <a href="#" class="learn-bttn">Learn More</a>

@@ -14,6 +14,8 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            margin-top: 98px;
+
         }
 
 
@@ -152,6 +154,8 @@
             letter-spacing: 0;
             color: #000000;
             max-width: 384px;
+            margin-top: 56px;
+
         }
 
         .left-desc {
@@ -256,6 +260,7 @@
 
         .health-card img {
             width: 100%;
+            max-width: 408px;
             height: 460px;
             object-fit: cover;
             border-radius: 23px;
@@ -283,8 +288,7 @@
         @media (max-width: 991px) {
             .view-btn {
                 display: block;
-                margin: 20px auto;
-                /* center horizontally */
+                /* margin: 20px auto; */
             }
         }
 
@@ -382,6 +386,7 @@
         @media (max-width: 991px) {
             .marketing-heading {
                 text-align: center;
+                line-height: 40px;
             }
 
             .marketing-desc {
@@ -907,8 +912,7 @@
 
 
 
-    <section class="dm-services-section"
-        style="background-image: url('{{ asset('frontend/images/about/about-hero.png') }}');">
+    <section class="dm-services-section" style="background-image: url('{{ asset('frontend/images/hero-img.png') }}');">
 
         <div class="container">
             <div class="row align-items-center">
@@ -949,7 +953,7 @@
 
             <h2 class="health-heading">{!! highlightBorderBottom($industry['sub_details']['hero_title']) ?? '' !!}</h2>
 
-            <div class="row mt-5">
+            <div class="row mt-5 g-2">
                 <!-- LEFT -->
                 <div class="col-lg-3">
                     <h3 class="left-heading">{{ $industry['sub_details']['hero_side_title'] ?? '' }}</h3>
@@ -1094,14 +1098,12 @@
         <div class="container">
             <div class="row ">
 
-                <!-- LEFT COLUMN: Image -->
                 <div class="col-lg-6 col-md-12 mb-4 mb-lg-0">
                     <img src="{{ $industry['sub_details']['detail_accordion_section']['image'] ? asset('storage/' . $industry['sub_details']['detail_accordion_section']['image']) : asset('frontend/images/industry/health-care.png') }}"
                         alt="{{ $industry['sub_details']['detail_accordion_section']['title'] }}"
                         class="img-fluid marketing-img">
                 </div>
 
-                <!-- RIGHT COLUMN: Heading + Description -->
                 <div class="col-lg-6 col-md-12">
                     <h2 class="marketing-heading">
                         {{ $industry['sub_details']['detail_accordion_section']['title'] ?? '' }}
@@ -1228,6 +1230,7 @@
         </section>
     @endif
 
+
     @php
         $experienceSection = data_get($industry, 'sub_details.detail_experience_section', []);
 
@@ -1235,12 +1238,11 @@
         $images = data_get($experienceSection, 'images', []);
 
     @endphp
-    @if ($title || !empty($images))
+    {{-- @if ($title || !empty($images))
         <section class="experience-section">
             <div class="container">
                 <div class="row align-items-center">
 
-                    <!-- LEFT COLUMN -->
                     <div class="col-lg-6">
                         @if ($title)
                             <h2 class="experience-heading">
@@ -1251,18 +1253,14 @@
                         <a href="{{ route('contact-us') }}" class="talk-btn">Let’s Talk</a>
                     </div>
 
-                    <!-- RIGHT COLUMN -->
                     <div class="col-lg-6 position-relative">
 
                         <div class="cross-wrapper">
 
-                            <!-- Horizontal Line -->
                             <div class="cross-x"></div>
 
-                            <!-- Vertical Line -->
                             <div class="cross-y"></div>
 
-                            <!-- IMAGES -->
                             @php
                                 $positions = ['top-left', 'top-right', 'bottom-left', 'bottom-right'];
                             @endphp
@@ -1282,9 +1280,11 @@
                 </div>
             </div>
         </section>
-    @endif
+    @endif --}}
 
-
+    <div class="mt-5">
+        <x-have-project />
+    </div>
 
 
 

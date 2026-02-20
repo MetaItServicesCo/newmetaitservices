@@ -14,6 +14,7 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            margin-top: 98px;
         }
 
 
@@ -421,8 +422,7 @@
 
 
 
-    <section class="dm-services-section"
-        style="background-image: url('{{ asset('frontend/images/about/about-hero.png') }}');">
+    <section class="dm-services-section" style="background-image: url('{{ asset('frontend/images/hero-img.png') }}');">
 
         <div class="container">
             <div class="row align-items-center">
@@ -436,9 +436,11 @@
                     </h4> --}}
 
                     <p class="dm-desc">
-                        We create data-driven digital marketing strategies tailored to
-                        your business goals. From SEO and paid campaigns to social media
-                        and content marketing
+                        Welcome to Meta IT Services blog page. These are information and creative insights that spark
+                        action. Read about expert perspectives on technology, digital marketing, news on the latest in AI,
+                        and inspiring company success stories. Move faster and stay ahead with more ambitious business
+                        intel.
+
                     </p>
 
                     {{-- <a href="#" class="dm-btn">Start Your Project</a> --}}
