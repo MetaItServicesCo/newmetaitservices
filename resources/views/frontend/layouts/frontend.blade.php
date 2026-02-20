@@ -57,9 +57,10 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+     
 
-
-    <link rel="stylesheet" href="{{ asset('frontend/css') }}/custom.css" />
+    <link rel="stylesheet" href="{{ asset('frontend/css/custom.css') }}?v={{ filemtime(public_path('frontend/css/custom.css')) }}" />
+    {{-- <link rel="stylesheet" href="{{ asset('frontend/css') }}/custom.css" /> --}}
 
     <!-- Toastr CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
