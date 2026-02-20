@@ -60,7 +60,7 @@
 
 
     <link rel="stylesheet" href="{{ asset('frontend/css') }}/custom.css" />
-    
+
     <!-- Toastr CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
     <!--end::Custom Stylesheets-->
@@ -100,11 +100,12 @@
                                     class="nav-logo">
 
                                 <div class="mt-3">
-                                    <p class="mb-0 head-msg">Head of IT Message</p>
+                                    {{-- <p class="mb-0 head-msg">Head of IT Message</p> --}}
                                     <h6 class="dept-title">Meta’s IT Department</h6>
                                 </div>
 
-                                <p class="bullet-text">Founder & Head of IT</p>
+                                <p class="bullet-text">Place Your Brand At The Forefront of Success
+                                </p>
 
                                 <p class="desc-text">
                                     Libero diam auctor tristique hendrerit in eu vel id. Nec leo amet suscipit
@@ -150,7 +151,7 @@
 
                             <!-- COLUMN 3 -->
                             <div class="col-lg-3 col-md-6">
-                                <h6 class="fw-bold text-center">Montag, 18. September</h6>
+                                {{-- <h6 class="fw-bold text-center">Montag, 18. September</h6> --}}
 
                                 <div class="d-flex gap-2 justify-content-center">
                                     <button type="button" class="date-btn">18-sep-2025</button>
@@ -208,12 +209,21 @@
                         <div class="row g-4 mt-4">
 
                             <!-- LEFT COLUMN -->
-                            <div class="col-lg-6 col-md-12 d-flex justify-content-center ">
+                            <div class="col-lg-6 col-md-12 ">
                                 <div class="info-card">
-                                    Libero diam auctor tristique hendrerit in eu vel id. Nec leo amet
-                                    suscipit nulla. Nullam vitae sit tempus diam. Libero diam auctor
-                                    tristique hendrerit Libero diam t cipit nulla. Nullam vitae sit
-                                    tempus diam. Libero diam auctor tristique hendrerit Libero diam t
+                                    <p>
+                                        Consultations are made based on your availability. Plan a date and time. During
+                                        our scheduled meeting, we’ll review your goals together and answer any follow-up
+                                        questions.
+
+                                    </p>
+
+                                    <p>
+                                        Mapping is the first step in revitalizing your business. No pressure, just
+                                        promises that actually hold up.
+
+                                    </p>
+
                                 </div>
                             </div>
 
@@ -333,10 +343,10 @@
 
     <!-- Toastr JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    
+
     <!-- Google reCAPTCHA -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    
+
     <!-- Toastr Configuration -->
     <script>
         toastr.options = {

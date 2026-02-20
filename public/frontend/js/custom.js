@@ -113,7 +113,7 @@ var swiper = new Swiper(".myCardSwiper", {
     autoplay: {
         delay: 3000,
         disableOnInteraction: false,
-        pauseOnMouseEnter: true, // 👈 hover par pause
+        pauseOnMouseEnter: true,
     },
     pagination: {
         el: ".swiper-pagination",
@@ -275,7 +275,7 @@ var swiper = new Swiper(".myCardSwiper", {
     const projectSubmitBtn = document.getElementById("projectSubmitBtn");
     const projectModalEl = document.getElementById("projectModal");
     const confirmModalEl = document.getElementById("confirmModal");
-    
+
     let projectCaptchaRendered = false;
 
     // Reset state when project modal is shown (make modal reusable anywhere)
@@ -322,7 +322,7 @@ var swiper = new Swiper(".myCardSwiper", {
                 } catch (e) { }
         });
     }
-    
+
     // Render reCAPTCHA when confirm modal is shown
     if (confirmModalEl) {
         confirmModalEl.addEventListener("shown.bs.modal", function () {
@@ -340,7 +340,7 @@ var swiper = new Swiper(".myCardSwiper", {
                 }
             }
         });
-        
+
         confirmModalEl.addEventListener("hidden.bs.modal", function () {
             if (window.grecaptcha) {
                 try {
@@ -698,7 +698,7 @@ var swiper = new Swiper(".myCardSwiper", {
             "g-recaptcha-response",
             grecaptcha.getResponse(qCaptchaWidget),
         );
-        
+
         // Add checkbox value (0 if unchecked, 1 if checked)
         const agreeCheckbox = document.getElementById('agree');
         formData.set('agree', agreeCheckbox && agreeCheckbox.checked ? '1' : '0');
@@ -788,3 +788,24 @@ var swiper = new Swiper(".myCardSwiper", {
             });
     });
 })();
+
+
+
+// =========== heading slider ==============
+
+var swiper = new Swiper(".headingSwiper", {
+    slidesPerView: "auto",
+    spaceBetween: 80,
+    loop: true,
+
+    speed: 20000, // 🔥 jitni zyada speed utna smooth slow flow
+    autoplay: {
+        delay: 0, // ⚠️ no pause
+        disableOnInteraction: false,
+    },
+
+    allowTouchMove: false, // ❌ text slider hai
+    freeMode: true,
+    freeModeMomentum: false,
+});
+

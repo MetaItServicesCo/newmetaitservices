@@ -14,6 +14,8 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            margin-top: 98px;
+
         }
 
 
@@ -34,7 +36,7 @@
             line-height: 60px;
             letter-spacing: 0;
             margin-bottom: 15px;
-            max-width: 450px;
+            max-width: 640px;
             /* margin-top: 20px; */
         }
 
@@ -256,7 +258,15 @@
 
             .industry-box {
                 padding: 50px 20px;
-                height: auto;
+                height: 100%;
+            }
+
+
+        }
+
+        @media (max-width: 991px) {
+            .industry-card h4 {
+                font-size: 25px;
             }
         }
 
@@ -299,24 +309,24 @@
 
 
 
-    <section class="dm-services-section"
-        style="background-image: url('{{ asset('frontend/images/about/about-hero.png') }}');">
+    <section class="dm-services-section" style="background-image: url('{{ asset('frontend/images/hero-img.png') }}');">
 
         <div class="container">
             <div class="row align-items-center">
 
                 <!-- LEFT COLUMN -->
                 <div class="col-lg-6 mb-4 mb-lg-0">
-                    <h1 class="dm-title">Industries</h1>
+                    <h1 class="dm-title">Solutions That Speak Your Industry’s Language</h1>
 
                     {{-- <h4 class="dm-subtitle">
                         Customized Marketing Solutions That Deliver Results, Every Time
                     </h4> --}}
 
                     <p class="dm-desc">
-                        We create data-driven digital marketing strategies tailored to
-                        your business goals. From SEO and paid campaigns to social media
-                        and content marketing
+                        Meta IT is a blend of industry experience and innovation. We provide customized digital marketing
+                        and technology services for various companies. Our goal is to enable measurable growth and drive a
+                        brand presence that can harness long-term resonance for your brand
+
                     </p>
 
                     {{-- <a href="#" class="dm-btn">Start Your Project</a> --}}
@@ -338,14 +348,15 @@
 
     <section class="industries-sectio ">
         <div class="container-fluid text-center industries-section">
-            <span class="industry-tag">Industries We Serve</span>
+            <span class="industry-tag"> Spanning All Across the Globe</span>
 
             <h2 class="industry-heading">
-                Your <span>Dallas</span> Digital Marketing Agency
+                International <span> Digital Marketing</span> Agency
+
             </h2>
 
             <p class="industry-desc">
-                We help businesses across multiple industries grow with data-driven digital strategies.
+                Rooted in the USA, reaching beyond state lines and across seas.
             </p>
         </div>
 
@@ -354,7 +365,7 @@
             @include('frontend.pages.industry-items', ['industries' => $industries])
         </div>
 
-        <button class="explore-btn" id="loadMoreBtn" @if(!$industries->hasMorePages()) style="display: none;" @endif>
+        <button class="explore-btn" id="loadMoreBtn" @if (!$industries->hasMorePages()) style="display: none;" @endif>
             Explore More Industries
         </button>
 
@@ -401,9 +412,13 @@
                                 }
 
                                 // Scroll to new content
-                                const newItems = industriesContainer.querySelectorAll('.industry-box:last-child');
+                                const newItems = industriesContainer.querySelectorAll(
+                                    '.industry-box:last-child');
                                 if (newItems.length > 0) {
-                                    newItems[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                    newItems[0].scrollIntoView({
+                                        behavior: 'smooth',
+                                        block: 'start'
+                                    });
                                 }
                             } else {
                                 console.error('Error loading industries:', data.message);
