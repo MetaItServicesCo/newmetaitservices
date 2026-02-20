@@ -154,6 +154,8 @@
             letter-spacing: 0;
             color: #000000;
             max-width: 384px;
+            margin-top: 56px;
+
         }
 
         .left-desc {
@@ -258,6 +260,7 @@
 
         .health-card img {
             width: 100%;
+            max-width: 408px;
             height: 460px;
             object-fit: cover;
             border-radius: 23px;
@@ -285,8 +288,7 @@
         @media (max-width: 991px) {
             .view-btn {
                 display: block;
-                margin: 20px auto;
-                /* center horizontally */
+                /* margin: 20px auto; */
             }
         }
 
@@ -384,6 +386,7 @@
         @media (max-width: 991px) {
             .marketing-heading {
                 text-align: center;
+                line-height: 40px;
             }
 
             .marketing-desc {
@@ -950,7 +953,7 @@
 
             <h2 class="health-heading">{!! highlightBorderBottom($industry['sub_details']['hero_title']) ?? '' !!}</h2>
 
-            <div class="row mt-5">
+            <div class="row mt-5 g-2">
                 <!-- LEFT -->
                 <div class="col-lg-3">
                     <h3 class="left-heading">{{ $industry['sub_details']['hero_side_title'] ?? '' }}</h3>
@@ -1267,7 +1270,7 @@
             </div>
         </section>
     @endif
-    
+
 
     @php
         $experienceSection = data_get($industry, 'sub_details.detail_experience_section', []);
@@ -1320,7 +1323,9 @@
         </section>
     @endif --}}
 
-
+    <div class="mt-5">
+        <x-have-project />
+    </div>
 
 
 

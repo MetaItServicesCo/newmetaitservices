@@ -1,7 +1,13 @@
 html,
 body {
     overflow-x: hidden;
+
 }
+
+/* a {
+    text-decoration: none !important;
+    color: #fff !important;
+} */
 
 /* h1 {
     font-size: 44px !important;
@@ -42,6 +48,10 @@ li {
 .dm-services-section {
     min-height: auto !important;
     margin-top: 85px !important;
+}
+
+.dm-title {
+    max-width: 640px !important;
 }
 
 @media(max-width:768px) {
@@ -1121,7 +1131,8 @@ body.modal-open {
 }
 
 .card-box {
-    width: 396px;
+    width: 100%;
+    max-width: 396px;
     height: 386px;
     background: #ffffff;
     border-radius: 12px;

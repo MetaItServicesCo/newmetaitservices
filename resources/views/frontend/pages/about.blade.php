@@ -597,9 +597,16 @@
             }
         }
 
+        @media (max-width: 768px) {
+            .audit-btn {
+                width: 70% !important;
+
+            }
+        }
+
         @media (max-width: 767px) {
             .audit-btn {
-                width: 86%;
+                width: 86% !important;
                 font-size: 14px;
                 margin-bottom: 20px;
                 height: 50px;

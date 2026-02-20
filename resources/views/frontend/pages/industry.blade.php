@@ -36,7 +36,7 @@
             line-height: 60px;
             letter-spacing: 0;
             margin-bottom: 15px;
-            max-width: 450px;
+            max-width: 640px;
             /* margin-top: 20px; */
         }
 
@@ -258,7 +258,15 @@
 
             .industry-box {
                 padding: 50px 20px;
-                height: auto;
+                height: 100%;
+            }
+
+
+        }
+
+        @media (max-width: 991px) {
+            .industry-card h4 {
+                font-size: 25px;
             }
         }
 

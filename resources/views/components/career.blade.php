@@ -77,6 +77,17 @@
         }
     }
 
+
+    @media(max-width:767px) {
+        .career-card-red {
+            height: 256px !important;
+        }
+
+        .career-card {
+            height: 256px !important;
+        }
+    }
+
     /* Card Heading */
     .career-card h3 {
         font-size: 30px;

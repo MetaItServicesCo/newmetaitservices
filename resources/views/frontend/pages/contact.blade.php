@@ -482,7 +482,7 @@
         .info-text span {
             display: block;
             /* text next line proper aaye */
-            font-size: 18px;
+            font-size: 14px;
             font-weight: 700;
             line-height: 27px;
             letter-spacing: 0;
@@ -614,7 +614,8 @@
                                 @if (setting('email'))
                                     <div class="info-text">
                                         <strong>Email</strong>
-                                        <a href="mailto:{{ setting('email') }}" target="_blank">
+                                        <a href="mailto:{{ setting('email') }}" target="_blank"
+                                            class="text-decoration-none">
                                             <span>{{ setting('email') }}</span>
                                         </a>
                                     </div>
@@ -628,7 +629,7 @@
                                 @if (setting('phone'))
                                     <div class="info-text">
                                         <strong>Phone</strong>
-                                        <a href="tel:{{ cleanPhone(setting('phone')) }}">
+                                        <a href="tel:{{ cleanPhone(setting('phone')) }}" class="text-decoration-none">
                                             <span>{{ setting('phone') }}</span>
                                         </a>
                                     </div>

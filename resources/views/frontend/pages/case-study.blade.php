@@ -233,6 +233,33 @@
             line-height: 160%;
         }
 
+        @media(max-width:991px) {
+            .case-card {
+                height: 520px;
+
+            }
+
+            .case-card h4 {
+                font-size: 18px;
+                font-weight: 700;
+                margin-bottom: 10px;
+            }
+
+            .case-card p {
+                font-size: 12px;
+            }
+
+            .case-card .overlay {
+                height: 164px;
+            }
+        }
+
+        @media(max-width:767px) {
+            .case-card .overlay {
+                height: 150px !important;
+            }
+        }
+
         /* ======================= newsletter-section ==================== */
         .newsletter-section {
             background-color: #404959;

@@ -113,10 +113,20 @@
         font-weight: 300;
         letter-spacing: 0;
         line-height: 162%;
+        transition: all 0.4s ease-in-out;
     }
 
-    .footer-links li:hover {
-        color: #dcdcdc;
+    .footer-links li a {
+        text-decoration: none;
+        color: #FFFFFF;
+
+    }
+
+    .footer-links li a:hover {
+        /* color: #dcdcdc; */
+        color: #F96037;
+
+
     }
 
     /* QUESTION */
@@ -564,13 +574,14 @@
             <div class="col-lg-2 col-md-6 mb-4">
                 <h5 class="footer-title">Services</h5>
                 <ul class="footer-links">
-                    <li>SEO Services</li>
-                    <li>Web Development</li>
-                    <li>UI/UX Design</li>
-                    <li>Digital Marketing</li>
-                    <li>Brand Strategy</li>
-                    <li>Content Writing</li>
-                    <li>Performance Ads</li>
+                    <li> <a href="https://metaitservices.co/service/digital-marketing">Digital Marketing</a></li>
+                    <li><a href="https://metaitservices.co/service/software-development">Software Development</a></li>
+                    <li><a href="https://metaitservices.co/service/artificial-intelligence">Artificial Intelligence</a>
+                    </li>
+                    <li><a href="https://metaitservices.co/service/cloud-devops">Cloud DevOps</a></li>
+                    <li><a href="https://metaitservices.co/service/advisory-strategy">Advisory Strategy</a></li>
+                    <li><a href="https://metaitservices.co/service/data-analytics">Data Analytics</a></li>
+                    <li><a href="https://metaitservices.co/service/workflow-automation">Workflow Automation</a></li>
                 </ul>
             </div>
 
@@ -578,26 +589,25 @@
             <div class="col-lg-2 col-md-6 mb-4">
                 <h5 class="footer-title">Industries</h5>
                 <ul class="footer-links">
-                    <li>Healthcare</li>
-                    <li>Ecommerce</li>
-                    <li>Finance</li>
-                    <li>Education</li>
-                    <li>Real Estate</li>
-                    <li>Technology</li>
-                    <li>Logistics</li>
+                    <li><a href="https://metaitservices.co/industry/healthcare">Healthcare & Life</a></li>
+                    <li><a href="https://metaitservices.co/industry/education-and-edtech">Education & Tech</a></li>
+                    <li><a href="https://metaitservices.co/industry/retail-and-ecommerce">Retail & Ecommerce</a></li>
+                    <li><a href="https://metaitservices.co/industry/finance-and-fintech">Finance Tech</a></li>
+                    <li><a href="https://metaitservices.co/industry/startups-saas">Startup & SaaS</a></li>
                 </ul>
             </div>
 
             <!-- COLUMN 4 -->
             <div class="col-lg-2 col-md-6 mb-4">
-                <h5 class="footer-title">Resources</h5>
+                <h5 class="footer-title">Usefull Links</h5>
                 <ul class="footer-links">
-                    <li>Blog</li>
-                    <li>Case Studies</li>
-                    <li>FAQs</li>
-                    <li>Help Center</li>
-                    <li>Privacy Policy</li>
-                    <li>Terms & Conditions</li>
+                    <li><a href="https://metaitservices.co/case-studies">Case-studies</a></li>
+                    <li><a href="https://metaitservices.co/services">Services</a></li>
+                    <li><a href="https://metaitservices.co/blogs">Blogs</a></li>
+                    <li><a href="https://metaitservices.co/privacy-policy">Privacy Policy</a></li>
+                    <li><a href="https://metaitservices.co/terms-and-conditions">Terms & Condition</a></li>
+                    <li><a href="https://metaitservices.co/disclaimer">Disclaimer</a></li>
+                    <li><a href="https://metaitservices.co/blogs/write-for-us">Write For Us</a></li>
                 </ul>
             </div>
 
@@ -609,6 +619,7 @@
                     <li>Canada</li>
                     <li>UK</li>
                     <li>Australia</li>
+                    <li>UAE</li>
                 </ul>
 
 
@@ -659,7 +670,8 @@
                         <span class="text-danger" id="error_email"></span>
 
                         {{-- Message (required) --}}
-                        <textarea id="q_message" name="message" class="question-input message-input required" placeholder="Write your message"></textarea>
+                        <textarea id="q_message" name="message" class="question-input message-input required"
+                            placeholder="Write your message"></textarea>
                         <span class="text-danger" id="error_message"></span>
 
                         <div class="form-check mt-2">

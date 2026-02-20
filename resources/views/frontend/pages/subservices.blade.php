@@ -204,6 +204,10 @@
             letter-spacing: 0;
         }
 
+        .phone-text i {
+            color: #F96037;
+        }
+
         /* RIGHT SIDE */
         .right-heading {
             font-weight: 700;
@@ -603,7 +607,7 @@
                 <!-- RIGHT COLUMN -->
                 <div class="col-lg-8">
 
-                    <div class="right-scroll">
+                    <div class="right-scroll mt-4">
 
                         <h2 class="right-heading">{{ $subService->page_content['hero_section']['main_heading'] ?? '' }}</h2>
                         <p class="right-desc">
