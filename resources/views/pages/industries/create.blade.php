@@ -297,9 +297,17 @@
                                                         @if (!empty($gImgs))
                                                             <div class="mt-2 d-flex flex-wrap gap-2">
                                                                 @foreach ($gImgs as $gk => $gimg)
-                                                                    <div class="border p-2 rounded">
-                                                                        <img src="{{ asset('storage/' . $gimg) }}"
-                                                                            width="80" alt="">
+                                                                    <div class="border p-2 rounded gallery-image-item">
+                                                                        <div class="image-preview-wrapper">
+                                                                            <img src="{{ asset('storage/' . $gimg) }}"
+                                                                                width="80" alt="">
+                                                                            <button type="button"
+                                                                                class="gallery-remove-btn image-remove-btn"
+                                                                                data-remove-name="remove_hero_slider_gallery_{{ $i }}[]"
+                                                                                data-remove-value="{{ $gimg }}">
+                                                                                &times;
+                                                                            </button>
+                                                                        </div>
                                                                         <input type="hidden"
                                                                             name="sub_details[hero_slider][{{ $i }}][gallery_images][{{ $gk }}]"
                                                                             value="{{ $gimg }}">

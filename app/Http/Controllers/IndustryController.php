@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\DataTables\IndustryDataTable;
 use App\Models\Industry;
 use App\Models\BrandWeCarry;
+use App\Traits\UploadImageTrait;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -13,6 +14,7 @@ use Illuminate\Support\Str;
 
 class IndustryController extends Controller
 {
+    use UploadImageTrait;
     public function index(IndustryDataTable $dataTable)
     {
         return $dataTable->render('pages.industries.index');
@@ -165,15 +167,12 @@ class IndustryController extends Controller
         ]);
 
         try {
-            // Handle main image
-            $imagePath = $industry->image;
-            if ($request->hasFile('image')) {
-                // Delete old image if exists
-                if ($imagePath && Storage::disk('public')->exists($imagePath)) {
-                    Storage::disk('public')->delete($imagePath);
-                }
-                $imagePath = $request->file('image')->store('industries', 'public');
-            }
+            $imagePath = $this->updateStoredFile(
+                $request,
+                'image',
+                'industries',
+                $industry->image
+            );
 
             // Get sub_details from request
             $subDetails = $request->input('sub_details', []);
@@ -183,35 +182,28 @@ class IndustryController extends Controller
             if (isset($subDetails['hero_slider']) && is_array($subDetails['hero_slider'])) {
                 foreach ($subDetails['hero_slider'] as $index => &$slide) {
                     // Handle hero slider main image
-                    if ($request->hasFile("hero_slider_image.{$index}")) {
-                        // Delete old image if exists
-                        if (isset($slide['image']) && $slide['image'] && Storage::disk('public')->exists($slide['image'])) {
-                            Storage::disk('public')->delete($slide['image']);
-                        }
-                        $slide['image'] = $request->file("hero_slider_image.{$index}")->store('industries/hero-slider', 'public');
-                    } elseif (isset($existingSubDetails['hero_slider'][$index]['image'])) {
-                        // Keep existing image if no new file uploaded
-                        $slide['image'] = $existingSubDetails['hero_slider'][$index]['image'];
-                    }
+                    $slide['image'] = $this->updateStoredFile(
+                        $request,
+                        "hero_slider_image.{$index}",
+                        'industries/hero-slider',
+                        $existingSubDetails['hero_slider'][$index]['image'] ?? null
+                    );
 
-                    // Handle hero slider gallery images
+                    $galleryImages = $existingSubDetails['hero_slider'][$index]['gallery_images'] ?? [];
+                    $galleryImages = $this->removeGalleryImages(
+                        $galleryImages,
+                        $request->input("remove_hero_slider_gallery_{$index}", [])
+                    );
+
                     if ($request->hasFile("hero_slider_gallery.{$index}")) {
-                        $galleryImages = [];
-                        // Keep existing gallery images
-                        if (isset($existingSubDetails['hero_slider'][$index]['gallery_images'])) {
-                            $galleryImages = $existingSubDetails['hero_slider'][$index]['gallery_images'];
-                        }
-                        // Add new gallery images
                         foreach ($request->file("hero_slider_gallery.{$index}") as $galleryFile) {
                             if ($galleryFile) {
                                 $galleryImages[] = $galleryFile->store('industries/hero-slider/gallery', 'public');
                             }
                         }
-                        $slide['gallery_images'] = $galleryImages;
-                    } elseif (isset($existingSubDetails['hero_slider'][$index]['gallery_images'])) {
-                        // Keep existing gallery images if no new files uploaded
-                        $slide['gallery_images'] = $existingSubDetails['hero_slider'][$index]['gallery_images'];
                     }
+
+                    $slide['gallery_images'] = $galleryImages;
                 }
             }
 
@@ -233,20 +225,14 @@ class IndustryController extends Controller
             }
 
             if ($accordionImageFile) {
-                // Delete old image if exists
-                if ($existingAccordionImage && Storage::disk('public')->exists($existingAccordionImage)) {
-                    Storage::disk('public')->delete($existingAccordionImage);
-                }
                 $subDetails['detail_accordion_section']['image'] = $accordionImageFile->store('industries/accordion', 'public');
-            } elseif (isset($subDetails['detail_accordion_section']['image']) && ! empty($subDetails['detail_accordion_section']['image'])) {
-                // Keep value from hidden input (existing image path)
-                // This is already set from the form's hidden input
-            } elseif ($existingAccordionImage) {
-                // Keep existing image if no new file uploaded and no hidden input
-                $subDetails['detail_accordion_section']['image'] = $existingAccordionImage;
             } else {
-                // Set empty string if no file and no existing value
-                $subDetails['detail_accordion_section']['image'] = '';
+                $subDetails['detail_accordion_section']['image'] = $this->updateStoredFile(
+                    $request,
+                    'sub_details.detail_accordion_section.image',
+                    'industries/accordion',
+                    $existingAccordionImage
+                ) ?? '';
             }
 
             // Handle experience section images
@@ -262,22 +248,12 @@ class IndustryController extends Controller
 
             // Handle experience images (4 images)
             for ($i = 0; $i < 4; $i++) {
-                if ($request->hasFile("experience_images.{$i}")) {
-                    // Delete old image if exists
-                    if (isset($existingExperienceImages[$i]) && $existingExperienceImages[$i] && Storage::disk('public')->exists($existingExperienceImages[$i])) {
-                        Storage::disk('public')->delete($existingExperienceImages[$i]);
-                    }
-                    $subDetails['detail_experience_section']['images'][$i] = $request->file("experience_images.{$i}")->store('industries/experience', 'public');
-                } elseif (isset($subDetails['detail_experience_section']['images'][$i]) && ! empty($subDetails['detail_experience_section']['images'][$i])) {
-                    // Keep value from hidden input (existing image path)
-                    // This is already set from the form's hidden input
-                } elseif (isset($existingExperienceImages[$i])) {
-                    // Keep existing image if no new file uploaded and no hidden input
-                    $subDetails['detail_experience_section']['images'][$i] = $existingExperienceImages[$i];
-                } else {
-                    // Set empty string if no file and no existing value
-                    $subDetails['detail_experience_section']['images'][$i] = '';
-                }
+                $subDetails['detail_experience_section']['images'][$i] = $this->updateStoredFile(
+                    $request,
+                    "experience_images.{$i}",
+                    'industries/experience',
+                    $existingExperienceImages[$i] ?? null
+                ) ?? '';
             }
 
             $industry->update([
