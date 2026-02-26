@@ -14,8 +14,11 @@
                 <div class="d-flex align-items-center position-relative my-1">
                     {!! getIcon('magnifier', 'fs-3 position-absolute ms-5') !!}
                     <input type="text" data-kt-user-table-filter="search"
-                        class="form-control form-control-solid w-250px ps-13" placeholder="{{ __('Search') }}"
+                        class="form-control form-control-solid w-250px ps-13 pe-10" placeholder="{{ __('Search') }}"
                         id="subServiceSearchInput" />
+                    <button type="button" class="btn btn-sm btn-icon position-absolute end-0 me-2 d-none" id="subServiceSearchClear">
+                        {!! getIcon('cross', 'fs-3') !!}
+                    </button>
                 </div>
                 <!--end::Search-->
             </div>
@@ -52,9 +55,20 @@
 
         <script>
             document.addEventListener('DOMContentLoaded', function() {
+                const searchInput = document.getElementById('subServiceSearchInput');
+                const clearBtn = document.getElementById('subServiceSearchClear');
+                
                 // Search Filter
-                document.getElementById('subServiceSearchInput').addEventListener('keyup', function() {
+                searchInput.addEventListener('keyup', function() {
                     window.LaravelDataTables['subservices-table'].search(this.value).draw();
+                    clearBtn.classList.toggle('d-none', !this.value);
+                });
+                
+                // Clear Search
+                clearBtn.addEventListener('click', function() {
+                    searchInput.value = '';
+                    window.LaravelDataTables['subservices-table'].search('').draw();
+                    clearBtn.classList.add('d-none');
                 });
             });
         </script>

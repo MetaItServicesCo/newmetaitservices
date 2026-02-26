@@ -7,12 +7,13 @@
                 <div class="industry-card">
                     <img src="{{ asset('storage/' . $industry->image) }}"
                         alt="{{ $industry->image_alt ?? $industry->name }}">
-                    <h4>{{ $industry->name ?? '' }}</h4>
                 </div>
             </div>
 
             <!-- Right Column -->
             <div class="col-lg-6 col-md-6">
+                <h4 class="indus-heading">{{ $industry->name ?? '' }}</h4>
+
                 <p class="industry-long-desc">
                     {{ $industry->description ?? '' }}
                 </p>

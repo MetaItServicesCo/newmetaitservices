@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 var swiper = new Swiper(".myCardSwiper", {
     slidesPerView: 3,
-    spaceBetween: 30,
+    spaceBetween: 10,
     loop: true,
     autoplay: {
         delay: 3000,
@@ -795,17 +795,18 @@ var swiper = new Swiper(".myCardSwiper", {
 
 var swiper = new Swiper(".headingSwiper", {
     slidesPerView: "auto",
-    spaceBetween: 80,
     loop: true,
 
-    speed: 20000, // 🔥 jitni zyada speed utna smooth slow flow
+    speed: 40000,
     autoplay: {
-        delay: 0, // ⚠️ no pause
+        delay: 0,
         disableOnInteraction: false,
     },
 
-    allowTouchMove: false, // ❌ text slider hai
+    allowTouchMove: false,
     freeMode: true,
     freeModeMomentum: false,
 });
+
+
 

@@ -67,10 +67,11 @@
     .mega-card {
         background: #FBF5E3;
         width: 100%;
-        max-width: 327px;
-        height: 343px;
+        max-width: 250px;
+        height: 240px;
         border-radius: 11px;
         padding: 30px;
+        margin-left: 20px;
     }
 
     .mega-card h3 {
@@ -83,7 +84,7 @@
     }
 
     .mega-card p {
-        font-size: 20px;
+        font-size: 18px;
         font-weight: 400;
         line-height: 160%;
         font-family: Inter;
@@ -95,14 +96,14 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 195px;
-        height: 54px;
+        width: 120px;
+        height: 36px;
         background: #FF6036;
         color: #FBF5E3;
         text-decoration: none;
         border-radius: 11px;
         font-family: Inter;
-        font-size: 32px;
+        font-size: 20px;
         font-weight: 700;
         line-height: 140%;
     }
@@ -326,8 +327,8 @@
             <div class="mega-dropdown" id="mega-industry">
                 <div class="container">
                     <div class="row g-4">
-                        <div class="col-lg-3 col-md-6">
-                            <div class="mega-card">
+                        <div class="col-lg-3 col-md-6 ">
+                            <div class="mega-card ">
                                 <h3>See Impact!</h3>
                                 <p> Start Building A Stronger Brand</p>
                                 <a href="{{ route('contact-us') }}" class="talk-btn">Let’s Talk</a>

@@ -23,7 +23,22 @@
         <!--end::Input group--->
         <div class="fv-row mb-3">
             <!--begin::Password-->
-            <input type="password" placeholder="Password" name="password" autocomplete="off" class="form-control bg-transparent" value="Mubeen@123"/>
+            <div class="position-relative">
+                <input type="password" placeholder="Password" name="password" autocomplete="off" class="form-control bg-transparent" value="Mubeen@123" id="login_password_field"/>
+                <span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2" id="toggle_login_password" style="cursor: pointer;">
+                    <i class="ki-duotone ki-eye-slash fs-2" id="login_eye_icon_slash">
+                        <span class="path1"></span>
+                        <span class="path2"></span>
+                        <span class="path3"></span>
+                        <span class="path4"></span>
+                    </i>
+                    <i class="ki-duotone ki-eye fs-2 d-none" id="login_eye_icon">
+                        <span class="path1"></span>
+                        <span class="path2"></span>
+                        <span class="path3"></span>
+                    </i>
+                </span>
+            </div>
             <!--end::Password-->
         </div>
         <!--end::Input group--->
@@ -59,5 +74,67 @@
         <!--end::Sign up-->
     </form>
     <!--end::Form-->
+
+    @push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleLoginPassword = document.getElementById('toggle_login_password');
+            const loginPasswordField = document.getElementById('login_password_field');
+            const loginEyeIconSlash = document.getElementById('login_eye_icon_slash');
+            const loginEyeIcon = document.getElementById('login_eye_icon');
+
+            if (toggleLoginPassword && loginPasswordField) {
+                toggleLoginPassword.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const type = loginPasswordField.getAttribute('type') === 'password' ? 'text' : 'password';
+                    loginPasswordField.setAttribute('type', type);
+                    
+                    loginEyeIconSlash.classList.toggle('d-none');
+                    loginEyeIcon.classList.toggle('d-none');
+                });
+            }
+
+            // Prevent duplicate SweetAlert modals
+            let swalShown = false;
+            const originalSwalFire = Swal.fire;
+            Swal.fire = function(...args) {
+                if (swalShown) {
+                    return Promise.resolve({ isConfirmed: false });
+                }
+                swalShown = true;
+                return originalSwalFire.apply(this, args).then(result => {
+                    setTimeout(() => { swalShown = false; }, 1000);
+                    return result;
+                });
+            };
+
+            // Remove duplicate error messages
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    mutation.addedNodes.forEach(function(node) {
+                        if (node.nodeType === 1 && node.classList && node.classList.contains('fv-plugins-message-container')) {
+                            const parent = node.parentElement;
+                            const errorMessages = parent.querySelectorAll('.fv-plugins-message-container');
+                            
+                            if (errorMessages.length > 1) {
+                                for (let i = 1; i < errorMessages.length; i++) {
+                                    errorMessages[i].remove();
+                                }
+                            }
+                        }
+                    });
+                });
+            });
+
+            const form = document.getElementById('kt_sign_in_form');
+            if (form) {
+                observer.observe(form, {
+                    childList: true,
+                    subtree: true
+                });
+            }
+        });
+    </script>
+    @endpush
 
 </x-auth-layout>

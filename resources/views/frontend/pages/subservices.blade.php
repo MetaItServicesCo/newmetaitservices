@@ -8,7 +8,7 @@
 @push('frontend-styles')
     <style>
         .dm-services-section {
-            padding: 100px 0;
+            padding: 50px 0;
             min-height: 800px;
             /* 👈 important */
             background-size: cover;
@@ -52,7 +52,7 @@
         }
 
         .dm-desc {
-            font-size: 25px;
+            font-size: 16px;
             font-weight: 400;
             line-height: 160%;
             letter-spacing: 0;
@@ -179,19 +179,20 @@
         .contact-btn {
             display: flex;
             align-items: center;
-            justify-content: center;
+            /* justify-content: center; */
             gap: 10px;
             background: #F96037;
             color: #fff;
             border-radius: 12px;
             text-decoration: none;
             margin-top: 15px;
-            width: 300px;
-            height: 67px;
+            width: auto;
+            height: 40px;
             font-weight: 700;
-            font-size: 20px;
+            font-size: 16px;
             line-height: 25px;
             letter-spacing: 0;
+            padding-left: 10px;
         }
 
         .phone-text {
@@ -211,7 +212,7 @@
         /* RIGHT SIDE */
         .right-heading {
             font-weight: 700;
-            font-size: 45px;
+            font-size: 41px;
             line-height: 60px;
             letter-spacing: 0;
             margin-bottom: 10px;
@@ -222,7 +223,7 @@
         .right-desc {
             color: #000000;
             font-weight: 400;
-            font-size: 25px;
+            font-size: 16px;
             line-height: 183%;
             letter-spacing: 0;
             max-width: 1189px;
@@ -346,9 +347,9 @@
 
         /* HEADING */
         .commitment-heading {
-            font-size: 45px;
+            font-size: 41px;
             font-weight: 700;
-            line-height: 60px;
+            line-height: 52px;
             font-family: Inter;
             letter-spacing: 0;
             color: #000000;
@@ -358,7 +359,7 @@
         }
 
         .commitment-desc {
-            font-size: 25px;
+            font-size: 16px;
             font-weight: 400;
             line-height: 160%;
             font-family: Inter;
@@ -436,7 +437,7 @@
         }
 
         .Shopify-heading {
-            font-size: 45px;
+            font-size: 35px;
             font-weight: 700;
             line-height: 55px;
             font-family: Inter;
@@ -447,7 +448,7 @@
         }
 
         .Shopify-list {
-            font-size: 25px;
+            font-size: 18px;
             font-weight: 300;
             line-height: 160%;
             letter-spacing: 0;
@@ -543,7 +544,7 @@
 
                 <!-- RIGHT COLUMN -->
                 <div class="col-lg-6 text-center d-flex align-items-center ">
-                    <img src="{{ asset('frontend/images/main-services/mc-img.png') }}" alt="Digital Marketing"
+                    <img src="{{ asset('frontend/images/services/marketing campagins.svg') }}" alt="Digital Marketing"
                         class="mc-right-img">
                 </div>
 
@@ -586,18 +587,19 @@
                             <!-- Question Card -->
                             <div class="question-card mt-4">
                                 <h4>Have a Questions?</h4>
-                                <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. In, recusandae asperiores
-                                    blanditiis
-                                    vel quam excepturi beatae et, repellat ad reiciendis assumenda. </p>
+                                <p> Connect with our digital experts to explore the right strategy, technology, and growth
+                                    roadmap tailored to your business. </p>
                                 @if (setting('email'))
-                                    <a href="mailto:{{ setting('email') }}" target="_blank" class="contact-btn text-white text-decoration-none hover-primary">
+                                    <a href="mailto:{{ setting('email') }}" target="_blank"
+                                        class="contact-btn text-white text-decoration-none hover-primary">
                                         <i class="fa-solid fa-envelope"></i>
                                         {{ setting('email') }}
                                     </a>
                                 @endif
                                 @if (setting('phone'))
                                     <div class="phone-text mt-3">
-                                        <i class="fa-solid fa-phone"></i><a href="tel:{{ cleanPhone(setting('phone')) }}" class="text-white text-decoration-none hover-primary">
+                                        <i class="fa-solid fa-phone"></i><a href="tel:{{ cleanPhone(setting('phone')) }}"
+                                            class="text-white text-decoration-none hover-primary">
                                             {{ setting('phone') }}</a>
                                     </div>
                                 @endif
