@@ -180,25 +180,6 @@
             color: #044343;
         }
 
-        .bullet-text {
-            font-family: 'Lexend Deca', sans-serif;
-            color: #F38B5C;
-            font-weight: 500;
-            font-size: 9.18px;
-            margin-top: 12px;
-            position: relative;
-            padding-left: 14px;
-        }
-
-        .bullet-text::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            top: 0;
-            color: #F38B5C;
-            font-size: 14px;
-            line-height: 1;
-        }
 
         .desc-text {
             font-family: 'Lexend Deca', sans-serif;
@@ -309,19 +290,104 @@
         .headingSwiper {
             width: 100%;
             overflow: hidden;
-            white-space: nowrap;
+            height: auto !important;
+            /* 🔥 FIX */
+        }
+
+        .headingSwiper .swiper-wrapper {
+            display: flex;
+            align-items: center;
+
+            height: auto !important;
+            /* 🔥 MOST IMPORTANT */
+            min-height: unset !important;
         }
 
         .headingSwiper .swiper-slide {
-            width: auto;
+            width: max-content;
+            flex-shrink: 0;
+
+            height: auto !important;
+            /* 🔥 */
         }
 
+
+        /* TEXT */
         .brand-title {
             font-size: clamp(28px, 4vw, 56px);
             font-weight: 700;
             letter-spacing: 1px;
+
             white-space: nowrap;
-            padding-right: 80px;
+            line-height: 1.25;
+
+            padding-right: 140px;
+            /* 🔥 GAP BETWEEN HEADINGS */
+        }
+
+        .brand-title span {
+            color: #F96037;
+        }
+
+        .hero-title {
+            font-size: clamp(32px, 50px, 64px);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        /* typing word */
+        .typing-word {
+            display: inline-block;
+            min-width: 180px;
+            margin-left: 6px;
+
+            font-weight: 700;
+
+            /* animated gradient */
+            background-size: 200% 200%;
+            background-position: 0% 50%;
+            animation: gradientMove 3s ease infinite;
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            position: relative;
+        }
+
+        /* typing cursor */
+        .typing-word::after {
+            content: "|";
+            margin-left: 4px;
+            animation: blink 1s infinite;
+            color: currentColor;
+        }
+
+        @keyframes blink {
+
+            0%,
+            50%,
+            100% {
+                opacity: 1;
+            }
+
+            25%,
+            75% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
     </style>
 @endpush
@@ -334,7 +400,11 @@
 
                 <!-- Left Content -->
                 <div class="col-lg-6">
-                    <h1 class="hero-title">Strategic Marketing Company Formulated To Empower Businesses</h1>
+                    <h1 class="hero-title">
+                        Strategic Marketing Company Formulated To Empower
+                        <span id="typing-word" class="typing-word"></span>
+                    </h1>
+
 
 
 
@@ -367,7 +437,7 @@
 
                 <!-- Right Image -->
                 <div class="col-lg-6 text-end">
-                    <img src="{{ asset('frontend/images/home-hero.png') }}" alt="Hero Image" class="hero-img">
+                    <img src="{{ asset('frontend/images/Home hero.svg') }}" alt="Hero Image" class="hero-img">
                 </div>
 
             </div>
@@ -386,18 +456,27 @@
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <h2 class="brand-title">
-                            We treat your BRAND like it’s ours. Why? Be
+                            Your brand’s <span>vision is our mission</span>. We curate and
+                            backed by
+                            purposeful
+                            strategies,
+                            resulting in <span> measurable conversion</span> outcomes!
                         </h2>
                     </div>
 
-                    <!-- duplicate slide (smooth infinite loop ke liye) -->
+                    <!-- duplicate -->
                     <div class="swiper-slide">
                         <h2 class="brand-title">
-                            We treat your BRAND like it’s ours. Why? Be
+                            Your brand’s <span>vision is our mission</span>. We curate and <span>execute designs</span>
+                            backed by
+                            purposeful
+                            strategies,
+                            resulting in <span> measurable conversion</span> outcomes!
                         </h2>
                     </div>
                 </div>
             </div>
+
 
 
             <!-- Description -->
@@ -532,7 +611,7 @@
                     </h2>
 
                     <div class="about-feature">
-                        <img src="/images/strategy-icon.png" alt="Icon" class="feature-icon">
+                        <img src="{{ asset('frontend/images/Retail Ecommerce.svg') }}" alt="Icon" class="feature-icon">
                         <div>
                             <h4>Retail/E-Commerce</h4>
                             <p>
@@ -542,7 +621,8 @@
                         </div>
                     </div>
                     <div class="about-feature">
-                        <img src="/images/strategy-icon.png" alt="Icon" class="feature-icon">
+                        <img src="{{ asset('frontend/images/IT & Tech Firm Marketing.svg') }}" alt="Icon"
+                            class="feature-icon">
                         <div>
                             <h4>IT & Tech Firm Marketing</h4>
                             <p>
@@ -672,3 +752,67 @@
 @endsection
 
 {{-- frontend scripts moved to public/frontend/js/custom.js for global usage --}}
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+        const words = [{
+                text: "Businesses",
+                gradient: "linear-gradient(90deg, #E44F2B, #ff8a65)"
+            },
+            {
+                text: "Growth",
+                gradient: "linear-gradient(90deg, #F4C430, #ffe066)"
+            },
+            {
+                text: "Revenue",
+                gradient: "linear-gradient(90deg, #FFD700, #00E676)"
+            },
+            {
+                text: "Success",
+                gradient: "linear-gradient(90deg, #00C6FF, #7F00FF)"
+            },
+            {
+                text: "Impact",
+                gradient: "linear-gradient(90deg, #FCE2D6, #f8b4a0)"
+            }
+        ];
+
+        const el = document.getElementById("typing-word");
+
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        const isMobile = window.innerWidth <= 768;
+
+        const typingSpeed = isMobile ? 120 : 80;
+        const deletingSpeed = isMobile ? 80 : 50;
+        const pauseAfterType = isMobile ? 1600 : 1200;
+
+        function typeEffect() {
+            const current = words[wordIndex];
+            el.style.backgroundImage = current.gradient;
+
+            if (!isDeleting) {
+                el.textContent = current.text.substring(0, charIndex + 1);
+                charIndex++;
+
+                if (charIndex === current.text.length) {
+                    setTimeout(() => isDeleting = true, pauseAfterType);
+                }
+            } else {
+                el.textContent = current.text.substring(0, charIndex - 1);
+                charIndex--;
+
+                if (charIndex === 0) {
+                    isDeleting = false;
+                    wordIndex = (wordIndex + 1) % words.length;
+                }
+            }
+
+            setTimeout(typeEffect, isDeleting ? deletingSpeed : typingSpeed);
+        }
+
+        typeEffect();
+    });
+</script>

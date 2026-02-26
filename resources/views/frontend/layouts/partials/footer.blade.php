@@ -29,7 +29,7 @@
     /* DESC */
     .footer-desc {
         color: #FFFFFF;
-        font-size: 22px;
+        font-size: 16px;
         font-weight: 400;
         letter-spacing: 0;
         line-height: 162%;
@@ -45,12 +45,12 @@
     }
 
     .footer-contact li {
-        margin-bottom: 25px;
+        margin-bottom: 10px;
         display: flex;
         align-items: center;
         gap: 14px;
         color: #FFFFFF;
-        font-size: 20px;
+        font-size: 16px;
         font-weight: 300;
         letter-spacing: 0;
     }
@@ -71,8 +71,8 @@
     }
 
     .footer-social a {
-        width: 45px;
-        height: 45px;
+        width: 40px;
+        height: 40px;
         background: #FAFAFA;
         /* color: #404959; */
         color: #F38B5C;
@@ -109,7 +109,7 @@
         margin-bottom: 10px;
         cursor: pointer;
         color: #FFFFFF;
-        font-size: 20px;
+        font-size: 16px;
         font-weight: 300;
         letter-spacing: 0;
         line-height: 162%;
@@ -119,7 +119,7 @@
     .footer-links li a {
         text-decoration: none;
         color: #FFFFFF;
-
+        font-size: 16px;
     }
 
     .footer-links li a:hover {
@@ -169,6 +169,13 @@
         .footer-title {
             margin-top: 20px;
         }
+
+        .footer-links li {
+            font-size: 16px !important;
+        }
+        .footer-question img {
+        width: 50px;
+    }
     }
 
     /* CTA WRAPPER */
@@ -184,7 +191,7 @@
 
     /* CTA BOX */
     .footer-cta {
-        max-width: 1100px;
+        max-width: 1286px;
         margin: 0 auto;
         background: #F96037;
         padding: 35px 20px;
@@ -491,6 +498,12 @@
     .tooltip.bs-tooltip-top .tooltip-arrow::before {
         border-top-color: #111;
     }
+
+    .hr-line {
+        border: 0;
+        border-top: 2px solid #ffffff;
+        margin: 20px auto;
+    }
 </style>
 <footer class="site-footer">
     <!-- FOOTER CTA -->
@@ -521,12 +534,14 @@
         <div class="row ">
 
             <!-- COLUMN 1 (WIDE) -->
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="footer-logo-box">
+            <div class="col-lg-4 col-md-6 mb-4 col">
+                {{-- <div class="footer-logo-box">
                     @if (setting('site_logo'))
                         <img src="{{ asset('storage/' . setting('site_logo')) }}" alt="{{ setting('site_name') }}">
                     @endif
-                </div>
+                </div> --}}
+                <h5 class="footer-title">About Meta IT Services</h5>
+
 
                 <p class="footer-desc">
                     Meta IT is a digital marketing and IT solution company that delivers intelligent tech and
@@ -561,8 +576,7 @@
                         <a href="{{ setting('twitter') }}" target="_blank"><i class="fa-brands fa-twitter"></i></a>
                     @endif
                     @if (setting('linkedin'))
-                        <a href="{{ setting('linkedin') }}" target="_blank"><i
-                                class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="{{ setting('linkedin') }}" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
                     @endif
                     @if (setting('instagram'))
                         <a href="{{ setting('instagram') }}" target="_blank"><i class="fa-brands fa-instagram"></i></a>
@@ -571,7 +585,7 @@
             </div>
 
             <!-- COLUMN 2 -->
-            <div class="col-lg-2 col-md-6 mb-4">
+            <div class="col-lg-2 col-md-6 mb-4 col-6">
                 <h5 class="footer-title">Services</h5>
                 <ul class="footer-links">
                     <li> <a href="https://metaitservices.co/service/digital-marketing">Digital Marketing</a></li>
@@ -586,7 +600,7 @@
             </div>
 
             <!-- COLUMN 3 -->
-            <div class="col-lg-2 col-md-6 mb-4">
+            <div class="col-lg-2 col-md-6 mb-4 col-6">
                 <h5 class="footer-title">Industries</h5>
                 <ul class="footer-links">
                     <li><a href="https://metaitservices.co/industry/healthcare">Healthcare & Life</a></li>
@@ -598,7 +612,7 @@
             </div>
 
             <!-- COLUMN 4 -->
-            <div class="col-lg-2 col-md-6 mb-4">
+            <div class="col-lg-2 col-md-6 mb-4 col-6">
                 <h5 class="footer-title">Usefull Links</h5>
                 <ul class="footer-links">
                     <li><a href="https://metaitservices.co/case-studies">Case-studies</a></li>
@@ -612,7 +626,7 @@
             </div>
 
             <!-- COLUMN 5 -->
-            <div class="col-lg-2 col-md-6 mb-4 position-relative">
+            <div class="col-lg-2 col-md-6 mb-4 col-6 position-relative ">
                 <h5 class="footer-title">Locations</h5>
                 <ul class="footer-links">
                     <li>USA</li>
@@ -627,6 +641,8 @@
             </div>
 
         </div>
+        <div class="hr-line"></div>
+        <p class="text-center mb-0">Copyright © 2026 | META IT SERVICES ® | All right reserved</p>
     </div>
 
     <div class="modal fade question-modal-right" id="questionModal" tabindex="-1">
@@ -702,7 +718,7 @@
     <div class="footer-question" data-bs-target="#questionModal" id="footerQuestion">
 
         <img src="{{ asset('frontend/images/footer-img.png') }}" alt="">
-        <span>Have A Question</span>
+        <span>CHAT</span>
     </div>
 
 

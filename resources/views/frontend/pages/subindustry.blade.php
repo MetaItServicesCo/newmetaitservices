@@ -8,7 +8,7 @@
 @push('frontend-styles')
     <style>
         .dm-services-section {
-            padding: 100px 0;
+            padding: 50px 0;
             /* min-height: 800px; */
             /* 👈 important */
             background-size: cover;
@@ -52,7 +52,7 @@
         }
 
         .dm-desc {
-            font-size: 25px;
+            font-size: 16px;
             font-weight: 400;
             line-height: 160%;
             letter-spacing: 0;
@@ -131,9 +131,9 @@
 
 
         .health-heading {
-            font-size: 55px;
+            font-size: 41px;
             font-weight: 700;
-            line-height: 64px;
+            line-height: 50px;
             letter-spacing: 2%;
             margin-top: 15px;
             max-width: 592px;
@@ -276,7 +276,7 @@
         }
 
         .health-card p {
-            font-size: 25px;
+            font-size: 16px;
             line-height: 120%;
             font-weight: 400;
             letter-spacing: 0;
@@ -326,6 +326,88 @@
                 left: 60px;
                 top: 45px;
             }
+
+            .view-btn {
+                width: 180px !important;
+                height: 45px !important;
+            }
+
+            .health-heading {
+                font-size: 32px !important;
+
+                line-height: 50px !important;
+
+            }
+
+            .left-heading {
+                font-size: 30px !important;
+                line-height: 25px;
+
+                margin-top: 30px !important;
+                /* text-align: center !important; */
+            }
+
+            .health-card img {
+                height: 370px !important;
+                width: 88% !important;
+            }
+
+            .health-card h4 {
+                font-size: 22px !important;
+
+            }
+
+            .health-card p {
+                font-size: 15px !important;
+
+            }
+
+            .brands-heading {
+                font-size: 32px !important;
+
+            }
+
+            .marketing-img {
+                width: 100%;
+
+                height: 300px !important;
+
+            }
+
+            .marketing-desc {
+                font-size: 14px !important;
+
+            }
+
+            .atomic-desc {
+                font-size: 15px !important;
+            }
+
+            .tab-btn {
+                width: 70% !important;
+                height: 50px !important;
+
+                font-size: 18px !important;
+
+            }
+
+            .faq-dm-title {
+
+                font-size: 26px !important;
+                text-align: center !important;
+            }
+
+            .top-dm {
+
+                font-size: 18px !important;
+                text-align: center !important;
+            }
+
+            .faq-desc {
+
+                font-size: 14px !important;
+            }
+
         }
 
 
@@ -367,14 +449,14 @@
         .marketing-heading {
             font-size: 40px;
             font-weight: 600;
-            line-height: 25px;
+            line-height: 40px;
             letter-spacing: 0;
             color: #000000;
             font-family: Inter;
         }
 
         .marketing-desc {
-            font-size: 25px;
+            font-size: 16px;
             line-height: 160%;
             color: #404959;
             margin-top: 20px;
@@ -804,16 +886,21 @@
             background: #D9D9D9;
             border-radius: 20px;
             border: none;
+            width: 80%;
+            margin: 0 auto;
+
         }
+
+
 
         /* LEFT IMAGE */
         .modal-left img {
-            width: 100%;
-            max-width: 1054px;
-            height: 467px;
+            width: 456px;
+            height: 400px;
             max-width: 100%;
             object-fit: cover;
             /* border-radius: 20px 0 0 20px; */
+            text-align: center;
         }
 
         /* RIGHT COLUMN */
@@ -886,11 +973,11 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 353px;
-            height: 67px;
+            width: 220px;
+            height: 45px;
             background-color: #404959;
             color: #ffffff;
-            font-size: 28px;
+            font-size: 22px;
             font-weight: 600;
             text-align: center;
             line-height: 25px;
@@ -953,7 +1040,7 @@
 
             <h2 class="health-heading">{!! highlightBorderBottom($industry['sub_details']['hero_title']) ?? '' !!}</h2>
 
-            <div class="row mt-5 g-2">
+            <div class="row mt- g-2">
                 <!-- LEFT -->
                 <div class="col-lg-3">
                     <h3 class="left-heading">{{ $industry['sub_details']['hero_side_title'] ?? '' }}</h3>
@@ -1059,7 +1146,7 @@
                         <div class="row g-4 p-4">
 
                             <!-- LEFT COLUMN -->
-                            <div class="col-lg-8">
+                            <div class="col-lg-8 text-center">
                                 <div class="modal-left">
                                     <img id="modal-main-image" src="" alt="">
                                 </div>
@@ -1114,7 +1201,7 @@
                     @foreach (collect(data_get($industry, 'sub_details.detail_accordion_section.items', []))->sortBy('sort_order') as $item)
                         <div class="faq-item">
                             <div class="faq-header">
-                                <h5>{{ $item['title'] ?? '' }}</h5>
+                                <h3>{{ $item['title'] ?? '' }}</h3>
                                 <span class="faq-toggle">
                                     <i class="fa-solid fa-plus"></i>
                                 </span>
@@ -1160,8 +1247,7 @@
                 <!-- TAB CONTENT -->
                 <div class="atomic-tab-content mt-4">
                     @foreach ($tabsItems as $index => $item)
-                        <p class="atomic-desc tab-content {{ $index === 0 ? 'active' : '' }}"
-                            id="tab{{ $index }}">
+                        <p class="atomic-desc tab-content {{ $index === 0 ? 'active' : '' }}" id="tab{{ $index }}">
                             {{ $item['content'] ?? '' }}
                         </p>
                     @endforeach
@@ -1212,7 +1298,7 @@
                         @foreach ($accordionItems as $item)
                             <div class="faq-item">
                                 <div class="faq-header">
-                                    <h5>{{ $item['title'] ?? '' }}</h5>
+                                    <h3>{{ $item['title'] ?? '' }}</h3>
                                     <span class="faq-toggle">
                                         <i class="fa-solid fa-plus"></i>
                                     </span>

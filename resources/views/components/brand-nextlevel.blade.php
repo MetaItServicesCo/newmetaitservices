@@ -8,17 +8,20 @@
 
          <!-- Description -->
          <p class="next-level-desc">
-             Digital marketing is a sustainable option for B2B businesses calling for impactful results. The pipeline towards dominating your industry starts with Meta IT. Powered by insight, we transform businesses to win more conversions. These aren’t guesses made lucky; this is just proven templates that work fast. Let’s connect and develop a brand that resonates.
+             Digital marketing is a sustainable option for B2B businesses calling for impactful results. The pipeline
+             towards dominating your industry starts with Meta IT. Powered by insight, we transform businesses to win
+             more conversions. These aren’t guesses made lucky; this is just proven templates that work fast. Let’s
+             connect and develop a brand that resonates.
          </p>
 
          <!-- Features -->
          <div class="features">
              <div class="feature">
-                 <div class="feature-icon">✔</div>
+                 <div class="feature-iconn">✔</div>
                  <span>Impactful Results</span>
              </div>
              <div class="feature">
-                 <div class="feature-icon">✔</div>
+                 <div class="feature-iconn">✔</div>
                  <span>Superior Strategies</span>
              </div>
          </div>
