@@ -8,9 +8,8 @@
 @push('frontend-styles')
     <style>
         .dm-services-section {
-            padding: 100px 0;
-            /* min-height: 800px; */
-            /* 👈 important */
+            padding: 50px 0;
+
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -51,7 +50,7 @@
         }
 
         .dm-desc {
-            font-size: 25px;
+            font-size: 16px;
             font-weight: 400;
             line-height: 160%;
             letter-spacing: 0;
@@ -91,6 +90,7 @@
             height: 437px;
             display: flex;
             align-items: center;
+            border-radius: 23px;
         }
 
         /* MOBILE */
@@ -117,16 +117,16 @@
 
         /* LEFT SIDE */
         .about-heading {
-            font-size: 45px;
+            font-size: 41px;
             font-weight: 700;
-            line-height: 60px;
+            line-height: 53px;
             letter-spacing: 0;
             color: #000000;
             margin-bottom: 15px;
         }
 
         .about-desc {
-            font-size: 25px;
+            font-size: 16px;
             font-weight: 400;
             line-height: 183%;
             letter-spacing: 0;
@@ -164,7 +164,7 @@
         }
 
         .about-card h3 {
-            font-size: 45px;
+            font-size: 36px;
             font-weight: 700;
             line-height: 60px;
             letter-spacing: 0;
@@ -172,7 +172,7 @@
         }
 
         .about-card p {
-            font-size: 20px;
+            font-size: 16px;
             font-weight: 700;
             line-height: 29px;
             letter-spacing: 0;
@@ -199,18 +199,17 @@
 
         /* MAIN HEADING */
         .welcome-heading {
-            font-size: 45px;
+            font-size: 41px;
             font-weight: 700;
-            line-height: 60px;
+            line-height: 53px;
             letter-spacing: 0;
             color: #000000;
-
             max-width: 557px;
         }
 
         /* RIGHT COLUMN DESC */
         .welcome-desc {
-            font-size: 25px;
+            font-size: 20px;
             font-weight: 300;
             line-height: 183%;
             letter-spacing: 0;
@@ -245,6 +244,112 @@
         @media(max-width:767px) {
             .bg-image-section {
                 height: 129px;
+
+            }
+
+            .about-heading {
+                font-size: 27px;
+                line-height: 40px;
+
+            }
+
+            .about-desc {
+                font-size: 14px;
+            }
+
+            .about-card p {
+                font-size: 18px;
+            }
+
+            .about-card h3 {
+                font-size: 40px;
+            }
+
+            .welcome-heading {
+                font-size: 32px;
+                line-height: 40px;
+
+            }
+
+            .welcome-desc {
+                font-size: 14px;
+
+            }
+
+            .trusted-card p {
+                font-size: 16px;
+            }
+
+            .tab-btn {
+
+                font-size: 14px !important;
+                line-height: 21px !important;
+
+            }
+
+            .tab-heading {
+                font-size: 31px !important;
+                line-height: 50px !important;
+                margin-bottom: 0px !important;
+            }
+
+            .tab-desc {
+                font-size: 14px !important;
+            }
+
+            .btn-primary-custom {
+
+                height: 50px !important;
+
+                font-size: 12px !important;
+
+            }
+
+            .btn-outline-custom {
+
+
+                height: 50px !important;
+
+
+                font-size: 22px !important;
+
+            }
+
+            .grow-heading {
+                font-size: 28px !important;
+                line-height: 40px !important;
+                margin-bottom: 10px !important;
+            }
+
+            .grow-desc {
+                font-size: 14px !important;
+            }
+
+            .stats-card h3 {
+                font-size: 22px !important;
+            }
+
+            .stats-card p {
+                font-size: 14px !important;
+                line-height: 178% !important;
+
+            }
+
+            .about-proposal-btn {
+                width: 260px !important;
+                height: 50px !important;
+
+
+            }
+
+            .team-heading {
+                font-size: 30px !important;
+                line-height: 50px !important;
+
+            }
+
+            .team-desc {
+                font-size: 14px !important;
 
             }
         }
@@ -287,7 +392,7 @@
 
         /* HEADING & DESC */
         .grow-heading {
-            font-size: 45px;
+            font-size: 41px;
             font-weight: 700;
             line-height: 60px;
             letter-spacing: 0;
@@ -296,7 +401,7 @@
         }
 
         .grow-desc {
-            font-size: 25px;
+            font-size: 16px;
             font-weight: 400;
             line-height: 183%;
             letter-spacing: 0;
@@ -385,8 +490,8 @@
         }
 
         .about-proposal-btn {
-            width: 360px;
-            height: 56px;
+            width: 250px;
+            height: 50px;
             background: #404959;
             color: #ffffff;
 
@@ -404,6 +509,7 @@
             /* margin: 0px auto; */
             margin-top: 30px;
             transition: all 0.4s ease;
+            text-decoration: none
         }
 
         .about-proposal-btn:hover {
@@ -422,7 +528,7 @@
 
         /* HEADING */
         .team-heading {
-            font-size: 45px;
+            font-size: 41px;
             font-weight: 700;
             line-height: 60px;
             line-break: 0;
@@ -431,7 +537,7 @@
         }
 
         .team-desc {
-            font-size: 25px;
+            font-size: 16px;
             font-weight: 400;
             line-height: 183%;
             line-break: 0;
@@ -458,19 +564,19 @@
         }
 
         .team-img img {
-            height: 246px;
-            object-fit: cover;
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
             background: transparent;
+            border-radius: 10px;
+            transition: all 0.4s ease;
 
         }
 
-
-
-        /* BACKGROUND COLORS */
-        .bg-blue {
-            background: #004AAD;
+        .team-img img:hover {
+            transform: scale(1.02);
+            transition: all 0.4s ease;
         }
-
 
 
         .bg-purple {
@@ -508,7 +614,7 @@
         }
 
         .audit-heading {
-            font-size: 55px;
+            font-size: 41px;
             font-weight: 700;
             line-height: 59px;
             letter-spacing: 0;
@@ -557,7 +663,7 @@
         }
 
         .audit-step h3 {
-            font-size: 28px;
+            font-size: 22px;
             font-weight: 600;
             line-height: 40px;
             margin-top: 15px;
@@ -565,7 +671,7 @@
         }
 
         .audit-step p {
-            font-size: 25px;
+            font-size: 16px;
             font-weight: 400;
             line-height: 160%;
             opacity: 0.95;
@@ -625,8 +731,13 @@
             }
 
             .audit-step p {
-                font-size: 18px;
+                font-size: 14px;
 
+            }
+
+            .audit-step h3 {
+                font-size: 20px !important;
+                line-height: 32px !important;
             }
         }
 
@@ -702,7 +813,7 @@
         }
 
         .tab-heading {
-            font-size: 55px;
+            font-size: 41px;
             font-weight: 700;
             line-height: 59px;
             letter-spacing: 0;
@@ -712,7 +823,7 @@
 
         .tab-desc {
             font-weight: 400;
-            font-size: 20px;
+            font-size: 16px;
             line-height: 160%;
             letter-spacing: 0;
             margin-bottom: 20px;
@@ -722,7 +833,7 @@
         .info-btn {
             background: #fff;
             width: 535.83px;
-            height: 91px;
+            height: 65px;
             display: flex;
             align-items: center;
             gap: 12px;
@@ -744,8 +855,8 @@
         .btn-primary-custom {
             background: #FF6036;
             color: #ffffff;
-            width: 264.93px;
-            height: 59px;
+            width: 240px;
+            height: 50px;
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -753,7 +864,7 @@
             gap: 10px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 25px;
+            font-size: 20px;
             line-height: 25px;
             transition: all 0.3s ease;
         }
@@ -775,15 +886,15 @@
         .btn-outline-custom {
             background: transparent;
             color: #000000;
-            width: 264.93px;
-            height: 59px;
+            width: 240px;
+            height: 50px;
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
             font-weight: 700;
-            font-size: 25px;
+            font-size: 20px;
             line-height: 25px;
         }
 
@@ -826,8 +937,7 @@
 
                 <!-- RIGHT COLUMN -->
                 <div class="col-lg-6 text-center d-flex align-items-center ">
-                    <img src="{{ asset('frontend/images/main-services/mc-img.png') }}" alt="Digital Marketing"
-                        class="mc-right-img">
+                    <img src="{{ asset('frontend/images/about4.svg') }}" alt="Digital Marketing" class="mc-right-img">
                 </div>
 
             </div>
@@ -902,16 +1012,16 @@
                 <div class="col-lg-6">
                     <span class="welcome-text">Welcome to Meta IT Services</span>
                     <h2 class="welcome-heading">
-                        Impactful Marketing Made To Produce Undeniable Success
+                        Guiding your business to achieve success.
                     </h2>
                 </div>
 
                 <!-- RIGHT COLUMN -->
                 <div class="col-lg-6">
                     <p class="welcome-desc">
-                        If you’re ready to outperform and outrank your competitors on all sides of the commercial sphere,
-                        it’s time to connect with Meta IT. We capitalize on the fine print that other digital marketing
-                        agencies ignore. Surge your business into a corporation that consumers look towards first.
+                        Meta IT helps businesses with clear strategy direction and disciplined execution. We align
+                        technology, operations, and growth initiatives to harness superior outcomes.
+
                     </p>
                 </div>
 
@@ -1005,7 +1115,7 @@
 
                                 <div class="info-btn">
                                     <i class="bi bi-briefcase"></i>
-                                    Business Transformation agency.
+                                    Built to Deliver Measurable Growth
                                 </div>
 
                                 <p class="small-text">
@@ -1042,7 +1152,7 @@
 
                                 <div class="info-btn">
                                     <i class="bi bi-graph-up"></i>
-                                    Business Transformation agency.
+                                    Know Your Competitors. Lead the Industry.
                                 </div>
 
                                 <p class="small-text">
@@ -1050,7 +1160,8 @@
                                 </p>
 
                                 <div class="d-flex gap-3">
-                                    <a href="{{ route('services') }}" class="btn-primary-custom">Explore services</a>
+                                    <a href="{{ route('services') }}" class="btn-primary-custom">Explore services <img
+                                            src="{{ asset('frontend/images/kips-icon.png') }}" alt=""></a>
                                     <a href="{{ route('contact-us') }}" class="btn-outline-custom">Quick contact</a>
                                 </div>
                             </div>
@@ -1077,7 +1188,7 @@
 
                                 <div class="info-btn">
                                     <i class="bi bi-award"></i>
-                                    Business Transformation agency.
+                                    Experience That Builds Confidence
                                 </div>
 
                                 <p class="small-text">
@@ -1085,7 +1196,8 @@
                                 </p>
 
                                 <div class="d-flex gap-3">
-                                    <a href="{{ route('services') }}" class="btn-primary-custom">Explore services</a>
+                                    <a href="{{ route('services') }}" class="btn-primary-custom">Explore services <img
+                                            src="{{ asset('frontend/images/kips-icon.png') }}" alt=""></a>
                                     <a href="{{ route('contact-us') }}" class="btn-outline-custom">Quick contact</a>
                                 </div>
                             </div>
@@ -1112,14 +1224,15 @@
 
                                 <div class="info-btn">
                                     <i class="bi bi-globe"></i>
-                                    Business Transformation agency.
+                                    Performance You Can Measure
                                 </div>
                                 <p class="small-text">
                                     Get your <strong>First Payment Today</strong> and grow your business.
                                 </p>
 
                                 <div class="d-flex gap-3">
-                                    <a href="{{ route('services') }}" class="btn-primary-custom">Explore services</a>
+                                    <a href="{{ route('services') }}" class="btn-primary-custom">Explore services <img
+                                            src="{{ asset('frontend/images/kips-icon.png') }}" alt=""></a>
                                     <a href="{{ route('contact-us') }}" class="btn-outline-custom">Quick contact</a>
                                 </div>
                             </div>
@@ -1183,15 +1296,16 @@
 
                         <!-- IMAGES -->
                         <div class="image-stack">
-                            <img src="{{ asset('frontend/images/about/drand-img.png') }}" alt="" class="img-one">
+                            <img src="{{ asset('frontend/images/about/drand-img.png') }}" alt=""
+                                class="img-one">
                             <img src="{{ asset('frontend/images/about/brand-img2.png') }}" alt=""
                                 class="img-two">
                         </div>
 
                     </div>
-                        <a href="{{ route('contact-us') }}" class="about-proposal-btn">
+                    <a href="{{ route('contact-us') }}" class="about-proposal-btn">
                         Get Proposal
-                        </a>
+                    </a>
 
                 </div>
 
@@ -1241,7 +1355,7 @@
 
     {{-- ===================== bg-image-section ====================== --}}
     <div class="my-">
-        <x-career :brands="$brands"/>
+        <x-career :brands="$brands" />
     </div>
 
 

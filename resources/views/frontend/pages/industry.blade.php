@@ -8,7 +8,7 @@
 @push('frontend-styles')
     <style>
         .dm-services-section {
-            padding: 100px 0;
+            padding: 50px 0;
             /* min-height: 800px; */
             /* 👈 important */
             background-size: cover;
@@ -52,7 +52,7 @@
         }
 
         .dm-desc {
-            font-size: 25px;
+            font-size: 16px;
             font-weight: 400;
             line-height: 160%;
             letter-spacing: 0;
@@ -135,7 +135,7 @@
         }
 
         .industry-heading {
-            font-size: 55px;
+            font-size: 41px;
             font-weight: 700;
             line-height: 59px;
             color: #000000;
@@ -147,7 +147,7 @@
         }
 
         .industry-desc {
-            font-size: 22px;
+            font-size: 16px;
             line-height: 160%;
             max-width: 900px;
             margin: 0 auto 60px;
@@ -156,55 +156,52 @@
         /* Dark Box */
         .industry-box {
             background: #404959;
-            padding: 70px 60px;
+            /* padding: 70px 60px; */
             margin-top: 20px;
-            height: 487px;
+            padding: 30px;
+            height: auto;
             padding-bottom: 20px;
             font-family: Inter;
         }
 
         .industry-card {
             background: #ffffff;
-            width: 448px;
-            height: 401px;
+            width: 300px;
+            height: 200px;
             border-radius: 9px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            position: relative;
+            /* position: relative; */
 
         }
 
         .industry-card img {
-            position: absolute;
-            top: 18%;
-            left: 50%;
 
-            transform: translateX(-50%);
-            /* 🔥 CENTER FIX */
 
-            max-width: 113px;
-            max-height: 99px;
-            object-fit: contain;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             display: block;
+            border-radius: 10px;
         }
 
 
 
-        .industry-card h4 {
+        .indus-heading {
             font-size: 32px;
             font-weight: 700;
-            line-height: 25;
+            /* line-height: 25; */
             letter-spacing: 0;
             color: #F96037;
-            margin-top: 12px;
+            /* margin-top: 12px; */
         }
 
         /* Right Content */
         .industry-long-desc {
             color: #ffffff;
-            font-size: 20px;
+            font-size: 16px;
             line-height: 160%;
             margin-bottom: 35px;
             max-width: 1079px;
@@ -215,12 +212,12 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 353px;
-            height: 67px;
+            width: 200px;
+            height: 45px;
             background: #FF5B2E;
             border-radius: 12px;
 
-            font-size: 28px;
+            font-size: 22px;
             font-weight: 700;
             line-height: 25px;
             color: #ffffff;
@@ -252,9 +249,7 @@
                 margin-bottom: 40px;
             }
 
-            .industry-btn {
-                width: 100%;
-            }
+
 
             .industry-box {
                 padding: 50px 20px;
@@ -267,6 +262,20 @@
         @media (max-width: 991px) {
             .industry-card h4 {
                 font-size: 25px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .industry-card img {
+                width: 309px !important;
+                height: 200px !important;
+
+            }
+
+            .industry-card {
+                width: 80% !important;
+                height: 200px !important;
+
             }
         }
 

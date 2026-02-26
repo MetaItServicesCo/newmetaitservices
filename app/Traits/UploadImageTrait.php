@@ -28,21 +28,60 @@ trait UploadImageTrait
 
     public function updateImage(Request $request, $inputName, $directory, $oldFileName = null)
     {
+        $removeKey = $this->buildRemoveKey($inputName);
+
+        if ($this->shouldRemoveImage($request, $removeKey)) {
+            $this->deleteStoredFile($this->buildStoragePath($directory, $oldFileName));
+            return null;
+        }
+
         if ($request->hasFile($inputName)) {
             $file = $request->file($inputName);
 
-            // Delete old file if exists
-            if ($oldFileName) {
-                $oldFilePath = $directory . '/' . $oldFileName; // combine directory + filename
-                if (Storage::disk('public')->exists($oldFilePath)) {
-                    Storage::disk('public')->delete($oldFilePath);
-                }
-            }
+            $this->deleteStoredFile($this->buildStoragePath($directory, $oldFileName));
 
             return $this->uploadImage($file, $directory);
         }
 
         return $oldFileName;
+    }
+
+    public function updateStoredFile(Request $request, string $inputName, string $directory, ?string $oldPath = null)
+    {
+        $removeKey = $this->buildRemoveKey($inputName);
+
+        if ($this->shouldRemoveImage($request, $removeKey)) {
+            $this->deleteStoredFile($oldPath);
+            return null;
+        }
+
+        if ($request->hasFile($inputName)) {
+            $this->deleteStoredFile($oldPath);
+            return $request->file($inputName)->store($directory, 'public');
+        }
+
+        return $oldPath;
+    }
+
+    public function removeGalleryImages(array $existing, array $removeList, ?string $directory = null): array
+    {
+        $removeList = array_values(array_filter($removeList ?? []));
+
+        if (empty($removeList) || empty($existing)) {
+            return $existing;
+        }
+
+        $remaining = [];
+        foreach ($existing as $image) {
+            if (in_array($image, $removeList, true)) {
+                $this->deleteStoredFile($this->buildStoragePath($directory, $image));
+                continue;
+            }
+
+            $remaining[] = $image;
+        }
+
+        return array_values($remaining);
     }
 
 
@@ -75,5 +114,48 @@ trait UploadImageTrait
             'uploaded' => 0,
             'error' => ['message' => 'File upload failed.']
         ]);
+    }
+
+    protected function buildRemoveKey(string $inputName): string
+    {
+        $normalized = preg_replace('/\W+/', '_', $inputName);
+        $normalized = trim($normalized, '_');
+
+        return 'remove_' . $normalized;
+    }
+
+    protected function shouldRemoveImage(Request $request, string $removeKey): bool
+    {
+        $value = $request->input($removeKey);
+
+        return $value === '1' || filter_var($value, FILTER_VALIDATE_BOOLEAN);
+    }
+
+    protected function buildStoragePath(?string $directory, ?string $fileName): ?string
+    {
+        if (! $fileName) {
+            return null;
+        }
+
+        if (! $directory) {
+            return $fileName;
+        }
+
+        if (str_starts_with($fileName, $directory . '/')) {
+            return $fileName;
+        }
+
+        return $directory . '/' . $fileName;
+    }
+
+    protected function deleteStoredFile(?string $path): void
+    {
+        if (! $path) {
+            return;
+        }
+
+        if (Storage::disk('public')->exists($path)) {
+            Storage::disk('public')->delete($path);
+        }
     }
 }

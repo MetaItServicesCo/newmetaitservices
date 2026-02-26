@@ -138,6 +138,11 @@ class PortfolioController extends Controller
 
             // Handle gallery images
             $galleryImages = $portfolio->gallery_images ?? [];
+            $galleryImages = $this->removeGalleryImages(
+                $galleryImages,
+                $request->input('remove_gallery_images', []),
+                'portfolios/gallery'
+            );
             if ($request->hasFile('gallery_images')) {
                 $galleryImages = $this->uploadMultipleImages($galleryImages, $request->file('gallery_images'), 'portfolios/gallery');
             }

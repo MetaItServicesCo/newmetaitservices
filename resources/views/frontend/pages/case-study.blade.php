@@ -279,7 +279,7 @@
 
         /* LEFT CONTENT */
         .newsletter-heading {
-            font-size: 55px;
+            font-size: 50px;
             font-weight: 700;
             line-height: 59px;
             color: #ffffff;
@@ -548,6 +548,23 @@
 
                 padding: 20px 30px !important;
             }
+
+            .subscribe-btn {
+                width: 300px !important;
+                height: 50px !important;
+
+                font-size: 22px !important;
+
+                margin: 0 auto;
+            }
+
+            .newsletter-input {
+
+                height: 50px !important;
+
+                font-size: 16px !important;
+
+            }
         }
     </style>
 @endpush
@@ -581,7 +598,7 @@
 
                 <!-- RIGHT COLUMN -->
                 <div class="col-lg-6 text-center d-flex align-items-center ">
-                    <img src="{{ asset('frontend/images/blog/blog-hero.png') }}" alt="Digital Marketing" class="mc-right-img">
+                    <img src="{{ asset('frontend/images/casestudy7.svg') }}" alt="Digital Marketing" class="mc-right-img">
                 </div>
 
             </div>
@@ -752,7 +769,7 @@
 
     {{-- =========== case model ================= --}}
     <div class="modal fade" id="caseDetailModal" tabindex="-1">
-        <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content case-modal position-relative">
 
                 <!-- CLOSE BUTTON -->

@@ -26,7 +26,22 @@
                     <!--begin::Input group=-->
                     <div class="fv-row mb-10">
                         <label class="required form-label fs-6 mb-2">Current Password</label>
-                        <input class="form-control form-control-lg form-control-solid" type="password" placeholder="" name="current_password" autocomplete="off" />
+                        <div class="position-relative">
+                            <input class="form-control form-control-lg form-control-solid" type="password" placeholder="" name="current_password" autocomplete="off" id="modal_current_password_field" />
+                            <span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2" id="toggle_modal_current_password" style="cursor: pointer;">
+                                <i class="ki-duotone ki-eye-slash fs-1" id="modal_current_eye_icon_slash">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                    <span class="path3"></span>
+                                    <span class="path4"></span>
+                                </i>
+                                <i class="ki-duotone ki-eye d-none fs-1" id="modal_current_eye_icon">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                    <span class="path3"></span>
+                                </i>
+                            </span>
+                        </div>
                     </div>
                     <!--end::Input group=-->
                     <!--begin::Input group-->
@@ -72,7 +87,22 @@
                     <!--begin::Input group=-->
                     <div class="fv-row mb-10">
                         <label class="form-label fw-semibold fs-6 mb-2">Confirm New Password</label>
-                        <input class="form-control form-control-lg form-control-solid" type="password" placeholder="" name="confirm_password" autocomplete="off" />
+                        <div class="position-relative">
+                            <input class="form-control form-control-lg form-control-solid" type="password" placeholder="" name="confirm_password" autocomplete="off" id="modal_confirm_password_field" />
+                            <span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2" id="toggle_modal_confirm_password" style="cursor: pointer;">
+                                <i class="ki-duotone ki-eye-slash fs-1" id="modal_confirm_eye_icon_slash">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                    <span class="path3"></span>
+                                    <span class="path4"></span>
+                                </i>
+                                <i class="ki-duotone ki-eye d-none fs-1" id="modal_confirm_eye_icon">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                    <span class="path3"></span>
+                                </i>
+                            </span>
+                        </div>
                     </div>
                     <!--end::Input group=-->
                     <!--begin::Actions-->
@@ -94,3 +124,43 @@
     </div>
     <!--end::Modal dialog-->
 </div>
+
+@push('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Modal Current Password toggle
+        const toggleModalCurrentPassword = document.getElementById('toggle_modal_current_password');
+        const modalCurrentPasswordField = document.getElementById('modal_current_password_field');
+        const modalCurrentEyeIconSlash = document.getElementById('modal_current_eye_icon_slash');
+        const modalCurrentEyeIcon = document.getElementById('modal_current_eye_icon');
+
+        if (toggleModalCurrentPassword && modalCurrentPasswordField) {
+            toggleModalCurrentPassword.addEventListener('click', function(e) {
+                e.preventDefault();
+                const type = modalCurrentPasswordField.getAttribute('type') === 'password' ? 'text' : 'password';
+                modalCurrentPasswordField.setAttribute('type', type);
+                
+                modalCurrentEyeIconSlash.classList.toggle('d-none');
+                modalCurrentEyeIcon.classList.toggle('d-none');
+            });
+        }
+
+        // Modal Confirm Password toggle
+        const toggleModalConfirmPassword = document.getElementById('toggle_modal_confirm_password');
+        const modalConfirmPasswordField = document.getElementById('modal_confirm_password_field');
+        const modalConfirmEyeIconSlash = document.getElementById('modal_confirm_eye_icon_slash');
+        const modalConfirmEyeIcon = document.getElementById('modal_confirm_eye_icon');
+
+        if (toggleModalConfirmPassword && modalConfirmPasswordField) {
+            toggleModalConfirmPassword.addEventListener('click', function(e) {
+                e.preventDefault();
+                const type = modalConfirmPasswordField.getAttribute('type') === 'password' ? 'text' : 'password';
+                modalConfirmPasswordField.setAttribute('type', type);
+                
+                modalConfirmEyeIconSlash.classList.toggle('d-none');
+                modalConfirmEyeIcon.classList.toggle('d-none');
+            });
+        }
+    });
+</script>
+@endpush

@@ -448,7 +448,7 @@
 
                 <!-- RIGHT COLUMN -->
                 <div class="col-lg-6 text-center d-flex align-items-center ">
-                    <img src="{{ asset('frontend/images/blog/blog-hero.png') }}" alt="Digital Marketing" class="mc-right-img">
+                    <img src="{{ asset('frontend/images/blog8.svg') }}" alt="Digital Marketing" class="mc-right-img">
                 </div>
 
             </div>

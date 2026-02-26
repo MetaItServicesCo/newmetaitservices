@@ -8,12 +8,14 @@ use App\Jobs\SendNewServicePublishedEmails;
 use App\Models\BrandWeCarry;
 use App\Models\Services;
 use App\Models\SubService;
+use App\Traits\UploadImageTrait;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 class ServicesController extends Controller
 {
+    use UploadImageTrait;
     // ===========================
     // Services
     // ===========================
@@ -181,25 +183,26 @@ class ServicesController extends Controller
         try {
             $engagingContent = $request->input('engaging_content');
 
-            // Handle section_one image
-            if ($request->hasFile('section_one_image')) {
-                $engagingContent['section_one']['image']['path'] = $request->file('section_one_image')->store('services', 'public');
-            } else {
-                $engagingContent['section_one']['image'] = $service->engaging_content['section_one']['image'];
-            }
+            $engagingContent['section_one']['image']['path'] = $this->updateStoredFile(
+                $request,
+                'section_one_image',
+                'services',
+                $service->engaging_content['section_one']['image']['path'] ?? null
+            );
 
-            // Handle section_two image
-            if ($request->hasFile('section_two_image')) {
-                $engagingContent['section_two']['image']['path'] = $request->file('section_two_image')->store('services', 'public');
-            } else {
-                $engagingContent['section_two']['image'] = $service->engaging_content['section_two']['image'];
-            }
+            $engagingContent['section_two']['image']['path'] = $this->updateStoredFile(
+                $request,
+                'section_two_image',
+                'services',
+                $service->engaging_content['section_two']['image']['path'] ?? null
+            );
 
-            // Handle thumbnail
-            $thumbnailPath = $service->thumbnail;
-            if ($request->hasFile('thumbnail')) {
-                $thumbnailPath = $request->file('thumbnail')->store('service/thumbnails', 'public');
-            }
+            $thumbnailPath = $this->updateStoredFile(
+                $request,
+                'thumbnail',
+                'service/thumbnails',
+                $service->thumbnail
+            );
 
             $faqs = $request->input('faqs', []);
 
@@ -463,19 +466,19 @@ class ServicesController extends Controller
         try {
             $pageContent = $request->input('page_content', []);
 
-            // Handle hero image
-            if ($request->hasFile('hero_image')) {
-                $pageContent['hero_section']['image'] = $request->file('hero_image')->store('sub-services', 'public');
-            } else {
-                $pageContent['hero_section']['image'] = $subService->page_content['hero_section']['image'] ?? null;
-            }
+            $pageContent['hero_section']['image'] = $this->updateStoredFile(
+                $request,
+                'hero_image',
+                'sub-services',
+                $subService->page_content['hero_section']['image'] ?? null
+            );
 
-            // Handle campaign image
-            if ($request->hasFile('campaign_image')) {
-                $pageContent['campaign_section']['image'] = $request->file('campaign_image')->store('sub-services', 'public');
-            } else {
-                $pageContent['campaign_section']['image'] = $subService->page_content['campaign_section']['image'] ?? null;
-            }
+            $pageContent['campaign_section']['image'] = $this->updateStoredFile(
+                $request,
+                'campaign_image',
+                'sub-services',
+                $subService->page_content['campaign_section']['image'] ?? null
+            );
 
             // Handle commitment icons
             $commitmentIcons = $subService->page_content['commitments_section']['icons'] ?? [];
@@ -488,12 +491,12 @@ class ServicesController extends Controller
             }
             $pageContent['commitments_section']['icons'] = $commitmentIcons;
 
-            // Handle icon
-            if ($request->hasFile('icon')) {
-                $iconPath = $request->file('icon')->store('sub-services/icons', 'public');
-            } else {
-                $iconPath = $subService->icon;
-            }
+            $iconPath = $this->updateStoredFile(
+                $request,
+                'icon',
+                'sub-services/icons',
+                $subService->icon
+            );
 
             $faqs = $request->input('faqs', []);
 

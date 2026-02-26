@@ -358,27 +358,27 @@
 
         /* ICONS */
         .icon-circle {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             background: #ffffff;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #F96037;
-            font-size: 30px;
+            font-size: 20px;
         }
 
         .social-icons a {
-            width: 79.83px;
-            height: 79.83px;
+            width: 40px;
+            height: 40px;
             background: #ffffff;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #F96037;
-            font-size: 30.52px;
+            font-size: 20px;
             transition: 0.3s;
             text-decoration: none;
         }
@@ -408,7 +408,7 @@
         .custom-input {
             width: 100%;
             max-width: 549px;
-            height: 53px;
+            height: 40px;
             border-radius: 12px;
             border: 1px solid #F96037;
             background: transparent;
@@ -507,6 +507,32 @@
             }
         }
 
+        @media (max-width: 767px) {
+            .contact-heading {
+                font-size: 34px;
+                line-height: 40px;
+            }
+
+            .contact-sub {
+                font-size: 20px;
+                line-height: 30px;
+            }
+
+            .contact-desc {
+                font-size: 16px;
+                line-height: 30px;
+            }
+
+            .submit-btn {
+                width: 230px;
+                height: 50px;
+
+                font-size: 20px;
+
+                margin-top: 15px;
+                transition: 0.3s;
+            }
+        }
 
         .map-section {
             width: 100%;

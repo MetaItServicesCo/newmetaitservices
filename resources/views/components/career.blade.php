@@ -8,7 +8,7 @@
 
     /* Heading */
     .career-heading {
-        font-size: 55px;
+        font-size: 41px;
         font-weight: 800;
         /* extra bold */
         line-height: 64px;

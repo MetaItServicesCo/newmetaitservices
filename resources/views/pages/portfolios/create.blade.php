@@ -114,15 +114,17 @@
 
                                     <div class="d-flex flex-wrap mt-2" id="gallery-images-wrapper">
                                         @foreach ($portfolio->gallery_images as $img)
-                                            <div class="text-center me-2 mb-2 gallery-image-item"
-                                                data-img="{{ $img }}">
-                                                <img src="{{ asset('storage/portfolios/gallery/' . $img) }}"
-                                                    alt="Gallery" class="img-thumbnail" width="80">
-                                                <br>
-                                                <span class="text-danger remove-gallery-image"
-                                                    style="cursor:pointer; font-size:0.85rem;">
-                                                    Remove
-                                                </span>
+                                            <div class="text-center me-2 mb-2 gallery-image-item">
+                                                <div class="image-preview-wrapper">
+                                                    <img src="{{ asset('storage/portfolios/gallery/' . $img) }}"
+                                                        alt="Gallery" class="img-thumbnail" width="80">
+                                                    <button type="button"
+                                                        class="gallery-remove-btn image-remove-btn"
+                                                        data-remove-name="remove_gallery_images[]"
+                                                        data-remove-value="{{ $img }}">
+                                                        &times;
+                                                    </button>
+                                                </div>
                                             </div>
                                         @endforeach
                                     </div>
@@ -227,50 +229,6 @@
                     });
                 }
 
-            });
-        </script>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                // Attach click event to all remove-gallery-image elements
-                document.querySelectorAll('.remove-gallery-image').forEach(span => {
-                    span.addEventListener('click', function() {
-                        const container = this.closest('.gallery-image-item');
-                        const imgName = container.getAttribute('data-img');
-                        const portfolioId = "{{ $portfolio->id ?? 0 }}"; // Current portfolio ID
-
-                        if (!portfolioId) return;
-                        // Confirmation dialog
-                        if (confirm(`Are you sure you want to remove this image?`)) {
-                            // Send AJAX request to remove image
-                            fetch("{{ route('admin.portfolios.remove-gallery-image') }}", {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/json',
-                                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                                    },
-                                    body: JSON.stringify({
-                                        portfolio_id: portfolioId,
-                                        image: imgName
-                                    })
-                                })
-                                .then(res => res.json())
-                                .then(data => {
-                                    if (data.success) {
-                                        container.remove(); // Remove image from DOM
-                                        toastr.success(data.message ||
-                                            'Image removed successfully');
-                                    } else {
-                                        toastr.error(data.message || 'Something went wrong');
-                                    }
-                                })
-                                .catch(err => {
-                                    console.error(err);
-                                    toastr.error('Error removing image');
-                                });
-                        }
-                    });
-                });
             });
         </script>
 

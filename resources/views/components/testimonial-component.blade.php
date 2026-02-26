@@ -4,7 +4,7 @@
         <h2 class="impact-title">Real Revenue Impact For Our Clients</h2>
 
         <div class="impact-image">
-            <img src="{{ asset('frontend/images/navbar-logo.png') }}" alt="">
+            <img src="{{ asset('frontend/images/logo-img.png') }}" alt="Logo" class="nav-log">
         </div>
 
         <p class="impact-desc">

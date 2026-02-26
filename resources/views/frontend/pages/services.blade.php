@@ -44,7 +44,7 @@
         }
 
         .dm-desc {
-            font-size: 25px;
+            font-size: 16px;
             font-weight: 400;
             line-height: 160%;
             letter-spacing: 0;
@@ -112,7 +112,7 @@
 
         /* Main Heading */
         .meta-heading {
-            font-size: 45px;
+            font-size: 41px;
             font-weight: 700;
             line-height: 60px;
             letter-spacing: 0;
@@ -123,7 +123,7 @@
 
         /* Description */
         .meta-desc {
-            font-size: 25px;
+            font-size: 16px;
             font-weight: 400;
             line-height: 160%;
             letter-spacing: 0;
@@ -150,7 +150,7 @@
 
         /* Card Content */
         .meta-card-title {
-            font-size: 45px;
+            font-size: 41px;
             font-weight: 700;
             line-height: 60px;
             letter-spacing: 0;
@@ -159,7 +159,7 @@
         }
 
         .meta-card-desc {
-            font-size: 25px;
+            font-size: 16px;
             font-weight: 400;
             line-height: 160%;
             letter-spacing: 0;
@@ -598,8 +598,9 @@
 
                 <!-- RIGHT COLUMN -->
                 <div class="col-lg-6 text-center d-flex align-items-center ">
-                    <img src="{{ asset('frontend/images/services/dm-img.png') }}" alt="Digital Marketing"
+                    <img src="{{ asset('frontend/images/services/marketing campagins.svg') }}" alt="Digital Marketing"
                         class="dm-right-img">
+
                 </div>
 
             </div>
