@@ -28,7 +28,7 @@
     <div class="separator my-2"></div>
    
     <div class="menu-item px-5">
-        <a href="#" class="menu-link px-5">My Profile</a>
+        <a href="#" class="menu-link px-5" data-bs-toggle="modal" data-bs-target="#kt_modal_my_profile">My Profile</a>
     </div>
     
    <div class="menu-item px-5">

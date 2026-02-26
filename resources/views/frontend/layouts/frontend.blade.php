@@ -19,10 +19,9 @@
     <meta name="author" content="" />
 
     <!-- Favicons -->
-    <link rel="icon" type="image/png" sizes="32x32" href="">
-    <link rel="icon" type="image/png" sizes="16x16" href="">
-    <link rel="shortcut icon" href="">
-    <link rel="apple-touch-icon" sizes="180x180" href="">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon.ico') }}">
 
     {{-- <link rel="manifest" href="{{ asset('favicon/site.webmanifest') }}"> --}}
 

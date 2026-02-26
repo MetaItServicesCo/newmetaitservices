@@ -1,4 +1,6 @@
 <!--begin::Modals-->
+@include('partials/modals/_my-profile-modal')
+
 @include('partials/modals/_upgrade-plan')
 
 @include('partials/modals/create-app/_main')

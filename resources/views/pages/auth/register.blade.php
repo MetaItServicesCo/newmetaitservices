@@ -30,11 +30,20 @@
             <div class="mb-1">
                 <!--begin::Input wrapper-->
                 <div class="position-relative mb-3">
-                    <input class="form-control bg-transparent" type="password" placeholder="Password" name="password" autocomplete="off"/>
+                    <input class="form-control bg-transparent" type="password" placeholder="Password" name="password" autocomplete="off" id="register_password_field"/>
 
-                    <span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2" data-kt-password-meter-control="visibility">
-                        <i class="bi bi-eye-slash fs-2"></i>
-                        <i class="bi bi-eye fs-2 d-none"></i>
+                    <span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2" id="toggle_register_password" style="cursor: pointer;">
+                        <i class="ki-duotone ki-eye-slash fs-2" id="register_eye_icon_slash">
+                            <span class="path1"></span>
+                            <span class="path2"></span>
+                            <span class="path3"></span>
+                            <span class="path4"></span>
+                        </i>
+                        <i class="ki-duotone ki-eye fs-2 d-none" id="register_eye_icon">
+                            <span class="path1"></span>
+                            <span class="path2"></span>
+                            <span class="path3"></span>
+                        </i>
                     </span>
                 </div>
                 <!--end::Input wrapper-->
@@ -61,7 +70,22 @@
         <!--end::Input group--->
         <div class="fv-row mb-8">
             <!--begin::Repeat Password-->
-            <input placeholder="Repeat Password" name="password_confirmation" type="password" autocomplete="off" class="form-control bg-transparent"/>
+            <div class="position-relative">
+                <input placeholder="Repeat Password" name="password_confirmation" type="password" autocomplete="off" class="form-control bg-transparent" id="register_password_confirmation_field"/>
+                <span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2" id="toggle_register_password_confirmation" style="cursor: pointer;">
+                    <i class="ki-duotone ki-eye-slash fs-2" id="register_eye_icon_slash_confirm">
+                        <span class="path1"></span>
+                        <span class="path2"></span>
+                        <span class="path3"></span>
+                        <span class="path4"></span>
+                    </i>
+                    <i class="ki-duotone ki-eye fs-2 d-none" id="register_eye_icon_confirm">
+                        <span class="path1"></span>
+                        <span class="path2"></span>
+                        <span class="path3"></span>
+                    </i>
+                </span>
+            </div>
             <!--end::Repeat Password-->
         </div>
         <!--end::Input group--->
@@ -99,5 +123,45 @@
         <!--end::Sign up-->
     </form>
     <!--end::Form-->
+
+    @push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Password toggle
+            const toggleRegisterPassword = document.getElementById('toggle_register_password');
+            const registerPasswordField = document.getElementById('register_password_field');
+            const registerEyeIconSlash = document.getElementById('register_eye_icon_slash');
+            const registerEyeIcon = document.getElementById('register_eye_icon');
+
+            if (toggleRegisterPassword && registerPasswordField) {
+                toggleRegisterPassword.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const type = registerPasswordField.getAttribute('type') === 'password' ? 'text' : 'password';
+                    registerPasswordField.setAttribute('type', type);
+                    
+                    registerEyeIconSlash.classList.toggle('d-none');
+                    registerEyeIcon.classList.toggle('d-none');
+                });
+            }
+
+            // Password confirmation toggle
+            const toggleRegisterPasswordConfirmation = document.getElementById('toggle_register_password_confirmation');
+            const registerPasswordConfirmationField = document.getElementById('register_password_confirmation_field');
+            const registerEyeIconSlashConfirm = document.getElementById('register_eye_icon_slash_confirm');
+            const registerEyeIconConfirm = document.getElementById('register_eye_icon_confirm');
+
+            if (toggleRegisterPasswordConfirmation && registerPasswordConfirmationField) {
+                toggleRegisterPasswordConfirmation.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const type = registerPasswordConfirmationField.getAttribute('type') === 'password' ? 'text' : 'password';
+                    registerPasswordConfirmationField.setAttribute('type', type);
+                    
+                    registerEyeIconSlashConfirm.classList.toggle('d-none');
+                    registerEyeIconConfirm.classList.toggle('d-none');
+                });
+            }
+        });
+    </script>
+    @endpush
 
 </x-auth-layout>
