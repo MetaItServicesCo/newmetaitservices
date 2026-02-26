@@ -425,7 +425,7 @@ body.modal-open {
 
 
 .hero-desc {
-    font-size: 25px;
+    font-size: 16px;
     font-weight: 400;
     font-family: Inter;
     color: #ffffff;
@@ -545,7 +545,7 @@ body.modal-open {
     }
 
     .hero-desc {
-        font-size: 20px;
+        font-size: 14px;
 
         text-align: center;
     }
@@ -555,6 +555,12 @@ body.modal-open {
         max-width: 772px;
         height: 100%;
         object-fit: contain;
+    }
+
+    .hero-btn {
+        width: 190px !important;
+        height: 45px !important;
+        font-size: 15px !important;
     }
 }
 
@@ -569,7 +575,7 @@ body.modal-open {
 
 
 /* Heading */
-.brand-title {
+/* .brand-title {
     font-size: 65px;
     font-weight: 700;
     line-height: 100%;
@@ -580,12 +586,12 @@ body.modal-open {
     color: #000000;
     margin: 0 auto;
 
-}
+} */
 
 
 /* Description */
 .brand-desc {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 400;
     line-height: 160%;
     letter-spacing: 0;
@@ -611,7 +617,7 @@ body.modal-open {
 }
 
 .stat-box h3 {
-    font-size: 60px;
+    font-size: 36px;
     font-weight: 700;
     color: #000;
 }
@@ -621,7 +627,7 @@ body.modal-open {
 }
 
 .stat-box p {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     color: #555;
     margin-top: 8px;
@@ -659,7 +665,7 @@ body.modal-open {
 
 /* Main Heading */
 .performance-title {
-    font-size: 45px;
+    font-size: 39px;
     /* line-height: 25px; */
     letter-spacing: 0px;
     max-width: 1408px;
@@ -685,7 +691,7 @@ body.modal-open {
 
 /* Subtitle */
 .performance-subtitle {
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 700;
     line-height: 59px;
     margin: 0;
@@ -694,7 +700,7 @@ body.modal-open {
 
 /* Description */
 .performance-desc {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 400;
     line-height: 160%;
     max-width: 1508px;
@@ -715,8 +721,25 @@ body.modal-open {
     }
 
     .performance-desc {
-        font-size: 14px;
+        font-size: 14px !important;
         margin-top: 10px;
+    }
+
+    .career-heading {
+        font-size: 31px !important;
+        line-height: 45px !important;
+        color: #000;
+        text-align: center;
+    }
+
+    .career-desc {
+        font-size: 14px !important;
+
+        text-align: center;
+    }
+
+    .custom-imge {
+        height: auto !important;
     }
 }
 
@@ -729,7 +752,7 @@ body.modal-open {
 
 /* Title */
 .kpi-title {
-    font-size: 55px;
+    font-size: 41px;
     font-family: Inter;
     font-weight: 700;
     line-height: 100%;
@@ -772,7 +795,7 @@ body.modal-open {
 .kpi {
     background: rgba(244, 139, 92, 0.25);
     padding: 15px 30px;
-    height: 585px;
+    height: auto;
     border-radius: 12px;
     margin-top: 40px;
 }
@@ -782,17 +805,17 @@ body.modal-open {
 
 /* Left Column */
 .kpi-left-title {
-    font-size: 40px;
+    font-size: 41px;
     font-family: Inter;
     font-weight: 700;
-    line-height: 100%;
+    line-height: 135%;
     /* margin-bottom: 30px; */
     color: #000000;
     max-width: 802px;
 }
 
 .kpi-left-desc {
-    font-size: 28px;
+    font-size: 16px;
     font-family: Inter;
     font-weight: 400;
     line-height: 160%;
@@ -806,13 +829,13 @@ body.modal-open {
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 437px;
-    height: 67px;
+    max-width: 350px;
+    height: 55px;
     background: #404959;
     color: #fff;
     text-decoration: none;
     border-radius: 12px;
-    font-size: 28px;
+    font-size: 20px;
     font-family: Inter;
     font-weight: 700;
     line-height: 160%;
@@ -849,12 +872,12 @@ body.modal-open {
 }
 
 .kpi-card h4 {
-    font-size: 28px;
+    font-size: 20px;
     font-family: Inter;
     font-weight: 400;
     line-height: 35px;
     color: #ffffff;
-    max-width: 318px;
+    /* max-width: 318px; */
 }
 
 /* Card Positions */
@@ -874,7 +897,8 @@ body.modal-open {
 @media(max-width: 991px) {
     .kpi-left-btn {
         /* width: 100%; */
-        font-size: 20px;
+        font-size: 12px;
+
     }
 
     .kpi-right-img {
@@ -890,7 +914,7 @@ body.modal-open {
     }
 
     .kpi {
-        height: 100%;
+        height: auto;
     }
 
     .kpi-right-img {
@@ -903,7 +927,7 @@ body.modal-open {
     }
 
     .kpi-left-desc {
-        font-size: 20px;
+        font-size: 15px;
 
     }
 
@@ -923,6 +947,20 @@ body.modal-open {
         height: 52px;
 
         font-size: 17px;
+    }
+}
+
+@media(max-width: 767px) {
+    .kpi-left-btn {
+        width: 100%;
+        max-width: 250px !important;
+        font-size: 12px !important;
+        margin-top: 20px !important;
+        height: 50px !important;
+    }
+
+    .kpi-left-title {
+        font-size: 22px;
     }
 }
 
@@ -955,9 +993,9 @@ body.modal-open {
 
 /* Title */
 .about-title {
-    font-size: 55px;
+    font-size: 41px;
     font-weight: 700;
-    line-height: 59px;
+    line-height: 52px;
     font-family: Inter;
     margin-bottom: 30px;
     max-width: 562px;
@@ -971,9 +1009,9 @@ body.modal-open {
     margin-top: 40px;
 }
 
-.feature-icon {
-    width: 48px;
-    height: 48px;
+.feature-iconn {
+    width: 40px;
+    height: 40px;
     flex-shrink: 0;
 }
 
@@ -988,7 +1026,7 @@ body.modal-open {
 }
 
 .about-feature p {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 400;
     line-height: 160%;
     font-family: Inter;
@@ -1010,11 +1048,11 @@ body.modal-open {
     border-radius: 12px;
     text-decoration: none;
     font-weight: 700;
-    font-size: 28px;
+    font-size: 20px;
     font-family: Inter;
     line-height: 25px;
-    width: 254px;
-    height: 67px;
+    width: 220px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1081,6 +1119,19 @@ body.modal-open {
     .feature span {
         font-size: 14px !important;
     }
+
+    .btn-learn {
+        width: 220px !important;
+        font-size: 18px !important;
+        height: 50px !important;
+    }
+
+    .btn-outline {
+        width: 100%;
+        max-width: 250px !important;
+        font-size: 20px !important;
+        height: 50px !important;
+    }
 }
 
 /* =========================== offer section css ============================= */
@@ -1095,7 +1146,7 @@ body.modal-open {
     font-family: Inter;
     line-height: 25px;
     letter-spacing: 0;
-    font-size: 55px;
+    font-size: 41px;
     font-weight: 700;
     text-align: center;
 }
@@ -1108,7 +1159,7 @@ body.modal-open {
     font-family: Inter;
     line-height: 162%;
     letter-spacing: 0;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 400;
     color: #000000;
     text-align: center;
@@ -1132,8 +1183,8 @@ body.modal-open {
 
 .card-box {
     width: 100%;
-    max-width: 396px;
-    height: 386px;
+    max-width: 350px;
+    height: 370px;
     background: #ffffff;
     border-radius: 12px;
     padding: 24px;
@@ -1142,7 +1193,7 @@ body.modal-open {
 }
 
 .card-box h4 {
-    font-size: 25px;
+    font-size: 22px;
     font-weight: 700;
     background: linear-gradient(90deg, #F38B5C, #666666);
     -webkit-background-clip: text;
@@ -1154,7 +1205,7 @@ body.modal-open {
     font-family: Inter;
     line-height: 162%;
     letter-spacing: 0;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 400;
     color: #374151;
     max-width: 361px;
@@ -1209,13 +1260,13 @@ body.modal-open {
 @media (max-width: 767px) {
     .section-offer {
         line-height: 48px;
-        font-size: 50px;
+        font-size: 32px;
 
     }
 
     .section-desc {
 
-        font-size: 18px;
+        font-size: 15px;
 
         margin: 8px auto 0px;
     }
@@ -1229,6 +1280,10 @@ body.modal-open {
         box-shadow: 0 0px 15px rgba(0, 0, 0, 0.08);
         transition: all 0.4s ease-in-out;
     }
+}
+
+.swiper-wrapper {
+    height: auto !important;
 }
 
 /* =================== brand next level css ====================== */
@@ -1255,7 +1310,7 @@ body.modal-open {
 }
 
 .next-level-heading {
-    font-size: 55px;
+    font-size: 41px;
     font-weight: 700;
     line-height: 59px;
     letter-spacing: 0;
@@ -1264,13 +1319,13 @@ body.modal-open {
 }
 
 .next-level-desc {
-    font-size: 28px;
+    font-size: 16px;
     font-weight: 400;
     line-height: 160%;
     letter-spacing: 0;
     color: #000000;
     margin-bottom: 40px;
-    max-width: 1508px;
+    max-width: 1300px;
     margin: 0 auto;
 }
 
@@ -1278,8 +1333,7 @@ body.modal-open {
     display: flex;
     justify-content: center;
     gap: 40px;
-    margin-bottom: 40px;
-    /* flex-wrap: wrap; */
+    margin-top: 20px;
 }
 
 .feature {
@@ -1297,6 +1351,19 @@ body.modal-open {
 }
 
 .feature-icon {
+    width: 66px;
+    height: 92px;
+    background: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: #F96037;
+}
+
+.feature-iconn {
     width: 40px;
     height: 40px;
     background: #ffffff;
@@ -1313,12 +1380,12 @@ body.modal-open {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 241px;
-    height: 67px;
+    width: 240px;
+    height: 50px;
     line-height: 67px;
     background: linear-gradient(90deg, #FF6036, #404959);
     color: #ffffff;
-    font-size: 28px;
+    font-size: 20px;
     font-weight: 700;
     line-height: 25px;
     letter-spacing: 0;
@@ -1345,12 +1412,18 @@ body.modal-open {
     }
 
     .next-level-desc {
-        font-size: 18px;
+        font-size: 16px;
 
     }
 
     .features {
         margin-top: 20px !important;
+    }
+
+    .learn-btn {
+        width: 200px !important;
+        font-size: 20px !important;
+        height: 50px !important;
     }
 }
 
@@ -1365,7 +1438,7 @@ body.modal-open {
 
 /* Heading */
 .portfolio-title {
-    font-size: 55px;
+    font-size: 41px;
     font-weight: 600;
     line-height: 25px;
     letter-spacing: 0;
@@ -1379,8 +1452,8 @@ body.modal-open {
 /* Card */
 .portfolio-card {
     width: 100%;
-    max-width: 525px;
-    height: 570px;
+    max-width: 520px;
+    height: 550px;
     border: 2px solid #F38B5C;
     padding: 20px;
     border-radius: 16px;
@@ -1403,7 +1476,7 @@ body.modal-open {
 }
 
 .portfolio-card h3 {
-    font-size: 28px;
+    font-size: 26px;
     line-height: 136%;
     font-weight: 700;
     letter-spacing: 0;
@@ -1412,7 +1485,7 @@ body.modal-open {
 }
 
 .portfolio-card p {
-    font-size: 20px;
+    font-size: 16px;
     line-height: 162%;
     letter-spacing: 0;
     font-weight: 400;
@@ -1503,6 +1576,28 @@ body.modal-open {
     }
 }
 
+@media (max-width: 767px) {
+    .portfolio-title {
+        font-size: 38px;
+    }
+
+    .portfolio-card {
+        width: 90%;
+        height: auto !important;
+    }
+
+    .down-btn {
+        width: 100px !important;
+        height: 40px !important;
+    }
+
+    .down-btn img {
+        width: 20px !important;
+        height: 30px !important;
+        transition: all 0.4s ease-in-out;
+    }
+}
+
 /* =============================== revnue section ================================== */
 
 .revenue-impact {
@@ -1514,7 +1609,7 @@ body.modal-open {
 
 /* Heading */
 .impact-title {
-    font-size: 55px;
+    font-size: 41px;
     font-weight: 700;
     line-height: 25px;
     letter-spacing: 0;
@@ -1532,8 +1627,8 @@ body.modal-open {
 
 /* Description */
 .impact-desc {
-    font-size: 25px;
-    font-weight: 700;
+    font-size: 16px;
+    font-weight: 400;
     line-height: 136%;
     letter-spacing: 0;
     color: #000000;
@@ -1566,7 +1661,7 @@ body.modal-open {
     border-bottom: 2px solid #F38B5C;
     margin: 0 auto;
     position: relative;
-    height: 100%;
+    height: auto;
 }
 
 /* Arrows */
@@ -1677,7 +1772,7 @@ body.modal-open {
     }
 
     .impact-desc {
-        font-size: 18px !important;
+        font-size: 15px !important;
     }
 
     .impact-title {
@@ -1686,6 +1781,9 @@ body.modal-open {
         line-height: 120% !important;
 
     }
+
+
+
 }
 
 /* Card */
@@ -1713,7 +1811,7 @@ body.modal-open {
 
 /* Description */
 .card-desc {
-    font-size: 22px;
+    font-size: 16px;
     font-weight: 400;
     line-height: 160%;
     letter-spacing: 0;
@@ -1778,7 +1876,7 @@ body.modal-open {
 }
 
 .faq-desc {
-    font-size: 22px;
+    font-size: 16px;
     font-weight: 400;
     line-height: 162%;
     letter-spacing: 0;
@@ -1802,9 +1900,9 @@ body.modal-open {
     cursor: pointer;
 }
 
-.faq-header h5 {
+.faq-header h3 {
     margin: 0;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 600;
     line-height: 136%;
     letter-spacing: 0;
@@ -1834,7 +1932,7 @@ body.modal-open {
 }
 
 .faq-content p {
-    font-size: 22px;
+    font-size: 16px;
     font-weight: 400;
     line-height: 162%;
     letter-spacing: 0;
@@ -1872,13 +1970,14 @@ body.modal-open {
         font-size: 16px;
     }
 
-    .faq-header h5 {
-        font-size: 16px;
+    .faq-header h3 {
+        font-size: 18px;
+        max-width: 320px;
     }
 
     .faq-toggle {
-        width: 38px;
-        height: 36px;
+        width: 34px;
+        height: 32px;
 
     }
 
@@ -1909,7 +2008,7 @@ body.modal-open {
 }
 
 .seo-desc {
-    font-size: 22px;
+    font-size: 16px;
     font-weight: 400;
     line-height: 162%;
     letter-spacing: 0;
@@ -1922,7 +2021,7 @@ body.modal-open {
 .seo-list {
     list-style: disc;
     padding-left: 20px;
-    font-size: 22px;
+    font-size: 16px;
     font-weight: 400;
     line-height: 162%;
     letter-spacing: 0;
@@ -2011,7 +2110,13 @@ body.modal-open {
     .seo-desc {
         text-align: center;
         max-width: 100%;
-        font-size: 16px;
+        font-size: 14px !important;
+    }
+
+    .seo-heading {
+        font-size: 32px !important;
+        line-height: 44px;
+        text-align: center !important;
     }
 
     .toc-card {
@@ -2271,21 +2376,18 @@ body.modal-open {
     font-family: 'Lexend Deca', sans-serif;
     color: #F38B5C;
     font-weight: 500;
-    font-size: 9.18px;
+    font-size: 13px;
     margin-top: 12px;
-    position: relative;
-    padding-left: 14px;
+
+    padding-left: 0;
+    /* 🔥 bullet ki jagah bhi hata di */
 }
 
+/* 🔥 bullet remove */
 .bullet-text::before {
-    content: "•";
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: #F38B5C;
-    font-size: 14px;
-    line-height: 1;
+    content: none;
 }
+
 
 .desc-text {
     font-family: 'Lexend Deca', sans-serif;
@@ -2393,4 +2495,9 @@ body.modal-open {
     border: none;
     color: #fff;
     border-radius: 12px;
+}
+
+.nav-logoo {
+    width: 140px;
+    height: 100px;
 }

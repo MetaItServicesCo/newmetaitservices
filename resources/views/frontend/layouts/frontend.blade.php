@@ -57,9 +57,10 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-     
 
-    <link rel="stylesheet" href="{{ asset('frontend/css/custom.css') }}?v={{ filemtime(public_path('frontend/css/custom.css')) }}" />
+
+    <link rel="stylesheet"
+        href="{{ asset('frontend/css/custom.css') }}?v={{ filemtime(public_path('frontend/css/custom.css')) }}" />
     {{-- <link rel="stylesheet" href="{{ asset('frontend/css') }}/custom.css" /> --}}
 
     <!-- Toastr CSS -->
@@ -97,27 +98,30 @@
 
                             <!-- COLUMN 1 -->
                             <div class="col-lg-3 col-md-4 text-cente ps-4">
-                                <img src="{{ asset('frontend/images/navbar-logo.png') }}" alt="Logo"
-                                    class="nav-logo">
+                                <img src="{{ asset('frontend/images/logo-img.png') }}" alt="Logo" class="nav-logoo">
 
                                 <div class="mt-3">
                                     {{-- <p class="mb-0 head-msg">Head of IT Message</p> --}}
                                     <h6 class="dept-title">Meta’s IT Department</h6>
                                 </div>
 
-                                <p class="bullet-text">Place Your Brand At The Forefront of Success
+                                <p class="bullet-text">Schedule A Meeting
+
                                 </p>
+
+                                <p class="desc-text">
+                                    Consultations are made based on your availability. Plan a date and time. During our
+                                    scheduled meeting, we’ll review your goals together and answer any follow-up
+                                    questions. Mapping is the first step in revitalizing your business. No pressure,
+                                    just promises that actually hold up.
+
+                                </p>
+                                {{-- <p class="bullet-text">Founder & Head of IT</p>
 
                                 <p class="desc-text">
                                     Libero diam auctor tristique hendrerit in eu vel id. Nec leo amet suscipit
                                     nulla. Nullam vitae sit tempus diam. Libero
-                                </p>
-                                <p class="bullet-text">Founder & Head of IT</p>
-
-                                <p class="desc-text">
-                                    Libero diam auctor tristique hendrerit in eu vel id. Nec leo amet suscipit
-                                    nulla. Nullam vitae sit tempus diam. Libero
-                                </p>
+                                </p> --}}
                             </div>
 
 
@@ -203,7 +207,8 @@
 
                         <!-- HEADING -->
                         <h2 class="modal-title-main">
-                            Elevate Your Digital Presence Work Atomic
+                            Place Your Brand At The Forefront of Success
+
                         </h2>
 
                         <!-- ROW -->
@@ -213,15 +218,15 @@
                             <div class="col-lg-6 col-md-12 ">
                                 <div class="info-card">
                                     <p>
-                                        Consultations are made based on your availability. Plan a date and time. During
-                                        our scheduled meeting, we’ll review your goals together and answer any follow-up
-                                        questions.
+                                        Meta IT Digital Marketing and Tech Solutions makes it easy for businesses to
+                                        move fast and think bigger. Want to execute smarter decisions?
+
 
                                     </p>
 
                                     <p>
-                                        Mapping is the first step in revitalizing your business. No pressure, just
-                                        promises that actually hold up.
+                                        Reach out. We’ll connect you with a team that listens and responds promptly.
+                                        Deliver real results. Brief us about what you’re building.
 
                                     </p>
 

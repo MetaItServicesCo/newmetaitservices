@@ -147,7 +147,7 @@
         }
 
         .card-content p {
-            font-size: 25px;
+            font-size: 20px;
             font-weight: 400;
             line-height: 160%;
             letter-spacing: 0;
@@ -378,9 +378,9 @@
         }
 
         .solutions-heading {
-            font-size: 45px;
+            font-size: 41px;
             font-weight: 700;
-            line-height: 60px;
+            line-height: 55px;
             letter-spacing: 0;
             margin-bottom: 50px;
             max-width: 899px;
@@ -485,9 +485,9 @@
 
         /* Heading */
         .seo-heading {
-            font-size: 50px;
+            font-size: 41px;
             font-weight: 700;
-            line-height: 60px;
+            line-height: 55px;
             letter-spacing: 0px;
             color: #000000;
             max-width: 861px;
@@ -538,7 +538,7 @@
         .performance-desc {
             margin-left: 58px;
             margin-top: 4px;
-            font-size: 25px;
+            font-size: 16px;
             font-weight: 300px;
             line-height: 160%;
 
@@ -707,8 +707,7 @@
         .custom-imge {
             width: 100%;
             max-width: 585px;
-            /* height: 570px; */
-            height: 810px !important;
+            height: 810px;
             object-fit: cover;
             border-radius: 30px;
         }
@@ -771,7 +770,7 @@
                     </p>
 
                     <a href="javascript:void(0)" class="dm-btn" data-bs-toggle="modal" data-bs-target="#projectModal">Start
-                       
+
                         Your Project</a>
 
                 </div>
@@ -896,8 +895,8 @@
                             @endforeach
                         </div>
 
-                        <p class="text-white ">Let’s make something great work Together. <a href="{{ route('contact-us') }}"
-                                class="text-decoration-none">Get Free
+                        <p class="text-white ">Let’s make something great work Together. <a
+                                href="{{ route('contact-us') }}" class="text-decoration-none">Get Free
                                 Quote</a></p>
                     </div>
 
